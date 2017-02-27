@@ -1,2 +1,35 @@
-<h1>Livestreams#index</h1>
-<p>Find me in app/views/livestreams/index.html.erb</p>
+<div class="socialive-wrapper">
+  <h1 class="text-center">Here are the upcoming livestreams corresponding to your search:</h1>
+  <br> <br> <br>
+  <div class="container">
+    <div class="row">
+
+    <% @livestreams.each do |livestream| %>
+      <div class="col-xs-12 col-sm-6">
+
+<!-- Waiting for photos to come from attachinary -->
+
+        <%# if livestream.photos? %>
+          <!-- <div class="card"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
+        <%# else %>
+          <div class="card"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')">
+        <%# end %>
+
+        <div class="card-category"></div>
+        <div class="card-description">
+          <h2> <%= livestream.title %> </h2>
+        </div>
+
+<!-- Waiting for show page to add link -->
+
+        <%#= link_to "", livestream_path(livestream), class: "card-link" %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+</div>
+<div></div>

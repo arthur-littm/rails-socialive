@@ -2,11 +2,11 @@
 
   <div class="navbar-socialive-left">
   <!-- Logo -->
-      <%= link_to "SOCIALIVE" %>
+      <%= link_to "SOCIALIVE", root_path %>
 
        <!-- Search form -->
-    <form action="" class="navbar-socialive-search">
-      <input type="text" class="navbar-socialive-search-input" placeholder="Search something">
+    <form action="/livestreams" class="navbar-socialive-search">
+      <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something">
       <button type="submit" class="navbar-socialive-search-btn">
         <i class="fa fa-search"></i>
       </button>

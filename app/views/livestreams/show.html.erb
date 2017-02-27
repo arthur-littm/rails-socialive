@@ -1,14 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="full-screen-container">
-        <p>This is the video div</p>
+
+<h3 id="livestream-show-page-title"><%= current_user.email %> - <%= @livestream.category %></h3>
+
+<div class="mid-screen-wrapper">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-7">
+        <div class="video-container">
+          <p>This is the video div</p>
+        </div>
       </div>
-    </div>
-    <div style="border: 2px solid black; background: grey;" class="col-xs-12 col-sm-4">
-    <div class="full-screen-container">
-      <p> This Is the chat</p>
-      </div>
+
+        <div class="col-xs-8 col-xs-offset-2 col-lg-offset-0 col-lg-5">
+          <div class="chat-container">
+            <p> This is the chat</p>
+          </div>
+        </div>
+
     </div>
   </div>
 </div>

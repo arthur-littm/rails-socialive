@@ -1,4 +1,39 @@
 .full-screen-container {
-  height: calc(100vh - 70px);
-
+  min-height: calc(100vh - 70px);
+  background-color: gray;
+  border: 1px solid black;
 }
+
+.mid-screen-wrapper {
+  position: relative;
+  background: #F8F6F6;
+  min-height: calc(50vh);
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#livestream-show-page-title{
+  margin-left: 60px;
+  margin-top: 40px
+}
+
+.video-container {
+  border: 2px solid black;
+  height: 349px;
+  width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chat-container {
+  border: 2px solid black;
+  height: 349px;
+ }
+
+ @media (max-width: 1199px) {
+    .chat-container {
+    border: 2px solid black;
+    height: 349px;
+    margin-top: 20px;
+   }
+ }

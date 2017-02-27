@@ -5,10 +5,8 @@ class Livestream < ApplicationRecord
     if pattern.blank?  # blank? covers both nil and empty string
       all
     else
-      where('category LIKE ? title LIKE ?', "%#{pattern}% %#{pattern}%")
+      where('category LIKE ? OR title LIKE ?', "%#{pattern.capitalize}%", "%#{pattern.capitalize}%")
     end
   end
-
-
 
 end

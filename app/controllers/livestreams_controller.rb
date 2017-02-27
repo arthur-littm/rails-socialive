@@ -1,6 +1,6 @@
 class LivestreamsController < ApplicationController
 
-before_action :set_livestream, only: [:show]
+  before_action :set_livestream, only: [:show]
 
   def index
     @livestreams = Livestream.search(params[:query])
@@ -33,14 +33,12 @@ before_action :set_livestream, only: [:show]
   def destroy
   end
 
-  private
-
-  def set_livestream
-    @livestream = Livestream.find(params[:id])
-  end
-
+ private
   def livestream_params
     params.require(:livestream).permit(:title, :category)
   end
 
+  def set_livestream
+    @livestream = Livestream.find(params[:id])
+  end
 end

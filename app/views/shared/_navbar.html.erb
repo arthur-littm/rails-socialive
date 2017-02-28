@@ -1,4 +1,4 @@
-<header class="nav-down">
+<div class="nav-head nav-down">
   <div class="navbar-socialive">
 
       <div class="navbar-socialive-left">
@@ -18,6 +18,8 @@
 
           <!-- Different navigation if login or not -->
           <% if user_signed_in? %>
+
+           <%= link_to t(".top_call_to_action", default: "Livestream"), "#", class: "navbar-socialive-item" %>
 
             <!-- Profile picture and dropdown -->
             <div class="navbar-socialive-item">
@@ -44,7 +46,7 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to "#" do %>
+                    <%= link_to "/" do %>
                       <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
                     <% end %>
                   </li>
@@ -64,20 +66,24 @@
           <% end %>
 
 
-        </div>
+
 
       <!-- Search form -->
-          <form action="/livestreams" class="navbar-socialive-search">
-            <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something">
-            <button type="submit" class="navbar-socialive-search-btn">
-              <i class="fa fa-search"></i>
-            </button>
-          </form>
+            <div class="search-container">
+              <form action="/livestreams" class="navbar-socialive-search">
+               <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
+               <button type="submit" class="navbar-socialive-search-btn">
+               <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+
+        </div>
 
       </div>
 
       <!-- Dropdown list appearing on mobile only -->
-            <div class="navbar-socialive-item hidden-md hidden-lg">
+        <div class="navbar-socialive-item hidden-md hidden-lg">
           <div class="dropdown">
             <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
             <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
@@ -89,15 +95,35 @@
        </div>
 
   </div>
-</header>
+</div>
 
-<div class="navbar-socialive navbar-socialive-fixed">
+<div class="navbar-socialive-categories navbar-socialive-fixed">
 
 
     <!-- Catgeories -->
-    <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Get Started"), "#", class: "navbar-socialive-item navbar-socialive-button btn" %>
+    <div class="navbar-socialive-left hidden-xs hidden-sm">
+    <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
+    <%= link_to t(".sign_in", default: "Adventure"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+    <%= link_to t(".sign_in", default: "Fashion"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+     <%= link_to t(".sign_in", default: "Food"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Fitness"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+       <%= link_to t(".sign_in", default: "Humour"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+       </div>
+
+       <!-- Mobile Categories version -->
+
+        <div class="navbar-socialive-item hidden-md hidden-lg">
+          <div class="dropdown">
+            <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
+            <li><a href="#">Adventure</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Fitness</a></li>
+            <li><a href="#">Humour</a></li>
+          </ul>
+        </div>
+       </div>
 
 
 </div>

@@ -19,6 +19,7 @@
   padding: 0px 20px;
   align-items: center;
   justify-content: space-between;
+  transition: top 0.3s ease-in-out;
 }
 
 /* Optional class to fix the navbar on top */
@@ -93,31 +94,39 @@
   position: relative;
   height:35px;
 }
+
 .navbar-socialive-search-btn {
   line-height: 40px;
-  color: #E6E6E6;
+  color: $gray-dark;
   border: none;
   background: transparent;
   position: absolute;
   align-items: center;
-  right: 14px;
-  top: -2px;
+  right: 20px;
+  top: -4px;
   z-index: 1;
 }
-.navbar-socialive-search-input {
-  flex: 0 1 300px;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
-  outline: none;
+
+input[type="text"] {
+    background: $gray-medium;
+    border: 0 none;
+    color: #d7d7d7;
+    width:30px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    margin:3px 12px;
 }
-.navbar-socialive-search-input:focus  {
-  border: 1px solid #CCCCCC;
+
+input[type="text"]:focus {
+    background:#ccc;
+    color:$gunmetal;
+    width: 220px;
+    margin:3px 12px;
+    outline: none;
+}
+
+input[type="text"] {
+    transition: all 0.7s ease 0s;
 }
 
 /* Navbar dropdown menu */
@@ -167,12 +176,12 @@
     font-size:6px;
 }
 
-header {
+.nav-head {
     background: #f5b335;
     height: 70px;
     position: fixed;
     top: 0;
-    transition: top 0.2s ease-in-out;
+    transition: top 0.3s ease-in-out;
     width: 100%;
 }
 

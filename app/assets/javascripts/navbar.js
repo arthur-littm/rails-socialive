@@ -3,7 +3,9 @@
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
-var navbarHeight = $('header').outerHeight();
+var navbarHeight = $('.nav-head').outerHeight();
+var navbarFix = $('.navbar-socialive-categories').outerHeight();
+var searchFix = $('.search-container').outerHeight();
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -27,11 +29,13 @@ function hasScrolled() {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
-        $('header').removeClass('nav-down').addClass('nav-up');
+        $('.nav-head').removeClass('nav-down').addClass('nav-up');
+        $('.navbar-socialive-categories').addClass('nav-up');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('nav-up').addClass('nav-down');
+            $('.nav-head').removeClass('nav-up').addClass('nav-down');
+            $('.navbar-socialive-categories').removeClass('nav-up');
         }
     }
 

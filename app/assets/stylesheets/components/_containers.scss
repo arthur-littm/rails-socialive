@@ -18,7 +18,7 @@
 }
 
 .video-container {
-  border: 2px solid black;
+  background: black;
   height: 349px;
   width: 620px;
   margin-left: auto;
@@ -32,19 +32,68 @@
 
  @media (max-width: 1199px) {
     .chat-container {
-    border: 2px solid black;
+      border: 2px solid black;
+      height: 349px;
+      margin-top: 20px;
+     }
+ }
+
+ .profile-about {
+    background-color: $gray-medium;
+    padding-left: 5px;
+  }
+
+ @media (max-width: 690px) {
+  .video-container {
+    background: black;
     height: 349px;
-    margin-top: 20px;
-   }
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+ }
+
+ @media (max-width: 991px) {
+  .profile-about {
+    padding-top: 20px;
+    background-color: $gray-medium;
+  }
  }
 
 .profile-wrapper {
-  border: 2px solid black;
-  width: 70%;
+  margin-top: 40px;
+  width: 100%;
   margin-right: auto;
-  margin-left: 30px;
+  margin-left: auto;
   background-color: $gray-light;
+  padding: 20px;
 }
+
+.profile-avatar {
+  height: 180px;
+  width:180px;
+
+  background: $gray-dark;
+}
+
+.profile-favourite-table-answer {
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
+.future-livestreams-card{
+  position: relative;
+  border: 1px solid black;
+  height: 100px;
+}
+
+.future-livestreams-card-title{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+// ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+// CSS for the table on profile page where theire favourite things are listed
 
 
 

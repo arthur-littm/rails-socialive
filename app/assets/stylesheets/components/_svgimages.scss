@@ -1,0 +1,21 @@
+.small-calendar {
+  width: 200px;
+  margin-top: -30px;
+  margin-left: 81.5px;
+}
+
+ @media (max-width: 991px) {
+  .small-calendar {
+    width: 200px;
+    margin-top: -30px;
+    margin-left: 260px !important;
+  }
+ }
+
+ @media (max-width: 590px) {
+  .small-calendar {
+    width: 150px;
+    margin-top: -30px;
+    margin-left: 130px !important;
+  }
+ }

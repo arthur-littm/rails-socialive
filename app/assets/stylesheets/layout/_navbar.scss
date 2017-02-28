@@ -8,7 +8,7 @@
   padding: 0px 20px;
   align-items: center;
   justify-content: space-between;
-  z-index:50;
+  z-index:100;
 }
 
 .navbar-socialive-categories {
@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   transition: top 0.3s ease-in-out;
-  z-index:50;
+  z-index:100;
 }
 
 /* Optional class to fix the navbar on top */
@@ -29,7 +29,7 @@
   position: fixed;
   left: 0px;
   top: 0px;
-  z-index: 3;
+  z-index: 1000;
   width: 100%;
   margin-top:70px;
 }
@@ -142,7 +142,7 @@ input[type="text"] {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
-  z-index:60 !important;
+  z-index:10000 !important;
 }
 .navbar-socialive-dropdown-menu li > a {
   transition: color 0.3s ease;
@@ -151,13 +151,12 @@ input[type="text"] {
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
-  z-index:60 !important;
 }
 
 .navbar-socialive-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
-  z-index:60 !important;
+
 }
 
 .navbar-socialive-dropdown-menu:before {
@@ -171,7 +170,6 @@ input[type="text"] {
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
-  z-index:60 !important;
 }
 
 .navbar-notify-item {
@@ -197,10 +195,10 @@ input[type="text"] {
     top: 0;
     transition: top 0.3s ease-in-out;
     width: 100%;
+    z-index:1000;
 }
 
 .nav-up {
     top: -70px;
 }
-
 

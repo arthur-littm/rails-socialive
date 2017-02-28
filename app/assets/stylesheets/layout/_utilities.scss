@@ -27,14 +27,22 @@
 // all body is shifted down 45px to avoid fixed navbar to cover items
 
 body {
-  margin-top: 45px;
+
+  margin-top: 115px;
   color: black;
-  p{
+
+  p, td{
     font-weight: 100;
   }
-  h1, h2, h3, h4, h5,h6 {
+
+  h1, h2, h3, h4, h5,h6, th{
     font-weight: 200;
   }
+
+  .btn-primary{
+    color: black;
+  }
+
 }
 
 // --

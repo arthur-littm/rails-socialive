@@ -48,8 +48,21 @@
 
 .card-container{
   position: relative;
+  justify-content: center;
   height: 400px !important;
   margin: 30px 20px;
+}
+
+.card-wrapper{
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 240px;
+  width: 100%;
+  background-color: $gray-light;
+  z-index: 1;
+
 }
 
 .card-photo{
@@ -68,40 +81,25 @@
     };
 }
 
-.card-wrapper{
-  border-radius: 5px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 240px;
-  width: 100%;
-  background-color: $gray-light;
-  z-index: 1;
-}
-
 .card-wrapper-description{
   position: absolute;
-  top: 0px;
-  left: 430px;
+  top: 20px;
+  right: 10px;
   color: $gunmetal;
-  padding-right: 20px;
+  padding-left: 45%;
   h2{
-    margin-right: 40px;
+    margin-right: 5%;
   };
 }
-
-.card-wrapper-description h2{
-  padding-right: 130px;
-  };
 
 
 .card-wrapper-social{
   border-radius: 5px;
   position: absolute;
   top: 240px;
-  left: 388px;
+  left: 43%;
   height: 30px;
-  width: 57%;
+  padding-left: 57%;
   background-color: $green;
   z-index: 1;
 }
@@ -121,4 +119,63 @@
   top: -20px;
   right: 5px;
   box-shadow: inset 0px -10px $green;
+}
+
+// for odd results in the search
+
+.card-photo-odd{
+  float: left;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  width: 43%;
+  height: 380px;
+  z-index: 2;
+  background-size: cover;
+  img {
+    z-index: 3;
+    width: 50px;
+    margin: 10px 10px;
+    };
+}
+
+.live-time-odd{
+  color: $gunmetal;
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  box-shadow: inset 0px -10px $green;
+}
+
+.card-wrapper-description-odd{
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: $gunmetal;
+  padding-right: 45%;
+  h2{
+    padding-right: 5%;
+  };
+}
+
+
+.card-wrapper-social-odd{
+  border-radius: 5px;
+  position: absolute;
+  top: 240px;
+  right: 43%;
+  height: 30px;
+  padding-right: 57%;
+  background-color: $green;
+  z-index: 1;
+}
+
+.card-wrapper-social-description-odd{
+  position: absolute;
+  top: 0px;
+  left: 42px;
+  color: $gunmetal;
+  padding-right: 10px;
+  padding-top: 5px;
 }

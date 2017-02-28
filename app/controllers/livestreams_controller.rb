@@ -33,6 +33,10 @@ class LivestreamsController < ApplicationController
   def destroy
   end
 
+  def category_show
+    @livestreams = Livestream.all.where(category: params[:category])
+  end
+
  private
   def livestream_params
     params.require(:livestream).permit(:title, :category)

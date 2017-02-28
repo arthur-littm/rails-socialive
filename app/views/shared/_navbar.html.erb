@@ -1,93 +1,108 @@
-<div class="navbar-socialive">
+<header class="nav-down">
+  <div class="navbar-socialive">
 
-    <div class="navbar-socialive-left">
-    <!-- Logo -->
-        <%= link_to "SOCIALIVE", root_path %>
+      <div class="navbar-socialive-left">
+      <!-- Logo -->
+          <%= link_to "SOCIALIVE", root_path %>
 
-    </div>
-
-
-
+      </div>
 
 
-<!-- Right Navigation -->
-     <div class="navbar-socialive-right">
 
-      <div class="navbar-socialive-right hidden-xs hidden-sm">
 
-        <!-- Different navigation if login or not -->
-        <% if user_signed_in? %>
 
-          <!-- Notification -->
-          <%= link_to "#", class: "navbar-socialive-item navbar-socialive-link" do %>
-            <div class="badge-container">
-              <i class="fa fa-envelope-o"></i>
-              <div class="badge badge-blue">3</div>
+  <!-- Right Navigation -->
+       <div class="navbar-socialive-right">
+
+        <div class="navbar-socialive-right hidden-xs hidden-sm">
+
+          <!-- Different navigation if login or not -->
+          <% if user_signed_in? %>
+
+            <!-- Profile picture and dropdown -->
+            <div class="navbar-socialive-item">
+              <div class="dropdown">
+
+            <!-- Notification -->
+                <div class="navbar-notification-item">
+                <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30"  %>
+                    <span class="notify-badge">NEW</span>
+                </div>
+
+            <!-- -->
+
+                <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                  <li>
+                    <%= link_to "#" do %>
+                      <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to "#" do %>
+                      <i class="fa fa-envelope-o"></i>  <%= t(".profile", default: "Messages") %>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to "#" do %>
+                      <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path, method: :delete do %>
+                      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
             </div>
+
+          <% else %>
+
+          <!-- Login text link -->
+            <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
           <% end %>
 
-          <!-- Profile picture and dropdown -->
-          <div class="navbar-socialive-item">
-            <div class="dropdown">
-              <div class="navbar-notification-item">
-              <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30"  %>
-                  <span class="notify-badge">NEW</span>
-              </div>
 
-              <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-              <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                <li>
-                  <%= link_to "#" do %>
-                    <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to "#" do %>
-                    <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_user_session_path, method: :delete do %>
-                    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-          </div>
+        </div>
 
-        <% else %>
-
-        <!-- Login text link -->
-          <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-        <% end %>
-
+      <!-- Search form -->
+          <form action="/livestreams" class="navbar-socialive-search">
+            <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something">
+            <button type="submit" class="navbar-socialive-search-btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
 
       </div>
 
-    <!-- Search form -->
-        <form action="/livestreams" class="navbar-socialive-search">
-          <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something">
-          <button type="submit" class="navbar-socialive-search-btn">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
+      <!-- Dropdown list appearing on mobile only -->
+            <div class="navbar-socialive-item hidden-md hidden-lg">
+          <div class="dropdown">
+            <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </div>
+       </div>
 
-    </div>
+  </div>
+</header>
 
-    <!-- Dropdown list appearing on mobile only -->
-          <div class="navbar-socialive-item hidden-md hidden-lg">
-        <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-          <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-        </ul>
-      </div>
-     </div>
+<div class="navbar-socialive navbar-socialive-fixed">
+
+
+    <!-- Catgeories -->
+    <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+    <!-- Button (call-to-action) -->
+    <%= link_to t(".top_call_to_action", default: "Get Started"), "#", class: "navbar-socialive-item navbar-socialive-button btn" %>
+
 
 </div>
 
-    <!-- Button (call-to-action) -->
-  <!--   <#%= link_to t(".top_call_to_action", default: "Get Started"), "#", class: "navbar-socialive-item navbar-socialive-button btn" %> -->
+
 
 
 

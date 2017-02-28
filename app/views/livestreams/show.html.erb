@@ -1,5 +1,5 @@
 
-<h3 id="livestream-show-page-title"><%= current_user.email %> - <%= @livestream.category %></h3>
+<h3 id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.category %></h3>
 
 <div class="mid-screen-wrapper">
 
@@ -30,14 +30,15 @@
         <div class="row">
           <!-- Below is the avatar div -->
           <div class="col-xs-12 col-sm-12   col-md-4">
-            <div class="profile-avatar">
+            <div class="profile-avatar bottom-margin">
               <p style="color:black;">This is the avatar image</p>
             </div>
           </div>
-          <!-- Below is the about user div-->   <div class="col-xs-12 col-sm-12  col-md-8">
-            <div class="profile-about">
+          <!-- Below is the about user div-->
+          <div class="col-xs-12 col-sm-12  col-md-8">
+            <div class="profile-about bottom-margin">
               All about Sonya
-              <table summary="prix des fruits en euros">
+              <table summary="favourite things">
                 <tr>
                   <th>My favourite restaurant</th>
                   <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi similique quia non. Maiores quas expedita non enim nulla aperiam distinctio magnam, sit sapiente, facere sint cupiditate id ullam ducimus!</td>
@@ -55,6 +56,24 @@
           </div>
         </div>
 
+        <!-- this is the row for the bio -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="profile-about">
+              <h3>Bio</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem asperiores, minima officia, hic ullam quidem totam in vitae repellat recusandae. Obcaecati officia tempora rerum, ipsum, ex corrupti. Alias, nulla! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quas harum sapiente culpa praesentium sit non accusamus libero illum, id temporibus molestias quam, accusantium neque. Dolorem doloremque labore praesentium! Esse. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- this is the row for the picture gallery -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="black-photo-gallery-wrapper">
+              <p>user photos would go in here</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -76,6 +95,70 @@
         <!-- This is the end of the card for an upcoming event -->
       </div>
     </div>
+
+    <!-- This is the top fans table -->
+    <div class="col-xs-12 col-md-4">
+      <div class="profile-wrapper">
+        <div class="leaderboard">
+          <h3 class="text-center" style="margin-top: 5px; margin-bottom: 20px;">
+            Top Fans
+          </h3>
+          <ol class="leaderboard-list">
+            <li>
+              <mark>Jerry Wood</mark>
+              <small>£315</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small>£301</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small>£292</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small>£245</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small>£203</small>
+            </li>
+            <li>
+              <mark>Jerry Wood</mark>
+              <small>£315</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small>£301</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small>£292</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small>£245</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small>£203</small>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- This is the social media follow div -->
+    <div class="col-xs-12 col-md-4">
+      <div class="profile-wrapper text-center">
+      <h4 style="margin-bottom: 40px;"> Follow Sonya on . . .</h4>
+
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
+      </div>
+
+  </div>
 
   </div>
 </div>

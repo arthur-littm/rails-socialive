@@ -35,10 +35,90 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  z-index:2;
+  z-index: 3;
   background: black;
   opacity: 0;
 }
 .card-link:hover{
   opacity: 0.1;
+}
+
+// specific for search index
+
+
+.card-container{
+  position: relative;
+  height: 400px !important;
+  margin: 30px 20px;
+}
+
+.card-photo{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  width: 43%;
+  height: 380px;
+  z-index: 2;
+  background-size: cover;
+  img {
+    z-index: 3;
+    width: 50px;
+    margin: 10px 10px;
+    };
+}
+
+.card-wrapper{
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 240px;
+  width: 100%;
+  background-color: $gray-light;
+  z-index: 1;
+}
+
+.card-wrapper-description{
+  position: absolute;
+  top: 0px;
+  left: 430px;
+  color: $gunmetal;
+  padding-right: 20px;
+  h2{
+    margin-right: 40px;
+  };
+}
+
+.card-wrapper-description h2{
+  padding-right: 130px;
+  };
+
+
+.card-wrapper-social{
+  border-radius: 5px;
+  position: absolute;
+  top: 240px;
+  left: 388px;
+  height: 30px;
+  width: 57%;
+  background-color: $green;
+  z-index: 1;
+}
+
+.card-wrapper-social-description{
+  position: absolute;
+  top: 0px;
+  left: 42px;
+  color: $gunmetal;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.live-time{
+  color: $gunmetal;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  box-shadow: inset 0px -10px $green;
 }

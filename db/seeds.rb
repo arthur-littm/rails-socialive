@@ -22,12 +22,12 @@ user2 = User.create({
 
 livestream1 = Livestream.create({
   title: 'How to cook like a pro',
-  category: 'Cooking',
+  category: 'food',
   })
 
 livestream2 = Livestream.create({
   title: 'Morning yoga with Sandrine',
-  category: 'Yoga',
+  category: 'fitness',
   })
 
 livestream1.user = user1

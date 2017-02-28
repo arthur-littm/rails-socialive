@@ -46,8 +46,7 @@
 // specific for search index
 
 
-
-.card-container {
+.card-container{
   position: relative;
   height: 400px !important;
   margin: 30px 20px;
@@ -86,12 +85,40 @@
   left: 430px;
   color: $gunmetal;
   padding-right: 20px;
+  h2{
+    margin-right: 40px;
+  };
+}
+
+.card-wrapper-description h2{
+  padding-right: 130px;
+  };
+
+
+.card-wrapper-social{
+  border-radius: 5px;
+  position: absolute;
+  top: 240px;
+  left: 388px;
+  height: 30px;
+  width: 57%;
+  background-color: $green;
+  z-index: 1;
+}
+
+.card-wrapper-social-description{
+  position: absolute;
+  top: 0px;
+  left: 42px;
+  color: $gunmetal;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 
 .live-time{
   color: $gunmetal;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -20px;
+  right: 5px;
   box-shadow: inset 0px -10px $green;
 }

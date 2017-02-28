@@ -1,11 +1,20 @@
 // Your footer style
-.footer{
-  background-color:#828282;
-  color:#CCCCCC;
-  padding:30px;
+.footer {
+  background-color: $white;
+  color: $gunmetal;
+  padding: 15px;
+  border-top: 1px solid $gray-medium;
 }
 
-.footer p{
-  padding:17px 0;
-  color: black
+.footer p {
+  padding: 0px 0px 10px 0px;
+  color: $gunmetal
+}
+
+.icon-spacing {
+  padding: 15px;
+}
+
+.copyright {
+  float: right;
 }

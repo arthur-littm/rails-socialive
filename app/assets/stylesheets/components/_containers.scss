@@ -83,15 +83,40 @@
 
 .future-livestreams-card{
   position: relative;
-  border: 1px solid black;
+  border: 1px solid white;
   height: 100px;
 }
 
 .future-livestreams-card-title{
+  margin-top: 5px;
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 5px;
 }
+
+.future-livestreams-card-time {
+  margin-top: 5px;
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  -webkit-box-shadow: inset 0px -5px 0px 0px rgba(183,255,212,1);
+  -moz-box-shadow: inset 0px -5px 0px 0px rgba(183,255,212,1);
+  box-shadow: inset 0px -5px 0px 0px rgba(183,255,212,1);
+}
+
+.future-livestreams-card-seats{
+  margin-top: 5px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.future-livestreams-card-book-button{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
 // ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 // CSS for the table on profile page where theire favourite things are listed
 

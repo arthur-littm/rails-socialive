@@ -20,3 +20,12 @@
   width: 100%;
 }
 
+.btn-newsletter:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.btn-newsletter:hover {
+  opacity: 1;
+  transition: .5s;
+}

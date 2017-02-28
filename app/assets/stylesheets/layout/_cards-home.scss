@@ -1,3 +1,8 @@
+.wrapper-margin {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .card-squares-square-container {
   display: flex;
   justify-content: center;
@@ -5,31 +10,41 @@
 }
 
 .card-square {
-  margin: 20px;
+  margin: 5px;
   color: $gray;
-  height: 380px;
-  width: 380px;
-  border-radius: 4px;
+  height: 330px;
+  border-radius: 3px;
   position: relative;
   padding: 0;
   background-color: white;
-  border: 0.5px solid $gray-light;
+  border: 0.5px solid $gray-medium;
 }
 
-.card-square-status-badge {
+.card-square-image {
+  background-size: cover !important;
+  background-position: center;
   position: absolute;
-  top: -5px;
-  left: -5px;
-  background-color: $white;
-  border-radius: 15px;
-  text-align: center;
-  color: $gunmetal;
-  width: 30px;
-  height: 30px;
-  padding-top: 5px;
-  padding-right: 2px;
-  font-weight: 100;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transition: ease-in-out, opacity .5s ease-in-out;
 }
+
+// .card-square-status-badge {
+//   position: absolute;
+//   top: -5px;
+//   left: -5px;
+//   background-color: $white;
+//   border-radius: 15px;
+//   text-align: center;
+//   color: $gunmetal;
+//   width: 30px;
+//   height: 30px;
+//   padding-top: 5px;
+//   padding-right: 2px;
+//   font-weight: 100;
+// }
 
 .card-square-title {
   margin: 10px auto;
@@ -73,27 +88,12 @@
   left: 10px;
 }
 
-.card-square-image {
-  background-size: cover !important;
-  background-position: top;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  transition: ease-in-out, opacity .5s ease-in-out;
-}
-
-.card-square:hover {
-  box-shadow: 0px 1px 1px 0px $gray-light;
-}
-
 .card-square:hover .card-square-info {
   top: 10px;
 }
 
 .card-square:hover .card-square-info p {
-  opacity: 1  ;
+  opacity: 1;
   transition: opacity 1s;
 }
 
@@ -102,12 +102,15 @@
   transition: .5s;
 }
 
+.card-square:hover {
+  box-shadow: 0px 1px 1px 0px $green;
+}
+
 .card-square-link {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   width: 100%;
-  z-index: 2;
   opacity: 0;
 }

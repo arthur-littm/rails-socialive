@@ -1,5 +1,6 @@
 
-<h3 id="livestream-show-page-title"><%= @livestream.user.email %> - <%= @livestream.category %></h3>
+
+<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.category %></h3>
 
 <div class="mid-screen-wrapper">
 
@@ -11,12 +12,154 @@
         </div>
       </div>
 
-        <div class="col-xs-8 col-xs-offset-2 col-lg-offset-0 col-lg-5">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-5 col-lg-offset-0">
           <div class="chat-container">
             <p> This is the chat</p>
           </div>
         </div>
 
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- this col is the profile -->
+    <div class="col-xs-12 col-md-8">
+      <div class="profile-wrapper">
+        <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
+        <div class="row">
+          <!-- Below is the avatar div -->
+          <div class="col-xs-12 col-sm-12   col-md-4">
+            <div class="profile-avatar bottom-margin">
+              <p style="color:black;">This is the avatar image</p>
+            </div>
+          </div>
+          <!-- Below is the about user div-->
+          <div class="col-xs-12 col-sm-12  col-md-8">
+            <div class="profile-about bottom-margin">
+              All about Sonya
+              <table summary="favourite things">
+                <tr>
+                  <th>My favourite restaurant</th>
+                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi similique quia non. Maiores quas expedita non enim nulla aperiam distinctio magnam, sit sapiente, facere sint cupiditate id ullam ducimus!</td>
+                </tr>
+                <tr>
+                  <th>My favourite television show</th>
+                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia dicta sit sequi eos et quae. Dolore hic saepe enim ab ratione, sunt dicta atque tenetur doloremque. Reprehenderit non sunt, libero?</td>
+                </tr>
+                <tr>
+                  <th>My favourite eyeliner</th>
+                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, tempore, quis. Itaque tempore temporibus natus, atque eius impedit placeat consectetur possimus tenetur cupiditate, laudantium, est ea! Facere accusantium numquam ea.</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- this is the row for the bio -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="profile-about">
+              <h3>Bio</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem asperiores, minima officia, hic ullam quidem totam in vitae repellat recusandae. Obcaecati officia tempora rerum, ipsum, ex corrupti. Alias, nulla! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quas harum sapiente culpa praesentium sit non accusamus libero illum, id temporibus molestias quam, accusantium neque. Dolorem doloremque labore praesentium! Esse. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- this is the row for the picture gallery -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="black-photo-gallery-wrapper">
+              <p>user photos would go in here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <div class="profile-wrapper">
+        <p>Sonya's calendar</p>
+      </div>
+      <%= image_tag "calendar.svg", :class => "small-calendar"%>
+      <div class="profile-wrapper">
+
+        <!-- This is start of the card for an upcoming event -->
+        <div class="future-livestreams-card">
+          <!-- need to put logic here to truncate title if over 23 characters -->
+          <h5 class="future-livestreams-card-title">My New Wardrobe</h5>
+          <h6 class="future-livestreams-card-time"> Monday 9am</h6>
+          <h6 class="future-livestreams-card-seats"> 168 seats left</h6>
+          <a href="" class="future-livestreams-card-book-button btn btn-primary">book ticket</a>
+        </div>
+        <!-- This is the end of the card for an upcoming event -->
+      </div>
+    </div>
+
+    <!-- This is the top fans table -->
+    <div class="col-xs-12 col-md-4">
+      <div class="profile-wrapper">
+        <div class="leaderboard">
+          <h3 class="text-center" style="margin-top: 5px; margin-bottom: 20px;">
+            Top Fans
+          </h3>
+          <ol class="leaderboard-list">
+            <li>
+              <mark>Jerry Wood</mark>
+              <small>£315</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small>£301</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small>£292</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small>£245</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small>£203</small>
+            </li>
+            <li>
+              <mark>Jerry Wood</mark>
+              <small>£315</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small>£301</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small>£292</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small>£245</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small>£203</small>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- This is the social media follow div -->
+    <div class="col-xs-12 col-md-4">
+      <div class="profile-wrapper text-center">
+      <h4 style="margin-bottom: 40px;"> Follow Sonya on . . .</h4>
+
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
+        <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
+      </div>
+
+  </div>
+
   </div>
 </div>

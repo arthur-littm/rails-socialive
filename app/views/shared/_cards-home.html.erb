@@ -1,11 +1,7 @@
-<!-- Livestream square card-squares container HP -->
+<!-- Livestream card-squares for HP -->
 
-<div class="mid-screen-wrapper">
-  <div class="wrapper-margin">
-
-
-
-    <div class="cards-square-container container">
+<div class="home-wrapper">
+  <div class="cards-square-container container">
     <h4>Editor's pick</h4>
       <div class="row">
 
@@ -17,12 +13,10 @@
           <%# if livestream.photos? %>
           <!-- <div class="card"
           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
-
           <%# else %>
 
           <div class="card-square" >
             <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');"></div>
-
 
             <div class="card-square-info">
               <p><strong><%= livestream.title %></strong></p>
@@ -40,15 +34,9 @@
             <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
           </div>
         </div>
-
         <% end %>
-
-
-        <!-- Waiting for show page to add link -->
-
 
       </div>
     </div>
   </div>
-</div>
 </div>

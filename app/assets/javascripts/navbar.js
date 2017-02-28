@@ -5,7 +5,7 @@ var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('.nav-head').outerHeight();
 var navbarFix = $('.navbar-socialive-categories').outerHeight();
-var searchFix = $('.search-container').outerHeight();
+var searchFix = $('.search-container-two').outerHeight();
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -31,11 +31,13 @@ function hasScrolled() {
         // Scroll Down
         $('.nav-head').removeClass('nav-down').addClass('nav-up');
         $('.navbar-socialive-categories').addClass('nav-up');
+        $('.search-container-two').removeClass('hidden-md hidden-lg');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
             $('.nav-head').removeClass('nav-up').addClass('nav-down');
             $('.navbar-socialive-categories').removeClass('nav-up');
+             $('.search-container-two').addClass('hidden-md hidden-lg');
         }
     }
 

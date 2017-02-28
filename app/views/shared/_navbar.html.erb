@@ -7,10 +7,6 @@
 
       </div>
 
-
-
-
-
   <!-- Right Navigation -->
        <div class="navbar-socialive-right">
 
@@ -34,7 +30,7 @@
             <!-- -->
 
                 <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
                   <li>
                     <%= link_to "#" do %>
                       <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -95,7 +91,7 @@
        </div>
 
   </div>
-</div>
+
 
 <div class="navbar-socialive-categories navbar-socialive-fixed">
 
@@ -103,11 +99,11 @@
     <!-- Catgeories -->
     <div class="navbar-socialive-left hidden-xs hidden-sm">
     <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
-    <%= link_to t(".sign_in", default: "Adventure"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-    <%= link_to t(".sign_in", default: "Fashion"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-     <%= link_to t(".sign_in", default: "Food"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Fitness"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-       <%= link_to t(".sign_in", default: "Humour"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+     <%= link_to t(".sign_in", default: "Adventure"), "/adventure", class: "navbar-socialive-item navbar-socialive-link" %>
+    <%= link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
+     <%= link_to t(".sign_in", default: "Food"), "/food", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
+       <%= link_to t(".sign_in", default: "Humour"), "/humour", class: "navbar-socialive-item navbar-socialive-link" %>
        </div>
 
        <!-- Mobile Categories version -->
@@ -116,16 +112,24 @@
           <div class="dropdown">
             <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
             <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
-            <li><a href="#">Adventure</a></li>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Fitness</a></li>
-            <li><a href="#">Humour</a></li>
+            <li><a href="/adventure">Adventure</a></li>
+            <li><a href="/fashion">Fashion</a></li>
+            <li><a href="/food">Food</a></li>
+            <li><a href="/fitness">Fitness</a></li>
+            <li><a href="/humour">Humour</a></li>
           </ul>
         </div>
        </div>
 
-
+    <div class="search-container-two hidden-md hidden-lg">
+              <form action="/livestreams" class="navbar-socialive-search">
+               <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
+               <button type="submit" class="navbar-socialive-search-btn">
+               <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+  </div>
 </div>
 
 

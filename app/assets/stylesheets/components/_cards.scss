@@ -199,3 +199,12 @@
     color: white;
   };
 }
+
+.live-time-mobile{
+  font-size: 25px;
+  color: white;
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  box-shadow: inset 0px -10px $green;
+}

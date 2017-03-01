@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :livestreams
+  has_many :livestreams, dependent: :destroy
+  has_many :messages, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,6 +27,11 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  def name
+    self.first_name || "anon"
+    # email.split('@')[0]
   end
 
 

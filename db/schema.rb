@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170301184749) do
+=======
+ActiveRecord::Schema.define(version: 20170301192144) do
+>>>>>>> 425cb6673fe64f2196000958d1a802b121945610
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +28,18 @@ ActiveRecord::Schema.define(version: 20170301184749) do
     t.datetime "updated_at",          null: false
     t.integer  "user_id"
     t.string   "title"
+    t.integer  "chat_room"
     t.index ["user_id"], name: "index_livestreams_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "livestream_id"
+    t.index ["livestream_id"], name: "index_messages_on_livestream_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,4 +80,6 @@ ActiveRecord::Schema.define(version: 20170301184749) do
   end
 
   add_foreign_key "livestreams", "users"
+  add_foreign_key "messages", "livestreams"
+  add_foreign_key "messages", "users"
 end

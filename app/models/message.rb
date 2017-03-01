@@ -1,8 +1,8 @@
 class Message < ApplicationRecord
-  validates :body, presence: true, length: {minimum: 2, maximum: 1000}
+  # validates :body, presence: true, length: {minimum: 2, maximum: 1000}
 
   belongs_to :user
-  belongs_to :chat_room
+  belongs_to :livestream
 
   default_scope {order(:created_at => :asc)}
 
@@ -11,6 +11,4 @@ class Message < ApplicationRecord
   def timestamp
     created_at.strftime('%H:%M:%S %d %B %Y')
   end
-
-
 end

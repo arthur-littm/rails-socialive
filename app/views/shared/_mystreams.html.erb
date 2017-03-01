@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="card-dashboard">
+    <% @mylivestreams.first(3).each do |livestream| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+
+        <!-- Waiting for photos to come from attachinary -->
+
+        <%# if livestream.photos? %>
+        <!-- <div class="card"
+        style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
+        <%# else %>
+
+          <div class="card-square" >
+            <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+              <div class="card-square-background">
+              <%= image_tag "logo.svg", class:'logo' %>
+              </div>
+            </div>
+            <div class="card-square-info hidden-xs">
+              <p><strong><%= livestream.title %></strong></p>
+              <p><strong>Description</strong> Bblablabalbalba  abl bal bla bla bal alb abllba  &amp; blabalblablabalab</p>
+            </div>
+            <div class="card-square-avatar">
+              <p>insert avatar code</p>
+            </div>
+            <div class="card-square-date">
+              <p>2017</p>
+            </div>
+            <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+

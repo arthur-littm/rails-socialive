@@ -9,5 +9,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @mylivestreams = Livestream.all.where(user_id: current_user)
   end
 end

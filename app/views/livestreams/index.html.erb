@@ -8,7 +8,7 @@
     <% if index.even? %>
     <!-- 1 result out of 2 is displayed with the picture on the left -->
 
-    <!-- tablet to large displays -->
+    <!-- from tablet to large displays -->
 
     <div class="col-md-12 hidden-xs">
       <div class="card-container">
@@ -45,7 +45,7 @@
     <!-- mobile version -->
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
       <div class="card-container">
-    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h2><%= livestream.title %></h2></div>
+    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h2 class="card-description"><%= livestream.title %></h2></div>
 
      </div>
      <%= link_to "", livestream_path(livestream), class: "card-link" %>
@@ -55,7 +55,7 @@
 
     <!-- 1 result out of 2 is displayed with the picture on the left -->
 
-    <!-- tablet to large displays -->
+    <!-- from tablet to large displays -->
 
     <div class="col-md-12 hidden-xs">
       <div class="card-container">
@@ -93,7 +93,7 @@
 
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
       <div class="card-container">
-    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'yoga.png'%>')"><h2><%= livestream.title %></h2></div>
+    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'yoga.png'%>')"><h2 class="card-description"><%= livestream.title %></h2></div>
     </div>
     <%= link_to "", livestream_path(livestream), class: "card-link" %>
     </div>

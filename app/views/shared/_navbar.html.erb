@@ -3,8 +3,7 @@
 
         <div class="navbar-socialive-left">
         <!-- Logo -->
-            <%= link_to "SOCIALIVE", root_path %>
-
+            <%= link_to "SOCIALIVE", root_path, class:"navbar-socialive-item" %>
         </div>
 
     <!-- Right Navigation -->
@@ -15,7 +14,7 @@
             <!-- Different navigation if login or not -->
             <% if user_signed_in? %>
 
-             <%= link_to t(".top_call_to_action", default: "Livestream"), "#", class: "navbar-socialive-item" %>
+             <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>
 
               <!-- Profile picture and dropdown -->
               <div class="navbar-socialive-item">

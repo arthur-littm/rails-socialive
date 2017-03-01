@@ -1,0 +1,16 @@
+<div class="card" style="color: black !important;">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-1">
+        <!-- put the user's avatar in erb below -->
+         AVATAR
+      </div>
+      <div class="col-md-11">
+        <p class="card-text">
+          <h6><%= message.user.name %> at <%= message.timestamp %> says</h6><br>
+          <%= message.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

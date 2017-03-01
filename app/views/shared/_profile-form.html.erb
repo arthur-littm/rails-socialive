@@ -1,0 +1,67 @@
+
+<div class="row">
+
+<!-- left side of the page (from tablet to large displays) -->
+
+  <div class="col-sm-6 hidden-xs ">
+
+    <h1>Edit your profile</h1>
+
+<!-- wrap in wrapper -->
+<!-- <div class="wrapper"> -->
+    <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
+
+<!-- add once we have attachinary
+
+      <%# f.input :photo, as: :attachinary %> -->
+     <%# f.input :facebooklink %>
+      <%# f.input :instagramlink %>
+      <%= f.input :first_name %>
+      <%# f.input :youtubelink %>
+      <%# f.input :snapchatlink %>
+      <%# f.input :email %>
+      <h1>Bio</h1>
+    <!--   <#%= f.input :bio %> -->
+      <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+
+<!-- </div> -->
+
+  </div>
+
+
+<!-- right side of the page (from tablet to large displays) -->
+
+  <div class="col-sm-6 hidden-xs ">
+
+<!-- wrap in wrapper -->
+<!-- <div class="wrapper"> -->
+
+<h1>Tell us about things you like</h1>
+
+<#%= simple_form_for(@user) do |f| %>
+
+      <#%= f.input :fav1title %>
+      <#%= f.input :fav1 %>
+      <#%= f.input :fav2 %>
+      <#%= f.input :fav2title %>
+      <#%= f.input :fav3 %>
+      <#%= f.input :fav3title %>
+
+
+<h1>My pictures</h1>
+      <!-- add once we have attachinary
+
+      <#%= f.input :photo, as: :attachinary %> -->
+
+      <#%= f.button :submit, class: 'btn btn-primary' %>
+    <#% end %>
+
+<!-- </div> -->
+
+  </div>
+
+
+</div>
+
+

@@ -165,9 +165,24 @@ small {
   color: $white;
 }
 
-.dashboard-wrapper-grey{
+.dashboard-wrapper-grey-left{
   border-radius: 5px;
-  margin:60px;
+  margin: 20px 0px 20px 20px;
+  padding: 10px;
   background-color: $gray-light;
-  z-index: 3;
+  color: $gunmetal;
+  .form-control {
+    color: $gunmetal;
+  };
+}
+
+.dashboard-wrapper-grey-right{
+  border-radius: 5px;
+  margin: 20px 20px 20px 0px;
+  padding: 10px;
+  background-color: $gray-light;
+  color: $gunmetal;
+  .form-control {
+    color: $gunmetal;
+  };
 }

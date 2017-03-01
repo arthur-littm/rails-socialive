@@ -3,9 +3,10 @@
 
 <!-- left side of the page (from tablet to large displays) -->
 
-<div class="dashboard-wrapper-grey">
 
-  <div class="col-sm-6 hidden-xs ">
+
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-left">
 
     <h1>Edit your profile</h1>
 
@@ -16,13 +17,13 @@
 <!-- add once we have attachinary
 
       <%# f.input :photo, as: :attachinary %> -->
-      <%= f.input :facebooklink %>
-      <%= f.input :twitterlink %>
-      <%= f.input :instagramlink %>
-      <%= f.input :youtubelink %>
-      <%= f.input :snapchatlink %>
+      <%= f.input :facebooklink, label: "facebook" %>
+      <%= f.input :twitterlink, label: "twitter" %>
+      <%= f.input :instagramlink, label: "instagram" %>
+      <%= f.input :youtubelink, label: "youtube" %>
+      <%= f.input :snapchatlink, label: "snapchat" %>
       <h1>Bio</h1>
-      <%= f.input :bio %>
+      <%= f.input :bio, label: false %>
       <%= f.submit class: 'btn btn-primary' %>
       <% end %>
 
@@ -34,7 +35,8 @@
 
 <!-- right side of the page (from tablet to large displays) -->
 
-  <div class="col-sm-6 hidden-xs ">
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-right">
 
 <!-- wrap in wrapper -->
 <!-- <div class="wrapper"> -->
@@ -43,12 +45,12 @@
 
 <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-      <%= f.input :fav1title %>
-      <%= f.input :fav1 %>
-      <%= f.input :fav2 %>
-      <%= f.input :fav2title %>
-      <%= f.input :fav3 %>
-      <%= f.input :fav3title %>
+      <%= f.input :fav1title, label: "My 1st favorite thing" %>
+      <%= f.input :fav1, label: false %>
+      <%= f.input :fav2title, label: "My 2nd favorite thing" %>
+      <%= f.input :fav2, label: false %>
+      <%= f.input :fav3title, label: "My 3rd favorite thing" %>
+      <%= f.input :fav3, label: false %>
 
 
 <h1>My pictures</h1>
@@ -62,7 +64,7 @@
 <!-- </div> -->
 
   </div>
-
+</div>
 
 </div>
 

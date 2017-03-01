@@ -13,10 +13,22 @@ User.destroy_all
 user1 = User.create({
   email: 'remi.dyvoire@gmail.com',
   password: '123456',
+  livestreamer: true,
   })
 
 user2 = User.create({
   email: 'sandrine@gmail.com',
+  password: '123456',
+  livestreamer: true,
+  })
+
+user3 = User.create({
+  email: 'gustave@gmail.com',
+  password: '123456',
+  })
+
+user4 = User.create({
+  email: 'marcel@gmail.com',
   password: '123456',
   })
 
@@ -35,6 +47,8 @@ livestream2.user = user2
 
 user1.save!
 user2.save!
+user3.save!
+user4.save!
 
 livestream1.save!
 livestream2.save!

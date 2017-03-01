@@ -52,6 +52,14 @@
   }
 }
 
+@media (max-width: 376px) {
+  .text-input-better-css {
+    max-width: 200px;
+    max-height: 58px;
+    float: left;
+  }
+}
+
 
 // #message_area {
 //   width: 100px;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301130206) do
+ActiveRecord::Schema.define(version: 20170301184749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20170301130206) do
     t.string   "token"
     t.datetime "token_expiry"
     t.boolean  "livestreamer",           default: false
+    t.string   "facebooklink"
+    t.string   "twitterlink"
+    t.string   "instagramlink"
+    t.string   "youtubelink"
+    t.string   "snapchatlink"
+    t.text     "bio"
+    t.string   "fav1title"
+    t.string   "fav2title"
+    t.string   "fav3title"
+    t.text     "fav1"
+    t.text     "fav2"
+    t.text     "fav3"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

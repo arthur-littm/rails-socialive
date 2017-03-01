@@ -15,14 +15,13 @@
 
       <%# f.input :photo, as: :attachinary %> -->
       <%= f.input :first_name %>
-      <%# f.input :facebooklink %>
-      <%# f.input :twitterlink %>
-      <%# f.input :instagramlink %>
-      <%# f.input :youtubelink %>
-      <%# f.input :snapchatlink %>
-      <%# f.input :email %>
+      <%= f.input :facebooklink %>
+      <%= f.input :twitterlink %>
+      <%= f.input :instagramlink %>
+      <%= f.input :youtubelink %>
+      <%= f.input :snapchatlink %>
       <h1>Bio</h1>
-    <!--   <#%= f.input :bio %> -->
+      <%= f.input :bio %>
       <%= f.submit class: 'btn btn-primary' %>
       <% end %>
 
@@ -40,23 +39,23 @@
 
 <h1>Tell us about things you like</h1>
 
-<#%= simple_form_for(@user) do |f| %>
+<%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-      <#%= f.input :fav1title %>
-      <#%= f.input :fav1 %>
-      <#%= f.input :fav2 %>
-      <#%= f.input :fav2title %>
-      <#%= f.input :fav3 %>
-      <#%= f.input :fav3title %>
+      <%= f.input :fav1title %>
+      <%= f.input :fav1 %>
+      <%= f.input :fav2 %>
+      <%= f.input :fav2title %>
+      <%= f.input :fav3 %>
+      <%= f.input :fav3title %>
 
 
 <h1>My pictures</h1>
       <!-- add once we have attachinary
 
-      <#%= f.input :photo, as: :attachinary %> -->
+      <%# f.input :photo, as: :attachinary %> -->
 
-      <#%= f.button :submit, class: 'btn btn-primary' %>
-    <#% end %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
 
 <!-- </div> -->
 

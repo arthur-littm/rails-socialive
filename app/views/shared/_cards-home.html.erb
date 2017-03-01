@@ -16,7 +16,10 @@
           <%# else %>
 
           <div class="card-square" >
-            <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');"></div>
+
+            <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+              <div class="card-square-background"></div>
+            </div>
 
             <div class="card-square-info">
               <p><strong><%= livestream.title %></strong></p>

@@ -90,16 +90,18 @@
 
 .card-square:hover .card-square-info {
   top: 10px;
+  color: $white;
 }
 
 .card-square:hover .card-square-info p {
   opacity: 1;
   transition: opacity 1s;
+  color: $white;
 }
 
 .card-square:hover .card-square-image {
-  opacity: 0.5;
   transition: .5s;
+  color: $white;
 }
 
 .card-square:hover {
@@ -112,5 +114,19 @@
   bottom: 0;
   right: 0;
   width: 100%;
+}
+
+.card-square-background{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
   opacity: 0;
+  background: $gunmetal;
+}
+
+.card-square:hover .card-square-background {
+  opacity: 0.5;
+  transition: opacity 0.8s;
 }

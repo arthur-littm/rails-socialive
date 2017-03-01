@@ -173,6 +173,13 @@ small {
   color: $gunmetal;
   .form-control {
     color: $gunmetal;
+    box-sizing: content-box;
+    background-color: $white;
+    width: 70%;
+    border: 1px solid $gray-dark;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
   };
 }
 
@@ -184,5 +191,12 @@ small {
   color: $gunmetal;
   .form-control {
     color: $gunmetal;
+    box-sizing: content-box;
+    background-color: $white;
+    width: 70%;
+    border: 1px solid $gray-dark;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
   };
 }

@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-md-1">
         <!-- put the user's avatar in erb below -->
-         AVATAR
+        <%#= avatar %>
       </div>
-      <div class="col-md-11">
+      <div class="col-md-11 better-message-design">
         <p class="card-text">
-          <h6><%= message.user.name %> at <%= message.timestamp %> says</h6><br>
-          <%= message.body %>
+          <span style="color: purple;"><%= message.user.name %></span> : <%= message.body %> <%#= message.timestamp %>
+
         </p>
       </div>
     </div>

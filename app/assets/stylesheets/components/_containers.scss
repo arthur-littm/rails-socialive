@@ -26,7 +26,6 @@
 }
 
 .chat-container {
-  border: 0.5px solid black;
   height: 349px;
  }
 
@@ -159,14 +158,6 @@ small {
 
 .leaderboard-list li {
   margin-bottom: 10px;
-}
-
-#messages {
-  max-height: 450px;
-  overflow-y: auto;
-  .avatar {
-    margin: 0.5rem;
-  }
 }
 
 

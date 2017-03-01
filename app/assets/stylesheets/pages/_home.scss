@@ -1,4 +1,4 @@
-/* -------------------------------------
+d/* -------------------------------------
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
@@ -25,7 +25,26 @@ h2, h3, h4 {
 .home-wrapper {
   position: relative;
   background: $gray-light;
-  min-height: calc(50vh);
-  // margin-top: 0px;
   padding: 10px 20px 20px 20px ;
+}
+
+#search-input-container {
+  width: 100%;
+  // padding: 28px 0 32px;
+  border-bottom: 1px solid $white;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  display: block;
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  font-size: 48px;
+  line-height: 72px;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
 }

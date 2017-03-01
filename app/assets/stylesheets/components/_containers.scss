@@ -1,4 +1,4 @@
-.full-screen-container {
+ .full-screen-container {
   min-height: calc(100vh - 70px);
   background-color: gray;
   border: 1px solid black;
@@ -72,13 +72,6 @@
   margin-left: auto;
   background-color: $gray-light;
   padding: 20px;
-}
-
-.profile-avatar {
-  height: 200px;
-  width:200px;
-
-  background: $gray-dark;
 }
 
 .profile-favourite-table-answer {
@@ -159,6 +152,14 @@ small {
   margin-bottom: 10px;
 }
 
+// CSS for dashboard
 
+.dashboard-wrapper {
+  margin-top: 220px;
+  background-color: $gunmetal;
+  min-height: 600px;
+  border-radius: 5px;
+  margin:60px;
+}
 
 

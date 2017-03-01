@@ -52,9 +52,21 @@
   }
 }
 
+// iphone 6
+
 @media (max-width: 376px) {
   .text-input-better-css {
     max-width: 200px;
+    max-height: 58px;
+    float: left;
+  }
+}
+
+// iphone 5
+
+@media (max-width: 320px) {
+  .text-input-better-css {
+    max-width: 150px;
     max-height: 58px;
     float: left;
   }

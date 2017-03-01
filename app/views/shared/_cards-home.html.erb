@@ -1,45 +1,124 @@
 <!-- Livestream card-squares for HP -->
 
+<!-- Editor picks -->
 <div class="home-wrapper">
   <div class="cards-square-container container">
     <h4>Editor's pick</h4>
       <div class="row">
-
         <% Livestream.first(3).each do |livestream| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-md-4">
 
-          <!-- Waiting for photos to come from attachinary -->
+            <!-- Waiting for photos to come from attachinary -->
 
-          <%# if livestream.photos? %>
-          <!-- <div class="card"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
-          <%# else %>
+            <%# if livestream.photos? %>
+            <!-- <div class="card"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
+            <%# else %>
 
-          <div class="card-square" >
-
-            <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
-              <div class="card-square-background"></div>
+            <div class="card-square" >
+              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+                <div class="card-square-background">
+                <%= image_tag "logo.svg", class:'logo' %>
+                </div>
+              </div>
+              <div class="card-square-info">
+                <p><strong><%= livestream.title %></strong></p>
+                <p><strong>Description</strong> Bblablabalbalba  abl bal bla bla bal alb abllba  &amp; blabalblablabalab</p>
+              </div>
+              <div class="card-square-avatar">
+                <p>insert avatar code</p>
+              </div>
+              <div class="card-square-date">
+                <p>2017</p>
+              </div>
+              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
-
-            <div class="card-square-info">
-              <p><strong><%= livestream.title %></strong></p>
-              <p><strong>Description</strong> Bblablabalbalba  abl bal bla bla bal alb abllba  &amp; blabalblablabalab</p>
-            </div>
-
-            <div class="card-square-avatar">
-              <p>insert avatar code</p>
-            </div>
-
-            <div class="card-square-date">
-              <p>2017</p>
-            </div>
-
-            <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
           </div>
-        </div>
         <% end %>
-
       </div>
     </div>
   </div>
 </div>
+
+
+<!-- Category cards -->
+<!-- adventure category -->
+<% if @adventure_livestreams.count != 0 %>
+  <div class="home-wrapper">
+    <div class="cards-square-container container">
+      <h4><%= @adventure_livestreams.first.category.capitalize %></h4>
+      <div class="row">
+        <% @adventure_livestreams.first(3).each do |livestream| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <!-- Waiting for photos to come from attachinary -->
+
+            <%# if livestream.photos? %>
+            <!-- <div class="card"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
+            <%# else %>
+
+            <div class="card-square" >
+              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');"><%= image_tag "logo.svg" %>
+                <div class="card-square-background"></div>
+              </div>
+              <div class="card-square-info">
+                <p><strong><%= livestream.title %></strong></p>
+                <p><strong>Description</strong> Bblablabalbalba  abl bal bla bla bal alb abllba  &amp; blabalblablabalab</p>
+              </div>
+              <div class="card-square-avatar">
+                <p>insert avatar code</p>
+              </div>
+              <div class="card-square-date">
+                <p>2017</p>
+              </div>
+              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end  %>
+
+<!-- fitness category -->
+<% if @fitness_livestreams.count != 0 %>
+  <div class="home-wrapper">
+    <div class="cards-square-container container">
+      <h4><%= @fitness_livestreams.first.category.capitalize %></h4>
+      <div class="row">
+        <% @fitness_livestreams.first(3).each do |livestream| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <!-- Waiting for photos to come from attachinary -->
+
+            <%# if livestream.photos? %>
+            <!-- <div class="card"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%#=image_path 'chef.png'%>')"> -->
+            <%# else %>
+
+            <div class="card-square" >
+              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');"><%= image_tag "logo.svg" %>
+                <div class="card-square-background"></div>
+              </div>
+              <div class="card-square-info">
+                <p><strong><%= livestream.title %></strong></p>
+                <p><strong>Description</strong> Bblablabalbalba  abl bal bla bla bal alb abllba  &amp; blabalblablabalab</p>
+              </div>
+              <div class="card-square-avatar">
+                <p>insert avatar code</p>
+              </div>
+              <div class="card-square-date">
+                <p>2017</p>
+              </div>
+              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end  %>
+
+<!-- Add more categories when cards are finished with sufficient code -->
+

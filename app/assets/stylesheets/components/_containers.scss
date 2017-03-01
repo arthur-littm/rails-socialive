@@ -26,13 +26,11 @@
 }
 
 .chat-container {
-  border: 0.5px solid black;
   height: 349px;
  }
 
  @media (max-width: 1199px) {
     .chat-container {
-      border: 2px solid black;
       height: 349px;
       margin-top: 20px;
      }

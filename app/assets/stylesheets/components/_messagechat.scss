@@ -1,5 +1,5 @@
 #messages {
-  max-height: 210px;
+  max-height: 361px;
   overflow-y: auto;
   overflow-x: hidden;
   .avatar {
@@ -8,7 +8,10 @@
 }
 
 .send-message-btn {
-  float: right;
+  margin-top: 0px;
+
+  height: 58px;
+
 }
 
 .better-message-design{
@@ -16,3 +19,16 @@
   margin-left: -10px;
 
 }
+
+.text-input-better-css {
+    max-width: 380px;
+    max-height: 58px;
+    float: left;
+}
+
+
+
+// #message_area {
+//   width: 100px;
+//   height: 100px;
+// }

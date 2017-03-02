@@ -1,21 +1,25 @@
 <div class="dashboard-wrapper">
 
   <div class="tabs">
+    <% if current_user.livestreamer == true %>
+    <a class="tab" href="#">
+      <h3>My Streams</h3>
+    </a>
+    <% end %>
     <a class="tab active" href="#">
       <h3>My Profile</h3>
     </a>
     <a class="tab" href="#">
-      <h3>My Streams</h3>
+      <h3>My Tickets</h3>
     </a>
-    <a class="tab" href="#">
+     <a class="tab" href="#">
       <h3>My Messages</h3>
     </a>
   </div>
 
   <div class="dashboard-content">
-
+    <%= render 'shared/profile-form' %>
   <%# render 'shared/mystreams' %>
-  <%# render 'shared/profile' %> 
   <%# render 'shared/profile-form' %>
   </div>
 </div>

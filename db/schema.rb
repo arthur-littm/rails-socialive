@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302125530) do
+ActiveRecord::Schema.define(version: 20170302171721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170302125530) do
     t.string   "title"
     t.integer  "chat_room"
     t.string   "room_name"
+    t.datetime "hour_of_stream"
+    t.float    "ticket_price"
     t.index ["user_id"], name: "index_livestreams_on_user_id", using: :btree
   end
 

@@ -1,0 +1,54 @@
+
+<div class="row">
+
+<!-- left side of the page (from tablet to large displays) -->
+
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-left">
+
+    <h1>New Livestream</h1>
+
+    <%= simple_form_for @livestream do |f| %>
+
+      <%= f.input :main_picture, as: :attachinary, label: "Stream cover" %>
+      <%= f.input :title.downcase, placeholder: "Title of the stream" %>
+
+
+      <%= f.input :hour_of_stream, as: :string, id: "datepicker-stream", label: "Time of the stream" %>
+
+      <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"] %>
+
+</div>
+  </div>
+
+
+<!-- right side of the page (from tablet to large displays) -->
+
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-right">
+
+
+<h1>Session details</h1>
+
+
+      <%= f.input :tickets_available, label: "Number of tickets", placeholder: "100" %>
+      <%= f.input :ticket_price, label: "Price per ticket", placeholder: "£5" %>
+
+</div>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+
+</div>
+
+</div>
+
+
+
+<%= content_for :after_js do %>
+  <script type="text/javascript">
+      $(function () {
+          $('#datepicker-stream').datetimepicker();
+      });
+  </script>
+<% end %>
+

@@ -2,7 +2,3 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require cable
-//= require jquery-fileupload/basic
-//= require cloudinary/jquery.cloudinary
-//= require attachinary
-//= require_tree .

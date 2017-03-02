@@ -180,9 +180,10 @@ background-color:$gunmetal;
 .dashboard-wrapper-grey-left{
   border-radius: 5px;
   margin: 20px 0px 20px 20px;
-  padding: 10px;
+  padding: 20px;
   background-color: $gray-light;
   color: $gunmetal;
+  // border: 1px solid $gray-dark;
   .form-control {
     color: $gunmetal;
     box-sizing: content-box;
@@ -202,9 +203,10 @@ background-color:$gunmetal;
 .dashboard-wrapper-grey-right{
   border-radius: 5px;
   margin: 20px 20px 20px 0px;
-  padding: 10px;
+  padding: 20px;
   background-color: $gray-light;
   color: $gunmetal;
+  // border: 1px solid $gray-dark;
   .form-control {
     color: $gunmetal;
     box-sizing: content-box;

@@ -1,10 +1,8 @@
 #messages {
+  min-height: 361px;
   max-height: 361px;
   overflow-y: auto;
   overflow-x: hidden;
-  .avatar {
-    margin: 0.5rem;
-  }
 }
 
 .send-message-btn {
@@ -26,6 +24,53 @@
     float: left;
 }
 
+@media (max-width: 1199px) {
+  #messages {
+    min-height: 361px;
+    max-height: 361px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $gray-medium;
+    padding: 5px;
+
+  }
+}
+
+@media (max-width: 524px) {
+  .text-input-better-css {
+    max-width: 260px;
+    max-height: 58px;
+    float: left;
+  }
+}
+
+@media (max-width: 404px) {
+  .text-input-better-css {
+    max-width: 250px;
+    max-height: 58px;
+    float: left;
+  }
+}
+
+// iphone 6
+
+@media (max-width: 376px) {
+  .text-input-better-css {
+    max-width: 200px;
+    max-height: 58px;
+    float: left;
+  }
+}
+
+// iphone 5
+
+@media (max-width: 320px) {
+  .text-input-better-css {
+    max-width: 150px;
+    max-height: 58px;
+    float: left;
+  }
+}
 
 
 // #message_area {

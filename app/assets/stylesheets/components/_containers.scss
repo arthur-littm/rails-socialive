@@ -156,18 +156,25 @@ small {
 
 .dashboard-wrapper {
   margin-top: 220px;
-  background-color: $gunmetal;
+  background-color: $white;
   min-height: 600px;
   border-radius: 5px;
   margin:60px;
   color:$gray-light;
 }
 
+.black {
+background-color:$gunmetal;
+}
+
 .card-dashboard {
-display:flex;
-justify-content: space-around;
-align-items: space-around;
-margin-top:100px;
+  margin-top:100px;
+  margin-bottom:100px;
+}
+
+.overflow{
+  overflow-y:scroll;
+  -webkit-scrollbar-color: black;
 }
 
 .dashboard-wrapper-grey-left{

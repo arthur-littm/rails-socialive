@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 
+gem 'twilio-ruby'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

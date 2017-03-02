@@ -14,9 +14,9 @@
 <!-- <div class="wrapper"> -->
     <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-<!-- add once we have attachinary
 
-      <%# f.input :photo, as: :attachinary %> -->
+
+      <%= f.input :photo, as: :attachinary, label: "Profile picture" %>
       <%= f.input :facebooklink, label: "facebook" %>
       <%= f.input :twitterlink, label: "twitter" %>
       <%= f.input :instagramlink, label: "instagram" %>
@@ -54,9 +54,8 @@
 
 
 <h1>My pictures</h1>
-      <!-- add once we have attachinary
 
-      <%# f.input :photo, as: :attachinary %> -->
+      <%= f.input :photos, as: :attachinary, label: "More pictures of you" %>
 
       <%= f.button :submit, class: 'btn btn-primary' %>
     <% end %>

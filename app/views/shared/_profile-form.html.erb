@@ -14,18 +14,17 @@
 <!-- <div class="wrapper"> -->
     <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-<!-- add once we have attachinary
 
-      <%# f.input :photo, as: :attachinary %> -->
-      <%= f.input :facebooklink, label: "facebook" %>
-      <%= f.input :twitterlink, label: "twitter" %>
-      <%= f.input :instagramlink, label: "instagram" %>
-      <%= f.input :youtubelink, label: "youtube" %>
-      <%= f.input :snapchatlink, label: "snapchat" %>
+
+      <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
+      <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
+      <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
+      <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
+      <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
+      <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
       <h1>Bio</h1>
-      <%= f.input :bio, label: false %>
-      <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
+      <%= f.input :bio, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+
 
 <!-- </div> -->
 
@@ -43,27 +42,26 @@
 
 <h1>Tell us about things you like</h1>
 
-<%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-      <%= f.input :fav1title, label: "My 1st favorite thing" %>
-      <%= f.input :fav1, label: false %>
-      <%= f.input :fav2title, label: "My 2nd favorite thing" %>
-      <%= f.input :fav2, label: false %>
-      <%= f.input :fav3title, label: "My 3rd favorite thing" %>
-      <%= f.input :fav3, label: false %>
+      <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
+      <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
+      <%= f.input :fav2title, label: "My 2nd favorite thing", placeholder: "Title 2" %>
+      <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
+      <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
+      <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
 
 
 <h1>My pictures</h1>
-      <!-- add once we have attachinary
 
-      <%# f.input :photo, as: :attachinary %> -->
+      <%= f.input :images, as: :attachinary, label: "More pictures of you" %>
 
+</div>
       <%= f.button :submit, class: 'btn btn-primary' %>
     <% end %>
 
 <!-- </div> -->
 
-  </div>
+
 </div>
 
 </div>

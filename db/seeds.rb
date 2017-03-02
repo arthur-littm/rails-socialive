@@ -42,8 +42,26 @@ livestream2 = Livestream.create({
   category: 'fitness',
   })
 
+livestream3 = Livestream.create({
+  title: 'Morning yoga with Theo',
+  category: 'fitness',
+  })
+
+livestream4 = Livestream.create({
+  title: 'Morning yoga with Evan',
+  category: 'fitness',
+  })
+
+livestream5 = Livestream.create({
+  title: 'Morning cooking with Evan',
+  category: 'food',
+  })
+
 livestream1.user = user1
+livestream3.user = user1
+livestream4.user = user1
 livestream2.user = user2
+livestream5.user = user1
 
 user1.save!
 user2.save!
@@ -52,5 +70,8 @@ user4.save!
 
 livestream1.save!
 livestream2.save!
+livestream3.save!
+livestream4.save!
+livestream5.save!
 
 

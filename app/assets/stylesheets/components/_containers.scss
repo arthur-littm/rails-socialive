@@ -160,6 +160,41 @@ small {
   min-height: 600px;
   border-radius: 5px;
   margin:60px;
+  color: $white;
 }
 
+.dashboard-wrapper-grey-left{
+  border-radius: 5px;
+  margin: 20px 0px 20px 20px;
+  padding: 10px;
+  background-color: $gray-light;
+  color: $gunmetal;
+  .form-control {
+    color: $gunmetal;
+    box-sizing: content-box;
+    background-color: $white;
+    width: 70%;
+    border: 1px solid $gray-dark;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  };
+}
 
+.dashboard-wrapper-grey-right{
+  border-radius: 5px;
+  margin: 20px 20px 20px 0px;
+  padding: 10px;
+  background-color: $gray-light;
+  color: $gunmetal;
+  .form-control {
+    color: $gunmetal;
+    box-sizing: content-box;
+    background-color: $white;
+    width: 70%;
+    border: 1px solid $gray-dark;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  };
+}

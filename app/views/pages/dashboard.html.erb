@@ -1,21 +1,39 @@
 <div class="dashboard-wrapper">
 
   <div class="tabs">
-    <a class="tab active" href="#">
-      <h3>My Profile</h3>
-    </a>
-    <a class="tab" href="#">
+    <% if current_user.livestreamer == true %>
+    <a class="tab" onclick="openTab(event, 'mystreams')">
       <h3>My Streams</h3>
     </a>
-    <a class="tab" href="#">
-      <h3>My Messages</h3>
+    <% end %>
+    <a class="tab active"  onclick="openTab(event, 'myprofile')">
+      <h3>My Profile</h3>
+    </a>
+    <a class="tab" onclick="openTab(event, 'mytickets')">
+      <h3>My Tickets</h3>
+    </a>
+     <a class="tab" onclick="openTab(event, 'subscriptions')">
+      <h3>Subscriptions</h3>
     </a>
   </div>
 
   <div class="dashboard-content">
 
-  <%# render 'shared/mystreams' %>
-  <%# render 'shared/profile' %> 
-  <%# render 'shared/profile-form' %>
+    <div id="myprofile" class="tabcontent">
+    <%= render 'shared/profile-form' %>
+    </div>
+
+    <div id="mystreams" class="tabcontent">
+    <%= render 'shared/mystreams' %>
+    </div>
+
+    <div id="mytickets" class="tabcontent">
+    <%= render 'shared/mytickets' %>
+    </div>
+
+    <div id="subscriptions" class="tabcontent">
+    <%= render 'shared/subscriptions' %>
+    </div>
+
   </div>
 </div>

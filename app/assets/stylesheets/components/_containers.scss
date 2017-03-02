@@ -173,11 +173,15 @@ small {
     color: $gunmetal;
     box-sizing: content-box;
     background-color: $white;
-    width: 70%;
+    width: 60%;
     border: 1px solid $gray-dark;
     margin: 5px;
-    padding: 5px;
+    padding: 2px 5px 2px 5px;
     border-radius: 5px;
+  };
+  textarea.form-control {
+    width: 70% !important;
+    padding-bottom: 20px !important;
   };
 }
 
@@ -191,10 +195,14 @@ small {
     color: $gunmetal;
     box-sizing: content-box;
     background-color: $white;
-    width: 70%;
+    width: 30%;
     border: 1px solid $gray-dark;
     margin: 5px;
-    padding: 5px;
+    padding: 2px 5px 2px 5px;
     border-radius: 5px;
+  };
+  textarea.form-control {
+    width: 70% !important;
+    padding-bottom: 20px !important;
   };
 }

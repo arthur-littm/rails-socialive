@@ -26,6 +26,10 @@
  // all body is shifted down 115px to avoid fixed navbar to cover items
 body {
 
+  .form-control {
+    color: black;
+  }
+
   margin-top: 115px;
 
   color: black;

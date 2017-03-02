@@ -32,27 +32,51 @@
                 document.getElementById('room-controls').style.display = 'block';
 
 
+                <% if current_user != @livestream.user %>
                 // Bind button to join room
-                document.getElementById('button-join').onclick = function () {
-                  roomName = document.getElementById('room-name').value;
-                  if (roomName) {
-                    log("Joining room '" + roomName + "'...");
+                // document.getElementById('button-join').onclick = function () {
+                  // roomName = document.getElementById('room-name').value;
+                  roomName = '<%= @livestream.room_name %>'
 
-                    videoClient.connect({ to: roomName}).then(roomJoined,
+                  if (roomName) {
+                    // log("Joining room '" + roomName + "'...");
+
+                    videoClient.connect({ to: roomName, video: false, audio: false}).then(roomJoined,
                       function(error) {
                         log('Could not connect to Twilio: ' + error.message);
                       });
                   } else {
-                    alert('Please enter a room name.');
+                    alert('<%= @livestream.room_name %>');
                   }
-                };
+                // };
+                <% else %>
+                  // Bind button to join room
+                  document.getElementById('button-join').onclick = function () {
+                    // roomName = document.getElementById('room-name').value;
+                    roomName = '<%= @livestream.room_name %>'
 
-                // Bind button to leave room
-                document.getElementById('button-leave').onclick = function () {
-                  log('Leaving room...');
-                  activeRoom.disconnect();
-                };
+                    if (roomName) {
+                      // log("Joining room '" + roomName + "'...");
+
+                      videoClient.connect({ to: roomName}).then(roomJoined,
+                        function(error) {
+                          log('Could not connect to Twilio: ' + error.message);
+                        });
+                    } else {
+                      alert('<%= @livestream.room_name %>');
+                    }
+                  };
+
+                   // Bind button to leave room
+                  document.getElementById('button-leave').onclick = function () {
+                    log('Leaving room...');
+                    activeRoom.disconnect();
+                  };
               // });
+                <% end  %>
+
+
+
 
               // Successfully connected!
               function roomJoined(room) {
@@ -131,16 +155,22 @@
           <% end %>
         </div>
         <div id="controls">
+
             <div id="preview">
               <p class="instructions">Hello Beautiful</p>
               <div id="local-media"></div>
+              <% if current_user == @livestream.user %>
               <button id="button-preview">Preview My Camera</button>
+              <% end %>
             </div>
             <div id="room-controls">
               <p class="instructions">Room Name:</p>
-              <input id="room-name" type="text-area" placeholder="Enter a room name" />
+              <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+              <% if current_user == @livestream.user %>
               <button id="button-join">Join Room</button>
+
               <button id="button-leave">Leave Room</button>
+              <% end %>
             </div>
             <div id="log"></div>
           </div>

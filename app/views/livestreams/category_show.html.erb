@@ -3,38 +3,104 @@
   <br> <br> <br>
     <div class="row">
 
-      <% @livestreams.each do |livestream| %>
-      <div class="col-xs-12">
-        <div class="card-container">
-          <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
+      <% @livestreams.each_with_index do |livestream, index| %>
+
+    <% if index.even? %>
+    <!-- 1 result out of 2 is displayed with the picture on the left -->
+
+    <!-- from tablet to large displays -->
+
+    <div class="col-md-12 hidden-xs">
+      <div class="card-container">
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
 
 
-          <div class="card-wrapper">
+        <div class="card-wrapper">
           <!-- replace with livestream.time -->
           <div><h3 class="live-time">Monday 9am</h3></div>
-            <div class="card-description card-wrapper-description">
-              <h2><%= livestream.title %></h2>
-              <p><%= livestream.user.email %></p>
-              <!-- replace with livestream.description -->
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum labore nihil molestiae vero ad illo harum saepe dicta assumenda, aperiam nesciunt dolorem omnis est modi iure doloremque, quia, incidunt.</p>
-              <p><strong><%= livestream.category %></strong></p>
-            </div>
-            <div class="card-wrapper-social">
-              <div class="card-description card-wrapper-social-description">
-              <!-- replace with user social information -->
-                <ul class="list-inline">
-                  <li>1,346 fans</li><i class="fa fa-heart-o" aria-hidden="true"></i>
-                  <li>46 streams</li><i class="fa fa-play-circle-o" aria-hidden="true"></i>
-                  <li>320,000 views</li><i class="fa fa-eye" aria-hidden="true"></i>
-                </ul>
-              </div>
-            </div>
-
+          <div class="card-description card-wrapper-description">
+            <h2><%= livestream.title %></h2>
+            <p><%= livestream.user.email %></p>
+            <!-- replace with livestream.description -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum labore nihil molestiae vero ad illo harum saepe dicta assumenda, aperiam nesciunt dolorem omnis est modi iure doloremque, quia, incidunt.</p>
+            <p><strong><%= livestream.category %></strong></p>
           </div>
-          <%= link_to "", livestream_path(livestream), class: "card-link" %>
+          <div class="card-wrapper-social">
+            <div class="card-description card-wrapper-social-description">
+              <!-- replace with user social information -->
+              <ul class="list-inline">
+                <li>1,346 fans</li><%= image_tag "like.svg" %>
+                <li>46 streams</li><%= image_tag "play.svg" %>
+                <li>320,000 views</li><%= image_tag "eye.svg" %>
+              </ul>
+
+            </div>
+          </div>
+
         </div>
+        <%= link_to "", livestream_path(livestream), class: "card-link" %>
       </div>
-      <% end %>
+    </div>
+
+    <!-- mobile version -->
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <div class="card-container">
+    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h3 class="live-time-mobile">Monday 9am</h3><h2 class="card-description"><%= livestream.title %></h2></div>
+
+     </div>
+     <%= link_to "", livestream_path(livestream), class: "card-link" %>
+    </div>
+
+    <% else %>
+
+    <!-- 1 result out of 2 is displayed with the picture on the left -->
+
+    <!-- from tablet to large displays -->
+
+    <div class="col-md-12 hidden-xs">
+      <div class="card-container">
+        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'yoga.png'%>')"><%= image_tag "logo.svg" %></div>
+
+
+        <div class="card-wrapper">
+          <!-- replace with livestream.time -->
+          <div><h3 class="live-time-odd">Monday 9am</h3></div>
+          <div class="card-description card-wrapper-description-odd">
+            <h2><%= livestream.title %></h2>
+            <p><%= livestream.user.email %></p>
+            <!-- replace with livestream.description -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum labore nihil molestiae vero ad illo harum saepe dicta assumenda, aperiam nesciunt dolorem omnis est modi iure doloremque, quia, incidunt.</p>
+            <p><strong><%= livestream.category %></strong></p>
+          </div>
+          <div class="card-wrapper-social-odd">
+            <div class="card-description card-wrapper-social-description-odd">
+              <!-- replace with user social information -->
+              <ul class="list-inline">
+                <li>1,346 fans</li><%= image_tag "like.svg" %>
+                <li>46 streams</li><%= image_tag "play.svg" %>
+                <li>320,000 views</li><%= image_tag "eye.svg" %>
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+        <%= link_to "", livestream_path(livestream), class: "card-link" %>
+      </div>
+    </div>
+
+    <!-- mobile version -->
+
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <div class="card-container">
+    <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'yoga.png'%>')"><h3 class="live-time-mobile">Monday 9am</h3><h2 class="card-description"><%= livestream.title %></h2></div>
+    </div>
+    <%= link_to "", livestream_path(livestream), class: "card-link" %>
+    </div>
+
+    <% end %>
+
+    <% end %>
 
     </div>
 

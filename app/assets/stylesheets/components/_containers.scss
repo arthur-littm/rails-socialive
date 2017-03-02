@@ -160,7 +160,14 @@ small {
   min-height: 600px;
   border-radius: 5px;
   margin:60px;
-  color: $white;
+  color:$gray-light;
+}
+
+.card-dashboard {
+display:flex;
+justify-content: space-around;
+align-items: space-around;
+margin-top:100px;
 }
 
 .dashboard-wrapper-grey-left{

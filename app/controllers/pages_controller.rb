@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :dashboard ]
+  skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
     @adventure_livestreams = Livestream.all.where(category: 'adventure')
@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @mylivestreams = Livestream.all.where(user_id: current_user)
   end
 
   def profile_update

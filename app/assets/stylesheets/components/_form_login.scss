@@ -1,5 +1,9 @@
+.login-wrapper {
+  background-color: #F9F9F9;
+}
+
 .form-login {
-  background: $gray-light;
+  background: $white;
   padding: 10px 20px;
   margin: 50px 0 30px 0;
   border-radius: 3px;
@@ -20,17 +24,31 @@
   color: $white;
 }
 
-// .form-control {
-//   color: $gunmetal !important;
-//   box-sizing: content-box !important;
-//   background-color: $white !important;
-//   width: 100% !important;
-//   border: 1px solid $gray-dark !important;
-//   margin: 5px !important;
-//   padding: 2px 5px 2px 5px !important;
-//   border-radius: 5px !important;
-// };
-// textarea.form-control {
-//   width: 100% !important;
-//   padding-bottom: 20px !important;
-// };
+.btn-facebook {
+  color: $white;
+  width: 100%;
+  background-color: $blue-facebook;
+  margin-top: 30px;
+  &:hover{
+    background-color: $blue-facebook-hover;
+    color: $white;
+  }
+}
+
+.form-control {
+  color: $gunmetal ;
+  background-color: $white ;
+  width: 100% ;
+  margin-top: 10px;
+  border: 1px solid $gray-dark ;
+  padding: 2px 5px 2px 5px ;
+  border-radius: 5px ;
+  &:focus {
+    border: 1px solid $gray-dark ;
+    box-shadow: none;
+  }
+}
+
+.hint-color {
+  color: black !important;
+}

@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :livestreams
   has_many :livestreams, dependent: :destroy
   has_many :messages, dependent: :destroy
 

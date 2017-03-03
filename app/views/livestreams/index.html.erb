@@ -12,17 +12,18 @@
 
     <div class="col-md-12 hidden-xs">
       <div class="card-container">
-        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
 
+    <% if livestream.main_picture? %>
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %></div>
+    <% else %>
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
+    <% end %>
 
         <div class="card-wrapper">
-          <!-- replace with livestream.time -->
-          <div><h3 class="live-time">Monday 9am</h3></div>
+          <div><h3 class="live-time"><%# livestream.date_time_of_stream %></h3></div>
           <div class="card-description card-wrapper-description">
             <h2><%= livestream.title %></h2>
-            <p><%= livestream.user.email %></p>
-            <!-- replace with livestream.description -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum labore nihil molestiae vero ad illo harum saepe dicta assumenda, aperiam nesciunt dolorem omnis est modi iure doloremque, quia, incidunt.</p>
+            <p><%= livestream.description %></p>
             <p><strong><%= livestream.category %></strong></p>
           </div>
           <div class="card-wrapper-social">
@@ -42,6 +43,7 @@
       </div>
     </div>
 
+
     <!-- mobile version -->
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
       <div class="card-container">
@@ -56,20 +58,22 @@
     <!-- 1 result out of 2 is displayed with the picture on the left -->
 
     <!-- from tablet to large displays -->
-
     <div class="col-md-12 hidden-xs">
       <div class="card-container">
-        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'yoga.png'%>')"><%= image_tag "logo.svg" %></div>
+
+    <% if livestream.main_picture? %>
+        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %></div>
+    <% else %>
+        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
+    <% end %>
 
 
         <div class="card-wrapper">
           <!-- replace with livestream.time -->
-          <div><h3 class="live-time-odd">Monday 9am</h3></div>
+          <div><h3 class="live-time-odd"><%# livestream.date_time_of_stream %></h3></div>
           <div class="card-description card-wrapper-description-odd">
             <h2><%= livestream.title %></h2>
-            <p><%= livestream.user.email %></p>
-            <!-- replace with livestream.description -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum labore nihil molestiae vero ad illo harum saepe dicta assumenda, aperiam nesciunt dolorem omnis est modi iure doloremque, quia, incidunt.</p>
+            <p><%= livestream.description %></p>
             <p><strong><%= livestream.category %></strong></p>
           </div>
           <div class="card-wrapper-social-odd">

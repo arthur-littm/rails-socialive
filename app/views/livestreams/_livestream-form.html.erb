@@ -48,7 +48,9 @@
 <%= content_for :after_js do %>
   <script type="text/javascript">
       $(function () {
-          $('#datepicker-stream').datetimepicker();
+          $('#datepicker-stream').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm',
+          });
       });
   </script>
 <% end %>

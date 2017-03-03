@@ -245,9 +245,11 @@
           <!-- Below is the avatar div -->
           <div class="col-xs-12 col-sm-12   col-md-4">
             <div>
-
+              <%= if @livestream.user.profilepic %>
               <%= cl_image_tag(@livestream.user.profilepic.path,
                     width: 210, height: 210) %>
+              <% else  %>
+              <% end %>
             </div>
           </div>
           <!-- Below is the about user div-->
@@ -374,7 +376,7 @@
     <!-- This is the social media follow div -->
     <div class="col-xs-12 col-md-4">
       <div class="profile-wrapper text-center margin-bottom-20">
-      <h4> Follow Sonya on . . .</h4>
+      <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
 
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>

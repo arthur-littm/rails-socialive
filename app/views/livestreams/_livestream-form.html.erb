@@ -14,7 +14,7 @@
       <%= f.input :title.downcase, placeholder: "Title of the stream" %>
 
 
-      <%= f.input :hour_of_stream, as: :string, id: "datepicker-stream", label: "Time of the stream" %>
+      <%= f.input :hour_of_stream, as: :string, label: "Time of the stream", input_html: {id: 'datepicker-stream'} %>
 
       <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"] %>
 

@@ -5,7 +5,7 @@
   <div class="cards-square-container container">
     <h4>Editor's pick</h4>
       <div class="row">
-        <% Livestream.first(3).each do |livestream| %>
+        <% Livestream.last(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <!-- Waiting for photos to come from attachinary -->
@@ -32,7 +32,10 @@
                 <p><%= livestream.description %></p>
               </div>
               <div class="card-square-avatar">
+                <% if livestream.user.profilepic != nil %>
                 <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <% else %>
+                <% end %>
               </div>
               <div class="card-square-date">
                 <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>

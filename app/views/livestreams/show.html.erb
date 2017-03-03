@@ -170,16 +170,16 @@
 
               <!-- <div id="local-media"></div> -->
 
-              <button id="button-preview">Preview My Camera</button>
+              <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
             </div>
             <div id="room-controls">
               <!-- <p class="instructions">Room Name:</p> -->
               <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
               <%#= if current_user == @livestream.user %>
-              <button id="button-join">Join Room</button>
+              <button class="btn-primary btn send-message-btn btn-float-left" id="button-join">Start stream</button>
 
-              <button id="button-leave">Leave Room</button>
+              <button class="btn-primary btn send-message-btn btn-float-left" id="button-leave">End stream</button>
 
             </div>
             <div id="log"></div>

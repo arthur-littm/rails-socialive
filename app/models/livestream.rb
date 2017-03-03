@@ -2,6 +2,8 @@ class Livestream < ApplicationRecord
   belongs_to :user
   has_many :messages
 
+  has_attachment :main_picture
+
   before_create :set_room_name
 
   def self.search(pattern)

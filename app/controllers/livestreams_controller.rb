@@ -20,9 +20,8 @@ class LivestreamsController < ApplicationController
     @livestream = Livestream.new(livestream_params)
     @livestream.user = current_user
     @livestream = current_user.livestreams.build(livestream_params)
-    @livestream.title = "chat"
     @livestream.save
-    @livestream.livestream = @livestream.id
+    # @livestream.livestream = @livestream.id
     if @livestream.save
       redirect_to livestream_path(@livestream)
     else
@@ -45,14 +44,10 @@ class LivestreamsController < ApplicationController
 
  private
   def livestream_params
-    params.require(:livestream).permit(:title, :category)
+    params.require(:livestream).permit(:title, :category, :main_picture, :tickets_available, :hour_of_stream, :ticket_price)
   end
 
   def set_livestream
     @livestream = Livestream.find(params[:id])
-  end
-
-  def livestream_params
-    params.require(:livestream).permit(:title)
   end
 end

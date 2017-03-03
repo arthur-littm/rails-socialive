@@ -217,7 +217,9 @@
           <!-- Below is the about user div-->
           <div class="col-xs-12 col-sm-12  col-md-8">
             <div class="profile-about bottom-margin">
-              All about Sonya <a class="btn-primary btn" id="btn-subscribe" href="">subscribe</a>
+              All about Sonya
+               <%= render 'shared/follow_form' %>
+               <%= render 'shared/stats' %>
               <table summary="favourite things">
                 <tr>
                   <th>My favourite restaurant</th>

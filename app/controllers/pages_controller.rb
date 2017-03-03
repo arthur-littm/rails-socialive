@@ -17,10 +17,22 @@ class PagesController < ApplicationController
     @user.update(profile_params)
   end
 
+  def following
+    @title = "Following"
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
   private
 
   def profile_params
-    params.require(:user).permit(:facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :images)
+    params.require(:user).permit(:facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :images, :following, :followers)
   end
 
 end

@@ -7,10 +7,13 @@ class Livestream < ApplicationRecord
   before_create :set_room_name
 
   def self.search(pattern)
+    user = User.where('first_name LIKE ?', "%#{pattern}%").first
     if pattern.blank?  # blank? covers both nil and empty string
       all
     else
-      where('category LIKE ? OR title LIKE ?', "%#{pattern.downcase}%", "%#{pattern.downcase}%")
+      query = where('category LIKE ? OR title LIKE ? OR description LIKE ?', "%#{pattern.downcase}%", "%#{pattern.downcase}%", "%#{pattern.downcase}%")
+      query = query.or(where('user_id = ?', user.id)) if user
+      query
     end
   end
 

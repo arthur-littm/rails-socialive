@@ -18,6 +18,7 @@ user1 = User.create({
 
 user2 = User.create({
   email: 'sandrine@gmail.com',
+  first_name: 'sandrine',
   password: '123456',
   livestreamer: true,
   })

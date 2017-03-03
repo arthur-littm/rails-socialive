@@ -225,7 +225,7 @@
 
               </div>
 
-              <%= f.submit "Post", class: 'btn btn-primary btn-lg send-message-btn' %>
+              <%= f.submit "chat", class: 'btn btn-primary btn-lg send-message-btn' %>
             <% end %>
           <!-- THIS IS THE CHAT ^^^ -->
           </div>
@@ -245,9 +245,9 @@
           <!-- Below is the avatar div -->
           <div class="col-xs-12 col-sm-12   col-md-4">
             <div>
-              <%= if @livestream.user.profilepic %>
+              <% if @livestream.user.profilepic != nil %>
               <%= cl_image_tag(@livestream.user.profilepic.path,
-                    width: 210, height: 210) %>
+                    width: 210) %>
               <% else  %>
               <% end %>
             </div>

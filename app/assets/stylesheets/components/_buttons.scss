@@ -2,3 +2,38 @@
   width: 200px;
   margin-left: 55px;
 }
+
+.btn-float-left {
+  float: left;
+  height: 15px;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.btn-float-left:hover {
+  float: left;
+  height: 10px;
+  margin-left: 10px;
+  text-align: center;
+  color: $blue;
+}
+
+.hidden-buttons{
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .btn-float-left {
+    float: left ;
+    margin-left: 168px;
+  }
+
+}
+
+@media (max-width: 644px) {
+  .btn-float-left {
+    float: left ;
+    margin-left: 5px;
+  }
+}

@@ -1,6 +1,6 @@
 
 
-<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.category %></h3>
+<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.title %></h3>
 
 <div class="mid-screen-wrapper">
 
@@ -9,6 +9,7 @@
       <div class="col-xs-12 col-lg-7">
         <!-- This is the video div BELOW -->
         <div id="remote-media" class="video-container">
+        <div id="local-media"></div>
         <% content_for :after_js do %>
             <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
         <% end %>
@@ -63,7 +64,7 @@
                           log('Could not connect to Twilio: ' + error.message);
                         });
                     } else {
-                      alert('<%= @livestream.room_name %>');
+                      alert('No Twilio room_name for livestream');
                     }
                   };
 
@@ -160,26 +161,53 @@
             </script>
           <% end %>
         </div>
+
+        <!-- Bit hacky but am going to display to different vesrions of the controls and the viewers ones will have ids that display: none -->
+        <% if current_user == @livestream.user %>
         <div id="controls">
 
             <div id="preview">
-              <p class="instructions">Hello Beautiful</p>
-              <div id="local-media"></div>
 
-              <button id="button-preview">Preview My Camera</button>
+              <!-- <div id="local-media"></div> -->
+
+              <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
             </div>
             <div id="room-controls">
-              <p class="instructions">Room Name:</p>
+              <!-- <p class="instructions">Room Name:</p> -->
               <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+              <%#= if current_user == @livestream.user %>
+              <button class="btn-primary btn send-message-btn btn-float-left" id="button-join">Start stream</button>
 
-              <button id="button-join">Join Room</button>
-
-              <button id="button-leave">Leave Room</button>
+              <button class="btn-primary btn send-message-btn btn-float-left" id="button-leave">End stream</button>
 
             </div>
             <div id="log"></div>
           </div>
+        <% else %>
+        <div class="hidden-buttons">
+          <div id="controls">
+
+              <div id="preview">
+
+                <div id="local-media"></div>
+
+                <button id="button-preview">Preview My Camera</button>
+
+              </div>
+              <div id="room-controls">
+                <!-- <p class="instructions">Room Name:</p> -->
+                <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+                <%#= if current_user == @livestream.user %>
+                <button id="button-join">Join Room</button>
+
+                <button id="button-leave">Leave Room</button>
+
+              </div>
+              <div id="log"></div>
+            </div>
+          </div>
+        <% end %>
         <!-- This is the video div ABOVE -->
       </div>
 
@@ -216,28 +244,32 @@
         <div class="row">
           <!-- Below is the avatar div -->
           <div class="col-xs-12 col-sm-12   col-md-4">
-            <div class="profile-avatar bottom-margin">
-              <p style="color:black;">This is the avatar image</p>
+            <div>
+
+              <%= cl_image_tag(@livestream.user.profilepic.path,
+                    width: 210, height: 210) %>
             </div>
           </div>
           <!-- Below is the about user div-->
           <div class="col-xs-12 col-sm-12  col-md-8">
             <div class="profile-about bottom-margin">
-              All about Sonya
+
+              All about <%= @livestream.user.first_name %> <a class="btn-primary btn" id="btn-subscribe" href="">subscribe</a>
                <%= render 'shared/follow_form' %>
                <%= render 'shared/stats' %>
+
               <table summary="favourite things">
                 <tr>
-                  <th>My favourite restaurant</th>
-                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi similique quia non. Maiores quas expedita non enim nulla aperiam distinctio magnam, sit sapiente, facere sint cupiditate id ullam ducimus!</td>
+                  <th><%= @livestream.user.fav1title %></th>
+                  <td class="profile-favourite-table-answer"> <%= @livestream.user.fav1 %></td>
                 </tr>
                 <tr>
-                  <th>My favourite television show</th>
-                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia dicta sit sequi eos et quae. Dolore hic saepe enim ab ratione, sunt dicta atque tenetur doloremque. Reprehenderit non sunt, libero?</td>
+                  <th><%= @livestream.user.fav2title %></th>
+                  <td class="profile-favourite-table-answer"><%= @livestream.user.fav2 %></td>
                 </tr>
                 <tr>
-                  <th>My favourite eyeliner</th>
-                  <td class="profile-favourite-table-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, tempore, quis. Itaque tempore temporibus natus, atque eius impedit placeat consectetur possimus tenetur cupiditate, laudantium, est ea! Facere accusantium numquam ea.</td>
+                  <th><%= @livestream.user.fav3title %></th>
+                  <td class="profile-favourite-table-answer"><%= @livestream.user.fav3 %></td>
                 </tr>
               </table>
             </div>
@@ -249,16 +281,19 @@
           <div class="col-xs-12">
             <div class="profile-about">
               <h3>Bio</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem asperiores, minima officia, hic ullam quidem totam in vitae repellat recusandae. Obcaecati officia tempora rerum, ipsum, ex corrupti. Alias, nulla! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quas harum sapiente culpa praesentium sit non accusamus libero illum, id temporibus molestias quam, accusantium neque. Dolorem doloremque labore praesentium! Esse. </p>
+              <p><%= @livestream.user.bio %> </p>
             </div>
           </div>
         </div>
 
+
         <!-- this is the row for the picture gallery -->
         <div class="row">
           <div class="col-xs-12">
-            <div class="black-photo-gallery-wrapper">
-              <p>user photos would go in here</p>
+            <div class="black-photo-gallery-wrapper text-center">
+              <% @livestream.user.images.each do |photo| %>
+                  <%= cl_image_tag photo.path, height: 210 %>
+              <% end %>
             </div>
           </div>
         </div>

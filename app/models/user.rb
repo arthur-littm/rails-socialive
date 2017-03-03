@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_attachment :profilepic
-  has_attachments :images
+  has_attachments :images, maximum: 10
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

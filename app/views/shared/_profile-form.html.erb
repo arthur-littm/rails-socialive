@@ -8,7 +8,7 @@
   <div class="col-sm-6 hidden-xs">
   <div class="dashboard-wrapper-grey-left">
 
-    <h1>Edit your profile</h1>
+    <h3 style="margin-top: 0px;">Edit your profile</h3>
 
 <!-- wrap in wrapper -->
 <!-- <div class="wrapper"> -->
@@ -17,15 +17,21 @@
 
 
       <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
+
+
+
       <%= f.input :first_name.downcase, placeholder: "bob" %>
       <%= f.input :last_name.downcase, placeholder: "McDonald" %>
+
       <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
       <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
       <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
       <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
       <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
-      <h1>Bio</h1>
-      <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+
+
+      <h3>Gallery photos</h3>
+      <%= f.input :images, as: :attachinary, label: false %>
 
 <!-- </div> -->
 
@@ -41,7 +47,7 @@
 <!-- wrap in wrapper -->
 <!-- <div class="wrapper"> -->
 
-<h1>Tell us about things you like</h1>
+<h3 style="margin-top: 0px;">Tell us about things you like</h3>
 
       <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
       <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
@@ -51,12 +57,12 @@
       <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
 
 
-<h1>My pictures</h1>
+      <h3 style="margin-top: 0px;">Bio</h3>
+      <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
 
-      <%= f.input :images, as: :attachinary, label: "More pictures of you" %>
 
-</div>
       <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
     <% end %>
 
 <!-- </div> -->

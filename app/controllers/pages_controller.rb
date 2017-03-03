@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   def profile_update
     @user = current_user
     @user.update(profile_params)
+    redirect_to root_path, notice: "Your profile has be updated"
   end
 
   def following
@@ -32,7 +33,8 @@ class PagesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :images, :first_name, :last_name, :following, :followers)
+    params.require(:user).permit(:facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, images: [], :first_name, :last_name, :following, :followers)
+
   end
 
 end

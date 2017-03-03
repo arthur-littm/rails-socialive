@@ -25,25 +25,22 @@
 }
  // all body is shifted down 115px to avoid fixed navbar to cover items
 body {
-
   .form-control {
     color: black;
   }
-
   margin-top: 115px;
-
   color: black;
-
   p, td{
     font-weight: 100;
   }
-
   h1, h2, h3, h4, h5,h6, th{
     font-weight: 200;
   }
-
   .btn-primary{
-    color: black;
+    color: $gunmetal;
+    &:hover{
+      color: $gray-darkest;
+    }
   }
 }
 

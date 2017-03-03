@@ -121,7 +121,7 @@
   outline-style: none;
 }
 
-input[type="text"] {
+.nav-head input[type="text"] {
     background: $gray-dark;
     border: 0 none;
     color: #d7d7d7;
@@ -129,9 +129,10 @@ input[type="text"] {
     padding: 6px 15px 6px 35px;
     border-radius: 20px;
     margin:3px 12px;
+    transition: all 0.7s ease 0s;
 }
 
-input[type="text"]:focus {
+.nav-head input[type="text"]:focus {
     background:#ccc;
     color:$gunmetal;
     width: 220px;
@@ -140,7 +141,6 @@ input[type="text"]:focus {
 }
 
 input[type="text"] {
-    transition: all 0.7s ease 0s;
 }
 
 /* Navbar dropdown menu */
@@ -162,7 +162,6 @@ input[type="text"] {
 .navbar-socialive-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
-
 }
 
 .navbar-socialive-dropdown-menu:before {

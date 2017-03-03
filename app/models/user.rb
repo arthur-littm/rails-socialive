@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   has_attachment :profilepic
-  has_attachments :images
+  has_attachments :images, maximum: 10
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

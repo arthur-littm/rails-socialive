@@ -1,7 +1,58 @@
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-sm-6">
+      <h3 id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.title %></h3>
+    </div>
+    <div class="col-xs-4 col-sm-6">
+      <% if current_user == @livestream.user %>
+      <div id="controls">
 
-<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.title %></h3>
+          <div id="preview">
 
+            <!-- <div id="local-media"></div> -->
+
+            <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
+
+          </div>
+          <div id="room-controls">
+            <!-- <p class="instructions">Room Name:</p> -->
+            <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+            <%#= if current_user == @livestream.user %>
+            <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
+
+            <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
+
+          </div>
+          <div id="log"></div>
+        </div>
+      <% else %>
+      <div class="hidden-buttons">
+        <div id="controls">
+
+            <div id="preview">
+
+              <div id="local-media"></div>
+
+              <button id="button-preview">Preview My Camera</button>
+
+            </div>
+            <div id="room-controls">
+              <!-- <p class="instructions">Room Name:</p> -->
+              <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+              <%#= if current_user == @livestream.user %>
+              <button id="button-join">Join Room</button>
+
+              <button id="button-leave">Leave Room</button>
+
+            </div>
+            <div id="log"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="mid-screen-wrapper">
 
   <div class="container">
@@ -163,51 +214,7 @@
         </div>
 
         <!-- Bit hacky but am going to display to different vesrions of the controls and the viewers ones will have ids that display: none -->
-        <% if current_user == @livestream.user %>
-        <div id="controls">
 
-            <div id="preview">
-
-              <!-- <div id="local-media"></div> -->
-
-              <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
-            </div>
-            <div id="room-controls">
-              <!-- <p class="instructions">Room Name:</p> -->
-              <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-              <%#= if current_user == @livestream.user %>
-              <button class="btn-primary btn send-message-btn btn-float-left" id="button-join">Start stream</button>
-
-              <button class="btn-primary btn send-message-btn btn-float-left" id="button-leave">End stream</button>
-
-            </div>
-            <div id="log"></div>
-          </div>
-        <% else %>
-        <div class="hidden-buttons">
-          <div id="controls">
-
-              <div id="preview">
-
-                <div id="local-media"></div>
-
-                <button id="button-preview">Preview My Camera</button>
-
-              </div>
-              <div id="room-controls">
-                <!-- <p class="instructions">Room Name:</p> -->
-                <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-                <%#= if current_user == @livestream.user %>
-                <button id="button-join">Join Room</button>
-
-                <button id="button-leave">Leave Room</button>
-
-              </div>
-              <div id="log"></div>
-            </div>
-          </div>
-        <% end %>
         <!-- This is the video div ABOVE -->
       </div>
 
@@ -225,7 +232,7 @@
 
               </div>
 
-              <%= f.submit "chat", class: 'btn btn-primary btn-lg send-message-btn' %>
+              <%= f.submit "send", class: 'btn btn-primary btn-sm send-message-btn' %>
             <% end %>
           <!-- THIS IS THE CHAT ^^^ -->
           </div>
@@ -294,7 +301,7 @@
           <div class="col-xs-12">
             <div class="black-photo-gallery-wrapper text-center">
               <% @livestream.user.images.each do |photo| %>
-                  <%= cl_image_tag photo.path, height: 210 %>
+                  <%= cl_image_tag photo.path, :width=>300 %>
               <% end %>
             </div>
           </div>

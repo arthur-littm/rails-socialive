@@ -9,6 +9,7 @@
       <div class="col-xs-12 col-lg-7">
         <!-- This is the video div BELOW -->
         <div id="remote-media" class="video-container">
+        <div id="local-media"></div>
         <% content_for :after_js do %>
             <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
         <% end %>
@@ -160,19 +161,22 @@
             </script>
           <% end %>
         </div>
+
+        <!-- Bit hacky but am going to display to different vesrions of the controls and the viewers ones will have ids that display: none -->
+        <% if current_user == @livestream.user %>
         <div id="controls">
 
             <div id="preview">
-              <p class="instructions">Hello Beautiful</p>
-              <div id="local-media"></div>
+
+              <!-- <div id="local-media"></div> -->
 
               <button id="button-preview">Preview My Camera</button>
 
             </div>
             <div id="room-controls">
-              <p class="instructions">Room Name:</p>
+              <!-- <p class="instructions">Room Name:</p> -->
               <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-
+              <%#= if current_user == @livestream.user %>
               <button id="button-join">Join Room</button>
 
               <button id="button-leave">Leave Room</button>
@@ -180,6 +184,30 @@
             </div>
             <div id="log"></div>
           </div>
+        <% else %>
+        <div class="hidden-buttons">
+          <div id="controls">
+
+              <div id="preview">
+
+                <div id="local-media"></div>
+
+                <button id="button-preview">Preview My Camera</button>
+
+              </div>
+              <div id="room-controls">
+                <!-- <p class="instructions">Room Name:</p> -->
+                <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+                <%#= if current_user == @livestream.user %>
+                <button id="button-join">Join Room</button>
+
+                <button id="button-leave">Leave Room</button>
+
+              </div>
+              <div id="log"></div>
+            </div>
+          </div>
+        <% end %>
         <!-- This is the video div ABOVE -->
       </div>
 

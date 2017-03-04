@@ -115,6 +115,7 @@
 .card-square:hover .card-square-image {
   transition: .5s;
   color: $white;
+
 }
 
 .card-square:hover {
@@ -128,6 +129,11 @@
 
 .card-square:hover .card-square-avatar {
   opacity: 1;
+  transition: opacity 1s;
+}
+
+.card-square:hover .logo {
+  opacity: 0;
   transition: opacity 1s;
 }
 
@@ -155,7 +161,8 @@
   };
 }
 
+
 .card-square:hover .card-square-background {
-  opacity: 0.5;
+  opacity: 0.9;
   transition: opacity 0.8s;
 }

@@ -8,7 +8,6 @@
   position: relative;
   background: #F8F6F6;
   min-height: calc(50vh);
-  margin-top: 73px;
   padding: 20px;
   border-radius: 2px;
 }
@@ -17,6 +16,12 @@
   margin-left: -10px;
   z-index: 2;
   position: relative;
+}
+
+#title-controls-container{
+  margin: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .video-container {

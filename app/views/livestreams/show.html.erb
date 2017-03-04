@@ -1,6 +1,6 @@
 
 
-<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.title %></h3>
+<h3 style="padding-top: 20px;" id="livestream-show-page-title"><%= @livestream.user.first_name.capitalize || "Sonya Groves" %> - <%= @livestream.title %></h3>
 
 <div class="mid-screen-wrapper">
 
@@ -247,7 +247,7 @@
             <div>
               <% if @livestream.user.profilepic != nil %>
               <%= cl_image_tag(@livestream.user.profilepic.path,
-                    width: 210) %>
+                    width: 210, height: 240, crop: :fill) %>
               <% else  %>
               <% end %>
             </div>
@@ -256,7 +256,7 @@
           <div class="col-xs-12 col-sm-12  col-md-8">
             <div class="profile-about bottom-margin">
 
-              All about <%= @livestream.user.first_name %> <a class="btn-primary btn" id="btn-subscribe" href="">subscribe</a>
+              All about <%= @livestream.user.first_name.capitalize %> <a class="btn-primary btn" id="btn-subscribe" href="">subscribe</a>
                <%= render 'shared/follow_form' %>
                <%= render 'shared/stats' %>
 

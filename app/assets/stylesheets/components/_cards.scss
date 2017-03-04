@@ -101,7 +101,8 @@
   left: 43%;
   height: 30px;
   padding-left: 57%;
-  background-color: $green;
+  background-color: $gray-light;
+  border-top: 1px solid white;
   z-index: 1;
 }
 
@@ -123,7 +124,7 @@
 .live-time{
   color: $gunmetal;
   position: absolute;
-  top: -20px;
+  bottom: 5px;
   right: 5px;
   box-shadow: inset 0px -10px $green;
 }
@@ -150,7 +151,7 @@
 .live-time-odd{
   color: $gunmetal;
   position: absolute;
-  top: -20px;
+  bottom: 5px;
   left: 5px;
   box-shadow: inset 0px -10px $green;
 }
@@ -174,7 +175,8 @@
   right: 43%;
   height: 30px;
   padding-right: 57%;
-  background-color: $green;
+  background-color: $gray-light;
+  border-top: 1px solid white;
   z-index: 1;
 }
 

@@ -87,6 +87,10 @@
   height: 70px;
 }
 
+#saffron-background{
+  background-color: #F8C431;
+}
+
 .future-livestreams-card-title{
   margin-top: 5px;
   position: absolute;
@@ -98,7 +102,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   position: absolute;
-  bottom: 5px;
+  bottom: -1px;
   left: 5px;
   -webkit-box-shadow: inset 0px -5px 0px 0px rgba(183,255,212,1);
   -moz-box-shadow: inset 0px -5px 0px 0px rgba(183,255,212,1);
@@ -106,16 +110,24 @@
 }
 
 .future-livestreams-card-seats{
-  margin-top: 5px;
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: -15px;
+  margin-top: -51px;
+  border-top: 1px solid #E0FFEF;
+  border-right: 1px solid #E0FFEF;
+  border-left: 1px solid #E0FFEF;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+
 }
 
 .future-livestreams-card-book-button{
   position: absolute;
-  bottom: -10px;
-  right: -5px;
+  bottom: -15px;
+  right: -18px;
 }
 
 .black-photo-gallery-wrapper {

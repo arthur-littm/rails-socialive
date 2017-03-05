@@ -319,18 +319,21 @@
         <p>Sonya's calendar</p>
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-      <div class="profile-wrapper margin-bottom-20">
+      <% @livestreams.each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-20">
 
-        <!-- This is start of the card for an upcoming event -->
-        <div class="future-livestreams-card">
-          <!-- need to put logic here to truncate title if over 23 characters -->
-          <h5 class="future-livestreams-card-title">My New Wardrobe</h5>
-          <h6 class="future-livestreams-card-time"> Monday 9am</h6>
-          <h6 class="future-livestreams-card-seats"> 168 seats left</h6>
-          <a href="" class="future-livestreams-card-book-button btn btn-primary">book ticket</a>
+          <!-- This is start of the card for an upcoming event -->
+            <div class="future-livestreams-card">
+              <!-- need to put logic here to truncate title if over 58 characters -->
+              <h5 class="future-livestreams-card-title"><%= livestream.title.first(58) %></h5>
+              <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+              <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+              <a href="" class="future-livestreams-card-book-button btn btn-primary">book ticket</a>
+            </div>
+
+          <!-- This is the end of the card for an upcoming event -->
         </div>
-        <!-- This is the end of the card for an upcoming event -->
-      </div>
+      <% end %>
     </div>
 
     <!-- This is the top fans table -->

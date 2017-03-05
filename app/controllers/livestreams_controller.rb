@@ -8,6 +8,7 @@ class LivestreamsController < ApplicationController
 
   def show
     @user = @livestream.user
+    @livestreams = Livestream.where(user: @user)
     @messages = @livestream.messages
     @message = Message.new
     @ticket = Ticket.new

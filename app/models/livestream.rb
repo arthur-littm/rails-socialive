@@ -5,6 +5,15 @@ class Livestream < ApplicationRecord
 
   has_attachment :main_picture
 
+  validates :main_picture, presence: true
+  validates :hour_of_stream, presence: true
+  validates :tickets_available, presence: true
+  validates :category, presence: true
+  validates :user_id, presence: true
+  validates :title, presence: true
+  validates :ticket_price, presence: true
+  validates :description, presence: true
+
   before_create :set_room_name
 
   def self.search(pattern)

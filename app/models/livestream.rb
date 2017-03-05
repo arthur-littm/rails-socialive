@@ -1,6 +1,7 @@
 class Livestream < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
+  has_many :tickets, dependent: :destroy
 
   has_attachment :main_picture
 

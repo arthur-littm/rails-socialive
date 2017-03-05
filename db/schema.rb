@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304225150) do
+ActiveRecord::Schema.define(version: 20170305101444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20170304225150) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "livestream_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["livestream_id"], name: "index_tickets_on_livestream_id", using: :btree
+    t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -109,4 +118,6 @@ ActiveRecord::Schema.define(version: 20170304225150) do
   add_foreign_key "livestreams", "users"
   add_foreign_key "messages", "livestreams"
   add_foreign_key "messages", "users"
+  add_foreign_key "tickets", "livestreams"
+  add_foreign_key "tickets", "users"
 end

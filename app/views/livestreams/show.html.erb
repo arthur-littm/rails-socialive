@@ -6,49 +6,51 @@
     </div>
     <div class="col-xs-4 col-sm-4">
       <% if current_user == @livestream.user %>
-      <div id="controls">
-
-          <div id="preview">
-
-            <!-- <div id="local-media"></div> -->
-
-            <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
-          </div>
-          <div id="room-controls">
-            <!-- <p class="instructions">Room Name:</p> -->
-            <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-            <%#= if current_user == @livestream.user %>
-            <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
-
-            <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
-
-          </div>
-          <div id="log"></div>
-        </div>
-      <% else %>
-      <div class="hidden-buttons">
         <div id="controls">
 
             <div id="preview">
 
-              <div id="local-media"></div>
+              <!-- <div id="local-media"></div> -->
 
-              <button id="button-preview">Preview My Camera</button>
+              <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
             </div>
             <div id="room-controls">
               <!-- <p class="instructions">Room Name:</p> -->
               <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
               <%#= if current_user == @livestream.user %>
-              <button id="button-join">Join Room</button>
+              <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
 
-              <button id="button-leave">Leave Room</button>
+              <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
 
             </div>
-            <div id="log"></div>
+          <div id="log"></div>
+        </div>
+      <% elsif current_user.tickets.where(livestream: @livestream).any? %>
+        <div class="hidden-buttons">
+          <div id="controls">
+
+              <div id="preview">
+
+                <div id="local-media"></div>
+
+                <button id="button-preview">Preview My Camera</button>
+
+              </div>
+              <div id="room-controls">
+                <!-- <p class="instructions">Room Name:</p> -->
+                <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+                <%#= if current_user == @livestream.user %>
+                <button id="button-join">Join Room</button>
+
+                <button id="button-leave">Leave Room</button>
+
+              </div>
+              <div id="log"></div>
           </div>
         </div>
+      <% else %>
+        BUY A TICKET U GOON
       <% end %>
     </div>
   </div>

@@ -1,3 +1,6 @@
+
 <p class="card-text">
-  <span style="color: purple;"><%= message.user.name %></span> : <%= message.body %>
+  <%= image_tag message.user.icon %>
+
+  <span style="color: <%= message.user.color %> ;"> <strong> <%= message.user.name %></strong> </span> : <%= message.body %>
 </p>

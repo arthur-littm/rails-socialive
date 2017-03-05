@@ -8,13 +8,20 @@
   position: relative;
   background: #F8F6F6;
   min-height: calc(50vh);
-  margin-top: 20px;
   padding: 20px;
+  border-radius: 2px;
 }
 
 #livestream-show-page-title{
-  margin-left: 60px;
-  margin-top: 40px
+  margin-left: 4px;
+  z-index: 2;
+  position: relative;
+}
+
+#title-controls-container{
+  margin: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .video-container {
@@ -114,7 +121,7 @@
 .black-photo-gallery-wrapper {
   margin-top: 30px;
   background-color: $gunmetal;
-  min-height: 600px;
+
   border-radius: 5px;
   padding: 10px;
 

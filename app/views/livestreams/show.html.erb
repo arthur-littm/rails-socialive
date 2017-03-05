@@ -2,7 +2,7 @@
 <div class="container" id="title-controls-container">
   <div class="row">
     <div class="col-xs-8 col-sm-8">
-      <h3 style="color: <%= @livestream.user.color %>" id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %></h3><h4 style="margin-left: 6px;"><%= @livestream.title %></h4>
+      <h3 style="color: <%= @livestream.user.color %>" id="livestream-show-page-title"><%= @livestream.user.first_name + " " + @livestream.user.last_name || @livestream.user.first_name %></h3><h4 style="margin-left: 6px;"><%= @livestream.title %></h4>
     </div>
     <div class="col-xs-4 col-sm-4">
       <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>

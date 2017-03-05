@@ -12,6 +12,7 @@ class LivestreamsController < ApplicationController
     @messages = @livestream.messages
     @message = Message.new
     @ticket = Ticket.new
+    @question = Question.new
   end
 
   def new

@@ -8,13 +8,11 @@
 
 #pre-livestream-questions{
   border: 1px solid $green;
-  max-height: 400px;
-  overflow-y: auto;
+  width: 500px;
 }
 
 #pre-livestream-questions th, td{
   padding: 5px;
-
 
 }
 
@@ -24,4 +22,36 @@
 
 #pre-livestream-questions tr{
   border-top: 1px dashed $green;
+}
+
+#inquiry-input{
+  width: 500px;
+  margin-top: 20px;
+}
+
+@media (max-width: 570px) {
+  #inquiry-input{
+    width: 300px;
+    margin-top: 20px;
+  }
+  #pre-livestream-questions{
+    border: 1px solid $green;
+    width: 300px;
+  }
+  // .pre-livestream-questions-container{
+  //   max-height: 400px;
+  //   overflow-y: auto;
+  //   width: 10000px;
+  // }
+}
+
+#inquiry-input .btn-primary{
+  float: right;
+
+}
+
+.pre-livestream-questions-container{
+  max-height: 400px;
+  overflow-y: auto;
+  width: 12530px;
 }

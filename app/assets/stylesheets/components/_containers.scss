@@ -32,6 +32,9 @@
 
 .chat-container {
   height: 349px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
  }
 
  @media (max-width: 1199px) {

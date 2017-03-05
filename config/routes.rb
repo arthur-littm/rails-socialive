@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'questions/create'
+
   get 'tickets/create'
 
   mount ActionCable.server => '/cable'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :livestreams do
     resources :tickets, only: [:create]
+    resources :questions, only: [:create]
   end
   get '/dashboard' => 'pages#dashboard'
 

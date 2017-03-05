@@ -27,6 +27,7 @@
           <div id="log"></div>
         </div>
       <% elsif current_user.tickets.where(livestream: @livestream).any? %>
+        <p id="ticket-bought">Ticket Bought</p>
         <div class="hidden-buttons">
           <div id="controls">
 

@@ -1,4 +1,4 @@
-// if uncomment the card below it will break the css of caht messages
+
 
 // .card {
 //   height: 240px;
@@ -24,13 +24,18 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
+
 }
 .card-description h2 {
   font-size: 24px;
+  margin-bottom: 23px;
+  margin-top: -10px;
 }
 .card-description p {
   font-size: 13px;
+  margin-left: 3px;
   }
+
 .card-link {
   position: absolute;
   top: 0;
@@ -43,8 +48,27 @@
 }
 .card-link:hover{
   opacity: 0.1;
+  background-color: transparent;
+
+  transition: ease-in-out, opacity .5s ease-in-out;
 }
 
+.card-category-position{
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    background-color: $green;
+    opacity: 0.6;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-right: -6px;
+}
+
+.card-category-position-odd{
+  position: absolute;
+  bottom: -5px;
+  left: 250px;
+}
 // specific for search index
 
 
@@ -66,6 +90,7 @@
   z-index: 1;
 }
 
+
 .card-photo{
   position: absolute;
   top: 10px;
@@ -75,12 +100,16 @@
   height: 380px;
   z-index: 2;
   background-size: cover;
+  box-shadow: 3px 3px 5px gray;
   img {
     z-index: 3;
     width: 50px;
     margin: 10px 10px;
     };
 }
+
+
+
 
 .card-wrapper-description{
   position: absolute;
@@ -90,6 +119,7 @@
   padding-left: 45%;
   h2{
     margin-right: 5%;
+    font-size: 33px;
   };
 }
 
@@ -101,7 +131,8 @@
   left: 43%;
   height: 30px;
   padding-left: 57%;
-  background-color: $green;
+  background-color: $gray-light;
+  border-top: 1px solid white;
   z-index: 1;
 }
 
@@ -112,20 +143,42 @@
   color: $gunmetal;
   padding-right: 10px;
   padding-top: 5px;
-  ul li {
+  ul li:first-child {
     font-size: 15px;
+    margin-left: -7px;
   };
   img {
     width: 15px;
+    margin-right: 8px;
   };
+}
+
+@media (max-width: 992px) {
+  .card-wrapper-social-description{
+    position: absolute;
+    top: 0px;
+    left: 42px;
+    color: $gunmetal;
+    padding-right: 10px;
+    padding-top: 5px;
+    ul li {
+      font-size: 15px;
+    };
+    img {
+      width: 15px;
+      margin-right: 4px;
+    };
+  }
+
 }
 
 .live-time{
   color: $gunmetal;
   position: absolute;
-  top: -20px;
+  bottom: 5px;
   right: 5px;
   box-shadow: inset 0px -10px $green;
+  font-size: 20px;
 }
 
 // for odd results in the search
@@ -140,6 +193,7 @@
   height: 380px;
   z-index: 2;
   background-size: cover;
+  box-shadow: 3px 3px 5px gray;
   img {
     z-index: 3;
     width: 50px;
@@ -150,9 +204,10 @@
 .live-time-odd{
   color: $gunmetal;
   position: absolute;
-  top: -20px;
-  left: 5px;
+  bottom: 5px;
+  left: 15px;
   box-shadow: inset 0px -10px $green;
+  font-size: 20px;
 }
 
 .card-wrapper-description-odd{
@@ -163,6 +218,7 @@
   padding-right: 45%;
   h2{
     padding-right: 5%;
+    font-size: 33px;
   };
 }
 
@@ -174,7 +230,8 @@
   right: 43%;
   height: 30px;
   padding-right: 57%;
-  background-color: $green;
+  background-color: $gray-light;
+  border-top: 1px solid white;
   z-index: 1;
 }
 
@@ -188,10 +245,18 @@
   ul li {
     font-size: 15px;
   };
+
+  ul li:first-child{
+    font-size: 15px;
+    margin-left: -34px;
+  };
   img {
     width: 15px;
+    margin-right: 8px;
   };
 }
+
+
 
 .card-mobile {
   height: 400px;

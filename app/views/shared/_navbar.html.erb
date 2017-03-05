@@ -12,12 +12,13 @@
           <div class="navbar-socialive-right hidden-xs hidden-sm">
 
             <!-- Different navigation if login or not -->
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
 
-            <% if current_user.livestreamer == true %>
+            <% if current_user.livestreamer %>
 
-             <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>
-             <% end %>
+              <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>
+
+            <% end %>
 
               <!-- Profile picture and dropdown -->
               <div class="navbar-socialive-item">

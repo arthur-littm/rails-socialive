@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   def profile_update
     @user = current_user
     @user.update(profile_params)
-    redirect_to root_path, notice: "Your profile has be updated"
+    redirect_to dashboard_path, notice: "Your profile has been updated"
   end
 
   def following

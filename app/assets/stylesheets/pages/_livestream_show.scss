@@ -5,3 +5,23 @@
   padding-left: 3px;
   padding-right: 3px;
 }
+
+#pre-livestream-questions{
+  border: 1px solid $green;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#pre-livestream-questions th, td{
+  padding: 5px;
+
+
+}
+
+#pre-livestream-questions td{
+  border-left: 1px dashed $green;
+}
+
+#pre-livestream-questions tr{
+  border-top: 1px dashed $green;
+}

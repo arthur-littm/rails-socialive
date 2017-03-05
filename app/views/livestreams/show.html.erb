@@ -26,6 +26,7 @@
             </div>
           <div id="log"></div>
         </div>
+
       <% elsif current_user.tickets.where(livestream: @livestream).any? %>
         <p id="ticket-bought">Ticket Bought</p>
         <div class="hidden-buttons">
@@ -65,6 +66,19 @@
         <!-- This is the video div BELOW -->
         <div id="remote-media" class="video-container">
         <div id="local-media"></div>
+
+        <% if current_user.tickets.where(livestream: @livestream).any? && @livestream.hour_of_stream > Time.now %>
+            <table id="pre-livestream-questions">
+              <% if @livestream.questions.any? %>
+                <% @livestream.questions.each do |question| %>
+                <tr>
+                  <th><%= question.inquiry %></th>
+                  <td><%= image_tag "heart.svg" %></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </table>
+        <% end %>
 
         <% content_for :after_js do %>
             <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>

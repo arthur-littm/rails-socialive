@@ -33,7 +33,7 @@
 
       <%= f.input :tickets_available, label: "Number of tickets", placeholder: "100" %>
       <%= f.input :ticket_price, label: "Price per ticket", placeholder: "£5" %>
-      <%= f.input :description.downcase, placeholder: "description of your stream" %>
+      <%= f.input :description.downcase, placeholder: "description of your stream", maxlength: 356 %>
 
 </div>
       <%= f.button :submit, class: 'btn btn-primary' %>

@@ -28,12 +28,19 @@ Rails.application.routes.draw do
   patch '/dashboard', to: 'pages#profile_update'
 
 
-################################
-#This is for buying tickets
+  ################################
+  #This is for buying rubies
+  get '/buy_rubies' => 'pages#buy_rubies'
+  
+  #########################################
+  #This is for stripe
+  
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+  #################################
 
-#################################
 # This line should be at the end
-
   get '/:category' => 'livestreams#category_show'
   # resources :chat_rooms, only: [:new, :create, :show, :index]
 end

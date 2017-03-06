@@ -33,6 +33,10 @@ class PagesController < ApplicationController
     redirect_to dashboard_path, notice: "Your profile has been updated"
   end
 
+  def buy_rubies
+
+  end
+
   private
 
   def profile_params

@@ -1,0 +1,45 @@
+<div class="item-centered-on-page">
+      <table class="margin-top-100-bottom-100">
+        <tr>
+          <td> 100 Rubies</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> 200 Rubies</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> 500 Rubies</td>
+        </tr>
+        <tr>
+          <td class="buy-ruby-button">
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'pack', "pack1" %>
+              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="buy-ruby-button">
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'pack', "pack2" %>
+              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="buy-ruby-button">
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'pack', "pack3" %>
+              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+</div>

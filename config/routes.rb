@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
 
   patch '/dashboard', to: 'pages#profile_update'
-  post '/become_a_livestreamer', to: 'pages#profile_create'
 
 ################################
 #This is for buying tickets

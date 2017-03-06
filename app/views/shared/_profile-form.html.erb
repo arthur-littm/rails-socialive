@@ -1,75 +1,48 @@
 
-<div class="row">
+<div class="container">
+  <div class="row">
 
-<!-- left side of the page (from tablet to large displays) -->
+  <!-- left side of the page (from tablet to large displays) -->
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="dashboard-wrapper-grey-left">
+        <h3 style="margin-top: 0px;">Edit your profile</h3>
 
+        <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
+          <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
+          <%= f.input :first_name.downcase, placeholder: "bob" %>
+          <%= f.input :last_name.downcase, placeholder: "McDonald" %>
+          <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
+          <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
+          <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
+          <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
+          <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
 
-  <div class="col-sm-6 hidden-xs">
-  <div class="dashboard-wrapper-grey-left">
-
-    <h3 style="margin-top: 0px;">Edit your profile</h3>
-
-<!-- wrap in wrapper -->
-<!-- <div class="wrapper"> -->
-    <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
-
-
-
-      <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
-
-
-
-      <%= f.input :first_name.downcase, placeholder: "bob" %>
-      <%= f.input :last_name.downcase, placeholder: "McDonald" %>
-
-      <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
-      <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
-      <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
-      <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
-      <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
+          <h3>Gallery photos</h3>
+          <%= f.input :images, as: :attachinary, label: false %>
+      </div>
+    </div>
 
 
-      <h3>Gallery photos</h3>
-      <%= f.input :images, as: :attachinary, label: false %>
+    <!-- right side of the page (from tablet to large displays) -->
 
-<!-- </div> -->
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="dashboard-wrapper-grey-right">
+        <h3 style="margin-top: 0px;">Tell us about things you like</h3>
 
-</div>
-  </div>
+          <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
+          <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
+          <%= f.input :fav2title, label: "My 2nd favorite thing", placeholder: "Title 2" %>
+          <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
+          <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
+          <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
 
+        <h3 style="margin-top: 0px;">Bio</h3>
+          <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
 
-<!-- right side of the page (from tablet to large displays) -->
-
-  <div class="col-sm-6 hidden-xs">
-  <div class="dashboard-wrapper-grey-right">
-
-<!-- wrap in wrapper -->
-<!-- <div class="wrapper"> -->
-
-<h3 style="margin-top: 0px;">Tell us about things you like</h3>
-
-      <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
-      <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
-      <%= f.input :fav2title, label: "My 2nd favorite thing", placeholder: "Title 2" %>
-      <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
-      <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
-      <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
-
-
-      <h3 style="margin-top: 0px;">Bio</h3>
-      <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
-
-
-      <%= f.button :submit, class: 'btn btn-primary' %>
+          <%= f.button :submit, class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
-
-<!-- </div> -->
-
-
+    </div>
+  </div>
 </div>
-
-</div>
-
-

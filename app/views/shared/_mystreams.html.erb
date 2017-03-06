@@ -12,11 +12,37 @@
 
               <% if livestream.main_picture? %>
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+
+              <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
+              <!-- display tag -->
+              <div class="card-live">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
+
+              <div class="card-title">
+              <p><strong><%= livestream.title %></strong></p>
+              </div>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
               </div>
               <% else %>
               <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+              <p><strong><%= livestream.title %></strong></p>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
               </div>

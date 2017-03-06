@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:create]
   end
   get '/dashboard' => 'pages#dashboard'
+  get '/become-a-livestreamer' => 'pages#become_a_livestreamer'
 
 # Following/Follower routing essential
   resources :users do
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 
 
   patch '/dashboard', to: 'pages#profile_update'
+  post '/become_a_livestreamer', to: 'pages#profile_create'
 
 ################################
 #This is for buying tickets

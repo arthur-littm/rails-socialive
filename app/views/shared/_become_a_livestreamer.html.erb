@@ -1,0 +1,72 @@
+
+<div class="row">
+
+<!-- left side of the page (from tablet to large displays) -->
+
+
+
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-left">
+
+    <h3 style="margin-top: 0px;">Create your profile</h3>
+
+<!-- wrap in wrapper -->
+<!-- <div class="wrapper"> -->
+    <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
+
+
+
+      <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
+
+
+
+      <%= f.input :first_name.downcase, placeholder: "bob" %>
+      <%= f.input :last_name.downcase, placeholder: "McDonald" %>
+
+      <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
+      <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
+      <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
+      <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
+      <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
+      <%= f.input :livestreamer, label: "accept condition" %>
+
+
+
+      <h3>Gallery photos</h3>
+      <%= f.input :images, as: :attachinary, label: false %>
+
+<!-- </div> -->
+
+</div>
+  </div>
+
+
+<!-- right side of the page (from tablet to large displays) -->
+
+  <div class="col-sm-6 hidden-xs">
+  <div class="dashboard-wrapper-grey-right">
+
+<!-- wrap in wrapper -->
+<!-- <div class="wrapper"> -->
+
+<h3 style="margin-top: 0px;">Tell us about things you like</h3>
+
+      <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
+      <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
+
+      <h3 style="margin-top: 0px;">Bio</h3>
+      <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+
+
+      <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+<!-- </div> -->
+
+
+</div>
+
+</div>
+
+

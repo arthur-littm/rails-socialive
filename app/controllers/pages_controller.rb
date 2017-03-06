@@ -15,6 +15,18 @@ class PagesController < ApplicationController
     @mylivestreams = Livestream.all.where(user_id: current_user)
   end
 
+  def become_a_livestreamer
+    @user = current_user
+  end
+
+
+  # def profile_create
+  #   @user = current_user
+  #   @user.create(profile_params)
+  #   redirect_to dashboard_path, notice: "You are now officially a livestreamer on Socialive! When is you first livestream goind to be?"
+  #   @user.livestreamer = true
+  # end
+
   def profile_update
     @user = current_user
     @user.update(profile_params)
@@ -36,7 +48,7 @@ class PagesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :first_name, :last_name, :following, :followers, images: [])
+    params.require(:user).permit(:livestreamer, :facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :first_name, :last_name, :following, :followers, images: [])
 
   end
 

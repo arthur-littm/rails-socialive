@@ -1,51 +1,38 @@
 
-<div class="row">
+<div class="container">
+  <div class="row">
 
 <!-- left side of the page (from tablet to large displays) -->
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="dashboard-wrapper-grey-left">
 
-  <div class="col-sm-6 hidden-xs">
-  <div class="dashboard-wrapper-grey-left">
+        <h1>New Livestream</h1>
 
-    <h1>New Livestream</h1>
+        <%= simple_form_for @livestream do |f| %>
+          <%= f.input :main_picture, as: :attachinary, label: "Stream cover", required: true %>
+          <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 58,  required: true  %>
+          <%= f.input :hour_of_stream, as: :string, label: "Time of the stream", input_html: {id: 'datepicker-stream'}, required: true %>
+          <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"],  required: true %>
 
-    <%= simple_form_for @livestream do |f| %>
-
-      <%= f.input :main_picture, as: :attachinary, label: "Stream cover", required: true %>
-      <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 58,  required: true  %>
-
-
-      <%= f.input :hour_of_stream, as: :string, label: "Time of the stream", input_html: {id: 'datepicker-stream'}, required: true %>
-
-      <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"],  required: true %>
-
-</div>
-  </div>
+          </div>
+        </div>
 
 
 <!-- right side of the page (from tablet to large displays) -->
-
-  <div class="col-sm-6 hidden-xs">
-  <div class="dashboard-wrapper-grey-right">
-
-
-<h1>Session details</h1>
-
-
-
-      <%= f.input :tickets_available, label: "Number of tickets", placeholder: "100" %>
-      <%= f.input :ticket_price, label: "Price per ticket", placeholder: "£5" %>
-      <%= f.input :description.downcase, placeholder: "description of your stream", maxlength: 350 %>
-
-
-</div>
-      <%= f.button :submit, class: 'btn btn-primary' %>
-    <% end %>
-
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="dashboard-wrapper-grey-right">
+        <h1>Session details</h1>
+          <%= f.input :tickets_available, label: "Number of tickets", placeholder: "100" %>
+          <%= f.input :ticket_price, label: "Price per ticket", placeholder: "£5" %>
+          <%= f.input :description.downcase, placeholder: "description of your stream", maxlength: 350 %>
+          <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-</div>
-
-
+<!-- js -->
 
 <%= content_for :after_js do %>
   <script type="text/javascript">

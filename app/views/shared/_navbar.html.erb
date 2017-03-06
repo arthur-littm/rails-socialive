@@ -14,13 +14,22 @@
             <!-- Different navigation if login or not -->
           <% if user_signed_in? %>
 
-            <!-- THERE's A BUG HERE -->
+
 
             <% if current_user.livestreamer %>
 
               <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>
 
             <% end %>
+
+
+
+
+              <div class="balance-div">
+                <%= link_to buy_rubies_path do %>
+                  <%= image_tag "ruby.svg" %><%= current_user.balance %>
+                <% end  %>
+              </div>
 
               <!-- Profile picture and dropdown -->
               <div class="navbar-socialive-item">
@@ -64,6 +73,7 @@
             <!-- Login text link -->
               <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
             <% end %>
+
 
 
 

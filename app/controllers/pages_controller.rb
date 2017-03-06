@@ -33,6 +33,10 @@ class PagesController < ApplicationController
     render 'show_follow'
   end
 
+  def buy_rubies
+
+  end
+
   private
 
   def profile_params

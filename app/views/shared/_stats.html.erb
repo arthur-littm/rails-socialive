@@ -24,13 +24,16 @@
         <h4 class="modal-title" id="myModalLabel">Following</h4>
       </div>
       <div class="modal-body">
+        <ul>
           <% @user.following.all.each do |following| %>
+          <li class="list-inline">
           <% if following.profilepic != nil %>
              <%= cl_image_tag following.profilepic.path, class:"avatar-large" %>
              <% else %>
             <% end %>
-            <p><%= following.first_name %> <%= following.last_name %></p>
+            <%= following.first_name %> <%= following.last_name %></li>
             <% end %>
+          </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -48,13 +51,16 @@
         <h4 class="modal-title" id="myModalLabel">Followers</h4>
       </div>
       <div class="modal-body">
+        <ul>
           <% @user.followers.all.each do |follower| %>
+          <li class="list-inline">
           <% if follower.profilepic != nil %>
              <%= cl_image_tag follower.profilepic.path, class:"avatar-large" %>
              <% else %>
             <% end %>
-            <p><%= follower.first_name %> <%= follower.last_name %></p>3
+            <%= follower.first_name %> <%= follower.last_name %></li>
             <% end %>
+          </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

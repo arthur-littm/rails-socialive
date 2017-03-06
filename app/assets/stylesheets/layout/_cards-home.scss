@@ -46,27 +46,29 @@
 }
 
 .card-title {
-p strong{
+p {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
     padding: 4px;
-    color: black;
-    background: rgba(255,255,255,0.85);
+    font-size: 20px;
+    font-weight: 100;
+    color: $white;
+    text-shadow: 0px 0px 10px $gray-darkest;
     border-radius: 2px;
   };
 }
 
 .card-first-name {
   position: absolute;
-  bottom: 5px;
+  bottom: -3px;
   left: 20px;
-  font-size: 15px;
   p {
     padding-right: 4px;
     padding-left: 4px;
-    color: black;
-    background: rgba(255,255,255,0.85);
+    font-size: 20px;
+    color: $white;
+    text-shadow: 0px 0px 10px $gray-darkest;
     border-radius: 2px;
   };
 }
@@ -78,8 +80,7 @@ p strong{
   font-size: 15px;
   font-weight: bold;
   p {
-    padding-right: 4px;
-    padding-left: 4px;
+    padding: 4px;
     color: black;
     background: $green;
     border-radius: 2px;
@@ -140,8 +141,7 @@ p strong{
 }
 
 .card-square-date p{
-  padding-right: 4px;
-  padding-left: 4px;
+  padding: 4px !important;
   color: black !important;
   background: $green;
   border-radius: 2px;
@@ -167,7 +167,7 @@ p strong{
 
 .card-square-avatar {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 20px;
   opacity: 0;
   transition: opacity .3s;
@@ -184,7 +184,6 @@ p strong{
   color: $white;
   margin: -10px;
   strong {
-    color: $green;
     background: none;
   };
 }

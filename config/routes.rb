@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   patch '/dashboard', to: 'pages#profile_update'
 
+
 ################################
 #This is for buying tickets
 

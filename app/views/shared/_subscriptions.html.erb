@@ -1,20 +1,28 @@
 <div class="row">
-  <aside class="col-md-4">
+  <div class="col-md-4">
     <section>
       <h1>
-        <%= @user.email %>
+        <%= @user.first_name %> <%= @user.last_name %>
       </h1>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.livestreams.any? %>
-      <h3>Livestreams (<%= @user.livestreams.count %>)</h3>
-    <% end %>
   </div>
 
+<section>
+  <div class="container">
+    <div class="col-xs-12">
+     <% @user.followers.all.each do |follower| %>
+          <% if follower.profilepic != nil %>
+             <%= cl_image_tag follower.profilepic.path, class:"avatar-large" %>
+             <% else %>
+            <% end %>
+           <h4><%= follower.first_name %> <%= follower.last_name %></h4>
+            <% end %>
+    </div>
+  </div>
+  </section>
 </div>
 
 

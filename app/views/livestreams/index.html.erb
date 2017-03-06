@@ -19,6 +19,13 @@
         <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
     <% end %>
 
+        <div class="card-index-avatar">
+                <% if livestream.user.profilepic != nil %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <% else %>
+                <% end %>
+              </div>
+
         <div class="card-wrapper">
           <div><h3 class="live-time"><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3></div>
           <div class="card-description card-wrapper-description">
@@ -52,6 +59,7 @@
     <% else %>
         <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h3 class="live-time-mobile"><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3><h2 class="card-description"><%= livestream.title %></h2></div>
     <% end %>
+
      </div>
      <%= link_to "", livestream_path(livestream), class: "card-link" %>
     </div>
@@ -70,6 +78,12 @@
         <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %><span class="card-category-position"><%= livestream.category %></span></div>
     <% end %>
 
+             <div class="card-index-avatar-odd">
+                <% if livestream.user.profilepic != nil %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <% else %>
+                <% end %>
+              </div>
 
         <div class="card-wrapper">
           <!-- replace with livestream.time -->

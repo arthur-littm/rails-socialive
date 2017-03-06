@@ -11,18 +11,22 @@
   </div>
 
 <section>
-  <div class="container">
+  <div id="container">
     <div class="col-xs-12">
+      <ul>
      <% @user.followers.all.each do |follower| %>
+      <li class="list-inline">
           <% if follower.profilepic != nil %>
-             <%= cl_image_tag follower.profilepic.path, class:"avatar-large" %>
+            <%= cl_image_tag follower.profilepic.path, class:"avatar-large" %>
              <% else %>
             <% end %>
-           <h4><%= follower.first_name %> <%= follower.last_name %></h4>
+            <%= follower.first_name %> <%= follower.last_name %></li>
             <% end %>
+        </ul>
     </div>
   </div>
   </section>
 </div>
+
 
 

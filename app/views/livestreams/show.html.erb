@@ -88,27 +88,6 @@
         <div id="remote-media" class="video-container">
         <div id="local-media"></div>
 
-        <% if current_user.tickets.where(livestream: @livestream).any? && @livestream.hour_of_stream > Time.now %>
-          <h4 style="margin-top: 0px;">Ask <%= @livestream.user.first_name %> a question before the livestream...</h4>
-          <div class="pre-livestream-questions-container">
-            <table id="pre-livestream-questions">
-              <% if @livestream.questions.any? %>
-                <% @livestream.questions.each do |question| %>
-                <tr>
-                  <th><%= question.inquiry %></th>
-                  <td><%= image_tag "heart.svg" %></td>
-                </tr>
-                <% end %>
-              <% end %>
-            </table>
-          </div>
-          <div id="inquiry-input">
-            <%= simple_form_for [@livestream, @question] do |f| %>
-              <%= f.input :inquiry, label: false %>
-              <%= f.button :submit, 'Ask', class: 'btn btn-primary' %>
-             <% end %>
-           </div>
-        <% end %>
 
         <% content_for :after_js do %>
             <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
@@ -293,6 +272,32 @@
 </div>
 
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+      <% if current_user == @livestream.user %>
+          <h4>Questions asked by ticket holders before the livestream</h4>
+          <!-- <div id="inquiry-input"> -->
+            <%#= simple_form_for [@livestream, @question] do |f| %>
+              <%#= f.input :inquiry, label: false %>
+              <%#= f.button :submit, 'Ask', class: 'btn btn-primary' %>
+             <%# end %>
+           <!-- </div> -->
+          <div class="pre-livestream-questions-container">
+            <table id="pre-livestream-questions">
+              <% if @livestream.questions.any? %>
+                <% @livestream.questions.each do |question| %>
+                <tr>
+                  <th><%= question.inquiry %></th>
+                  <td><%= question.user.first_name %></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
   <div class="row">
     <!-- this col is the profile -->
     <div class="col-xs-12 col-md-8">

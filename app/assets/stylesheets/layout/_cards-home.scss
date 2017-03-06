@@ -19,6 +19,78 @@
   background-color: white;
   border: 0.5px solid $gray-medium;
   box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  p {
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+    color: black;
+  };
+}
+
+.card-live {
+  p {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    // float: right;
+    padding: 4px;
+    color: $gunmetal;
+    background: $yellow;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    strong {
+      color: red;
+      font-weight: lighter;
+    };
+  };
+}
+
+.card-title {
+p {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    padding: 4px;
+    font-size: 20px;
+    font-weight: 100;
+    color: $white;
+    text-shadow: 0px 0px 10px $gray-darkest;
+    border-radius: 2px;
+  };
+}
+
+.card-first-name {
+  position: absolute;
+  bottom: -3px;
+  left: 20px;
+  p {
+    padding-right: 4px;
+    padding-left: 4px;
+    font-size: 20px;
+    color: $white;
+    text-shadow: 0px 0px 10px $gray-darkest;
+    border-radius: 2px;
+  };
+}
+
+.card-date {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  p {
+    padding: 4px;
+    color: black;
+    background: $green;
+    border-radius: 2px;
+  };
+}
+
+.card-square:hover p {
+  opacity: 0;
+  transition: opacity 1s;
+  color: $white;
 }
 
 .card-square-image {
@@ -65,18 +137,16 @@
   right: 10px;
   font-size: 15px;
   font-weight: bold;
-  color: $white;
+  color: black !important;
 }
 
 .card-square-date p{
-  padding-right: 4px;
-  padding-left: 4px;
-  color: black;
+  padding: 4px !important;
+  color: black !important;
   background: $green;
   border-radius: 2px;
   opacity: 0;
   transition: opacity .3s;
-
 }
 
 .card-square-info {
@@ -94,9 +164,10 @@
   transition: opacity .3s;
 }
 
+
 .card-square-avatar {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 20px;
   opacity: 0;
   transition: opacity .3s;
@@ -111,6 +182,10 @@
   opacity: 1;
   transition: opacity 1s;
   color: $white;
+  margin: -10px;
+  strong {
+    background: none;
+  };
 }
 
 .card-square:hover .card-square-image {

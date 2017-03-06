@@ -34,14 +34,20 @@
   height: 349px;
   overflow-y: auto;
   overflow-x: hidden;
-
  }
 
  @media (max-width: 1199px) {
-    .chat-container {
-      height: 349px;
-      margin-top: 20px;
-     }
+  .chat-container {
+    height: 349px;
+    margin-top: 20px;
+    padding-left: 20px;
+    #messages {
+      margin-right: -60px !important;
+    }
+    }
+  #local-media video {
+    margin-left: -50px !important;
+  }
  }
 
  .profile-about {
@@ -51,9 +57,8 @@
 
  @media (max-width: 690px) {
   .video-container {
-    margin-left: auto;
+    margin-left: 0px;
     margin-right: auto;
-  }
  }
 
  @media (max-width: 991px) {
@@ -62,11 +67,14 @@
     background-color: $gray-medium;
   }
   .profile-avatar {
-  height: 200px;
-  width:200px;
-  background: $gray-dark;
-  margin: auto;
-}
+    height: 200px;
+    width:200px;
+    background: $gray-dark;
+    margin: auto;
+  }
+  #local-media video {
+    margin: auto !important;
+  }
  }
 
 .profile-wrapper {

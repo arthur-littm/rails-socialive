@@ -21,18 +21,6 @@ class PagesController < ApplicationController
     redirect_to dashboard_path, notice: "Your profile has been updated"
   end
 
-  def following
-    @title = "Following"
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
   private
 
   def profile_params

@@ -1,9 +1,7 @@
-<%= form_for(current_user.active_relationships.build) do |f| %>
+<%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
   <div><%= hidden_field_tag :followed_id, @user.id %></div>
-  <%= f.submit "Subscribe", class: "btn btn-primary btn-subscribe" %>
+  <%= f.submit "Follow", class: "btn btn-subscribe" %>
 <% end %>
-
-
 
 <!-- it still needs to send the followed_id to the controller. We accomplish this with the hidden_field_tag method -->
 <input id="followed_id" name="followed_id" type="hidden" value="3" />

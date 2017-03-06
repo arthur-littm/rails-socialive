@@ -23,10 +23,10 @@
               <% end %>
 
               <div class="card-title">
-              <p><strong><%= livestream.title %></strong></p>
+              <p><%= livestream.title %></p>
               </div>
               <div class="card-first-name" >
-              <p><%= livestream.user.first_name %></p>
+              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
                 <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
@@ -36,9 +36,10 @@
               </div>
               <% else %>
               <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
-              <p><strong><%= livestream.title %></strong></p>
+              <p><%= livestream.title %></p>
               <div class="card-first-name" >
-              <p><%= livestream.user.first_name %></p>
+
+              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
                 <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
@@ -55,7 +56,7 @@
               </div>
               <div class="card-square-avatar">
                 <% if livestream.user.profilepic != nil %>
-                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar" %>
                 <% else %>
                 <% if current_user.facebook_picture_url != nil %>
                 <%= image_tag current_user.facebook_picture_url, class: "avatar" %>
@@ -91,42 +92,42 @@
             <div class="card-square" >
 
             <% if livestream.main_picture? %>
-            <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
-            <!-- if livestream is live: yellow tag -->
-            <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
-            <!-- display tag -->
-            <div class="card-live">
-              <p><strong>LIVE </strong>now</p>
-            </div>
-            <% else %>
-            <% end %>
+              <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
+              <!-- display tag -->
+              <div class="card-live">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
 
-            <div class="card-title">
-            <p><strong><%= livestream.title %></strong></p>
-            </div>
-            <div class="card-first-name" >
-            <p><%= livestream.user.first_name %></p>
-            </div>
-            <div class="card-date">
-              <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-            </div>
-              <div class="card-square-background">
-              <%= image_tag "logo.svg", class:'logo' %></div>
-            </div>
-            <% else %>
-            <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
-            <p><strong><%= livestream.title %></strong></p>
-            <div class="card-first-name" >
-            <p><%= livestream.user.first_name %></p>
-            </div>
-            <div class="card-date">
-              <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-            </div>
-              <div class="card-square-background">
-              <%= image_tag "logo.svg", class:'logo' %></div>
-            </div>
-            <% end %>
+              <div class="card-title">
+              <p><%= livestream.title %></p>
+              </div>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
+                <div class="card-square-background">
+                <%= image_tag "logo.svg", class:'logo' %></div>
+              </div>
+              <% else %>
+              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+              <p><%= livestream.title %></p>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
+                <div class="card-square-background">
+                <%= image_tag "logo.svg", class:'logo' %></div>
+              </div>
+              <% end %>
 
               <div class="card-square-info">
                 <p><strong><%= livestream.title %></strong></p>
@@ -134,7 +135,7 @@
               </div>
               <div class="card-square-avatar">
                 <% if livestream.user.profilepic != nil %>
-                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar" %>
                 <% else %>
                 <% if current_user.facebook_picture_url != nil %>
                 <%= image_tag current_user.facebook_picture_url, class: "avatar" %>

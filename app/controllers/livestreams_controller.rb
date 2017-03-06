@@ -45,6 +45,18 @@ class LivestreamsController < ApplicationController
     @livestreams = Livestream.all.where(category: params[:category])
   end
 
+  # def following
+  #   @title = "Following"
+  #   @users = @user.following
+  #   render following_path
+  # end
+
+  # def followers
+  #   @title = "Followers"
+  #   @users = @user.followers
+  #   render followers_path
+  # end
+
 
 
  private

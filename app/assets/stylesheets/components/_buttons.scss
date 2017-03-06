@@ -1,7 +1,16 @@
 .btn-subscribe{
-  width: 150px;
-  margin-left: 136px;
+  width: 120px;
+  margin-left: 170px;
   margin-top: -46px;
+  background-color: $brand-color;
+  padding: 0px;
+}
+
+.btn-unsubscribe{
+  width: 120px;
+  margin-left: 165px;
+  margin-top: -46px;
+  padding: 0px;
 }
 
 #button-join{

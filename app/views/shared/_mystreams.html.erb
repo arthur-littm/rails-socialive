@@ -1,22 +1,47 @@
-<div class="black">
-  <div class="container">
+<div class="container">
+  <div class="black">
+    <div class="container">
       <div class="row card-dashboard">
         <div class="col-xs-8 col-xs-offset-2">
           <div class="row">
             <% @mylivestreams.all.each do |livestream| %>
 
-
               <div class="col-xs-12 col-sm-6 col-md-6">
-
                 <div class="card-square" >
-
+                  
               <% if livestream.main_picture? %>
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+
+              <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
+              <!-- display tag -->
+              <div class="card-live">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
+
+              <div class="card-title">
+              <p><strong><%= livestream.title %></strong></p>
+              </div>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
               </div>
               <% else %>
               <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+              <p><strong><%= livestream.title %></strong></p>
+              <div class="card-first-name" >
+              <p><%= livestream.user.first_name %></p>
+              </div>
+              <div class="card-date">
+                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+              </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
               </div>
@@ -37,17 +62,17 @@
                 <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
-            </div>
+
                 </div>
-
-
-              <% end %>
               </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CAROUSEL HIDDEN CODE, SECONDARY WORK -->
 

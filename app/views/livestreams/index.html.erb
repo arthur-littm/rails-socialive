@@ -14,7 +14,7 @@
       <div class="card-container">
 
     <% if livestream.main_picture? %>
-        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %></div>
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %><span class="card-category-position"><%= livestream.category %></span></div>
     <% else %>
         <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
     <% end %>

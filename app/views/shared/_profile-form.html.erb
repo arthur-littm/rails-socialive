@@ -9,14 +9,19 @@
 
         <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-          <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
-          <%= f.input :first_name.downcase, placeholder: "bob" %>
-          <%= f.input :last_name.downcase, placeholder: "McDonald" %>
-          <%= f.input :facebooklink, label: "facebook", placeholder: "facebook.com/bob" %>
-          <%= f.input :twitterlink, label: "twitter", placeholder: "@bob" %>
-          <%= f.input :instagramlink, label: "instagram", placeholder: "@bob" %>
-          <%= f.input :youtubelink, label: "youtube", placeholder: "bob" %>
-          <%= f.input :snapchatlink, label: "snapchat", placeholder: "bob" %>
+            <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
+
+            <%= f.input :first_name.downcase, label: false, placeholder: "First name" %>
+            <%= f.input :last_name.downcase, label: false, placeholder: "Last name" %>
+        <h3>Bio</h3>
+            <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+        <h3>Social</h3>
+            <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
+            <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
+            <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
+            <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL" %>
+            <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL" %>
+
 
           <h3>Gallery photos</h3>
           <%= f.input :images, as: :attachinary, label: false %>
@@ -36,10 +41,6 @@
           <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
           <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
           <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
-
-        <h3 style="margin-top: 0px;">Bio</h3>
-          <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
-
           <%= f.button :submit, class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>

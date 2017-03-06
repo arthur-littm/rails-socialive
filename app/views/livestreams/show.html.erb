@@ -2,53 +2,78 @@
 <div class="container" id="title-controls-container">
   <div class="row">
     <div class="col-xs-8 col-sm-8">
-      <h3 id="livestream-show-page-title"><%= @livestream.user.first_name || "Sonya Groves" %> - <%= @livestream.title %></h3>
+      <h3 style="color: <%= @livestream.user.color %>" id="livestream-show-page-title"><%= @livestream.user.first_name + " " + @livestream.user.last_name || @livestream.user.first_name %></h3><h4 style="margin-left: 6px;"><%= @livestream.title %></h4>
     </div>
     <div class="col-xs-4 col-sm-4">
-      <% if current_user == @livestream.user %>
-      <div id="controls">
-
-          <div id="preview">
-
-            <!-- <div id="local-media"></div> -->
-
-            <button class="btn-primary btn send-message-btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
-          </div>
-          <div id="room-controls">
-            <!-- <p class="instructions">Room Name:</p> -->
-            <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-            <%#= if current_user == @livestream.user %>
-            <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
-
-            <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
-
-          </div>
-          <div id="log"></div>
-        </div>
-      <% else %>
-      <div class="hidden-buttons">
+      <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
         <div id="controls">
 
             <div id="preview">
 
-              <div id="local-media"></div>
+              <!-- <div id="local-media"></div> -->
 
-              <button id="button-preview">Preview My Camera</button>
+              <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
             </div>
             <div id="room-controls">
               <!-- <p class="instructions">Room Name:</p> -->
               <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
               <%#= if current_user == @livestream.user %>
-              <button id="button-join">Join Room</button>
+              <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
 
-              <button id="button-leave">Leave Room</button>
+              <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
 
             </div>
-            <div id="log"></div>
+          <div id="log"></div>
+        </div>
+      <% elsif current_user == @livestream.user  %>
+        <em>Refresh this page when your livestream is scheduled to start and a "Start stream" button will appear </em>
+        <div id="controls">
+
+            <div id="preview">
+
+              <!-- <div id="local-media"></div> -->
+
+              <button class="btn-primary btn btn-float-left" id="button-preview">Preview My Camera</button>
+
+            </div>
+            <div id="room-controls">
+              <!-- <p class="instructions">Room Name:</p> -->
+              <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+              <%#= if current_user == @livestream.user %>
+              <button class="btn-primary btn btn-float-left hidden-buttons" id="button-join">Start stream</button>
+
+              <button class="btn-primary btn btn-float-left hidden-buttons" id="button-leave">End stream</button>
+
+            </div>
+          <div id="log"></div>
+        </div>
+      <% elsif current_user.tickets.where(livestream: @livestream).any? %>
+        <p id="ticket-bought">Ticket Bought</p>
+        <div class="hidden-buttons">
+          <div id="controls">
+
+              <div id="preview">
+
+                <div id="local-media"></div>
+
+                <button id="button-preview">Preview My Camera</button>
+
+              </div>
+              <div id="room-controls">
+                <!-- <p class="instructions">Room Name:</p> -->
+                <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+                <%#= if current_user == @livestream.user %>
+                <button id="button-join">Join Room</button>
+
+                <button id="button-leave">Leave Room</button>
+
+              </div>
+              <div id="log"></div>
           </div>
         </div>
+      <% else %>
+        <%= render 'shared/buy_ticket' %>
       <% end %>
     </div>
   </div>
@@ -58,10 +83,11 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-lg-7">
+      <div class="col-xs-12 col-sm-7">
         <!-- This is the video div BELOW -->
         <div id="remote-media" class="video-container">
         <div id="local-media"></div>
+
 
         <% content_for :after_js do %>
             <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
@@ -220,13 +246,14 @@
         <!-- This is the video div ABOVE -->
       </div>
 
-        <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-5 col-lg-offset-0">
+        <div class="col-xs-12 col-sm-5">
           <div class="chat-container">
           <!-- THIS IS THE CHAT below -->
+
             <div id="messages" data-chat-room-id="<%= @livestream.id %>">
               <%= render @livestream.messages %>
             </div>
-
+          </div>
             <%= form_for @message, url: '#' do |f| %>
               <div class="form-group">
 
@@ -237,7 +264,7 @@
               <%= f.submit "send", class: 'btn btn-primary btn-sm send-message-btn' %>
             <% end %>
           <!-- THIS IS THE CHAT ^^^ -->
-          </div>
+
         </div>
 
     </div>
@@ -245,6 +272,32 @@
 </div>
 
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+      <% if current_user == @livestream.user %>
+          <h4>Questions asked by ticket holders before the livestream</h4>
+          <!-- <div id="inquiry-input"> -->
+            <%#= simple_form_for [@livestream, @question] do |f| %>
+              <%#= f.input :inquiry, label: false %>
+              <%#= f.button :submit, 'Ask', class: 'btn btn-primary' %>
+             <%# end %>
+           <!-- </div> -->
+          <div class="pre-livestream-questions-container">
+            <table id="pre-livestream-questions">
+              <% if @livestream.questions.any? %>
+                <% @livestream.questions.each do |question| %>
+                <tr>
+                  <th><%= question.inquiry %></th>
+                  <td><%= question.user.first_name %></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
   <div class="row">
     <!-- this col is the profile -->
     <div class="col-xs-12 col-md-8">
@@ -316,18 +369,21 @@
         <p>Sonya's calendar</p>
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-      <div class="profile-wrapper margin-bottom-20">
+      <% @livestreams.each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-20">
 
-        <!-- This is start of the card for an upcoming event -->
-        <div class="future-livestreams-card">
-          <!-- need to put logic here to truncate title if over 23 characters -->
-          <h5 class="future-livestreams-card-title">My New Wardrobe</h5>
-          <h6 class="future-livestreams-card-time"> Monday 9am</h6>
-          <h6 class="future-livestreams-card-seats"> 168 seats left</h6>
-          <a href="" class="future-livestreams-card-book-button btn btn-primary">book ticket</a>
+          <!-- This is start of the card for an upcoming event -->
+            <div class="future-livestreams-card">
+              <!-- need to put logic here to truncate title if over 58 characters -->
+              <h5 class="future-livestreams-card-title"><%= livestream.title.first(58) %></h5>
+              <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+              <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+              <a href="" class="future-livestreams-card-book-button btn btn-primary">book ticket</a>
+            </div>
+
+          <!-- This is the end of the card for an upcoming event -->
         </div>
-        <!-- This is the end of the card for an upcoming event -->
-      </div>
+      <% end %>
     </div>
 
     <!-- This is the top fans table -->

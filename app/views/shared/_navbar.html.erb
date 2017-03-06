@@ -14,6 +14,8 @@
             <!-- Different navigation if login or not -->
           <% if user_signed_in? %>
 
+            <!-- THERE's A BUG HERE -->
+
             <% if current_user.livestreamer %>
 
               <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>

@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  get 'questions/create'
+
+  get 'tickets/create'
+
   mount ActionCable.server => '/cable'
   mount Attachinary::Engine => "/attachinary"
   devise_for :users,
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
-  resources :livestreams
+  resources :livestreams do
+    resources :tickets, only: [:create]
+    resources :questions, only: [:create]
+  end
   get '/dashboard' => 'pages#dashboard'
 
 # Following/Follower routing essential
@@ -19,6 +26,10 @@ Rails.application.routes.draw do
 
   patch '/dashboard', to: 'pages#profile_update'
 
+################################
+#This is for buying tickets
+
+#################################
 # This line should be at the end
 
   get '/:category' => 'livestreams#category_show'

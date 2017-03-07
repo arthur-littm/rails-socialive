@@ -1,9 +1,14 @@
 
-<div class="container" id="title-controls-container">
+<div class="container" id="title-controls-container" style="background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 1) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);">
+
+  <div id="background-image-title-banner">
+
+  </div>
+
   <div class="row">
     <div class="col-xs-8 col-sm-8">
 
-      <h3 style="color: <%= @livestream.user.color %>", id="livestream-show-page-title"><%= @livestream.user.first_name.capitalize %></h3><h4 style="margin-left: 6px;"><%= @livestream.title %></h4>
+      <h2 style="color: #000030;", id="livestream-show-page-title"><%= @livestream.user.first_name.capitalize %> <%= @livestream.user.last_name.capitalize %></h2><h4 id="livestream-show-page-title"><%= @livestream.title %></h4>
 
     </div>
     <div class="col-xs-4 col-sm-4">

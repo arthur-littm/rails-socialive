@@ -14,12 +14,15 @@
 .bg-black {
   background: #4a4a4a;
 }
+
 .bg-grey {
   background: #aeaeae;
 }
+
 .bg-blue {
   background: #00a3e1;
 }
+
 .bg-dark-blue {
   background: #3b5998;
 }
@@ -28,19 +31,24 @@ body {
   .form-control {
     color: black;
   }
+
   margin-top: 115px;
   color: black;
-  p, td{
+
+  p, td {
     font-weight: 100;
   }
-  h1, h2, h3, h4, h5,h6, th{
+
+  h1, h2, h3, h4, h5,h6, th {
     font-weight: 200;
   }
+
   .btn-primary{
     color: $gunmetal;
     &:hover{
       color: $gray-darkest;
     }
+
   }
 }
 

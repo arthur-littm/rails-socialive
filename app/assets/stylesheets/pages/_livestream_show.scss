@@ -52,6 +52,11 @@
   overflow-y: auto;
 }
 
+.livestream-controls {
+  display: flex;
+  justify-content: center;
+}
+
 .btn-buy-ticket{
   margin-top: 37px;
 }

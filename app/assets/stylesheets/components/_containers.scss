@@ -6,10 +6,36 @@
 
 .mid-screen-wrapper {
   position: relative;
-  border-top: 1px solid #EFEFEF;
+  border-top: 1px solid $gray-dark;
+  border-bottom: 1px solid $gray-dark;
   min-height: calc(50vh);
   padding: 20px;
   border-radius: 2px;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background: $white;
+  border-radius: 5px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  margin: 40px;
+  padding: 20px 40px 20px;
+  z-index: 1;
+}
+
+.video-box {
+  width: 60%;
+  margin-right: 30px;
+}
+
+.chat-box {
+  width: 40%;
+  height: 100%;
+  background: $gray-light;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
 }
 
 #livestream-show-page-title{
@@ -17,7 +43,6 @@
   z-index: 2;
   position: relative;
 }
-
 
 #title-controls-container{
   padding-top: 20px;
@@ -30,23 +55,39 @@ width: 1400px;
 }
 
 .video-container {
-  // background: black;
   margin-left: auto;
   margin-right: auto;
 }
 
 .chat-container {
-  height: 349px;
+  height: 370px;
   overflow-y: auto;
   overflow-x: hidden;
-
  }
 
+#livestream-show-page-title{
+  margin-left: 4px;
+  z-index: 2;
+  position: relative;
+}
+
+#title-controls-container{
+  margin: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
  @media (max-width: 1199px) {
-    .chat-container {
-      height: 349px;
-      margin-top: 20px;
-     }
+  .chat-container {
+    height: 300px;
+    margin-top: 20px;
+    padding-left: 20px;
+    #messages {
+      margin-right: -60px !important;
+    }
+  }
+  #local-media video {
+  }
  }
 
  .profile-about {
@@ -56,10 +97,10 @@ width: 1400px;
 
  @media (max-width: 690px) {
   .video-container {
-    margin-left: auto;
+    margin-left: 0px;
     margin-right: auto;
   }
- }
+}
 
  @media (max-width: 991px) {
   .profile-about {
@@ -67,11 +108,14 @@ width: 1400px;
     background-color: $gray-medium;
   }
   .profile-avatar {
-  height: 200px;
-  width:200px;
-  background: $gray-dark;
-  margin: auto;
-}
+    height: 200px;
+    width:200px;
+    background: $gray-dark;
+    margin: auto;
+  }
+  #local-media video {
+    margin: auto !important;
+  }
  }
 
 .profile-wrapper {
@@ -136,6 +180,18 @@ width: 1400px;
   position: absolute;
   bottom: -15px;
   right: -18px;
+}
+
+.future-livestreams-card-ticket-price{
+  position: absolute;
+  top: -28px;
+  left: 6px;
+  font-size: 10px;
+  color: #FF6464;
+}
+
+.future-livestreams-card-ticket-price img{
+  margin-bottom: 3px;
 }
 
 .black-photo-gallery-wrapper {
@@ -249,4 +305,16 @@ background-color:$gunmetal;
     width: 70% !important;
     padding-bottom: 20px !important;
   };
+}
+
+.pre-livestream-title {
+  margin-top: 70px;
+}
+
+video {
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 3px solid $green;
+  border-radius: 3px;
 }

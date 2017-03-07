@@ -12,20 +12,18 @@
 }
 
 #button-join{
-  margin-top: 27px;
-  width: 36px;
+  width: 120px;
   height: 32px;
-  background-color: #B7FFD4;
+  background-color: $green;
   border-radius: 10px;
   border: none;
 }
 
 #button-leave {
   margin-left: 100px;
-  margin-top: 27px;
-  width: 36px;
+  width: 120px;
   height: 32px;
-  background-color: #B7FFD4;
+  background-color: $green;
   border-radius: 10px;
   border: none;
 }
@@ -34,7 +32,7 @@
   margin-top: 27px;
   width: 36px;
   height: 32px;
-  background-color: #B7FFD4;
+  background-color: $green;
   border-radius: 10px;
   border: none;
 }
@@ -48,8 +46,8 @@
 
 .btn-float-left:hover {
   float: left;
-  height: 10px;
-  margin-left: 10px;
+  // height: 10px;
+  // margin-left: 10px;
   text-align: center;
   color: $blue;
 }

@@ -1,45 +1,49 @@
-<div class="item-centered-on-page">
-      <table class="margin-top-100-bottom-100">
-        <tr>
-          <td> 100 Rubies</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td> 200 Rubies</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td> 500 Rubies</td>
-        </tr>
-        <tr>
-          <td class="buy-ruby-button">
-            <%= form_tag orders_path do %>
-              <%= hidden_field_tag 'pack', "pack1" %>
-              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
-            <% end %>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="buy-ruby-button">
-            <%= form_tag orders_path do %>
-              <%= hidden_field_tag 'pack', "pack2" %>
-              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
-            <% end %>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="buy-ruby-button">
-            <%= form_tag orders_path do %>
-              <%= hidden_field_tag 'pack', "pack3" %>
-              <%= submit_tag 'Buy Rubies', class: 'btn btn-primary' %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
+<div class="login-wrapper">
+  <div class="rubies-wrapper">
+    <div class="container">
+      <div class="row">
+
+          <div class="text-center">
+
+              <div class="[ price-option price-option--low ]">
+                <div class="price-option__detail">
+                  <span class="price-option__cost">100 Rubies</span>
+                  <span class="price-option__type">10GBP</span>
+                </div>
+                    <div class="price-option__purchase">
+                      <%= form_tag orders_path do %>
+                      <%= hidden_field_tag 'pack', "pack1" %>
+                      <%= submit_tag 'BUY', class:'buy-ruby-button'%>
+                      <% end %>
+                    </div>
+              </div>
+              <div class="[ price-option price-option--mid ]">
+                <div class="price-option__detail">
+                  <span class="price-option__cost">200 Rubies</span>
+                  <span class="price-option__type">20GBP</span>
+                </div>
+                  <div class="price-option__purchase">
+                      <%= form_tag orders_path do %>
+                      <%= hidden_field_tag 'pack', "pack2" %>
+                      <%= submit_tag 'BUY', class:'buy-ruby-button-yellow' %>
+                      <% end %>
+                  </div>
+              </div>
+              <div class="[ price-option price-option--high ]">
+                <div class="price-option__detail">
+                  <span class="price-option__cost">500 Rubies</span>
+                  <span class="price-option__type">40gbp</span>
+                </div>
+                <div class="price-option__purchase">
+                      <%= form_tag orders_path do %>
+                      <%= hidden_field_tag 'pack', "pack3" %>
+                      <%= submit_tag 'BUY', class:'buy-ruby-button-red' %>
+                      <% end %>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+  </div>
 </div>

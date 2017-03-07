@@ -318,19 +318,26 @@
           <div class="col-xs-12 col-sm-4">
             <div>
               <% if @livestream.user.profilepic != nil %>
-              <%= cl_image_tag(@livestream.user.profilepic.path,
-              width: 200, height: 200, crop: :fill) %>
+              <%= cl_image_tag(@livestream.user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
               <% else  %>
               <% end %>
             </div>
           </div>
           <!-- Below is the about user div-->
           <div class="col-xs-12 col-sm-8">
-            <div class="profile-about bottom-margin">
-              <%= @livestream.user.first_name.capitalize %>
+            <h3><%= @livestream.user.first_name.capitalize %></h3>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
               <%= render 'shared/follow_form' %>
               <%= render 'shared/stats' %>
-            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
+            <% @user.livestreams.each do |livestream| %>
+            <p> <%= livestream.tickets_sold %> Total views </p>
+            <% end %>
+
           </div>
 
         <!-- this is the row for the bio -->

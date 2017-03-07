@@ -112,3 +112,14 @@ body {
   text-decoration: none;
 }
 
+#order-completion li{
+  list-style-type: none;
+}
+
+#pay-button {
+  background-color: $brand-color !important;
+}
+
+.ruby-image {
+  margin-top:40px;
+}

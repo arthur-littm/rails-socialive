@@ -1,9 +1,18 @@
-<div class="item-centered-on-page">
- <div class="margin-top-100-bottom-100">
-      <ul id="order-completion">
-        <li>Status: <%= @order.state %></li>
-        <li>Item: <%= @order.rubies %> Rubies</li>
-        <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-      <ul>
+<div class="login-wrapper">
+  <div class="rubies-wrapper">
+    <div class="container">
+      <div class="row">
+          <div class="text-center">
+            <ul id="order-completion">
+              <li><strong>Status: <%= @order.state %></strong></li>
+              <li>Item: <%= @order.rubies %> Rubies</li>
+              <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
+              <div class="ruby-image">
+              <%= image_tag "ruby.png", class:"avatar-square-large" %>
+              </div>
+            <ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

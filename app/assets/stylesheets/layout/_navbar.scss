@@ -140,8 +140,6 @@
     outline: none;
 }
 
-input[type="text"] {
-}
 
 /* Navbar dropdown menu */
 .navbar-socialive-dropdown-menu {
@@ -150,6 +148,7 @@ input[type="text"] {
   border-color: #E6E6E6;
   z-index:10000 !important;
 }
+
 .navbar-socialive-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
@@ -181,6 +180,7 @@ input[type="text"] {
     position:relative;
     display:inline-block;
 }
+
 .notify-badge{
     position: absolute;
     left:25px;

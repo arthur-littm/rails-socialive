@@ -1,36 +1,46 @@
 
-<div class="container">
-  <div class="row">
+<div class="login-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+        <div class="text-center">
+          <div class="form-login">
+            <div class="text-center">
+              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Create your next livestream!</h3>
+              <br>
+              <br>
+            </div>
+            <%= simple_form_for @livestream do |f| %>
+            <%= f.error_notification %>
 
-<!-- left side of the page (from tablet to large displays) -->
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <div class="dashboard-wrapper-grey-left">
+            <div class="form-inputs">
 
-        <h1>New Livestream</h1>
+              <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 58,  label: false,   required: true  %>
+              <%= f.input :description.downcase, placeholder: "Description of your stream", maxlength: 350, label: false %>
+              <%= f.input :hour_of_stream, as: :string, placeholder: "Date and time of livestream", label: false, input_html: {id: 'datepicker-stream'}, required: true %>
+              <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"], prompt: "Choose a category", required: true, label: false %>
 
-        <%= simple_form_for @livestream do |f| %>
-          <%= f.input :main_picture, as: :attachinary, label: "Stream cover", required: true %>
-          <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 55,  required: true  %>
-          <%= f.input :hour_of_stream, as: :string, label: "Time of the stream", input_html: {id: 'datepicker-stream'}, required: true %>
-          <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour"],  required: true %>
+              <%= f.input :tickets_available, label: false, placeholder: "Number of tickets available for sale"%>
+              <%= f.input :ticket_price, label: false, placeholder: "Price per ticket in rubies"%>
 
+              <div class="input-container form-group float required livestream_ticket_price">
+              <input class="form-control numeric float required" required="required" aria-required="true" placeholder="Price per ticket in rubies" type="number" step="any" name="livestream[ticket_price]" id="livestream_ticket_price"><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="input_img">
+              </div>
+              <br>
+
+              <%= f.input :main_picture, as: :attachinary, label: "Choose a livestream cover picture", required: true %>
+              <br>
+              <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+            </div>
+            <% end %>
           </div>
         </div>
-
-
-<!-- right side of the page (from tablet to large displays) -->
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <div class="dashboard-wrapper-grey-right">
-        <h1>Session details</h1>
-          <%= f.input :tickets_available, label: "Number of tickets", placeholder: "100" %>
-          <%= f.input :ticket_price, label: "Price per ticket", placeholder: "£5" %>
-          <%= f.input :description.downcase, placeholder: "description of your stream", maxlength: 350 %>
-          <%= f.button :submit, class: 'btn btn-primary btn-block' %>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
 
 <!-- js -->
 

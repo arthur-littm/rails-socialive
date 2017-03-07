@@ -8,21 +8,25 @@
 .tabs a {
   color: white;
 }
+
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
 }
+
 .tabs h3 {
   font-size: 17px;
   margin-top: 0;
   margin-bottom: 0;
   opacity: 0.6;
 }
+
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
 }
+
 .tab {
   background: $gray-light;
   flex: 0 0 20%;
@@ -35,9 +39,11 @@
 .tab:first-child {
   border-radius: 2px 0 0 0;
 }
+
 .tab:last-child {
   border-radius: 0 2px 0 0;
 }
+
 .tab.active {
   background: $brand-color;
   color: $gunmetal;

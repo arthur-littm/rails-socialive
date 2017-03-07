@@ -17,7 +17,7 @@
      <% @user.followers.all.each do |follower| %>
       <li class="list-inline">
           <% if follower.profilepic != nil %>
-            <%= cl_image_tag follower.profilepic.path, class:"avatar-large" %>
+            <%= cl_image_tag follower.profilepic.path, class:"avatar" %>
              <% else %>
             <% end %>
             <%= follower.first_name %> <%= follower.last_name %></li>

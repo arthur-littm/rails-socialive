@@ -3,11 +3,11 @@
 
     <div class="tabs">
       <% if current_user.livestreamer == true %>
-      <a class="tab" onclick="openTab(event, 'mystreams')">
+      <a class="tab active" onclick="openTab(event, 'mystreams')">
         <h3>My Streams</h3>
       </a>
       <% end %>
-      <a class="tab active"  onclick="openTab(event, 'myprofile')">
+      <a class="tab"  onclick="openTab(event, 'myprofile')">
         <h3>My Profile</h3>
       </a>
       <a class="tab" onclick="openTab(event, 'mytickets')">
@@ -19,11 +19,11 @@
     </div>
 
     <div class="dashboard-content">
-      <div id="myprofile" class="tabcontent">
-      <%= render 'shared/profile-form' %>
-      </div>
       <div id="mystreams" class="tabcontent">
         <%= render 'shared/mystreams' %>
+      </div>
+      <div id="myprofile" class="tabcontent">
+      <%= render 'shared/profile-form' %>
       </div>
       <div id="mytickets" class="tabcontent">
       <%= render 'shared/mytickets' %>

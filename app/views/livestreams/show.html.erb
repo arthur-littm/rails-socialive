@@ -79,15 +79,19 @@
 
   <div class="video-wrapper">
 
-
-
+<!-- video starts here -->
 
       <div class="video-box">
 
 <!-- message before video starts -->
+<div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);">
 
-<div class="video-message" style="background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 1) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);"></div>
+  <div class="video-buttons-inside" style="display: inline;">
+    <%= render 'livestreams/video_buttons' %>
+  </div>
 
+</div>
+<!-- message before video starts -->
         <div id="remote-media" class="video-container">
 
           <div id="local-media"></div>
@@ -137,10 +141,11 @@
                     // Bind button to join room
                     document.getElementById('button-join').onclick = function () {
 
-// stat message to disappear
-
+// start message to disappear
                       $(".video-message").hide();
-
+                      $(".video-buttons-inside").hide();
+                      $(".video-buttons-bottom").show();
+// start message to disappear
                       // roomName = document.getElementById('room-name').value;
                       roomName = '<%= @livestream.room_name %>'
 
@@ -158,11 +163,11 @@
 
                      // Bind button to leave room
                      document.getElementById('button-leave').onclick = function () {
-  // showing ending message
+// showing ending message
                       $(".video-box").hide;
 
                       $(".video-box").html("<p>The livestream is now over</p>");
-
+// showing ending message
                       log('Leaving room...');
                       activeRoom.disconnect();
                     };
@@ -259,10 +264,11 @@
 
       </div>
 
+<!-- video ends here -->
+<!-- chat starts here -->
 
       <div class="chat-box">
         <div class="chat-container">
-
 
           <div id="messages" data-chat-room-id="<%= @livestream.id %>">
             <%= render @livestream.messages %>
@@ -279,45 +285,17 @@
         <% end %>
       </div>
 
+<!-- chat starts here -->
+
   </div>
 
-  <!-- inserting start/end livestream buttons below -->
-
-<div class="controls player-menu livestream-controls">
-
-  <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
-  <div id="controls">
-
-    <div id="preview">
-
-      <!-- <div id="local-media"></div> -->
-
-      <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
-    </div>
-    <div id="room-controls">
-      <!-- <p class="instructions">Room Name:</p> -->
-      <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-      <%#= if current_user == @livestream.user %>
-      <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
-
-      <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
-
-    </div>
-    <div id="log">
-    </div>
-  </div>
-  <% end %>
+<!-- inserting start/end livestream buttons below -->
+<div class="video-buttons-bottom" style="display: none;">
+  <%= render 'livestreams/video_buttons' %>
+</div>
+<!-- inserting start/end livestream buttons above -->
 
 </div>
-
-  <!-- inserting start/end livestream buttons above -->
-
-</div>
-
-
-
-
 
 <div class="container">
   <div class="row">

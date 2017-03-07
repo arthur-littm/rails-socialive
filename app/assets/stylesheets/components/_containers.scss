@@ -36,6 +36,21 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  
+#livestream-show-page-title{
+  margin-left: 24px;
+  z-index: 2;
+  position: relative;
+}
+
+#title-controls-container{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px !important;
+}
+
+#background-image-title-banner {
+width: 1400px;
 }
 
 .video-container {
@@ -103,7 +118,7 @@
  }
 
 .profile-wrapper {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
   width: 100%;
   margin-right: auto;

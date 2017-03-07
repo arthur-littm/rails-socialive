@@ -31,10 +31,10 @@ Rails.application.routes.draw do
   ################################
   #This is for buying rubies
   get '/buy_rubies' => 'pages#buy_rubies'
-  
+
   #########################################
   #This is for stripe
-  
+
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end

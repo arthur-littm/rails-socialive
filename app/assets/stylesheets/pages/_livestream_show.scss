@@ -6,14 +6,21 @@
   padding-right: 3px;
 }
 
+#tickets-sold-out{
+  margin-top: 30px;
+  background-color: $red;
+  width: 66px;
+  padding-left: 3px;
+  padding-right: 3px;
+  color: white;
+}
+
 #pre-livestream-questions{
   border: 1px solid $green;
-
 }
 
 #pre-livestream-questions th, td{
   padding: 5px;
-
 }
 
 #pre-livestream-questions td{
@@ -22,6 +29,14 @@
 
 #pre-livestream-questions tr{
   border-top: 1px dashed $green;
+}
+
+#ruby_fans_img {
+  position: absolute;
+  bottom: 1px;
+  right: 26px;
+  width: 11px;
+  height: 15px;
 }
 
 #inquiry-input .btn-primary{
@@ -33,7 +48,11 @@
   overflow-y: auto;
 }
 
+
 .livestream-controls {
   display: flex;
   justify-content: center;
+
+.btn-buy-ticket{
+  margin-top: 37px;
 }

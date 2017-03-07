@@ -398,8 +398,14 @@
           <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
 
           <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-          <%= simple_form_for [livestream, @ticket] do |f| %>
-            <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+          <% if current_user == @livestream.user  %>
+            <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+          <% elsif current_user.tickets.where(livestream: livestream).any? %>
+            <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+          <% else %>
+            <%= simple_form_for [livestream, @ticket] do |f| %>
+              <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+            <% end %>
           <% end %>
         </div>
 

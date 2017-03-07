@@ -33,14 +33,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-6">
       <div class="dashboard-wrapper-grey-right">
-        <h3 style="margin-top: 0px;">Tell us about things you like</h3>
+        <h3 style="margin-top: 0px;">Ask yourself three questions!</h3>
 
-          <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
-          <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
-          <%= f.input :fav2title, label: "My 2nd favorite thing", placeholder: "Title 2" %>
-          <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
-          <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
-          <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
+          <%= f.input :fav1title, label: false, placeholder: "Question 1" %>
+          <%= f.input :fav1, label: false, placeholder: "Answer to question 1" %>
+          <%= f.input :fav2title, label: false, placeholder: "Question 2" %>
+          <%= f.input :fav2, label: false, placeholder: "Answer to question 2" %>
+          <%= f.input :fav3title, label: false, placeholder: "Question 3" %>
+          <%= f.input :fav3, label: false, placeholder: "Answer to question 3" %>
           <%= f.button :submit, class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>

@@ -251,7 +251,7 @@
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
       <% @livestreams.each do |livestream| %>
-        <div class="profile-wrapper margin-bottom-20">
+        <div class="profile-wrapper margin-bottom-35">
 
         <!-- This is start of the card for an upcoming event -->
           <div class="future-livestreams-card">
@@ -329,8 +329,8 @@
       </div>
     </div>
     <!-- This is the social media follow div -->
-    <div class="col-xs-12 col-md-4">
-      <div class="profile-wrapper text-center margin-bottom-20">
+    <div class="social-icons-right-side">
+      <div class=" text-center margin-bottom-20">
         <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
 
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>

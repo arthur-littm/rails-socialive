@@ -13,15 +13,20 @@
 }
 
 #livestream-show-page-title{
-  margin-left: 4px;
+  margin-left: 24px;
   z-index: 2;
   position: relative;
 }
 
+
 #title-controls-container{
-  margin: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin: 0px !important;
+}
+
+#background-image-title-banner {
+width: 1400px;
 }
 
 .video-container {

@@ -6,6 +6,15 @@
   padding-right: 3px;
 }
 
+#tickets-sold-out{
+  margin-top: 30px;
+  background-color: $red;
+  width: 66px;
+  padding-left: 3px;
+  padding-right: 3px;
+  color: white;
+}
+
 #pre-livestream-questions{
   border: 1px solid $green;
 
@@ -30,6 +39,7 @@
 #inquiry-input .btn-primary{
   float: right;
 
+
 }
 
 
@@ -38,4 +48,8 @@
   max-height: 400px;
   overflow-y: auto;
 
+}
+
+.btn-buy-ticket{
+  margin-top: 37px;
 }

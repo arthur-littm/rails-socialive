@@ -6,11 +6,48 @@
 
 .mid-screen-wrapper {
   position: relative;
-  border-top: 1px solid #EFEFEF;
+  border-top: 1px solid $gray-dark;
+  border-bottom: 1px solid $gray-dark;
   min-height: calc(50vh);
   padding: 20px;
   border-radius: 2px;
 }
+
+.video-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background: $white;
+  border-radius: 5px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  margin: 40px;
+  padding: 20px 40px 20px;
+  z-index: 1;
+}
+
+.video-box {
+  width: 60%;
+  margin-right: 30px;
+}
+
+.chat-box {
+  width: 40%;
+  height: 100%;
+  background: $gray-light;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+}
+
+.video-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chat-container {
+  height: 370px;
+  overflow-y: auto;
+  overflow-x: hidden;
+ }
 
 #livestream-show-page-title{
   margin-left: 4px;
@@ -24,21 +61,9 @@
   padding-bottom: 20px;
 }
 
-.video-container {
-  // background: black;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.chat-container {
-  height: 349px;
-  overflow-y: auto;
-  overflow-x: hidden;
- }
-
  @media (max-width: 1199px) {
   .chat-container {
-    height: 349px;
+    height: 300px;
     margin-top: 20px;
     padding-left: 20px;
     #messages {
@@ -46,7 +71,6 @@
     }
   }
   #local-media video {
-    margin-left: -50px !important;
   }
  }
 
@@ -257,4 +281,12 @@ background-color:$gunmetal;
 
 .pre-livestream-title {
   margin-top: 70px;
+}
+
+video {
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 3px solid $green;
+  border-radius: 3px;
 }

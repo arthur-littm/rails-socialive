@@ -70,62 +70,64 @@
 
 <div class="mid-screen-wrapper">
 
-  <div class="container">
-    <div class="row">
+  <div class="video-wrapper">
 
-    <!-- This is the video div BELOW -->
-      <%= render 'livestreams/video-section' %>
-    <!-- This is the video div ABOVE -->
 
-    <!-- THIS IS THE CHAT below -->
-      <%= render 'livestreams/chat-section' %>
-    <!-- THIS IS THE CHAT ^^^ -->
+      <div class="video-box">
+        <%= render 'livestreams/video-section' %>
+      </div>
 
-    </div>
+      <div class="chat-box">
+        <%= render 'livestreams/chat-section' %>
+      </div>
+
   </div>
 
   <!-- inserting start/end livestream buttons below -->
 
-  <div class="col-xs-12">
-      <div class="controls player-menu">
+<div class="controls player-menu livestream-controls">
 
-        <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
-        <div id="controls">
+  <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
+  <div id="controls">
 
-          <div id="preview">
+    <div id="preview">
 
-            <!-- <div id="local-media"></div> -->
+      <!-- <div id="local-media"></div> -->
 
-            <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
+      <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
-          </div>
-          <div id="room-controls">
-            <!-- <p class="instructions">Room Name:</p> -->
-            <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-            <%#= if current_user == @livestream.user %>
-            <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
+    </div>
+    <div id="room-controls">
+      <!-- <p class="instructions">Room Name:</p> -->
+      <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+      <%#= if current_user == @livestream.user %>
+      <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
 
-            <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
+      <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
 
-          </div>
-          <div id="log">
-          </div>
-        </div>
-        <% else %>
-        <% end %>
-
-      </div>
+    </div>
+    <div id="log">
+    </div>
   </div>
+  <% end %>
+
+</div>
 
   <!-- inserting start/end livestream buttons above -->
 
 </div>
 
-<div class="container pre-livestream-title">
+
+
+
+
+<div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
       <% if current_user == @livestream.user %>
-      <h4>Questions asked by ticket holders before the livestream</h4>
+      <div class="pre-livestream-title">
+        <h4>Questions asked by ticket holders before the livestream</h4>
+      </div>
       <!-- <div id="inquiry-input"> -->
       <%#= simple_form_for [@livestream, @question] do |f| %>
       <%#= f.input :inquiry, label: false %>

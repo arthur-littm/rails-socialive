@@ -17,12 +17,10 @@
 
 #pre-livestream-questions{
   border: 1px solid $green;
-
 }
 
 #pre-livestream-questions th, td{
   padding: 5px;
-
 }
 
 #pre-livestream-questions td{
@@ -33,21 +31,21 @@
   border-top: 1px dashed $green;
 }
 
-
-
+#ruby_fans_img {
+  position: absolute;
+  bottom: 1px;
+  right: 26px;
+  width: 11px;
+  height: 15px;
+}
 
 #inquiry-input .btn-primary{
   float: right;
-
-
 }
-
-
 
 .pre-livestream-questions-container{
   max-height: 400px;
   overflow-y: auto;
-
 }
 
 .btn-buy-ticket{

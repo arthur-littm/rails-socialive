@@ -80,8 +80,10 @@
           <div id="log"></div>
         </div>
       </div>
-      <% else %>
+      <% elsif (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
       <%= render 'shared/buy_ticket' %>
+      <% else %>
+         <p id="tickets-sold-out">Sold out</p>
       <% end %>
     </div>
   </div>

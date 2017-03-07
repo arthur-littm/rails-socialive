@@ -18,9 +18,6 @@ class PaymentsController < ApplicationController
       )
 
       @order.update(payment: charge.to_json, state: 'paid')
-      if current_user.balance.nil?
-        current_user.balance = 0
-      end
       current_user.balance += @order.rubies
       current_user.save
       redirect_to order_path(@order)

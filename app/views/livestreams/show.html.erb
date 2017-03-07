@@ -120,7 +120,7 @@
 
                 // Create a Video Client and connect to Twilio
                 videoClient = new Twilio.Video.Client('<%= generate_twilio_token %>');
-                document.getElementById('room-controls').style.display = 'block';
+                $('#room-controls').css('display', 'block');
 
 
                 <% if current_user != @livestream.user %>
@@ -174,8 +174,11 @@
                 activeRoom = room;
 
                 // log("Joined as '" + identity + "'");
-                document.getElementById('button-join').style.display = 'none';
-                document.getElementById('button-leave').style.display = 'inline';
+                $('#button-join').css('display', 'none');
+                $('#button-leave').css('display', 'inline');
+
+                // document.getElementById('button-join').style.display = 'none';
+                // document.getElementById('button-leave').style.display = 'inline';
 
                 // Draw local video, if not already previewing
                 if (!previewMedia) {
@@ -214,7 +217,7 @@
               }
 
               //  Local video preview
-              document.getElementById('button-preview').onclick = function () {
+              $('#button-preview').onclick = function () {
                 if (!previewMedia) {
                   previewMedia = new Twilio.Video.LocalMedia();
                   Twilio.Video.getUserMedia().then(
@@ -397,7 +400,7 @@
             <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
             <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
             <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-
+            <h6 class="future-livestreams-card-ticket-price"><%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
             <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
             <% if current_user == @livestream.user  %>
               <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>

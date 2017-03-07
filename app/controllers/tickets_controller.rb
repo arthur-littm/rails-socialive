@@ -14,6 +14,10 @@ class TicketsController < ApplicationController
       @ticket.user = current_user
       @ticket.livestream = @livestream
       @ticket.save
+      #updates Tickets sold in the livestream table
+      @livestream.tickets_sold -= 1
+      @livestream.save
+      #redirects
       redirect_to livestream_path(@livestream)
     else
       redirect_to livestream_path(@livestream), alert: "You have insufficient funds"

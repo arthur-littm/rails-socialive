@@ -22,8 +22,10 @@
               <% else %>
               <% end %>
 
-              <div class="card-title">
-              <p><%= livestream.title %></p>
+              <div class="card-black-title-banner">
+                <div class="card-title">
+                  <p><%= livestream.title %></p>
+                </div>
               </div>
               <div class="card-first-name" >
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>

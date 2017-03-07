@@ -100,8 +100,9 @@
 
 
           <% content_for :after_js do %>
-          <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
+            <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
           <% end %>
+
           <% content_for :after_js do %>
            <script>// Check for WebRTC
             var videoClient;
@@ -162,7 +163,7 @@
                     log('Leaving room...');
                     activeRoom.disconnect();
                   };
-              // });
+              //});
               <% end  %>
 
 
@@ -245,7 +246,7 @@
                 if(e.which == 13){
                  $(this).closest('form').submit();
                }
-             });
+              });
 
            </script>
            <% end %>
@@ -388,29 +389,30 @@
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
       <% @livestreams.each do |livestream| %>
-      <div class="profile-wrapper margin-bottom-20">
+        <div class="profile-wrapper margin-bottom-20">
 
         <!-- This is start of the card for an upcoming event -->
-        <div class="future-livestreams-card">
-          <!-- need to put logic here to truncate title if over 58 characters -->
-          <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
-          <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
-          <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+          <div class="future-livestreams-card">
+            <!-- need to put logic here to truncate title if over 58 characters -->
+            <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+            <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+            <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
 
-          <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-          <% if current_user == @livestream.user  %>
-            <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
-          <% elsif current_user.tickets.where(livestream: livestream).any? %>
-            <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
-          <% else %>
-            <%= simple_form_for [livestream, @ticket] do |f| %>
-              <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+            <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+            <% if current_user == @livestream.user  %>
+              <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+            <% elsif current_user.tickets.where(livestream: livestream).any? %>
+              <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+            <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+                <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+            <% else %>
+              <%= simple_form_for [livestream, @ticket] do |f| %>
+                <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-
+          </div>
         <!-- This is the end of the card for an upcoming event -->
-      </div>
+        </div>
       <% end %>
     </div>
 

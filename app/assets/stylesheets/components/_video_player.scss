@@ -1,0 +1,144 @@
+/******************************************************************************/
+/* PLAYER FROM DEMODAY LE WAGON */
+/******************************************************************************/
+
+.player-container {
+  margin: 3em 40px 1em 40px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1 );
+  z-index: 1;
+
+  @media (max-width: 1200px) {
+    margin: 3em 0 1em 0;
+  }
+
+  @media (max-width: 992px) {
+    margin: 2em 0 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
+
+  .player-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 60px;
+    color: white;
+    background-color: #353C42;
+
+    @media (max-width: 768px) {
+      height: auto;
+    }
+
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  .player-menu {
+    display:flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    min-height: 120px;
+    color: white;
+    background-color: #419BF9;
+
+    @media (max-width: 620px) {
+      display: none;
+    }
+  }
+
+  .player-content {
+    display: flex;
+    height: 413px;
+
+    @media (max-width: 1200px) {
+      height: 346px;
+    }
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .player-placeholder {
+      position: relative;
+      width: 100%;
+      min-height: 310px;
+      max-width: 735px;
+      background-size: cover;
+      background-position: center center;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+        z-index: 1;
+      }
+
+      span {
+        position: absolute;
+        padding: 10px 20px;
+        left: 50%;
+        bottom: 10%;
+        transform: translateX(-50%);
+        color: #fff;
+        background-color: #000;
+        border-radius: 4px;
+        z-index: 2;
+      }
+    }
+
+    .video-wrapper {
+      padding-bottom: 36.8%;
+      margin: 0px;
+      width: 100%;
+      min-height: 413px;
+      border: none;
+
+      @media (max-width: 1200px) {
+        padding-bottom: 34.4%;
+        min-height: 346px;
+      }
+
+      @media (max-width: 992px) {
+        padding-bottom: 52.9%;
+        min-height: 405px;
+      }
+
+      @media (max-width: 620px){
+        min-height: auto;
+      }
+    }
+
+    .player-video {
+      width: 100%;
+      max-width: 735px;
+      background-color: #cdcdcd;
+    }
+
+    .player-product {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 325px;
+      background: white;
+
+      @media (max-width: 992px) {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+
+

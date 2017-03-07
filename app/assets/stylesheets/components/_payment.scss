@@ -1,0 +1,114 @@
+
+.rubies-wrapper {
+  padding:160px;
+  display:flex;
+  justify-content:center;
+  margin-bottom:50px;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%
+}
+
+.price-option {
+  display: inline-block;
+  width: 6.25em;
+  vertical-align: middle;
+  margin-right: 0.3125em;
+  font-size: 16px;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
+.price-option:last-child { margin-right: 0; }
+
+.rubies-wrapper:hover .price-option { opacity: 0.6; }
+.rubies-wrapper:hover .price-option:hover { opacity: 1; }
+
+.price-option__detail {
+  padding: 2em 0;
+  background: white;
+  text-align: center;
+}
+
+.price-option--low .price-option__detail  { border-radius: .25em 0 0 0; }
+.price-option--mid .price-option__detail  { padding: 2.3em 0; border-radius: .25em .25em 0 0; }
+.price-option--high .price-option__detail { border-radius: 0 .25em 0 0; }
+
+.price-option__cost,
+.price-option__type {
+  display: block;
+}
+
+.price-option__cost {
+  font-size: 1.5em;
+  color: #383838;
+}
+
+.price-option__type {
+  font-size: .7em;
+  text-transform: uppercase;
+  color: #909090;
+}
+
+.price-option__purchase {
+  position: relative;
+  display: block;
+  padding: .6em;
+  font-size: .875em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(0,0,0,0.6);
+}
+
+.price-option--low .price-option__purchase  { background: $brand-color; border-radius: 0 0 0 .25em; }
+.price-option--mid .price-option__purchase  { background: $yellow; border-radius: 0 0 .25em .25em; }
+.price-option--high .price-option__purchase { background: $ruby-red; border-radius: 0 0 .25em 0; }
+
+.price-option__purchase:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-style: solid;
+}
+
+.price-option--low .price-option__purchase:before  { border-color: transparent transparent $brand-color; }
+.price-option--mid .price-option__purchase:before  { border-color: transparent transparent $yellow; }
+.price-option--high .price-option__purchase:before { border-color: transparent transparent $ruby-red; }
+
+
+.buy-ruby-button {
+  border-style:none;
+  text-decoration: none;
+  background-color: $brand-color;
+}
+
+.buy-ruby-button-yellow {
+  background-color: $yellow;
+  border-style:none;
+  text-decoration: none;
+}
+
+.buy-ruby-button-red{
+  background-color: $ruby-red;
+  border-style:none;
+  text-decoration: none;
+}
+

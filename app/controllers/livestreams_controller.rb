@@ -13,6 +13,7 @@ class LivestreamsController < ApplicationController
     @message = Message.new
     @ticket = Ticket.new
     @question = Question.new
+    @donation = Donation.new
   end
 
   def new

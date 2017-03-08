@@ -378,32 +378,19 @@
             <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
           </div>
 
-        <!-- this is the row for the bio -->
-<!--         <div class="row">
-          <div class="col-xs-12">
-            <div class="profile-about">
-              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Bio</h3>
-              <p><%#= @livestream.user.bio %> </p>
+          <div class="col-xs-12 profile-about">
+            <div class="margin-bottom-20">
+              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
             </div>
-          </div>
-        </div> -->
 
-          <div class="col-xs-12 profile-about ">
-            <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Things I love</h3>
-            <table summary="favourite things">
-              <tr>
-                <th><%= @livestream.user.fav1title %></th>
-                <td class="profile-favourite-table-answer"> <%= @livestream.user.fav1 %></td>
-              </tr>
-              <tr>
-                <th><%= @livestream.user.fav2title %></th>
-                <td class="profile-favourite-table-answer"><%= @livestream.user.fav2 %></td>
-              </tr>
-              <tr>
-                <th><%= @livestream.user.fav3title %></th>
-                <td class="profile-favourite-table-answer"><%= @livestream.user.fav3 %></td>
-              </tr>
-            </table>
+            <h4 class = "margin-left-10" style = "display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav1title %></h4>
+            <p class = "margin-left-20 margin-bottom-20 margin-top-3"> <%= @livestream.user.fav1 %></p>
+
+            <h4 class = "margin-left-10" style = "display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav2title %></h4>
+            <p class = "margin-left-20 margin-bottom-20 margin-top-3"><%= @livestream.user.fav2 %></p>
+
+            <h4 class = "margin-left-10" style = "display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
+            <p class = "margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
           </div>
 
         </div>
@@ -423,16 +410,17 @@
 
     <div class="col-xs-12 col-md-4">
     <br>
-      <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
-
+      <div class="text-center">
+        <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
+      </div>
       <br>
       <br>
       <!-- <div class="profile-wrapper">
         <p>Sonya's calendar</p>
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-      <% @livestreams.each do |livestream| %>
-        <div class="profile-wrapper margin-bottom-20">
+      <% @livestreams.first(3).each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-35">
 
         <!-- This is start of the card for an upcoming event -->
           <div class="future-livestreams-card">
@@ -440,7 +428,7 @@
             <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
             <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
             <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-            <h6 class="future-livestreams-card-ticket-price"><%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+            <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
             <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
             <% if current_user == @livestream.user  %>
               <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
@@ -450,7 +438,7 @@
                 <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
             <% else %>
               <%= simple_form_for [livestream, @ticket] do |f| %>
-                <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+                <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
               <% end %>
             <% end %>
           </div>
@@ -467,51 +455,51 @@
           <ol class="leaderboard-list">
             <li>
               <mark>Jerry Wood</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 924</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_1"></span> 1924</small>
             </li>
             <li>
               <mark>Brandon Barnes</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 919</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_2"></span> 919</small>
             </li>
             <li>
               <mark>Raymond Knight</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 750</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_2"></span> 450</small>
             </li>
             <li>
               <mark>Trevor McCormick</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 746</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_2"></span> 246</small>
             </li>
             <li>
               <mark>Andrew Fox</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 699</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_2"></span> 139</small>
             </li>
             <li>
               <mark>Jerry Wood</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 600</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_3"></span> 98</small>
             </li>
             <li>
               <mark>Brandon Barnes</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 420</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_3"></span> 96</small>
             </li>
             <li>
               <mark>Raymond Knight</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 418</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_3"></span> 82</small>
             </li>
             <li>
               <mark>Trevor McCormick</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 406</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_3"></span> 75</small>
             </li>
             <li>
               <mark>Andrew Fox</mark>
-              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="ruby_fans_img"></span> 386</small>
+              <small> <span><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" class = "ruby_fans_img_3"></span> 71</small>
             </li>
           </ol>
         </div>
       </div>
     </div>
     <!-- This is the social media follow div -->
-    <div class="col-xs-12 col-md-4">
-      <div class="profile-wrapper text-center margin-bottom-20">
+    <div class="social-icons-right-side">
+      <div class=" text-center margin-bottom-20">
         <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
 
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>

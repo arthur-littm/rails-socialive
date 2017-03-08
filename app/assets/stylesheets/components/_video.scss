@@ -97,17 +97,15 @@
 }
 
 .countdown-number p {
-  font-size: 48px !important;
+  font-size: 50px;
   color: red;
 }
 
 .countdown-title {
   background: rgba(255,255,255,0.7);
-  width: 900px;
+  width: 1200px;
   padding: 10px;
   border-radius: 5px;
   text-align: center;
-  p {
-    font-size: 36px;
-  }
+  font-size: 36px;
 }

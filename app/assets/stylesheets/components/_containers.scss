@@ -18,7 +18,7 @@
   justify-content: space-between;
   background: $white;
   border-radius: 5px;
-  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  box-shadow: 2px 2px 20px rgba(0,0,0,0.15);
   margin: 40px;
   padding-right: 0px;
   z-index: 1;
@@ -59,7 +59,7 @@ width: 1400px;
 }
 
 .chat-container {
-  height: 370px;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
  }
@@ -314,6 +314,6 @@ video {
   margin: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  border: 3px solid $green;
+  // border: 3px solid $green;
   border-radius: 3px;
 }

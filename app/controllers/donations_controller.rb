@@ -21,9 +21,13 @@ class DonationsController < ApplicationController
       @message.user = User.find(1) #this will have to be an account with username ADMIN and a special ICON
       @message.body = "#{current_user.first_name} donated #{@donation.rubies_donated} rubies"
       @message.save
-      redirect_to livestream_path(@livestream)
+      respond_to do |format|
+       format.html { redirect_to livestream_path(@livestream) }
+       format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
       redirect_to buy_rubies_path, alert: "You have insufficient rubies"
     end
   end
 end
+

@@ -165,9 +165,11 @@
                      // Bind button to leave room
                      document.getElementById('button-leave').onclick = function () {
 // showing ending message
-                      $(".video-box").hide;
-                      $(".video-buttons-inside").toggle();
-                      $(".video-box").html("<h2>The livestream is now over</h2>");
+
+// the line below tries to get the start button inside but it doesn't work
+                       // $(".video-buttons-inside").toggle();
+                       $(".video-buttons-bottom").toggle();
+                       $(".video-box").html("<h2>The livestream is now over</h2>");
 // showing ending message
                       log('Leaving room...');
                       activeRoom.disconnect();
@@ -189,17 +191,20 @@
 
                   // Draw local video, if not already previewing
                   if (!previewMedia) {
+                    console.log('start video');
                     room.localParticipant.media.attach('#local-media');
                   }
 
                   room.participants.forEach(function(participant) {
                     log("Already in Room: '" + participant.identity + "'");
+                    $(".video-message").hide();
                     participant.media.attach('#remote-media');
                   });
 
                   // When a participant joins, draw their video on screen
                   room.on('participantConnected', function (participant) {
                     log("Joining: '" + participant.identity + "'");
+                    $(".video-message").hide();
                     participant.media.attach('#remote-media');
                   });
 
@@ -218,8 +223,8 @@
                       participant.media.detach();
                     });
                     activeRoom = null;
-                    document.getElementById('button-join').style.display = 'inline';
-                    document.getElementById('button-leave').style.display = 'none';
+                      $('#button-join').css('display', 'none');
+                      $('#button-leave').css('display', 'inline');
                   });
                 }
 
@@ -257,6 +262,10 @@
                    $(this).closest('form').submit();
                  }
                 });
+
+                  // if(typeof video !== undefined){
+                  //   $(".video-message").hide();
+                  // }
 
              </script>
             <% end %>
@@ -510,5 +519,6 @@
   </div>
 </div>
 </div>
+
 
 

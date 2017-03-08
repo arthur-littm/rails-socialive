@@ -15,6 +15,12 @@ class DonationsController < ApplicationController
       @livestream.user.earned_balance += @donation.rubies_donated
       current_user.save
       @livestream.user.save
+      #now we make a message to display in the chat
+      @message = Message.new
+      @message.livestream = @livestream
+      @message.user = User.find(1) #this will have to be an account with username ADMIN and a special ICON
+      @message.body = "#{current_user.first_name} donated #{@donation.rubies_donated} rubies"
+      @message.save
       redirect_to livestream_path(@livestream)
     else
       redirect_to livestream_path(@livestream), alert: "You have insufficient rubies"

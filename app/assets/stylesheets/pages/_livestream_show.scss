@@ -31,16 +31,40 @@
   border-top: 1px dashed $green;
 }
 
-#ruby_fans_img {
+.ruby_fans_img_1 {
+  position: absolute;
+  bottom: 1px;
+  right: 31px;
+  width: 10px;
+  height: 15px;
+}
+
+.ruby_fans_img_2 {
   position: absolute;
   bottom: 1px;
   right: 26px;
-  width: 11px;
+  width: 10px;
+  height: 15px;
+}
+
+.ruby_fans_img_3 {
+  position: absolute;
+  bottom: 1px;
+  right: 19px;
+  width: 10px;
   height: 15px;
 }
 
 #inquiry-input .btn-primary{
   float: right;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
 }
 
 .stats-elements{

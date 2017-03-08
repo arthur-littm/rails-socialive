@@ -1,49 +1,76 @@
-<div class="login-wrapper">
-  <div class="rubies-wrapper">
+<div class="home-wrapper">
+    <h4>Payment Options</h4>
     <div class="container">
       <div class="row">
-
-          <div class="text-center">
-
-              <div class="[ price-option price-option--low ]">
-                <div class="price-option__detail">
-                  <span class="price-option__cost">100 Rubies</span>
-                  <span class="price-option__type">10GBP</span>
-                </div>
-                    <div class="price-option__purchase">
-                      <%= form_tag orders_path do %>
-                      <%= hidden_field_tag 'pack', "pack1" %>
-                      <%= submit_tag 'BUY', class:'buy-ruby-button'%>
-                      <% end %>
-                    </div>
-              </div>
-              <div class="[ price-option price-option--mid ]">
-                <div class="price-option__detail">
-                  <span class="price-option__cost">200 Rubies</span>
-                  <span class="price-option__type">20GBP</span>
-                </div>
-                  <div class="price-option__purchase">
-                      <%= form_tag orders_path do %>
-                      <%= hidden_field_tag 'pack', "pack2" %>
-                      <%= submit_tag 'BUY', class:'buy-ruby-button-yellow' %>
-                      <% end %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="payment-card-square" >
+                <div class="card-color-title-banner-brand">
+                  <div class="payment-card-title">
+                    <h1>100 RUBIES</h1>
                   </div>
-              </div>
-              <div class="[ price-option price-option--high ]">
-                <div class="price-option__detail">
-                  <span class="price-option__cost">500 Rubies</span>
-                  <span class="price-option__type">40gbp</span>
                 </div>
-                <div class="price-option__purchase">
-                      <%= form_tag orders_path do %>
+                <div class="payment-image-position">
+                <div class="payment-card-square-image" style="background-image: url('<%= image_path "ruby.png" %>');"></div>
+                </div>
+                <div class="payment-rubies-amount-location">
+                    <p>£5</p>
+                </div>
+                <div class="payment-card-buy-location" >
+                    <%= form_tag orders_path do %>
+                    <%= hidden_field_tag 'pack', "pack1" %>
+                    <%= submit_tag 'BUY', class:'buy-ruby-button'%>
+                    <%= render 'orders/stripe', rubies: 100, amount: 500 %>
+                    <% end %>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+             <div class="payment-card-square" >
+                 <div class="card-color-title-banner-yellow">
+                  <div class="payment-card-title">
+                    <h1>200 RUBIES</h1>
+                  </div>
+                </div>
+                <div class="payment-image-position">
+                  <div class="payment-card-square-image" style="background-image: url('<%= image_path "ruby.png" %>');"></div>
+               </div>
+
+                <div class="payment-rubies-amount-location">
+                    <p>£10</p>
+                </div>
+                <div class="payment-card-buy-location" >
+                    <%= form_tag orders_path do %>
+                    <%= hidden_field_tag 'pack', "pack2" %>
+                    <%= submit_tag 'BUY', class:'buy-ruby-button-yellow' %>
+                    <%= render 'orders/stripe', rubies: 200, amount: 1000 %>
+                    <% end %>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+             <div class="payment-card-square" >
+                <div class="card-color-title-banner-red">
+                  <div class="payment-card-title">
+                    <h1>500 RUBIES</h1>
+                  </div>
+                </div>
+
+                <div class="payment-image-position">
+                  <div class="payment-card-square-image" style="background-image: url('<%= image_path "ruby.png" %>');"></div>
+               </div>
+                <div class="payment-rubies-amount-location">
+                    <p>£40</p>
+                </div>
+                <div class="payment-card-buy-location" >
+                   <%= form_tag orders_path do %>
                       <%= hidden_field_tag 'pack', "pack3" %>
+                      <%= render 'orders/stripe', rubies: 500, amount: 4000 %>
                       <%= submit_tag 'BUY', class:'buy-ruby-button-red' %>
                       <% end %>
                 </div>
-              </div>
             </div>
-
-        </div>
+          </div>
       </div>
   </div>
 </div>
+

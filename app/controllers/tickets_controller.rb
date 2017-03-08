@@ -22,7 +22,7 @@ class TicketsController < ApplicationController
     elsif current_user.balance >= @livestream.ticket_price
       redirect_to livestream_path(@livestream), alert: "Tickets are sold out"
     else
-      redirect_to livestream_path(@livestream), alert: "You have insufficient rubies"
+      redirect_to buy_rubies_path, alert: "You have insufficient rubies"
     end
   end
 end

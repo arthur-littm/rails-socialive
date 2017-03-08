@@ -23,7 +23,7 @@ class DonationsController < ApplicationController
       @message.save
       redirect_to livestream_path(@livestream)
     else
-      redirect_to livestream_path(@livestream), alert: "You have insufficient rubies"
+      redirect_to buy_rubies_path, alert: "You have insufficient rubies"
     end
   end
 end

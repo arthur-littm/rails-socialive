@@ -5,4 +5,5 @@
   console.log('tickets are sold out')
 <% else %>
   window.location.replace("<%= buy_rubies_path %>");
+  alert("You have insufficient rubies")
 <% end %>

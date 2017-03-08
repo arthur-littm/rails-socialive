@@ -2,17 +2,19 @@
   margin-top: 30px;
   background-color: $green;
   width: 110px;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 6px 3px 6px 3px;
+  display: flex;
+  justify-content: center;
 }
 
 #tickets-sold-out{
   margin-top: 30px;
   background-color: $red;
   width: 66px;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 6px 3px 6px 3px;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 #pre-livestream-questions{

@@ -238,7 +238,7 @@
         <p>Sonya's calendar</p>
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-      <% @livestreams.each do |livestream| %>
+      <% @livestreams.first(4).each do |livestream| %>
         <div class="profile-wrapper margin-bottom-35">
 
         <!-- This is start of the card for an upcoming event -->
@@ -247,7 +247,7 @@
             <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
             <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
             <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-            <h6 class="future-livestreams-card-ticket-price"><%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+            <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
             <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
             <% if current_user == @livestream.user  %>
               <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
@@ -257,7 +257,7 @@
                 <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
             <% else %>
               <%= simple_form_for [livestream, @ticket] do |f| %>
-                <%= f.button :submit, 'Book ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+                <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
               <% end %>
             <% end %>
           </div>

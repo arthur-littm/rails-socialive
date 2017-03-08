@@ -1,5 +1,7 @@
-<div class="chat-container">
 
+<%= render 'shared/donate.html.erb' %>
+
+<div class="chat-container">
 
   <div id="messages" data-chat-room-id="<%= @livestream.id %>">
     <%= render @livestream.messages %>
@@ -14,3 +16,4 @@
 
 <%= f.submit "send", class: 'btn btn-primary btn-sm send-message-btn' %>
 <% end %>
+

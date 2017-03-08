@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'donations/create'
+
   get 'questions/create'
 
   get 'tickets/create'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   resources :livestreams do
     resources :tickets, only: [:create]
     resources :questions, only: [:create]
+    resources :donations, only: [:create]
   end
   get '/dashboard' => 'pages#dashboard'
   get '/become-a-livestreamer' => 'pages#become_a_livestreamer'

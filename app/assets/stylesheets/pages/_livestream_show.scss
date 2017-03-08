@@ -95,3 +95,41 @@
   float: right;
   margin-right: 48px;
 }
+
+.donation-form{
+  .form-control{
+    width: 18%;
+    border: none;
+    height: 21px;
+    position: absolute;
+    bottom: 12px;
+    right: 76px;
+    border-radius: 0px;
+  }
+}
+
+// .donation-form{
+//   .form-control::placeholder {
+//     color: black;
+//     font-size: 13px;
+//   }
+// }
+
+.btn-donate{
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  padding: 0px 4px;
+  height: 19px;
+  font-size: 13px;
+  border-radius: 0px;
+  border: 0.5px solid #B7FFD4;
+  background: none;
+}
+
+#ruby-donate-positioning img{
+  position: absolute;
+  bottom: 15px;
+  right: 150px;
+  height: 14px;
+}

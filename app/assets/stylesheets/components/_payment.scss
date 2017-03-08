@@ -133,7 +133,9 @@ p {
 .payment-card-square {
 
   color: $gray;
-  height: 330px;
+  height: 360px;
+  width: 80%;
+  margin: auto;
   border-radius: 3px;
   position: relative;
   padding: 0;
@@ -185,3 +187,8 @@ p {
   display: none!important;
 }
 
+.confirmation-page-image {
+ height:300px;
+ width:300px;
+
+}

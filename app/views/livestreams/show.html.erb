@@ -10,11 +10,11 @@
 
   <div class="video-buttons-inside" style="display: inline;">
     <div class="countdown-title" style="box-sizing: content-box;">
-    <% if @livestream.hour_of_stream.future? %>
+        <% if @livestream.hour_of_stream.future? %>
 <!--       <p>Your livestream starts in:</p> -->
-        <%= render 'livestreams/countdown' %>
+          <%= render 'livestreams/countdown' %>
         <% else %>
-        <p>Your livestream should start soon</p>
+          <p>Your livestream should start soon</p>
         <% end %>
     </div>
       <%= render 'livestreams/video_button_join' %>
@@ -199,7 +199,7 @@
       <!-- Bit hacky but am going to display to different vesrions of the controls and the viewers ones will have ids that display: none -->
 
     </div>
-
+</div>
 <!-- video ends here -->
 <!-- chat starts here -->
 

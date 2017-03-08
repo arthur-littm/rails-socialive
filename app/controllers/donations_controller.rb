@@ -18,8 +18,9 @@ class DonationsController < ApplicationController
       #now we make a message to display in the chat
       @message = Message.new
       @message.livestream = @livestream
-      @message.user = User.find(1) #this will have to be an account with username ADMIN and a special ICON
-      @message.body = "#{current_user.first_name} donated #{@donation.rubies_donated} rubies"
+      @message.user = current_user #this will have to be an account with username ADMIN and a special ICON
+      @message.body = "#{current_user.first_name.capitalize} donated #{@donation.rubies_donated}"
+      @message.donation = true
       @message.save
       respond_to do |format|
        format.html { redirect_to livestream_path(@livestream) }

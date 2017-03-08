@@ -87,7 +87,7 @@
 <div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);">
 
   <div class="video-buttons-inside" style="display: inline;">
-    <%= render 'livestreams/video_buttons' %>
+    <%= render 'livestreams/video_button_join' %>
   </div>
 
 </div>
@@ -143,8 +143,8 @@
 
 // start message to disappear
                       $(".video-message").hide();
-                      $(".video-buttons-inside").hide();
-                      $(".video-buttons-bottom").show();
+                      $(".video-buttons-inside").toggle();
+                      $(".video-buttons-bottom").toggle();
 // start message to disappear
                       // roomName = document.getElementById('room-name').value;
                       roomName = '<%= @livestream.room_name %>'
@@ -165,8 +165,8 @@
                      document.getElementById('button-leave').onclick = function () {
 // showing ending message
                       $(".video-box").hide;
-
-                      $(".video-box").html("<p>The livestream is now over</p>");
+                      $(".video-buttons-inside").toggle();
+                      $(".video-box").html("<h2>The livestream is now over</h2>");
 // showing ending message
                       log('Leaving room...');
                       activeRoom.disconnect();
@@ -285,13 +285,13 @@
         <% end %>
       </div>
 
-<!-- chat starts here -->
+<!-- chat ends here -->
 
   </div>
 
 <!-- inserting start/end livestream buttons below -->
 <div class="video-buttons-bottom" style="display: none;">
-  <%= render 'livestreams/video_buttons' %>
+  <%= render 'livestreams/video_button_leave' %>
 </div>
 <!-- inserting start/end livestream buttons above -->
 

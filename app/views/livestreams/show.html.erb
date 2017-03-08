@@ -1,18 +1,73 @@
 
-<div class="container" id="title-controls-container" style="background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 1) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);">
 
-  <div id="background-image-title-banner">
+
+<div class="mid-screen-wrapper">
+
+  <div class="video-wrapper">
+
+
+
+
+      <div class="video-box">
+        <%= render 'livestreams/video-section' %>
+      </div>
+
+
+      <div class="chat-box">
+        <%= render 'livestreams/chat-section' %>
+      </div>
 
   </div>
+</div>
+  <!-- inserting start/end livestream buttons below -->
 
-  <div class="row">
-    <div class="col-xs-12">
+<div class="controls player-menu livestream-controls">
 
-      <h2 style="color: #000030;", id="livestream-show-page-title"><%= @livestream.user.first_name.capitalize %> <%= @livestream.user.last_name.capitalize %></h2><h4 id="livestream-show-page-title"><%= @livestream.title %></h4>
+  <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
+  <div id="controls">
+
+    <div id="preview">
+
+      <!-- <div id="local-media"></div> -->
+
+      <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
 
     </div>
+    <div id="room-controls">
+      <!-- <p class="instructions">Room Name:</p> -->
+      <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+      <%#= if current_user == @livestream.user %>
+      <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
+
+      <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
+
+    </div>
+    <div id="log">
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
+  <!-- inserting start/end livestream buttons above -->
+
+</div>
+
+
+
+
+
+
+<!-- video info box below video box -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 border-box">
+      <h3><%= @livestream.user.first_name.capitalize %> <%= @livestream.user.last_name.capitalize %></h3>
+      <h4 id="livestream-show-page-title"><%= @livestream.title %></h4>
+    </div>
+
     <div class="col-xs-12">
-    <div class="controls">
+      <div class="controls">
 
       <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
 
@@ -75,63 +130,20 @@
 </div>
 
 
-<div class="mid-screen-wrapper">
-
-  <div class="video-wrapper">
 
 
 
 
-      <div class="video-box">
-        <%= render 'livestreams/video-section' %>
-      </div>
-
-
-      <div class="chat-box">
-        <%= render 'livestreams/chat-section' %>
-      </div>
-
-  </div>
-
-  <!-- inserting start/end livestream buttons below -->
-
-<div class="controls player-menu livestream-controls">
-
-  <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
-  <div id="controls">
-
-    <div id="preview">
-
-      <!-- <div id="local-media"></div> -->
-
-      <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
-    </div>
-    <div id="room-controls">
-      <!-- <p class="instructions">Room Name:</p> -->
-      <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-      <%#= if current_user == @livestream.user %>
-      <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
-
-      <button class="btn-primary btn btn-float-left" id="button-leave">End stream</button>
-
-    </div>
-    <div id="log">
-    </div>
-  </div>
-  <% end %>
-
-</div>
-
-  <!-- inserting start/end livestream buttons above -->
-
-</div>
 
 
 
 
+
+
+<!-- questions to livestreamer -->
 
 <div class="container">
+
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
       <% if current_user == @livestream.user %>
@@ -325,11 +337,9 @@
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
         <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
       </div>
-
     </div>
-
   </div>
 </div>
-</div>
+
 
 

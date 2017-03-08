@@ -7,7 +7,6 @@
 .mid-screen-wrapper {
   position: relative;
   border-top: 1px solid $gray-dark;
-  border-bottom: 1px solid $gray-dark;
   min-height: calc(50vh);
   padding: 20px;
   border-radius: 2px;
@@ -48,10 +47,6 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 0px !important;
-}
-
-#background-image-title-banner {
-width: 1400px;
 }
 
 .video-container {

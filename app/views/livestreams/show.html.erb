@@ -88,9 +88,12 @@
 
   <div class="video-buttons-inside" style="display: inline;">
     <div class="countdown-title">
-      <%= render 'livestreams/countdown' %>
+      <p>Livestream starts in:</p>
+      <div class="countdown-number">
+        <%= render 'livestreams/countdown' %>
+      </div>
     </div>
-    <%= render 'livestreams/video_button_join' %>
+      <%= render 'livestreams/video_button_join' %>
   </div>
 
 </div>

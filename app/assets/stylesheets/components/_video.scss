@@ -96,7 +96,7 @@
 }
 
 .countdown-title {
-  background: rgba(255,255,255,0.7);
+  // background: rgba(255,255,255,0.7);
   width: 1200px;
   height: 300px;
   padding: 30px;
@@ -107,4 +107,9 @@
   margin-bottom: 20px;
 }
 
+.over-message {
+  font: 20px;
+  color: $gunmetal;
+  padding: 40px;
+}
 

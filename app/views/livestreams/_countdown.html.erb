@@ -9,7 +9,8 @@
 </div>
 
 <script>
-var target_date = new Date("<%= @livestream.hour_of_stream.strftime('%b %e, %Y %H:%M:%S') %>").getTime() + (1000*3600*48); // set the countdown date
+var target_date = new Date("<%= @livestream.hour_of_stream.strftime('%b %e, %Y %H:%M:%S') %>").getTime(); // set the countdown date
+console.log(target_date);
 var days, hours, minutes, seconds; // variables for time units
 
 var countdown = document.getElementById("tiles"); // get tag element
@@ -22,6 +23,8 @@ function getCountdown(){
 
   // find the amount of "seconds" between now and target
   var current_date = new Date().getTime();
+
+
   var seconds_left = (target_date - current_date) / 1000;
 
   days = pad( parseInt(seconds_left / 86400) );

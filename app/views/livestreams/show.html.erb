@@ -88,8 +88,12 @@
 
   <div class="video-buttons-inside" style="display: inline;">
     <div class="countdown-title" style="box-sizing: content-box;">
-      <p>Your livestream starts in:</p>
+    <% if @livestream.hour_of_stream.future? %>
+<!--       <p>Your livestream starts in:</p> -->
         <%= render 'livestreams/countdown' %>
+        <% else %>
+        <p>Your livestream should start soon</p>
+        <% end %>
     </div>
       <%= render 'livestreams/video_button_join' %>
   </div>
@@ -172,7 +176,7 @@
 // the line below tries to get the start button inside but it doesn't work
                        // $(".video-buttons-inside").toggle();
                        $(".video-buttons-bottom").toggle();
-                       $(".video-box").html("<h2>The livestream is now over</h2>");
+                       $(".video-box").html("<h2 class='over-message'>The livestream is now over</h2>");
 // showing ending message
                       log('Leaving room...');
                       activeRoom.disconnect();

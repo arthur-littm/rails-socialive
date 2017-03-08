@@ -18,6 +18,7 @@
         </div>
       </div>
 
+
 <!-- message before video starts -->
       <div id="remote-media" class="video-container">
 
@@ -203,8 +204,12 @@
 <!-- video ends here -->
 <!-- chat starts here -->
 
-    <div class="chat-box">
-      <div class="chat-container">
+
+
+
+      <div class="chat-box">
+      <%= render 'shared/donate.html.erb' %>
+        <div class="chat-container">
 
         <div id="messages" data-chat-room-id="<%= @livestream.id %>">
           <%= render @livestream.messages %>

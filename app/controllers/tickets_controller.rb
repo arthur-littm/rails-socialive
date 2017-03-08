@@ -18,11 +18,17 @@ class TicketsController < ApplicationController
       @livestream.tickets_sold += 1
       @livestream.save
       #redirects
-      redirect_to livestream_path(@livestream)
+      respond_to do |format|
+        format.html { redirect_to livestream_path(@livestream) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     elsif current_user.balance >= @livestream.ticket_price
       redirect_to livestream_path(@livestream), alert: "Tickets are sold out"
     else
-      redirect_to buy_rubies_path, alert: "You have insufficient rubies"
+      respond_to do |format|
+        format.html { redirect_to buy_rubies_path, alert: "You have insufficient rubies" }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     end
   end
 end

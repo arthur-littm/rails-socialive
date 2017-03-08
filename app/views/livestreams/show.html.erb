@@ -83,6 +83,7 @@
 
       <div class="video-box">
 
+
 <!-- message before video starts -->
 <div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 80%), url(<%= cl_image_path @livestream.main_picture.path %>);">
 
@@ -282,7 +283,10 @@
 <!-- video ends here -->
 <!-- chat starts here -->
 
+
+
       <div class="chat-box">
+      <%= render 'shared/donate.html.erb' %>
         <div class="chat-container">
 
           <div id="messages" data-chat-room-id="<%= @livestream.id %>">

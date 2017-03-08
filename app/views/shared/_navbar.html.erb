@@ -14,11 +14,12 @@
             <!-- Different navigation if login or not -->
           <% if user_signed_in? %>
 
-
-
             <% if current_user.livestreamer %>
-
+              <!-- <div style="color: red; font-size: 30px; text-shadow: 1px 1px 2px red;"><strong>•</strong></div> -->
+              <div class="pulse-container">
+              <%= image_tag "red_pulse.gif", class: "avatar pulse-livestream" %>
               <%= link_to t(".top_call_to_action", default: "Livestream"), new_livestream_path, class: "navbar-socialive-item" %>
+              </div>
             <% else %>
 
               <%= link_to t(".top_call_to_action", default: "Become a livestreamer"), become_a_livestreamer_path, class: "navbar-socialive-item" %>

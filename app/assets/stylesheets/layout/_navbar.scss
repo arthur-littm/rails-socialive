@@ -60,6 +60,17 @@
   padding: 0 20px;
 }
 
+.pulse-container {
+  position: relative;
+  margin-right: 10px;
+}
+
+.pulse-livestream {
+  position: absolute;
+  top: -25px;
+  right: -5px;
+}
+
 .navbar-socialive-item:hover{
   text-decoration:none;
   color: $gunmetal;

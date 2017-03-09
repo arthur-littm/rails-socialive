@@ -308,7 +308,7 @@ $(function(){
   $(".site-width").typed({
     strings: ["Life after a Bootcamp", "Travel to Vietnam", "Sassy Pair fashion style", "Street photography", "Climbing Mount Everest"],
     attr: "placeholder",
-    typeSpeed: 100,
+    typeSpeed: 20,
     loop: true
   });
 });

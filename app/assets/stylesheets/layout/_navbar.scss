@@ -24,6 +24,19 @@
   z-index:100;
 }
 
+.navbar-socialive-categories-livestream {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: $gray-light;
+  transition: all 0.3s ease;
+  display: flex;
+  height: 45px;
+  padding: 0px 20px;
+  align-items: center;
+  justify-content: space-between;
+  transition: top 0.3s ease-in-out;
+  z-index:100;
+}
+
 /* Optional class to fix the navbar on top */
 .navbar-socialive-fixed {
   position: fixed;
@@ -32,6 +45,14 @@
   z-index: 1000;
   width: 100%;
   margin-top:70px;
+}
+
+.navbar-socialive-fixed-ontop {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1000;
+  width: 100%;
 }
 
 /* Navbar logo */

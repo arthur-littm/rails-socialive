@@ -1,0 +1,128 @@
+     <div class="navbar-socialive-categories-livestream navbar-socialive-fixed-ontop">
+
+          <!-- Catgeories -->
+          <div class="navbar-socialive-left hidden-xs hidden-sm">
+          <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
+           <%= link_to t(".sign_in", default: "Adventure"), "/adventure", class: "navbar-socialive-item navbar-socialive-link" %>
+          <%= link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
+           <%= link_to t(".sign_in", default: "Food"), "/food", class: "navbar-socialive-item navbar-socialive-link" %>
+            <%= link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
+             <%= link_to t(".sign_in", default: "Humour"), "/humour", class: "navbar-socialive-item navbar-socialive-link" %>
+             <%= link_to t(".sign_in", default: "Technology"), "/technology", class: "navbar-socialive-item navbar-socialive-link" %>
+             </div>
+
+                 <!-- Right Navigation -->
+         <div class="navbar-socialive-right">
+
+          <div class="navbar-socialive-right hidden-xs hidden-sm">
+
+
+            <!-- Different navigation if login or not -->
+          <% if user_signed_in? %>
+
+            <% if current_user.livestreamer %>
+              <div class="pulse-container">
+              <div class="pulse-livestream blink_me" style="color: red; font-size: 35px;"><strong>•</strong></div>
+              <%# image_tag "red_pulse.gif", class: "avatar pulse-livestream" %>
+              <%= link_to t(".top_call_to_action", default: "Go Live"), new_livestream_path, class: "navbar-socialive-item" %>
+              </div>
+            <% else %>
+
+              <%= link_to t(".top_call_to_action", default: "Become a livestreamer"), become_a_livestreamer_path, class: "navbar-socialive-item" %>
+            <% end %>
+
+
+              <div class="balance-div">
+                <%= link_to buy_rubies_path do %>
+                  <%= image_tag "ruby.svg" %><%= current_user.balance %>
+                <% end  %>
+              </div>
+
+              <!-- Profile picture and dropdown -->
+              <div class="navbar-socialive-item">
+                <div class="dropdown">
+
+              <!-- Notification -->
+                  <div class="navbar-notification-item">
+                  <% if current_user.profilepic != nil %>
+                <% avatar_url = cl_image_path current_user.profilepic.path %>
+                <% else %>
+                  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30"  %>
+                  <% end %>
+                   <!--    <span class="notify-badge">NEW</span> -->
+                  </div>
+
+              <!-- -->
+
+                  <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                  <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+                    <li>
+                      <%= link_to "/dashboard" do %>
+                        <i class="fa fa-dashboard"></i> <%= t(".profile", default: "Dashboard") %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "/" do %>
+                        <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: :delete do %>
+                        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            <% else %>
+
+            <!-- Login text link -->
+              <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+            <% end %>
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+        <!-- Dropdown list appearing on mobile only -->
+          <div class="navbar-socialive-item hidden-md hidden-lg">
+            <div class="dropdown">
+              <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+              <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/">Home</a></li>
+              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                      <% end %></li>
+            </ul>
+          </div>
+         </div>
+
+             <!-- Mobile Categories version -->
+
+              <div class="navbar-socialive-item hidden-md hidden-lg">
+                <div class="dropdown">
+                  <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
+                  <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
+                  <li><a href="/adventure">Adventure</a></li>
+                  <li><a href="/fashion">Fashion</a></li>
+                  <li><a href="/food">Food</a></li>
+                  <li><a href="/fitness">Fitness</a></li>
+                  <li><a href="/humour">Humour</a></li>
+                  <li><a href="/technology">Technology</a></li>
+                </ul>
+              </div>
+             </div>
+
+      </div>
+
+
+
+
+

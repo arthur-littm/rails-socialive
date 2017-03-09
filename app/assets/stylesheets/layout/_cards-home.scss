@@ -33,15 +33,22 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    // float: right;
     padding: 4px;
-    color: $gunmetal;
-    background: $yellow;
-    // border-radius: 2px;
+    color: #000B14;
+    background: #F2FF67;
     letter-spacing: 2px;
+    left: 0px;
+    top: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+
     strong {
       color: red;
       font-weight: lighter;
+      padding: 0 10px;
     };
   };
 }
@@ -281,4 +288,10 @@ p {
 .card-square:hover .card-square-background {
   opacity: 0.9;
   transition: opacity 0.8s;
+}
+
+.pulse-livestream-card {
+  position: absolute;
+  top: -20px;
+  right: 5px;
 }

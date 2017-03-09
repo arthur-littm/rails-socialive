@@ -35,6 +35,10 @@ body {
   margin-top: 115px;
   color: black;
 
+  &.livestreams_show {
+    margin-top: 60px;
+  }
+
   p, td {
     font-weight: 100;
   }

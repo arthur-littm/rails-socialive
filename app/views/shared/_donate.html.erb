@@ -1,6 +1,6 @@
 <div class="donation-form">
   <%= simple_form_for([ @livestream, @donation ], remote: true) do |f| %>
-    <%= f.input :rubies_donated, required: true, placeholder: "50", label: false, input_html: { min: '0', step: 'any' } %>
+    <%= f.input :rubies_donated, required: true, placeholder: "50", label: false, input_html: { min: '1', step: 'any' } %>
     <%= f.button :submit, 'Donate', class: 'btn btn-primary btn-donate' %>
      <span id="ruby-donate-positioning" > <%= image_tag "ruby.svg" %></span>
   <% end %>

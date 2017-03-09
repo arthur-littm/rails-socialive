@@ -1,5 +1,5 @@
 <div class="controls player-menu livestream-controls">
-  <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
+  <% if current_user == @livestream.user %>
   <div id="controls">
     <div id="preview">
       <!-- <div id="local-media"></div> -->
@@ -14,5 +14,16 @@
     <div id="log">
     </div>
   </div>
+
+  <% elsif current_user.tickets.where(livestream: @livestream).any? %>
+    <span id="ticket-bought">Ticket Bought</span>
+    <!-- <p class="instructions">Room Name:</p> -->
+    <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
+    <!-- <button class="hidden-buttons" id="button-join" id="button-join">Join Room</button>
+    <button  class="hidden-buttons" id="button-leave" id="button-leave">Leave Room</button> -->
+  <% elsif (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
+    <%= render 'shared/buy_ticket' %>
+  <% else %>
+    <p id="tickets-sold-out">Sold out</p>
   <% end %>
 </div>

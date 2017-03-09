@@ -1,8 +1,9 @@
 <!-- Second Navbar for livestrea -->
 
- <% content_for :navbar do %>
-      <%= render '/shared/navbar_livestream' %>
- <% end %>
+<% content_for :navbar do %>
+    <%= render '/shared/navbar_livestream' %>
+<% end %>
+
 
 <div class="container-fluid">
   <div class="row">
@@ -22,9 +23,11 @@
         </div>
       </div>
       <div class="control-flex">
-        <h4><%= @livestream.title %></h4>
-        <% if current_user == @livestream.user  %>
-          <button class="btn btn-primary " id="button-leave">End stream</button>
+        <% if false %>
+          <h4><%= @livestream.title %></h4>
+          <% if current_user == @livestream.user  %>
+            <button class="btn btn-primary " id="button-leave">End stream</button>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -37,9 +40,9 @@
         </div>
         <%= form_for @message, url: '#' do |f| %>
         <div class="form-group">
-          <%= f.text_area :body, class: 'form-control text-input-better-css' %>
+          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "Ask your questions to #{@livestream.user.first_name}..." %>
         </div>
-        <%= f.submit "send", class: 'btn btn-primary btn-sm send-message-btn' %>
+        <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
         <% end %>
         <%= render 'shared/donate.html.erb' %>
       </div>

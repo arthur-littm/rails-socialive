@@ -2,6 +2,7 @@
 
   <div class="video-buttons-inside" style="display: inline;">
     <div class="countdown-title" style="box-sizing: content-box;">
+      <h1><%= @livestream.title %></h1>
       <% if @livestream.hour_of_stream.future? %>
       <%= render 'livestreams/countdown' %>
       <% else %>
@@ -10,6 +11,4 @@
     </div>
     <%= render 'livestreams/video_button_join' %>
   </div>
-
-
 </div>

@@ -30,7 +30,7 @@
             <% if current_user.balance > 0 %>
               <div class="balance-div">
                 <%= link_to buy_rubies_path do %>
-                  <%= image_tag "ruby.svg" %><%= current_user.balance %>
+                  <%= image_tag "ruby.svg" %><%= current_user.balance %> <strong>rubies</strong>
                 <% end  %>
               </div>
              <% else %>

@@ -1,57 +1,9 @@
-#log {
-  display: none;
-}
+.video-box {
+  height: 630px;
+  overflow: hidden;
 
-
-#local-media video {
-  height: 434px;
-}
-
-#remote-media video {
-  height: 434px;
-}
-
-@media (max-width: 1199px) {
-  #local-media video {
-    height: 462px;
-    margin-left: 162px;
-  }
-
-  #remote-media video {
-    height: 462px;
-    margin-left: 162px;
-  }
-}
-
-@media (max-width: 992px) {
-  #local-media video {
-    height: 400px;
-    margin-left: 0px;
-  }
-
-  #remote-media video {
-    height: 400px;
-    margin-left: 0px;
-  }
-}
-
-
-@media (max-width: 671px) {
-  #local-media video {
-    height: 400px;
-    margin-left: 0px;
-  }
-
-  #remote-media video {
-    height: 400px;
-    margin-left: 0px;
-  }
-}
-
-@media (max-width: 587px) {
-  #local-media video {
-    height: 340px;
-    margin-left: 0px;
+  .video-message {
+    height: 100%;
   }
 
   #remote-media video {

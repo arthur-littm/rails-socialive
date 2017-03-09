@@ -303,11 +303,10 @@
 
 }(window.jQuery);
 
-// my code
 
 $(function(){
   $(".site-width").typed({
-    strings: ["Morning Yoga with Theo", "Learn to Cook with Evan", "Take great photos with Joy", "Prepare your adventure with Remi"],
+    strings: ["Life after a Bootcamp", "Travel to Vietnam", "Sassy Pair fashion style", "Street photography", "Climbing Mount Everest"],
     attr: "placeholder",
     typeSpeed: 100,
     loop: true

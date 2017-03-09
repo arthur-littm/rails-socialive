@@ -27,12 +27,19 @@
 
 
 
-
+            <% if current_user.balance > 0 %>
               <div class="balance-div">
                 <%= link_to buy_rubies_path do %>
                   <%= image_tag "ruby.svg" %><%= current_user.balance %>
                 <% end  %>
               </div>
+             <% else %>
+              <div class="balance-div">
+                <%= link_to buy_rubies_path do %>
+                  <%= image_tag "ruby.svg" %> Buy Rubies
+                <% end  %>
+              </div>
+             <% end %>
 
               <!-- Profile picture and dropdown -->
               <div class="navbar-socialive-item">

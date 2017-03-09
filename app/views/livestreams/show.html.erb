@@ -8,22 +8,15 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8">
       <div class="video-box">
-        <!-- message before video starts -->
-        <div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 90%), url(<%= cl_image_path @livestream.main_picture.path %>);">
-
-          <div class="video-buttons-inside" style="display: inline;">
-            <div class="countdown-title" style="box-sizing: content-box;">
-              <% if @livestream.hour_of_stream.future? %>
-              <%= render 'livestreams/countdown' %>
-              <% else %>
-              <p>Your livestream should start soon</p>
-              <% end %>
-            </div>
-            <%= render 'livestreams/video_button_join' %>
-          </div>
-        </div>
-        <!-- message before video starts -->
+        <!-- message before video starts BELOW -->
+        <%= render 'livestreams/video_message' %>
+        <!-- message before video starts ABOVE -->
+        <% if current_user.tickets.where(livestream: @livestream).any?%>
         <div id="remote-media" class="video-container">
+        <% else %>
+        <div class="video-container">
+        <%= render 'livestreams/video_message' %>
+        <% end %>
           <div id="local-media">
           </div>
         </div>
@@ -31,21 +24,7 @@
       <div class="control-flex">
         <h4><%= @livestream.title %></h4>
         <% if current_user == @livestream.user  %>
-          <!-- <p class="instructions">Room Name:</p> -->
-          <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-          <button class="btn btn-primary" id="button-preview">Preview Stream</button>
-          <button class="btn btn-primary" id="button-join">Start stream</button>
-          <button class="btn btn-primary" id="button-leave">End stream</button>
-        <% elsif current_user.tickets.where(livestream: @livestream).any? %>
-          <span id="ticket-bought">Ticket Bought</span>
-          <!-- <p class="instructions">Room Name:</p> -->
-          <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
-          <button id="button-join" id="button-join">Join Room</button>
-          <button id="button-leave" id="button-leave">Leave Room</button>
-        <% elsif (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
-          <%= render 'shared/buy_ticket' %>
-        <% else %>
-          <p id="tickets-sold-out">Sold out</p>
+          <button class="btn btn-primary " id="button-leave">End stream</button>
         <% end %>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <% if message.donation == true %>
 
 
-  <p class="card-text" style="background-color: #B7FFD4">
+  <p class="card-text bold">
     <%= image_tag message.user.icon %>
 
     <span style="color: <%= message.user.color %> ;"> <strong> <%= message.user.name %></strong> </span> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>

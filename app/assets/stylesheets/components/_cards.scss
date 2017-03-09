@@ -296,3 +296,12 @@
 }
 
 
+.card-text {
+  padding: 2px;
+  &.bold {
+    //background-color: #B7FFD4;
+    font-weight: bold;
+  }
+}
+
+

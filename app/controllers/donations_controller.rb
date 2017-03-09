@@ -19,7 +19,7 @@ class DonationsController < ApplicationController
       @message = Message.new
       @message.livestream = @livestream
       @message.user = current_user #this will have to be an account with username ADMIN and a special ICON
-      @message.body = "#{current_user.first_name.capitalize} donated #{@donation.rubies_donated}"
+      @message.body = "#{current_user.first_name.capitalize} donated #{@donation.rubies_donated} rubies"
       @message.donation = true
       @message.save
       respond_to do |format|

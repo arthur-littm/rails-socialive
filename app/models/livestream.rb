@@ -3,6 +3,7 @@ class Livestream < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :tickets, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :donations, dependent: :destroy
 
   has_attachment :main_picture
 

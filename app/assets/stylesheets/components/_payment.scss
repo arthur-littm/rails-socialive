@@ -17,8 +17,8 @@
   text-decoration: none;
   color:black;
   &:hover {
-    background-color:$gunmetal;
-    color:white;
+    background-color:$gray-medium;
+    color:black;
   }
 }
 
@@ -32,8 +32,8 @@
   text-decoration: none;
   color:black;
   &:hover {
-    background-color:$gunmetal;
-    color:white;
+    background-color:$gray-medium;
+    color:black;
   }
 }
 
@@ -46,8 +46,8 @@
   text-decoration: none;
   color:black;
    &:hover {
-    background-color:$gunmetal;
-    color:white;
+    background-color:$gray-medium;
+    color:black;
   }
 }
 
@@ -125,7 +125,9 @@ p {
     padding-left: 4px;
     font-size: 25px;
     color: black;
-    text-shadow: 0px 0px 10px $gray-darkest;
+    margin-left:9px;
+    margin-bottom:22px;
+    font-weight:300px;
     border-radius: 2px;
   };
 }

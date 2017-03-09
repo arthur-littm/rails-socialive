@@ -1,25 +1,18 @@
 <div class="controls player-menu livestream-controls">
-
   <% if current_user == @livestream.user && @livestream.hour_of_stream <= Time.now %>
   <div id="controls">
-
     <div id="preview">
-
       <!-- <div id="local-media"></div> -->
-
-      <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
-
+      <button class="btn-primary btn hidden" id="button-preview">Preview My Camera</button>
     </div>
     <div id="room-controls">
       <!-- <p class="instructions">Room Name:</p> -->
       <!-- <input id="room-name" type="text-area" placeholder="Enter a room name" /> -->
       <%#= if current_user == @livestream.user %>
-      <button class="btn-primary btn btn-float-left" id="button-join">Start stream</button>
-
+      <button class="btn-primary btn" id="button-join">Start stream</button>
     </div>
     <div id="log">
     </div>
   </div>
   <% end %>
-
 </div>

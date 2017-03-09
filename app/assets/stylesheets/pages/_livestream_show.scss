@@ -2,8 +2,13 @@
   color: #b1b1b1;
 }
 
+.control-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 #ticket-bought{
-  margin-top: 30px;
   background-color: $green;
   width: 110px;
   padding: 6px 3px 6px 3px;
@@ -12,7 +17,6 @@
 }
 
 #tickets-sold-out{
-  margin-top: 30px;
   background-color: $red;
   width: 66px;
   padding: 6px 3px 6px 3px;

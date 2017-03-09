@@ -10,7 +10,13 @@
     <link rel="icon" type="image/png" href="<%= image_path "favicon.png" %>" />
   </head>
   <body>
+
+  <% if content_for?(:navbar) %>
+     <%= yield(:navbar) %>
+    <% else %>
     <%= render 'shared/navbar' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/footer' %>

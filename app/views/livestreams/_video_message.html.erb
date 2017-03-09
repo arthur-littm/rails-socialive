@@ -1,0 +1,13 @@
+<div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 90%), url(<%= cl_image_path @livestream.main_picture.path %>);">
+
+  <div class="video-buttons-inside" style="display: inline;">
+    <div class="countdown-title" style="box-sizing: content-box;">
+      <% if @livestream.hour_of_stream.future? %>
+      <%= render 'livestreams/countdown' %>
+      <% else %>
+      <p>Your livestream should start soon</p>
+      <% end %>
+    </div>
+    <%= render 'livestreams/video_button_join' %>
+  </div>
+</div>

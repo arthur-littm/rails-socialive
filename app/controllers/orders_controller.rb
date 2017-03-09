@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
       @order.update(payment: charge.to_json, state: 'paid')
       current_user.balance += @order.rubies
       current_user.save
-      redirect_to order_path(@order)
+      # redirect_to order_path(@order)
+      redirect_to  session[:my_previous_url]
 
     rescue Stripe::CardError => e
       flash[:error] = e.message

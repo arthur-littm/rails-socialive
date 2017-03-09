@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   end
 
   def buy_rubies
-
+     session[:my_previous_url] = URI(request.referer || '').path
   end
 
   private

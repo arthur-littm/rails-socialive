@@ -8,7 +8,6 @@
           <div class="video-buttons-inside" style="display: inline;">
             <div class="countdown-title" style="box-sizing: content-box;">
               <% if @livestream.hour_of_stream.future? %>
-              <!--       <p>Your livestream starts in:</p> -->
               <%= render 'livestreams/countdown' %>
               <% else %>
               <p>Your livestream should start soon</p>
@@ -26,7 +25,6 @@
       <h4><%= @livestream.title %></h4>
     </div>
     <div class="col-xs-12 col-sm-4">
-      >>>>>>> fd3b6e887a9b8d508da563249d0c76cb85898d47
       <div class="chat-box">
         <div class="chat-container">
           <div id="messages" data-chat-room-id="<%= @livestream.id %>">
@@ -56,7 +54,7 @@
 <div id="controls">
   <div id="preview">
     <!-- <div id="local-media"></div> -->
-    <button class="btn-primary btn btn-float-left" id="button-preview">Preview My Camera</button>
+    <button class="btn-primary btn btn-float-left hidden-buttons" id="button-preview">Preview My Camera</button>
   </div>
 
   <div id="room-controls">
@@ -255,7 +253,6 @@
 <div class="social-icons-right-side">
   <div class=" text-center margin-bottom-20">
     <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
-
     <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
     <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
     <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
@@ -267,10 +264,8 @@
 
 <% content_for :after_js do %>
 <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
-<% end %>
 
-<% content_for :after_js do %>
-<script>// Check for WebRTC
+<script>
   var videoClient;
   var activeRoom;
   var previewMedia;
@@ -415,8 +410,9 @@
   // Activity log
   function log(message) {
     var logDiv = document.getElementById('log');
-    logDiv.innerHTML += '<p>&gt;&nbsp;' + message + '</p>';
-    logDiv.scrollTop = logDiv.scrollHeight;
+    // Leave this commented, log funtion not needed and causes error as log div doesnt exists...
+    // logDiv.innerHTML += '<p>&gt;&nbsp;' + message + '</p>';
+    // logDiv.scrollTop = logDiv.scrollHeight;
   }
 
   function leaveRoomIfJoined() {

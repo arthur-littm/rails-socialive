@@ -40,7 +40,7 @@
         </div>
         <%= form_for @message, url: '#' do |f| %>
         <div class="form-group">
-          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "Ask your questions to #{@livestream.user.first_name}..." %>
+          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
         </div>
         <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
         <% end %>

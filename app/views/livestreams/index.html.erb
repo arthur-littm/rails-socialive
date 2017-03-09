@@ -27,6 +27,14 @@
               </div>
 
         <div class="card-wrapper">
+          <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
+              <!-- display tag -->
+              <div class="card-live">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
           <div><h3 class="live-time"><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3></div>
           <div class="card-description card-wrapper-description">
             <h3><%= livestream.title %></h3>
@@ -86,6 +94,15 @@
               </div>
 
         <div class="card-wrapper">
+        <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 45.minutes %>
+              <!-- display tag -->
+              <div class="card-live-odd">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
+
           <!-- replace with livestream.time -->
           <div><h3 class="live-time-odd"><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3></div>
           <div class="card-description card-wrapper-description-odd">

@@ -96,8 +96,17 @@
 }
 
 .btn-buy-ticket{
-  margin-top: 37px;
+  background-color: #FECE84;
+  border: none;
   width: 100%;
+  letter-spacing: 5px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#ticket-price-next-to-buy-ticket-btn{
+  background: #E0FFEF;
+  text-align: center;
 }
 
 .social-icons-right-side{

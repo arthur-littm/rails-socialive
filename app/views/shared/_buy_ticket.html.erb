@@ -1,7 +1,7 @@
 <%= simple_form_for([@livestream, @ticket], remote: true) do |f| %>
   <%= f.button :submit, "Buy ticket", class: 'btn btn-primary btn-buy-ticket' %>
   <div id="ticket-price-next-to-buy-ticket-btn">
-    <%=  "#{@livestream.ticket_price}" %> <%=  image_tag "rubysmall.svg" %>
+    <%=  "#{@livestream.ticket_price}" %> rubies <%=  image_tag "rubysmall.svg" %>
   </div>
 
 <% end %>

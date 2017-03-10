@@ -23,12 +23,12 @@
         </div>
       </div>
       <div class="control-flex">
-        <% if false %>
-          <h4><%= @livestream.title %></h4>
+        <%# if false %>
+          <!-- <h4><%#= @livestream.title %></h4> -->
           <% if current_user == @livestream.user  %>
             <button class="btn btn-primary " id="button-leave">End stream</button>
           <% end %>
-        <% end %>
+        <%# end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
@@ -320,15 +320,21 @@
     }
 
     room.participants.forEach(function(participant) {
-      log("Already in Room: '" + participant.identity + "'");
-      $(".video-message").hide();
+      console.log("Already in Room: '" + participant.identity + "'");
+      if (participant.identity == 'true') {
+        $(".video-message").hide();
+      }
       participant.media.attach('#remote-media');
     });
 
     // When a participant joins, draw their video on screen
     room.on('participantConnected', function (participant) {
-      log("Joining: '" + participant.identity + "'");
-      $(".video-message").hide();
+      // console.log('hello');
+      // console.log(participant);
+      // console.log("Joining: '" + participant.identity + "'");
+      if (participant.identity == 'true') {
+        $(".video-message").hide();
+      }
       participant.media.attach('#remote-media');
     });
 

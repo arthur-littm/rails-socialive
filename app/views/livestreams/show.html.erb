@@ -250,6 +250,7 @@
     // document.getElementById('button-join').onclick = function () {
       // roomName = document.getElementById('room-name').value;
       roomName = '<%= @livestream.room_name %>'
+      var hasBoughtTicket = '<%= current_user.tickets.where(livestream: @livestream).any? %>';
 
       if (roomName) {
         // log("Joining room '" + roomName + "'...");
@@ -315,14 +316,13 @@
 
     // Draw local video, if not already previewing
     if (!previewMedia) {
-      console.log('start video');
       room.localParticipant.media.attach('#local-media');
     }
 
     room.participants.forEach(function(participant) {
-      console.log(videoClient);
-      console.log(participant.identity.split('-')[1]);
-      if (participant.identity.split('-')[1] == 'true') {
+      console.log(hasBoughtTicket);
+      if (participant.identity.split('-')[1] == 'true' && hasBoughtTicket == 'true') {
+        console.log('hide');
         $(".video-message").hide();
       }
       participant.media.attach('#remote-media');
@@ -330,13 +330,12 @@
 
     // When a participant joins, draw their video on screen
     room.on('participantConnected', function (participant) {
-      console.log('hello');
+
       // console.log(participant);
       // console.log("Joining: '" + participant.identity + "'");
-      console.log(participant.identity);
-      console.log(participant.identity.split('-')[1]);
-
-      if (participant.identity.split('-')[1] == 'true') {
+      // console.log(hasBoughtTicket);
+      if (participant.identity.split('-')[1] == 'true' && hasBoughtTicket == 'true') {
+        console.log('hide');
         $(".video-message").hide();
       }
       participant.media.attach('#remote-media');

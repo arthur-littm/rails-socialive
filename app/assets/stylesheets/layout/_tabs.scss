@@ -56,6 +56,11 @@
 .tabcontent {
     -webkit-animation: fadeEffect 1.5s;
     animation: fadeEffect 1.5s; /* Fading effect takes 1 second */
+    display: none;
+}
+
+.tabcontent:nth-of-type(1){
+  display:block;
 }
 
 @-webkit-keyframes fadeEffect {

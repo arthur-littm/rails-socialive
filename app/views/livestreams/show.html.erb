@@ -320,8 +320,9 @@
     }
 
     room.participants.forEach(function(participant) {
-      console.log("Already in Room: '" + participant.identity + "'");
-      if (participant.identity == 'true') {
+      console.log(videoClient);
+      console.log(participant.identity.split('-')[1]);
+      if (participant.identity.split('-')[1] == 'true') {
         $(".video-message").hide();
       }
       participant.media.attach('#remote-media');
@@ -329,10 +330,13 @@
 
     // When a participant joins, draw their video on screen
     room.on('participantConnected', function (participant) {
-      // console.log('hello');
+      console.log('hello');
       // console.log(participant);
       // console.log("Joining: '" + participant.identity + "'");
-      if (participant.identity == 'true') {
+      console.log(participant.identity);
+      console.log(participant.identity.split('-')[1]);
+
+      if (participant.identity.split('-')[1] == 'true') {
         $(".video-message").hide();
       }
       participant.media.attach('#remote-media');
@@ -341,6 +345,9 @@
     // When a participant disconnects, note in log
     room.on('participantDisconnected', function (participant) {
       log("Participant '" + participant.identity + "' left the room");
+      if (participant.identity.split('-')[1] == 'true') {
+        $(".video-message").show();
+      }
       participant.media.detach();
     });
 

@@ -86,7 +86,7 @@ class User < ApplicationRecord
 
   def ensure_username_uniqueness
     if self.username.blank?
-      self.name = self.first_name + " " + self.last_name
+      # self.name = self.first_name + " " + self.last_name
       firstnamePart = self.first_name.downcase.strip.gsub(' ', '').gsub(/[^\w-]/, '')
       lastnamePart = self.last_name.downcase.strip.gsub(' ', '').gsub(/[^\w-]/, '')
       username_part = firstnamePart+lastnamePart
@@ -96,7 +96,7 @@ class User < ApplicationRecord
         new_username = "#{username_part}#{num}"
         num += 1
       end
-      self.username = new_login
+      self.username = new_username
     end
   end
 

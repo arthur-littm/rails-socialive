@@ -26,6 +26,9 @@ gem 'autoprefixer-rails'
 gem 'money-rails'
 gem 'stripe'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 gem 'twilio-ruby'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'

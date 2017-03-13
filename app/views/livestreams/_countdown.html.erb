@@ -9,7 +9,7 @@
 </div>
 
 <script>
-var target_date = new Date("<%= @livestream.hour_of_stream.strftime('%b %e, %Y %H:%M:%S') %>").getTime(); // set the countdown date
+var target_date = new Date("<%= @livestream.hour_of_stream.localtime.strftime('%b %e, %Y %H:%M:%S') %>").getTime(); // set the countdown date
 console.log(target_date);
 var days, hours, minutes, seconds; // variables for time units
 

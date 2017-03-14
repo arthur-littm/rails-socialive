@@ -4,7 +4,7 @@
   <p class="card-text bold">
     <%= image_tag message.user.icon %>
 
-    <span style="color: <%= message.user.color %> ;"> <strong> <%= message.user.name %></strong> </span> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>
+     <strong> <%= link_to profile_path(message.user), target: :_blank do %>  <span style="color: <%= message.user.color %> ;"> <%= message.user.name %> </span> <% end %> </strong> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>
   </p>
 
 <% else %>
@@ -12,7 +12,7 @@
   <p class="card-text">
     <%= image_tag message.user.icon %>
 
-    <span style="color: <%= message.user.color %> ;"> <strong> <%= message.user.name %></strong> </span> : <%= message.body %>
+    <strong> <%= link_to profile_path(message.user), target: :_blank do %> <span style="color: <%= message.user.color %> ;"> <%= message.user.name %> </span>  <% end %></strong> : <%= message.body %>
   </p>
 
 <% end %>

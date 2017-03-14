@@ -24,14 +24,16 @@
       <div class="modal-body">
         <ul>
           <% @user.following.all.each do |following| %>
-          <li class="list-inline">
-          <% if following.profilepic != nil %>
-             <%= cl_image_tag following.profilepic.path, class:"avatar" %>
-             <% else %>
+            <%= link_to profile_path(following) do %>
+              <li class="list-inline">
+              <% if following.profilepic != nil %>
+                 <%= cl_image_tag following.profilepic.path, class:"avatar" %>
+              <% else %>
+              <% end %>
+              <%= following.first_name %> <%= following.last_name %></li>
             <% end %>
-            <%= following.first_name %> <%= following.last_name %></li>
-            <% end %>
-          </ul>
+          <% end %>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -51,12 +53,14 @@
       <div class="modal-body">
         <ul>
           <% @user.followers.all.each do |follower| %>
+          <%= link_to profile_path(follower) do %>
           <li class="list-inline">
           <% if follower.profilepic != nil %>
              <%= cl_image_tag follower.profilepic.path, class:"avatar" %>
              <% else %>
             <% end %>
             <%= follower.first_name %> <%= follower.last_name %></li>
+            <% end %>
             <% end %>
           </ul>
       </div>

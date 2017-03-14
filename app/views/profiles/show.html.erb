@@ -1,0 +1,180 @@
+<!-- Second Navbar for livestrea -->
+<hr style="border-color: #b1b1b1;">
+
+<div class="container">
+  <div class="row">
+    <!-- this col is the profile -->
+    <div class="col-xs-12 col-md-8">
+      <div class="profile-wrapper margin-bottom-20">
+        <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
+        <div class="row">
+          <!-- Below is the avatar div -->
+          <div class="col-xs-12 col-sm-4">
+            <div>
+              <% if @user.profilepic != nil %>
+              <%= cl_image_tag(@user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
+              <% else %>
+              <% end %>
+            </div>
+          </div>
+          <!-- Below is the about user div-->
+          <div class="col-xs-12 col-sm-8">
+            <h3><%= @user.first_name.capitalize + " " + @user.last_name.capitalize.first + "." %></h3>
+          </div>
+
+          <div class="col-xs-12 col-sm-8 stats-elements">
+            <%= render 'shared/follow_form' %>
+            <%= render 'shared/stats' %>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
+            <% sum = 0 %>
+            <% @user.livestreams.each do |livestream| %>
+            <% sum += livestream.tickets_sold %>
+            <% end %>
+            <p class= "stats-elements"><%= sum %> Total views</p>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
+            <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
+          </div>
+
+          <% if @user.fav1title != "" %>
+          <div class="col-xs-12 profile-about">
+            <div class="margin-bottom-20">
+              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
+            </div>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @user.fav1title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"> <%= @user.fav1 %></p>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @user.fav2title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"><%= @user.fav2 %></p>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @user.fav3title %></h4>
+            <p class="margin-left-20 margin-top-3"><%= @user.fav3 %></p>
+          </div>
+          <% end %>
+        </div>
+
+        <% if @user.images != []%>
+        <!-- this is the row for the picture gallery -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="black-photo-gallery-wrapper text-center">
+              <% @user.images.each do |photo| %>
+              <%= cl_image_tag photo.path, :width=>300 %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <% if @user.livestreamer == true %>
+    <div class="col-xs-12 col-md-4">
+      <br>
+      <div class="text-center">
+        <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
+      </div>
+      <br>
+      <br>
+  <!-- <div class="profile-wrapper">
+    <p>Sonya's calendar</p>
+  </div> -->
+  <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+    <% @livestreams.first(3).each do |livestream| %>
+    <div class="profile-wrapper margin-bottom-35">
+
+      <!-- This is start of the card for an upcoming event -->
+      <div class="future-livestreams-card">
+        <!-- need to put logic here to truncate title if over 58 characters -->
+        <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+        <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+        <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+        <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+        <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+        <% if current_user == livestream.user  %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+        <% elsif current_user.tickets.where(livestream: livestream).any? %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+        <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+        <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+        <% else %>
+        <%= simple_form_for [livestream, @ticket] do |f| %>
+        <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+        <% end %>
+        <% end %>
+      </div>
+      <!-- This is the end of the card for an upcoming event -->
+    </div>
+    <% end %>
+  </div>
+
+<!-- This is the top fans table -->
+<div class="col-xs-12 col-md-4 text-center" style="float: right;" >
+  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Top fans</h3>
+  <div class="profile-wrapper">
+    <div class="leaderboard">
+      <ol class="leaderboard-list">
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 1924</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 919</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 450</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 246</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 139</small>
+        </li>
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 98</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 96</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 82</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 75</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 71</small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- This is the social media follow div -->
+<div class="social-icons-right-side">
+  <div class=" text-center margin-bottom-20">
+    <h4> Follow <%= @user.first_name %> on . . .</h4>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
+  </div>
+</div>
+</div>
+</div>
+
+
+

@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   before_create :set_color
   before_create :set_icon
+  before_create :ensure_username_uniqueness
 
     def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -81,8 +82,10 @@ class User < ApplicationRecord
     self.icon = icon_pick
   end
 
+  def to_param
+    self.username
+  end
 
- before_create :ensure_username_uniqueness
 
   def ensure_username_uniqueness
     if self.username.blank?

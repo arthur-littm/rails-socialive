@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
-  get 'donations/create'
-
-  get 'questions/create'
-
-  get 'tickets/create'
+  # get 'donations/create'
+  # get 'questions/create'
+  # get 'tickets/create'
 
   mount ActionCable.server => '/cable'
   mount Attachinary::Engine => "/attachinary"
   devise_for :users,
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   root to: 'pages#home'
+
   resources :livestreams do
     resources :tickets, only: [:create]
     resources :questions, only: [:create]
     resources :donations, only: [:create]
   end
+
   get '/dashboard' => 'pages#dashboard'
   get '/become-a-livestreamer' => 'pages#become_a_livestreamer'
 
@@ -42,6 +43,8 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
   #################################
+
+  resources :profiles, only: [:show, :index]
 
 # This line should be at the end
   get '/:category' => 'livestreams#category_show'

@@ -1,50 +1,46 @@
+<div class="login-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-6 col-md-offset-3">
+          <div class="form-login">
 
-<div class="container">
-  <div class="row">
+            <h3 class="text-center" style="margin-top: 0px;">Create your profile</h3>
 
-<!-- left side of the page (from tablet to large displays) -->
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <div class="dashboard-wrapper-grey-left">
+            <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
 
-        <h3 style="margin-top: 0px;">Create your profile</h3>
+              <%= f.input :profilepic, as: :attachinary, label: "Profile picture", required: true %>
+              <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
+              <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
 
-          <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
+            <h3 class="text-center">Bio</h3>
+                <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+            <h3 class="text-center">Social</h3>
+                <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
+                <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
+                <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
+                <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL" %>
+                <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL" %>
 
-            <%= f.input :profilepic, as: :attachinary, label: "Profile picture", required: true %>
+            <h3 class="text-center">Gallery photos</h3>
+                <%= f.input :images, as: :attachinary, label: false %>
 
-            <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
-            <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
-        <h3>Bio</h3>
-            <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
-        <h3>Social</h3>
-            <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
-            <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
-            <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
-            <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL" %>
-            <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL" %>
+            <h3 style="margin-top: 0px;">Ask yourself three questions!</h3>
 
+              <%= f.input :fav1title, label: false, placeholder: "Question 1" %>
+              <%= f.input :fav1, label: false, placeholder: "Answer to question 1" %>
+              <%= f.input :fav2title, label: false, placeholder: "Question 2" %>
+              <%= f.input :fav2, label: false, placeholder: "Answer to question 2" %>
+              <%= f.input :fav3title, label: false, placeholder: "Question 3" %>
+              <%= f.input :fav3, label: false, placeholder: "Answer to question 3" %>
 
-        <h3>Gallery photos</h3>
-            <%= f.input :images, as: :attachinary, label: false %>
-      </div>
-    </div>
+            <h3 class="text-center">T&Cs</h3>
+                <%= f.input :livestreamer, label: "I agree to Socialive livestreaming terms and conditions", required: true %>
+                <%= f.button :submit, "Become a livestreamer", class: 'btn btn-primary btn-block', required: true %>
 
-<!-- right side of the page (from tablet to large displays) -->
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <div class="dashboard-wrapper-grey-right">
-        <h3 style="margin-top: 0px;">Tell us about things you like</h3>
-            <%= f.input :fav1title, label: "My 1st favorite thing", placeholder: "Title 1" %>
-            <%= f.input :fav1, label: false, placeholder: "Running in the rye" %>
-            <%= f.input :fav2title, label: "My 2nd favorite thing", placeholder: "Title 2" %>
-            <%= f.input :fav2, label: false, placeholder: "Rowing on ponds" %>
-            <%= f.input :fav3title, label: "My 3rd favorite thing", placeholder: "Title 3" %>
-            <%= f.input :fav3, label: false, placeholder: "Whale watching" %>
-
-        <h3>T&Cs</h3>
-            <%= f.input :livestreamer, label: "I agree to Socialive livestreaming terms and conditions", required: true %>
-            <%= f.button :submit, "Become a livestreamer", class: 'btn btn-primary btn-block', required: true %>
           <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  # get 'donations/create'
-  # get 'questions/create'
-  # get 'tickets/create'
+  
+  ActiveAdmin.routes(self)
+
 
   mount ActionCable.server => '/cable'
   mount Attachinary::Engine => "/attachinary"

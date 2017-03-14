@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :donations, dependent: :destroy
 
   has_attachment :profilepic
+  has_attachment :identification
   has_attachments :images, maximum: 10
 
   # Include default devise modules. Others available are:

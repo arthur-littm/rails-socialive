@@ -41,7 +41,7 @@ class PagesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:livestreamer, :facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :first_name, :last_name, :following, :followers, images: [])
+    params.require(:user).permit(:livestreamer, :facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :first_name, :last_name, :following, :followers, :identification, images: [])
 
   end
 

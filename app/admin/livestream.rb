@@ -3,7 +3,9 @@ ActiveAdmin.register Livestream do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 # permit_params :list, :of, :attributes, :on, :model
-  permit_params :main_picture, :hour_of_stream, :tickets_available, :category, :user_id, :title, :ticket_price, :description
+  permit_params :main_picture, :hour_of_stream, :tickets_available,
+                :category, :user_id, :title, :ticket_price,
+                :description, :title, :room_name
 # or
 #
 # permit_params do

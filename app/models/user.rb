@@ -82,4 +82,23 @@ class User < ApplicationRecord
   end
 
 
+ before_create :ensure_username_uniqueness
+
+  def ensure_username_uniqueness
+    if self.username.blank?
+      # self.name = self.first_name + " " + self.last_name
+      firstnamePart = self.first_name.downcase.strip.gsub(' ', '').gsub(/[^\w-]/, '')
+      lastnamePart = self.last_name.downcase.strip.gsub(' ', '').gsub(/[^\w-]/, '')
+      username_part = firstnamePart+lastnamePart
+      new_username = username_part.dup
+      num = 1
+      while(User.where(:username => new_username).count > 0)
+        new_username = "#{username_part}#{num}"
+        num += 1
+      end
+      self.username = new_username
+    end
+  end
+
+
 end

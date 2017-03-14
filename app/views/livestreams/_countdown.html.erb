@@ -9,7 +9,7 @@
 </div>
 
 <script>
-var target_date = new Date("<%= @livestream.hour_of_stream.strftime('%b %e, %Y %H:%M:%S') %>").getTime(); // set the countdown date
+var target_date = new Date("<%= @livestream.hour_of_stream.localtime.strftime('%b %e, %Y %H:%M:%S') %>").getTime(); // set the countdown date
 console.log(target_date);
 var days, hours, minutes, seconds; // variables for time units
 
@@ -24,21 +24,23 @@ function getCountdown(){
   // find the amount of "seconds" between now and target
   var current_date = new Date().getTime();
 
-
   var seconds_left = (target_date - current_date) / 1000;
 
-  days = pad( parseInt(seconds_left / 86400) );
+  days = pad( Math.max(0, parseInt(seconds_left / 86400)));
   seconds_left = seconds_left % 86400;
 
-  hours = pad( parseInt(seconds_left / 3600) );
+  hours = pad( Math.max(0, parseInt(seconds_left / 3600)));
   seconds_left = seconds_left % 3600;
 
-  minutes = pad( parseInt(seconds_left / 60) );
-  seconds = pad( parseInt( seconds_left % 60 ) );
+  minutes = pad( Math.max(0, parseInt(seconds_left / 60)));
+  seconds = pad( Math.max(0, parseInt( seconds_left % 60)));
 
   // format countdown string + set tag value
   countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>";
+
 }
+
+
 
 function pad(n) {
   return (n < 10 ? '0' : '') + n;

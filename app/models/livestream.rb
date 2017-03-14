@@ -18,6 +18,27 @@ class Livestream < ApplicationRecord
 
   before_create :set_room_name
 
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    # list of attribute used to build an Algolia record
+    attributes :title, :description, :category
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes ['title', 'category', 'unordered(description)']
+
+    # the `customRanking` setting defines the ranking criteria use to compare two matching
+    # records in case their text-relevance is equal. It should reflect your record popularity.
+    # ex: customRanking ['desc(likes_count)']
+  end
+
+
+# delete this section once Algolia is installed
+
   def self.search(pattern)
     user = User.where('first_name LIKE ? OR last_name LIKE ?', "%#{pattern}%", "%#{pattern}%").first
     if pattern.blank?  # blank? covers both nil and empty string

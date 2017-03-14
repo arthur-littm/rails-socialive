@@ -14,7 +14,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
                 <!-- display tag -->
                 <div class="card-live">
                   <p>
@@ -34,7 +34,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -47,7 +47,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -72,7 +72,7 @@
 
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -101,7 +101,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -121,7 +121,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -134,7 +134,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -158,7 +158,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -184,7 +184,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -204,7 +204,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -217,7 +217,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -241,7 +241,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -269,7 +269,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -289,7 +289,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -302,7 +302,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -326,7 +326,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -352,7 +352,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -372,7 +372,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -385,7 +385,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -409,7 +409,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -435,7 +435,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -455,7 +455,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -468,7 +468,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -492,7 +492,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>
@@ -519,7 +519,7 @@
               <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
               <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream && Time.now < livestream.hour_of_stream + 120.minutes %>
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
               <!-- display tag -->
               <div class="card-live">
                 <p>
@@ -539,7 +539,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -552,7 +552,7 @@
               <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
               </div>
               <div class="card-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
                 <div class="card-square-background">
                 <%= image_tag "logo.svg", class:'logo' %></div>
@@ -576,7 +576,7 @@
                 <%# end %>
               </div>
               <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
+                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
               </div>
               <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
             </div>

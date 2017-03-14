@@ -13,6 +13,9 @@ gem 'omniauth-facebook'
 gem 'cloudinary', '1.1.0'
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
+gem 'cancan'
+gem 'pundit'
+gem 'formtastic', '~> 3.0'
 
 
 gem 'sass-rails'
@@ -25,6 +28,9 @@ gem 'autoprefixer-rails'
 
 gem 'money-rails'
 gem 'stripe'
+
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem 'twilio-ruby'
 gem 'momentjs-rails', '>= 2.9.0'

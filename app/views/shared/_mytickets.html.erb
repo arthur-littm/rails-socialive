@@ -1,1 +1,87 @@
-MY TICKETS PAGE TO EDIT
+<div class="container">
+  <div class="black">
+    <div class="container">
+      <div class="row card-dashboard">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class="row">
+          <% if @tickets.count == 0 %>
+          <div class="mystreams-title-white">
+            <h1>You have no tickets</h1>
+            </div>
+          <% else %>
+                <% @tickets.all.each do |ticket| %>
+
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="card-square" >
+
+                    <% if ticket.livestream.main_picture? %>
+                    <div class="card-square-image" style="background-image: url('<%= cl_image_path ticket.livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+
+                    <!-- if livestream is live: yellow tag -->
+                    <% if Time.now > ticket.livestream.hour_of_stream.localtime && Time.now < ticket.livestream.hour_of_stream.localtime + 120.minutes %>
+                    <!-- display tag -->
+                    <div class="card-live">
+                      <p><strong>LIVE </strong>now</p>
+                    </div>
+                    <% else %>
+                    <% end %>
+
+                    <div class="card-black-title-banner">
+                      <div class="card-title">
+                        <p><%= ticket.livestream.title %></p>
+                      </div>
+                    </div>
+                    <div class="card-first-name" >
+                    <p><%= ticket.livestream.user.first_name %> <%= ticket.livestream.user.last_name[0] if ticket.livestream.user.last_name %>.</p>
+                    </div>
+                    <div class="card-date">
+                      <p><%= ticket.livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if ticket.livestream.hour_of_stream %></p>
+                    </div>
+                      <div class="card-square-background">
+                      <%= image_tag "logo.svg", class:'logo' %></div>
+                    </div>
+                    <% else %>
+                    <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
+                    <p><%= ticket.livestream.title %></p>
+                    <div class="card-first-name" >
+
+                    <p><%= ticket.livestream.user.first_name %> <%= ticket.livestream.user.last_name[0] if ticket.livestream.user.last_name %>.</p>
+                    </div>
+                    <div class="card-date">
+                      <p><%= ticket.livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if ticket.livestream.hour_of_stream %></p>
+                    </div>
+                      <div class="card-square-background">
+                      <%= image_tag "logo.svg", class:'logo' %></div>
+                    </div>
+                    <% end %>
+
+                    <div class="card-square-info">
+                      <p><strong><%= ticket.livestream.title %></strong></p>
+                      <p><%= ticket.livestream.description %></p>
+                    </div>
+                    <div class="card-square-avatar">
+                      <% if ticket.livestream.user.profilepic != nil %>
+                      <%= cl_image_tag ticket.livestream.user.profilepic.path, class: "avatar" %>
+                      <% else %>
+                      <% if ticket.livestream.user.facebook_picture_url != nil %>
+                      <%= image_tag ticket.livestream.user.facebook_picture_url, class: "avatar" %>
+                      <% else %>
+                      <% end %>
+                      <% end %>
+                      <%# end %>
+                    </div>
+                    <div class="card-square-date">
+                      <p><%= ticket.livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if ticket.livestream.hour_of_stream %></p>
+                    </div>
+                    <%= link_to "", livestream_path(ticket.livestream), class: "card-square-link" %>
+                  </div>
+                  </div>
+
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

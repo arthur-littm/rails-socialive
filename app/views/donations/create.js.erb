@@ -1,4 +1,8 @@
 
+  // Render new review form with errors
+<% if @donation_success == false %>
+  console.log("insufficient rubies")
+  alert("you have insufficient rubies")
+<% else %>
   $('#donation_rubies_donated').val('');
-
-
+<% end %>

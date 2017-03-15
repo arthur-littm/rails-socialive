@@ -1,6 +1,7 @@
 class DonationsController < ApplicationController
   def create
     @livestream = Livestream.find(params[:livestream_id])
+    @donation_success = nil
 
     if current_user.balance >= params[:donation][:rubies_donated].to_i
       #this creates the donation
@@ -22,13 +23,21 @@ class DonationsController < ApplicationController
       @message.body = "#{current_user.first_name.capitalize} donated #{@donation.rubies_donated} rubies"
       @message.donation = true
       @message.save
+      @donation_success = true
+
       respond_to do |format|
        format.html { redirect_to livestream_path(@livestream) }
        format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
     else
-      redirect_to buy_rubies_path, alert: "You have insufficient rubies"
+      @donation_success = false
+      respond_to do |format|
+       format.html { redirect_to buy_rubies_path, alert: "You have insufficient rubies" }
+       format.js  # <-- idem
+      end
+
     end
+
   end
 end
 

@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 20170314140432) do
     t.string   "icon"
     t.integer  "balance",                default: 0
     t.integer  "earned_balance",         default: 0
-    t.boolean  "admin",                  default: false, null: false
     t.string   "username"
+    t.boolean  "admin",                  default: false, null: false
     t.string   "identification"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

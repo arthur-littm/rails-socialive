@@ -14,6 +14,8 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @mylivestreams = Livestream.all.where(user_id: current_user)
+    @tickets = Ticket.where(user: @user)
+    @my_subscriptions = @user.following
   end
 
   def become_a_livestreamer

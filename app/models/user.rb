@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # include AlgoliaSearch
+
   has_many :livestreams, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -26,6 +28,10 @@ class User < ApplicationRecord
   before_create :set_color
   before_create :set_icon
   before_create :ensure_username_uniqueness
+
+  # algoliasearch do
+  # end
+
 
     def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -83,9 +89,9 @@ class User < ApplicationRecord
     self.icon = icon_pick
   end
 
-  def to_param
-    self.username
-  end
+  # def to_param
+  #   self.username
+  # end
 
 
   def ensure_username_uniqueness
@@ -103,6 +109,5 @@ class User < ApplicationRecord
       self.username = new_username
     end
   end
-
 
 end

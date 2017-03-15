@@ -8,3 +8,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require_tree .
+//= require algolia/v3/algoliasearch.min

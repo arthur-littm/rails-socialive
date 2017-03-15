@@ -51,7 +51,7 @@ h1, h2, h3, h4, p, li {
   outline: 0;
 }
 
-#logo-banner{
+#logo-banner {
   // margin-right: 37px;
   // margin-bottom: 108px;
   position: absolute;
@@ -61,11 +61,20 @@ h1, h2, h3, h4, p, li {
 
 }
 
-.banner-content{
+.banner-content {
   margin-bottom: 3px;
   color: white;
   font-weight: lighter;
   font-size: 28px;
+}
+
+.banner-become-content {
+  margin-bottom: 65px;
+  p {
+    color: white;
+    font-weight: lighter;
+    font-size: 32px;
+  }
 }
 
 .banner{
@@ -79,8 +88,12 @@ h1, h2, h3, h4, p, li {
 
 }
 
-.green {
+.red-shadow {
   // color: $green;
   box-shadow: inset 0px -10px #520D0C;
+}
 
+.green-shadow {
+  // color: $green;
+  box-shadow: inset 0px -10px $green;
 }

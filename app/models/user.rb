@@ -79,7 +79,7 @@ class User < ApplicationRecord
   end
 
   def set_icon
-    icon_pick = ["diamond.svg", "mask.svg", "balloon.svg"].sample
+    icon_pick = ["diamond.svg", "mask.svg", "balloon.svg", "beer.svg", "clown.svg", "disc.svg", "cupcake.svg", "fireworks.svg", "flowers.svg", "loveglasses.svg", "mic.svg", "water.svg"].sample
     self.icon = icon_pick
   end
 

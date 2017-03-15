@@ -83,9 +83,9 @@ class User < ApplicationRecord
     self.icon = icon_pick
   end
 
-  def to_param
-    self.username
-  end
+  # def to_param
+  #   self.username
+  # end
 
 
   def ensure_username_uniqueness

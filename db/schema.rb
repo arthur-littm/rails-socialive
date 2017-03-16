@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314140432) do
+ActiveRecord::Schema.define(version: 20170315115729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20170314140432) do
     t.integer  "tickets_sold",        default: 0
     t.integer  "tickets_available"
     t.string   "category"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "user_id"
     t.string   "title"
     t.integer  "chat_room"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20170314140432) do
     t.datetime "hour_of_stream"
     t.integer  "ticket_price"
     t.text     "description"
+    t.boolean  "ended",               default: false
+    t.boolean  "live",                default: false
     t.index ["user_id"], name: "index_livestreams_on_user_id", using: :btree
   end
 
@@ -157,8 +159,8 @@ ActiveRecord::Schema.define(version: 20170314140432) do
     t.string   "icon"
     t.integer  "balance",                default: 0
     t.integer  "earned_balance",         default: 0
-    t.string   "username"
     t.boolean  "admin",                  default: false, null: false
+    t.string   "username"
     t.string   "identification"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

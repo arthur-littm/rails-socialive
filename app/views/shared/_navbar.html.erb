@@ -45,7 +45,7 @@
               <% if current_user.profilepic != nil %>
                 <% avatar_url = cl_image_path current_user.profilepic.path %>
               <% else %>
-                <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30"  %>
+                <% avatar_url = current_user.facebook_picture_url || image_path("default-avatar.png")  %>
               <% end %>
             </div>
 

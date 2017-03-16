@@ -5,7 +5,7 @@ ActiveAdmin.register Livestream do
 # permit_params :list, :of, :attributes, :on, :model
   permit_params :main_picture, :hour_of_stream, :tickets_available,
                 :category, :user_id, :title, :ticket_price,
-                :description, :title, :room_name
+                :description, :title, :room_name, :ended, :live
 # or
 #
 # permit_params do

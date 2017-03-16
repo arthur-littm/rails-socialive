@@ -1,9 +1,11 @@
 <%  if current_user.balance >= @livestream.ticket_price && (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
   window.location.replace("<%= livestream_path(@livestream) %>");
-<% elsif current_user.balance >= @livestream.ticket_price  %>
+<% elsif @livestream.tickets_available - @livestream.tickets_sold == 0  %>
   alert("tickets are sold out")
   console.log('tickets are sold out')
-<% else %>
+<% elsif @initial_balance < @livestream.ticket_price %>
   window.location.replace("<%= buy_rubies_path %>");
   alert("You have insufficient rubies")
+<% else %>
+  window.location.replace("<%= livestream_path(@livestream) %>");
 <% end %>

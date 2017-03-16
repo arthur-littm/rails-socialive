@@ -7,7 +7,7 @@
       <div class="row">
         <% Livestream.last(3).each do |livestream| %>
                     <!-- Livestream disappears if it ended -->
-          <% if Time.now > livestream.hour_of_stream.localtime && livestream.ended = false %>
+          <% if Time.now > livestream.hour_of_stream.localtime && livestream.ended == false %>
               <div class="col-xs-12 col-sm-6 col-md-4">
 
                 <div class="card-square" >

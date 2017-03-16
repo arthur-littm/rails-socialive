@@ -1,4 +1,4 @@
-<%  if current_user.balance >= @livestream.ticket_price && (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
+<%  if @initial_balance >= @livestream.ticket_price && (@livestream.tickets_available - @livestream.tickets_sold) > 0 %>
   window.location.replace("<%= livestream_path(@livestream) %>");
 <% elsif @livestream.tickets_available - @livestream.tickets_sold == 0  %>
   alert("tickets are sold out")

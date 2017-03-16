@@ -4,7 +4,6 @@
     <%= render '/shared/navbar_livestream' %>
 <% end %>
 
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -18,19 +17,19 @@
         <div class="video-container">
         <%= render 'livestreams/video_message' %>
         <% end %>
-          <div id="local-media">
-          </div>
+        <div id="local-media">
         </div>
       </div>
-      <div class="control-flex">
-        <%# if false %>
-          <!-- <h4><%#= @livestream.title %></h4> -->
-          <% if current_user == @livestream.user  %>
-            <button class="btn btn-primary " id="button-leave">End stream</button>
-          <% end %>
-        <%# end %>
-      </div>
     </div>
+    <div class="control-flex">
+      <%# if false %>
+      <!-- <h4><%#= @livestream.title %></h4> -->
+      <% if current_user == @livestream.user  %>
+        <button class="btn btn-primary " id="button-leave">End stream</button>
+      <% end %>
+      <%# end %>
+    </div>
+  </div>
     <div class="col-xs-12 col-sm-4">
       <div class="chat-box">
         <div class="chat-container">
@@ -42,7 +41,7 @@
         <div class="form-group">
           <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
         </div>
-        <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+          <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
         <% end %>
         <%= render 'shared/donate.html.erb' %>
       </div>
@@ -104,7 +103,6 @@
             <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
             <p class="margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
           </div>
-
         </div>
 
         <!-- this is the row for the picture gallery -->
@@ -125,37 +123,36 @@
       <div class="text-center">
         <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
       </div>
-      <br>
-      <br>
-  <!-- <div class="profile-wrapper">
-    <p>Sonya's calendar</p>
-  </div> -->
-  <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-  <% @livestreams.first(3).each do |livestream| %>
-  <div class="profile-wrapper margin-bottom-35">
+      <br><br>
+      <!-- <div class="profile-wrapper">
+        <p>Sonya's calendar</p>
+      </div> -->
+      <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+      <% @livestreams.first(3).each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-35">
 
-    <!-- This is start of the card for an upcoming event -->
-    <div class="future-livestreams-card">
-      <!-- need to put logic here to truncate title if over 58 characters -->
-      <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
-      <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
-      <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-      <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
-      <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-      <% if current_user == @livestream.user  %>
-      <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
-      <% elsif current_user.tickets.where(livestream: livestream).any? %>
-      <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
-      <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
-      <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
-      <% else %>
-      <%= simple_form_for [livestream, @ticket] do |f| %>
-      <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
-      <% end %>
-      <% end %>
+        <!-- This is start of the card for an upcoming event -->
+        <div class="future-livestreams-card">
+        <!-- need to put logic here to truncate title if over 58 characters -->
+        <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+        <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+        <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+        <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+        <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+        <% if current_user == @livestream.user  %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+        <% elsif current_user.tickets.where(livestream: livestream).any? %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+        <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+        <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+        <% else %>
+          <%= simple_form_for [livestream, @ticket] do |f| %>
+          <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- This is the end of the card for an upcoming event -->
     </div>
-    <!-- This is the end of the card for an upcoming event -->
-  </div>
   <% end %>
 </div>
 

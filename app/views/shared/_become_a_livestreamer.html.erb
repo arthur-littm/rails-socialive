@@ -3,27 +3,25 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-6 col-md-offset-3">
-          <div class="form-login">
+        <div class="form-login">
+          <h4 class="text-center margin-top-10">Fill in your profile</h4>
+          <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
+            <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
+            <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
+            <%= f.input :profilepic, as: :attachinary, label: "Please upload a new profile picture", required: true %>
 
-            <h3 class="text-center margin-top-10">Please fill in your profile</h3>
-            <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
-              <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
-              <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
-              <%= f.input :profilepic, as: :attachinary, label: "Please upload a new profile picture", required: true %>
+          <h4 class="text-center margin-top-10">Bio</h4>
+            <%= f.input :bio.downcase, label: false, placeholder: "Please write a short bio. You'll be able to edit it later ;-)" %>
+          <h4 class="text-center">Social</h4>
+            <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
+            <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
+            <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
 
-            <h3 class="text-center margin-top-10">Bio</h3>
-              <%= f.input :bio.downcase, label: false, placeholder: "Please write a short bio. You'll be able to edit it later ;-)" %>
-            <h3 class="text-center">Social</h3>
-              <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
-              <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
-              <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
+          <h4 class="text-center margin-top-10">Identification</h4>
+            <%= f.input :identification, as: :attachinary, label: "Please upload a copy of your ID or passport", required: true %>
 
-            <h3 class="text-center margin-top-10">Identification</h3>
-              <%= f.input :identification, as: :attachinary, label: "Please upload a copy of your ID or passport", required: true %>
-
-              <%= f.input :livestreamer, label: "I agree to Socialive livestreaming terms and conditions", required: true %>
-            <br>
-              <%= f.button :submit, "Become a livestreamer", class: 'btn btn-primary btn-block', required: true %>
+            <%= f.input :livestreamer, label: "I agree to Socialive livestreaming terms and conditions", required: true %>
+            <%= f.button :submit, "Become a livestreamer", class: 'btn btn-primary btn-block', required: true %>
 
           <% end %>
         </div>

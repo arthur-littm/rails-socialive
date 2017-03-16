@@ -26,6 +26,7 @@ class User < ApplicationRecord
   before_create :set_color
   before_create :set_icon
   before_create :ensure_username_uniqueness
+  before_create :set_balance
 
     def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -79,13 +80,13 @@ class User < ApplicationRecord
   end
 
   def set_icon
-    icon_pick = ["diamond.svg", "mask.svg", "balloon.svg"].sample
+    icon_pick = ["diamond.svg", "mask.svg", "balloon.svg", "beer.svg", "clown.svg", "disc.svg", "cupcake.svg", "fireworks.svg", "flowers.svg", "loveglasses.svg", "mic.svg", "water.svg"].sample
     self.icon = icon_pick
   end
 
-  def to_param
-    self.username
-  end
+  # def to_param
+  #   self.username
+  # end
 
 
   def ensure_username_uniqueness
@@ -102,6 +103,10 @@ class User < ApplicationRecord
       end
       self.username = new_username
     end
+  end
+
+  def set_balance
+    self.balance += 500
   end
 
 

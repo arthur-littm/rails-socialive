@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   ActiveAdmin.routes(self)
 
 
@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :tickets, only: [:create]
     resources :questions, only: [:create]
     resources :donations, only: [:create]
+    member do
+        get :flop
+        get :flop_start
+    end
   end
 
   get '/dashboard' => 'pages#dashboard'

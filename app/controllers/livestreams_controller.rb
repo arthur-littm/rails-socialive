@@ -46,11 +46,6 @@ class LivestreamsController < ApplicationController
     @livestreams = Livestream.all.where(category: params[:category])
   end
 
-  def first_three
-    @ordered_livestreams = Livestream.all.order(:hour_of_stream)
-    @sorted = []
-  end
-
   # def following
   #   @title = "Following"
   #   @users = @user.following

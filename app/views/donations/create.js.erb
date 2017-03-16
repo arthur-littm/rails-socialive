@@ -5,4 +5,5 @@
   alert("you have insufficient rubies")
 <% else %>
   $('#donation_rubies_donated').val('');
+  $('.balance-div').html("<%= j render 'shared/navbar_livestream' %> ");
 <% end %>

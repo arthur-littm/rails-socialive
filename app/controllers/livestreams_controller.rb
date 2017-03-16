@@ -1,6 +1,6 @@
 class LivestreamsController < ApplicationController
 
-  before_action :set_livestream, only: [:show]
+  before_action :set_livestream, only: [:show, :flop, :flop_start]
 
   def index
     @livestreams = Livestream.search(params[:query])
@@ -58,6 +58,21 @@ class LivestreamsController < ApplicationController
   #   render followers_path
   # end
 
+  def flop
+    @livestream.ended = true
+    @livestream.live = false
+
+    @livestream.save
+    redirect_to livestream_path(@livestream)
+  end
+
+  def flop_start
+    @livestream.ended = false
+    @livestream.live = true
+
+    @livestream.save
+    redirect_to livestream_path(@livestream)
+  end
 
 
  private

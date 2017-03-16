@@ -25,7 +25,9 @@
       <%# if false %>
       <!-- <h4><%#= @livestream.title %></h4> -->
       <% if current_user == @livestream.user  %>
-        <button class="btn btn-primary " id="button-leave">End stream</button>
+
+        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave", remote: true %>
+        <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
       <% end %>
       <%# end %>
     </div>

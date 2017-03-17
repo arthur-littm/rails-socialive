@@ -94,19 +94,21 @@
 <!-- Category cards -->
 
 <!-- adventure category -->
-<% if @adventure_livestreams.count != 0 %>
+
+<!-- Livestream disappears if it ended -->
+    <% adventure_not_ended_livestreams = [] %>
+    <% @adventure_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+    <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+          <% adventure_not_ended_livestreams << livestream %>
+      <% end %>
+  <% end %>
+<% if adventure_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @adventure_livestreams.first.category.capitalize %></h4>
       <div class="row">
-              <!-- Livestream disappears if it ended -->
-          <% adventure_not_ended_livestreams = [] %>
-          <% @adventure_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% adventure_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% adventure_not_ended_livestreams.first(3).each do |livestream| %>
+
+        <% adventure_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -184,19 +186,21 @@
 <% end  %>
 
 <!-- fashion category -->
-<% if @fashion_livestreams.count != 0 %>
+
+ <!-- Livestream disappears if it ended -->
+      <% fashion_not_ended_livestreams = [] %>
+      <% @fashion_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+      <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+            <% fashion_not_ended_livestreams << livestream %>
+        <% end %>
+    <% end %>
+<% if fashion_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @fashion_livestreams.first.category.capitalize %></h4>
       <div class="row">
-            <!-- Livestream disappears if it ended -->
-          <% fashion_not_ended_livestreams = [] %>
-          <% @fashion_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% fashion_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% fashion_not_ended_livestreams.first(3).each do |livestream| %>
+
+        <% fashion_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -276,19 +280,22 @@
 <!-- Add more categories when cards are finished with sufficient code -->
 
 <!-- food category -->
-<% if @food_livestreams.count != 0 %>
+
+    <!-- Livestream disappears if it ended -->
+  <% food_not_ended_livestreams = [] %>
+  <% @food_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+        <% food_not_ended_livestreams << livestream %>
+    <% end %>
+<% end %>
+
+<% if food_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @food_livestreams.first.category.capitalize %></h4>
       <div class="row">
-            <!-- Livestream disappears if it ended -->
-          <% food_not_ended_livestreams = [] %>
-          <% @food_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% food_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% food_not_ended_livestreams.first(3).each do |livestream| %>
+
+        <% food_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -366,19 +373,21 @@
 <% end  %>
 
 <!-- fitness category -->
-<% if @fitness_livestreams.count != 0 %>
+
+    <!-- Livestream disappears if it ended -->
+  <% fitness_not_ended_livestreams = [] %>
+  <% @fitness_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+        <% fitness_not_ended_livestreams << livestream %>
+    <% end %>
+<% end %>
+
+<% if fitness_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @fitness_livestreams.first.category.capitalize %></h4>
       <div class="row">
-            <!-- Livestream disappears if it ended -->
-          <% fitness_not_ended_livestreams = [] %>
-          <% @fitness_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% fitness_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% fitness_not_ended_livestreams.first(3).each do |livestream| %>
+        <% fitness_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -457,19 +466,21 @@
 
 <!-- humour category -->
 
-<% if @humour_livestreams.count != 0 %>
+<!-- Livestream disappears if it ended -->
+  <% humour_not_ended_livestreams = [] %>
+  <% @humour_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+        <% humour_not_ended_livestreams << livestream %>
+    <% end %>
+<% end %>
+
+<% if humour_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @humour_livestreams.first.category.capitalize %></h4>
       <div class="row">
-          <!-- Livestream disappears if it ended -->
-          <% humour_not_ended_livestreams = [] %>
-          <% @humour_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% humour_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% humour_not_ended_livestreams.first(3).each do |livestream| %>
+
+        <% humour_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -548,19 +559,22 @@
 
 
 <!-- technology category -->
-<% if @technology_livestreams.count != 0 %>
+
+<!-- Livestream disappears if it ended -->
+  <% technology_not_ended_livestreams = [] %>
+  <% @technology_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
+        <% technology_not_ended_livestreams << livestream %>
+    <% end %>
+<% end %>
+
+<% if technology_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
       <h4><%= @technology_livestreams.first.category.capitalize %></h4>
       <div class="row">
-                   <!-- Livestream disappears if it ended -->
-          <% technology_not_ended_livestreams = [] %>
-          <% @technology_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-          <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-                <% technology_not_ended_livestreams << livestream %>
-            <% end %>
-        <% end %>
-              <% technology_not_ended_livestreams.first(3).each do |livestream| %>
+
+        <% technology_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >

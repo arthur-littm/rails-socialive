@@ -45,7 +45,11 @@
         </div>
           <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
         <% end %>
+
+        <!-- Dislay the donation feature if streamer added the donation feature in the creat_a_livestream_form -->
+        <% if @livestream.doantion_feature == true %>
         <%= render 'shared/donate.html.erb' %>
+        <% end %>
       </div>
     </div>
   </div>

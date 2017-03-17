@@ -77,7 +77,7 @@ class LivestreamsController < ApplicationController
 
  private
   def livestream_params
-    params.require(:livestream).permit(:title, :category, :main_picture, :tickets_available, :hour_of_stream, :ticket_price, :description)
+    params.require(:livestream).permit(:title, :category, :main_picture, :tickets_available, :hour_of_stream, :ticket_price, :description, :doantion_feature)
   end
 
   def set_livestream

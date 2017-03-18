@@ -303,10 +303,10 @@
   }
 }
 
-// this is for the shop
+// this is specific to the shop
 
 .card-square-shop {
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 5px;
   color: $gray;
   height: 200px;
@@ -337,13 +337,13 @@
 }
 
 .card-square-shop-add {
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 5px;
   height: 200px;
   width: 250px;
   border-radius: 3px;
   position: relative;
-  padding: 0;
+  padding-top: 20px;
   // background-color: $gray;
   border: 4px dashed $green;
   box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
@@ -351,6 +351,11 @@
     font-size: 22px;
     text-align: center;
     padding: 10px;
-    color: $green !important;
   };
+}
+
+.card-square-shop-add:hover {
+  // border: 4px dashed $gray;
+  color: $green;
+  box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
 }

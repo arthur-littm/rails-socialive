@@ -1,6 +1,6 @@
-<div class="home-wrapper">
-  <div class="cards-square-container container">
-  <h3>Featured products</h3>
+<div class="shop-wrapper">
+  <div class="container">
+  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Featured products</h3>
     <div class="row">
 
     <% Product.where(livestream: @livestream).all.each do |product| %>
@@ -16,13 +16,14 @@
 
       <% if current_user = @livestream.user %>
 
+      <%= link_to new_livestream_product_path(@livestream) do %>
       <div class="col-xs-12 col-sm-4 col-md-3">
         <div class="card-square-shop-add" >
-        <p><%= link_to "Add product to the shop", new_livestream_product_path(@livestream) %></p>
+        <p>Add product to the shop</p>
         </div>
       </div>
       <% end %>
-
+      <% end %>
     </div>
   </div>
 </div>

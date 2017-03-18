@@ -362,10 +362,11 @@
 .card-square-shop-add:hover {
   // border: 4px dashed $gray;
   // background-color: $gray-light;
-  // opacity: 0.5;
-  // transition: opacity 0.8s;
   // color: $green !important;
+  // comment the next 2 if using modal
+
+  opacity: 0.5;
+  transition: opacity 0.8s;
   cursor: pointer;
   box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
-
 }

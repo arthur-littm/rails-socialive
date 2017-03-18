@@ -335,3 +335,22 @@
   height: 100%;
   transition: ease-in-out, opacity .5s ease-in-out;
 }
+
+.card-square-shop-add {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 200px;
+  width: 250px;
+  border-radius: 3px;
+  position: relative;
+  padding: 0;
+  // background-color: $gray;
+  border: 4px dashed $green;
+  box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
+  p {
+    font-size: 22px;
+    text-align: center;
+    padding: 10px;
+    color: $green !important;
+  };
+}

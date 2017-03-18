@@ -5,12 +5,12 @@
 
     <% Product.where(livestream: @livestream).all.each do |product| %>
 
-      <div class="col-xs-12 col-sm-4 col-md-3">
+      <a href="<%= product.url %>""><div class="col-xs-12 col-sm-4 col-md-3">
         <div class="card-square-shop" >
           <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
           </div>
         </div>
-      </div>
+      </div></a>
 
     <% end %>
 

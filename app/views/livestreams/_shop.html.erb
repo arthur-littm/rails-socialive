@@ -1,4 +1,4 @@
-<% if Product.where(livestream: @livestream).present? %>
+<% if Product.where(livestream: @livestream).present? || current_user == @livestream.user %>
 
 <div class="shop-wrapper">
   <div class="container">

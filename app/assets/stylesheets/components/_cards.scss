@@ -356,6 +356,9 @@
 
 .card-square-shop-add:hover {
   // border: 4px dashed $gray;
-  color: $green;
+  // background-color: $gray-light;
+  opacity: 0.5;
+  // color: $green !important;
   box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
+
 }

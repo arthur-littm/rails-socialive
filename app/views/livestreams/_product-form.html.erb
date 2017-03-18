@@ -1,14 +1,14 @@
-<div class="login-wrapper">
+<!-- <div class="login-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+      <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4"> -->
         <div class="text-center">
-          <div class="form-login">
-            <div class="text-center">
+<!--           <div class="form-login"> -->
+            <!-- <div class="text-center">
               <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Add a product</h3>
               <br>
               <br>
-              </div>
+              </div> -->
               <%= simple_form_for [@livestream, @product] do |f| %>
               <%= f.error_notification %>
 
@@ -17,12 +17,13 @@
               <%= f.input :url, placeholder: "url of the product", required: true, label: false %>
 
               <%= f.input :product_pic, as: :attachinary, required: true, label: "Choose a picture for your product" %>
+
               <%= f.button :submit, class: 'btn btn-primary btn-block' %>
             </div>
             <% end %>
-          </div>
+<!--           </div> -->
         </div>
-      </div>
+<!--       </div>
     </div>
   </div>
 </div>

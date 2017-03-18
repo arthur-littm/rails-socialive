@@ -16,6 +16,11 @@ class ProductsController < ApplicationController
     @product.livestream = @livestream
     @product.user = current_user
     @product.save
+    if @product.save
+      redirect_to livestream_path(@livestream)
+    else
+      render :new
+    end
   end
 
   def show

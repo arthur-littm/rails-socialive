@@ -32,7 +32,7 @@
 
       <div class="balance-div">
         <%= link_to buy_rubies_path do %>
-          <%= image_tag "ruby.svg" %><%= current_user.balance %>
+          <%= image_tag "ruby.svg" %><%= number_with_delimiter(current_user.balance) %>
         <% end  %>
       </div>
 

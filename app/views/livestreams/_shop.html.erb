@@ -1,21 +1,28 @@
-<h1>this is the shop</h1>
-
-<%= link_to "Add product to the shop", new_livestream_product_path(@livestream) %>
-
 <div class="home-wrapper">
   <div class="cards-square-container container">
+  <h3>Featured products</h3>
     <div class="row">
 
     <% Product.all.each do |product| %>
 
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card-square" >
-          <div class="card-square-image" style="background-image: url('<%= cl_image_path product.product_pic.path, crop: :fill, effect: :grayscale %>');">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <div class="card-square-shop" >
+          <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
           </div>
         </div>
       </div>
 
     <% end %>
+
+      <% if current_user = @livestream.user %>
+
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <div class="card-square-shop" >
+        <%= link_to "Add product to the shop", new_livestream_product_path(@livestream) %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
 
     </div>
   </div>

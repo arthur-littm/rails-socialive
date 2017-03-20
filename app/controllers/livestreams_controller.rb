@@ -14,6 +14,7 @@ class LivestreamsController < ApplicationController
     @ticket = Ticket.new
     @question = Question.new
     @donation = Donation.new
+    @product = Product.new
   end
 
   def new

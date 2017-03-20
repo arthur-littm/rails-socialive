@@ -29,12 +29,21 @@
           <%= link_to t(".top_call_to_action", default: "Become a livestreamer"), become_a_livestreamer_path, class: "navbar-socialive-item" %>
       <% end %>
 
+        <!-- ruby balance -->
 
-      <div class="balance-div">
-        <%= link_to buy_rubies_path do %>
-          <%= image_tag "ruby.svg" %><%= current_user.balance %>
-        <% end  %>
-      </div>
+        <% if current_user.balance > 0 %>
+          <div class="balance-div">
+            <%= link_to buy_rubies_path do %>
+              <%= image_tag "ruby.svg" %> <%= number_with_delimiter(current_user.balance) %> <strong>rubies</strong>
+            <% end  %>
+          </div>
+        <% else %>
+          <div class="balance-div">
+            <%= link_to buy_rubies_path do %>
+              <%= image_tag "ruby.svg" %> Buy Rubies
+            <% end  %>
+          </div>
+        <% end %>
 
         <!-- Profile picture and dropdown -->
       <div class="navbar-socialive-item">

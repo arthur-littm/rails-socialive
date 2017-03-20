@@ -20,8 +20,6 @@
               <%= f.input :hour_of_stream, as: :string, placeholder: "Date and time of livestream", label: false, input_html: {id: 'datepicker-stream'}, required: true %>
               <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour", "technology"], prompt: "Choose a category", required: true, label: false %>
 
-              <!-- placeholder for timezone dropdown -->
-
               <%= f.input :tickets_available, label: false, placeholder: "Number of tickets available for sale",  input_html: { min: '1', step: 'any' } %>
 
               <div class="input-container form-group float required livestream_ticket_price">

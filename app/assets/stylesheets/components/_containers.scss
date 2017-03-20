@@ -274,8 +274,19 @@ video {
 
 // this is specific to the shop
 
-
 .shop-wrapper {
   position: relative;
   // padding: 10px 20px 20px 20px ;
 }
+
+.widget-box {
+  height: 300px;
+}
+
+.var-footerless{
+  .timeline-Footer {
+    display: none !important;
+  }
+}
+
+

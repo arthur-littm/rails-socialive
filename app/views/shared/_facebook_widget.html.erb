@@ -1,0 +1,21 @@
+<% if @livestream.user.facebooklink != ""  %>
+
+
+<div class="col-xs-12 col-md-4 text-center">
+  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Facebook</h3>
+<br><br>
+  <div class="fb-page" data-href="<%= @livestream.user.facebooklink %>" data-tabs="timeline" data-width="320" data-height="280" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true"><blockquote cite="<%= @livestream.user.facebooklink %>" class="fb-xfbml-parse-ignore"><a href="<%= @livestream.user.facebooklink %>"></a></blockquote>
+  </div>
+
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=144775166041382";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<% end %>

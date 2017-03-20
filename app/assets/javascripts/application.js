@@ -4,7 +4,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require cable
+//= require shop
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require_tree .
+

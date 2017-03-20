@@ -45,7 +45,9 @@
         </div>
           <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
         <% end %>
-        <%= render 'shared/donate.html.erb' %>
+        <% if @livestream.donation_feature == true  %>
+          <%= render 'shared/donate.html.erb' %>
+        <% end  %>
       </div>
     </div>
   </div>

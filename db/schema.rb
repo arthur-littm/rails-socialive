@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315115729) do
+ActiveRecord::Schema.define(version: 20170317153752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20170315115729) do
     t.integer  "rubies"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.float    "price"
+    t.integer  "livestream_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["livestream_id"], name: "index_products_on_livestream_id", using: :btree
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "inquiry"
     t.integer  "user_id"
@@ -171,6 +183,8 @@ ActiveRecord::Schema.define(version: 20170315115729) do
   add_foreign_key "livestreams", "users"
   add_foreign_key "messages", "livestreams"
   add_foreign_key "messages", "users"
+  add_foreign_key "products", "livestreams"
+  add_foreign_key "products", "users"
   add_foreign_key "questions", "livestreams"
   add_foreign_key "questions", "users"
   add_foreign_key "tickets", "livestreams"

@@ -1,0 +1,413 @@
+<!-- Second Navbar for livestream -->
+
+<% content_for :navbar do %>
+    <%= render '/shared/navbar_livestream' %>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="video-box">
+        <!-- message before video starts BELOW -->
+        <%= render 'livestreams/video_message' %>
+        <!-- message before video starts ABOVE -->
+        <% if current_user.tickets.where(livestream: @livestream).any?%>
+        <div id="remote-media" class="video-container">
+        <% else %>
+        <div class="video-container">
+        <%= render 'livestreams/video_message' %>
+        <% end %>
+        <div id="local-media">
+        </div>
+      </div>
+    </div>
+    <div class="control-flex">
+      <%# if false %>
+      <!-- <h4><%#= @livestream.title %></h4> -->
+      <% if current_user == @livestream.user  %>
+
+        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave", remote: true %>
+        <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
+      <% end %>
+      <%# end %>
+    </div>
+  </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="chat-box">
+        <div class="chat-container">
+          <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+            <%= render @livestream.messages %>
+          </div>
+        </div>
+        <%= form_for @message, url: '#' do |f| %>
+        <div class="form-group">
+          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+        </div>
+          <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+        <% end %>
+        <% if @livestream.donation_feature == true  %>
+          <%= render 'shared/donate.html.erb' %>
+        <% end  %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr style="border-color: #b1b1b1;">
+
+<%= render 'shop' %>
+
+
+<div class="container">
+  <div class="row">
+    <!-- this col is the profile -->
+    <div class="col-xs-12 col-md-8">
+      <div class="profile-wrapper margin-bottom-20">
+        <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
+        <div class="row">
+          <!-- Below is the avatar div -->
+          <div class="col-xs-12 col-sm-4">
+            <div>
+              <% if @livestream.user.profilepic != nil %>
+              <%= cl_image_tag(@livestream.user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
+              <% else %>
+              <% end %>
+            </div>
+          </div>
+          <!-- Below is the about user div-->
+          <div class="col-xs-12 col-sm-8">
+            <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
+          </div>
+
+          <div class="col-xs-12 col-sm-8 stats-elements">
+            <%= render 'shared/follow_form' %>
+            <%= render 'shared/stats' %>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
+            <% sum = 0 %>
+            <% @user.livestreams.each do |livestream| %>
+            <% sum += livestream.tickets_sold %>
+            <% end %>
+            <p class= "stats-elements"><%= sum %> Total views</p>
+          </div>
+
+          <div class="col-xs-12 col-sm-8">
+            <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
+          </div>
+
+          <div class="col-xs-12 profile-about">
+            <div class="margin-bottom-20">
+              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
+            </div>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav1title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"> <%= @livestream.user.fav1 %></p>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav2title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"><%= @livestream.user.fav2 %></p>
+
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
+            <p class="margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
+          </div>
+        </div>
+
+        <!-- this is the row for the picture gallery -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="black-photo-gallery-wrapper text-center">
+              <% @livestream.user.images.each do |photo| %>
+              <%= cl_image_tag photo.path, :width=>300 %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <br>
+      <div class="text-center">
+        <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
+      </div>
+      <br><br>
+      <!-- <div class="profile-wrapper">
+        <p>Sonya's calendar</p>
+      </div> -->
+      <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+      <% @livestreams.first(3).each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-35">
+
+        <!-- This is start of the card for an upcoming event -->
+        <div class="future-livestreams-card">
+        <!-- need to put logic here to truncate title if over 58 characters -->
+        <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+        <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+        <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+        <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+        <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+        <% if current_user == @livestream.user  %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+        <% elsif current_user.tickets.where(livestream: livestream).any? %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+        <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+        <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+        <% else %>
+          <%= simple_form_for [livestream, @ticket] do |f| %>
+          <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- This is the end of the card for an upcoming event -->
+    </div>
+  <% end %>
+</div>
+
+<!-- This is the top fans table -->
+<div class="col-xs-12 col-md-4 text-center">
+  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Top fans</h3>
+  <div class="profile-wrapper">
+    <div class="leaderboard">
+      <ol class="leaderboard-list">
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 1924</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 919</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 450</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 246</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 139</small>
+        </li>
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 98</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 96</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 82</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 75</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 71</small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- This is the social media follow div -->
+<div class="social-icons-right-side">
+  <div class=" text-center margin-bottom-20">
+    <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
+  </div>
+</div>
+</div>
+</div>
+
+
+<% content_for :after_js do %>
+<script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
+
+<script>
+  var videoClient;
+  var activeRoom;
+  var previewMedia;
+  var identity;
+  var roomName;
+
+  if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
+    alert('Socialive only supports chrome & firefox');
+  }
+
+  // $.getJSON('/token', function () {
+    identity = '<%= current_user.first_name %>';
+
+    // Create a Video Client and connect to Twilio
+    videoClient = new Twilio.Video.Client('<%= generate_twilio_token %>');
+    $('#room-controls').css('display', 'block');
+
+
+    <% if current_user != @livestream.user %>
+    // Bind button to join room
+    // document.getElementById('button-join').onclick = function () {
+      // roomName = document.getElementById('room-name').value;
+      roomName = '<%= @livestream.room_name %>'
+      var hasBoughtTicket = '<%= current_user.tickets.where(livestream: @livestream).any? %>';
+
+      if (roomName) {
+        // log("Joining room '" + roomName + "'...");
+
+        videoClient.connect({ to: roomName, video: false, audio: false}).then(roomJoined,
+          function(error) {
+            log('Could not connect to Twilio: ' + error.message);
+          });
+      } else {
+        alert('<%= @livestream.room_name %>');
+      }
+    // };
+    <% else %>
+      // Bind button to join room
+      document.getElementById('button-join').onclick = function () {
+
+        // start message to disappear
+        $(".video-message").hide();
+        $(".video-buttons-inside").toggle();
+        $(".video-buttons-bottom").toggle();
+        // start message to disappear
+        // roomName = document.getElementById('room-name').value;
+        roomName = '<%= @livestream.room_name %>'
+
+        if (roomName) {
+          // log("Joining room '" + roomName + "'...");
+
+          videoClient.connect({ to: roomName}).then(roomJoined,
+            function(error) {
+              log('Could not connect to Twilio: ' + error.message);
+            });
+        } else {
+          alert('No Twilio room_name for livestream');
+        }
+      };
+
+       // Bind button to leave room
+       document.getElementById('button-leave').onclick = function () {
+    // showing ending message
+
+    // the line below tries to get the start button inside but it doesn't work
+                           // $(".video-buttons-inside").toggle();
+                           $(".video-buttons-bottom").toggle();
+                           $(".video-box").html("<h2 class='over-message'>The livestream is now over</h2>");
+    // showing ending message
+    log('Leaving room...');
+    activeRoom.disconnect();
+  };
+  //});
+  <% end  %>
+
+
+  // Successfully connected!
+  function roomJoined(room) {
+    activeRoom = room;
+
+    // log("Joined as '" + identity + "'");
+    $('#button-join').css('display', 'none');
+    $('#button-leave').css('display', 'inline');
+
+    // document.getElementById('button-join').style.display = 'none';
+    // document.getElementById('button-leave').style.display = 'inline';
+
+    // Draw local video, if not already previewing
+    if (!previewMedia) {
+      room.localParticipant.media.attach('#local-media');
+    }
+
+    room.participants.forEach(function(participant) {
+      console.log(hasBoughtTicket);
+      if (participant.identity.split('-')[1] == 'true' && hasBoughtTicket == 'true') {
+        console.log('hide');
+        $(".video-message").hide();
+      }
+      participant.media.attach('#remote-media');
+    });
+
+    // When a participant joins, draw their video on screen
+    room.on('participantConnected', function (participant) {
+
+      // console.log(participant);
+      // console.log("Joining: '" + participant.identity + "'");
+      // console.log(hasBoughtTicket);
+      if (participant.identity.split('-')[1] == 'true' && hasBoughtTicket == 'true') {
+        console.log('hide');
+        $(".video-message").hide();
+      }
+      participant.media.attach('#remote-media');
+    });
+
+    // When a participant disconnects, note in log
+    room.on('participantDisconnected', function (participant) {
+      log("Participant '" + participant.identity + "' left the room");
+      if (participant.identity.split('-')[1] == 'true') {
+        $(".video-message").show();
+      }
+      participant.media.detach();
+    });
+
+    // When we are disconnected, stop capturing local video
+    // Also remove media for all remote participants
+    room.on('disconnected', function () {
+      log('Left');
+      room.localParticipant.media.detach();
+      room.participants.forEach(function(participant) {
+        participant.media.detach();
+      });
+      activeRoom = null;
+      $('#button-join').css('display', 'none');
+      $('#button-leave').css('display', 'inline');
+    });
+  }
+
+  //  Local video preview
+  $('#button-preview').onclick = function () {
+    if (!previewMedia) {
+      previewMedia = new Twilio.Video.LocalMedia();
+      Twilio.Video.getUserMedia().then(
+        function (mediaStream) {
+          previewMedia.addStream(mediaStream);
+          previewMedia.attach('#local-media');
+        },
+        function (error) {
+          console.error('Unable to access local media', error);
+          log('Unable to access Camera and Microphone');
+        });
+    };
+  };
+
+  // Activity log
+  function log(message) {
+    var logDiv = document.getElementById('log');
+    // Leave this commented, log funtion not needed and causes error as log div doesnt exists...
+    // logDiv.innerHTML += '<p>&gt;&nbsp;' + message + '</p>';
+    // logDiv.scrollTop = logDiv.scrollHeight;
+  }
+
+  function leaveRoomIfJoined() {
+    if (activeRoom) {
+      activeRoom.disconnect();
+    }
+  }
+
+  $('#message_body').keypress(function(e){
+    if(e.which == 13){
+     $(this).closest('form').submit();
+   }
+ });
+
+    // if(typeof video !== undefined){
+    //   $(".video-message").hide();
+    // }
+
+  </script>
+  <% end %>
+

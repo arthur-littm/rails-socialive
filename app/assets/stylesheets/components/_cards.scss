@@ -375,3 +375,8 @@
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
+
+#shopbtndiv:hover {
+  opacity: 0.5;
+  transition: opacity 0.8s;
+}

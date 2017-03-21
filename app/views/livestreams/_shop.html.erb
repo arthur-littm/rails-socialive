@@ -1,3 +1,6 @@
+<% liveproducts = [] %>
+<% otherproducts = [] %>
+
 <% if Product.where(livestream: @livestream).present? || current_user == @livestream.user %>
 
 <div class="shop-wrapper">
@@ -6,7 +9,7 @@
     <div class="row">
 
     <% Product.where(livestream: @livestream).all.each do |product| %>
-
+      <% liveproducts << product %>
       <a href="<%= product.url %>" target="_blank"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card-square-shop" >
           <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
@@ -16,12 +19,14 @@
 
     <% end %>
 
-      <% if current_user == @livestream.user %>
+<!-- capping the number of items at 4 in the shop -->
+      <% if current_user == @livestream.user && Product.where(livestream: @livestream).all.count < 4 %>
 
       <%= link_to new_livestream_product_path(@livestream) do %>
       <div class="col-xs-12 col-sm-4 col-md-3">
         <div class="card-square-shop-add" data-toggle="modal" data-target="#myModal">
         <p>Add product to the shop</p>
+        <p>(max. 4)</p>
 
         <!-- test for modal below -->
           <!-- Modal -->
@@ -39,16 +44,48 @@
               </div>
             </div>
           </div> -->
-
         <!-- test for modal above -->
 
         </div>
       </div>
       <% end %>
       <% end %>
-    </div>
 
-    <!-- placeholder to display other user's products -->
+      </div>
+
+      <div class="row" style="text-align: center; margin-top: 20px;">
+        <div id="shopbtndiv">
+        <a id="shopbtn" onclick="shopFunction()"><%=image_tag("arrow.png", :align=> "middle")%></a>
+        </div>
+      </div>
+      <!-- below: display other user's products -->
+
+      <div id="otherproducts" style="display:none">
+
+      <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Other products from <%= @user.first_name %></h3>
+
+      <div class="row">
+
+      <% Product.where(user: @user).all.each do |product| %>
+      <% if (liveproducts).include? product %>
+      <% else %>
+      <% otherproducts << product %>
+      <% end %>
+      <% end %>
+
+      <% otherproducts.each do |product| %>
+      <a href="<%= product.url %>" target="_blank"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card-square-shop" >
+          <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
+          </div>
+        </div>
+      </div></a>
+      <% end %>
+
+      </div>
+      </div>
+
+      <!-- above: display other user's products -->
 
   </div>
 </div>

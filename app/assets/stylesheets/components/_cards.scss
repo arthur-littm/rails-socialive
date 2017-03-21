@@ -370,3 +370,13 @@
   cursor: pointer;
   box-shadow: 2px 4px 16px rgba(255,255,255,0.25);
 }
+
+.rotated-image {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+#shopbtndiv:hover {
+  opacity: 0.5;
+  transition: opacity 0.8s;
+}

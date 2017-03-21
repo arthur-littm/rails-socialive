@@ -13,11 +13,13 @@
       <!-- Different navigation if login or not -->
       <% if user_signed_in? %>
         <% if current_user.livestreamer %>
-          <div class="pulse-container">
+          <div class="pulse-container" data-toggle="modal" data-target="#goliveModal">
             <div class="pulse-livestream blink_me" style="color: red; font-size: 35px;"><strong>•</strong></div>
-          <%# image_tag "red_pulse.gif", class: "avatar pulse-livestream" %>
-          <%= link_to t(".top_call_to_action", default: "Go Live"), new_livestream_path, class: "navbar-socialive-item" %>
+
+          <div><a>Go Live</a></div>
+
           </div>
+
         <% else %>
           <%= link_to t(".top_call_to_action", default: "Become a livestreamer"), become_a_livestreamer_path, class: "navbar-socialive-item" %>
         <% end %>
@@ -145,5 +147,20 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="goliveModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Create your next livestream!</h3>
+      </div>
 
+      <div class="modal-body">
+        <%= render 'shared/livestream-form' %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal above -->
 

@@ -35,25 +35,22 @@
 
       </div>
 
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title" style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Add a product</h3>
+            </div>
 
-      <!-- test for modal below -->
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog modal-md">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title" style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Add a product</h3>
-              </div>
-
-              <div class="modal-body">
-                <%= render 'product-form' %>
-              </div>
+            <div class="modal-body">
+              <%= render 'product-form' %>
             </div>
           </div>
         </div>
-      <!-- test for modal above -->
-
+      </div>
+      <!-- Modal above -->
 
       <div class="row" style="text-align: center; margin-top: 20px;">
         <div id="shopbtndiv">

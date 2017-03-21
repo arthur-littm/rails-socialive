@@ -1,22 +1,7 @@
-// $(document).ready(function() {
-
-  // $('#shopbtn').on("click", function() {
-  //  $('#otherproducts').hide();
-  // });
-
 function shopFunction() {
 
   var div = document.getElementById("shopbtndiv");
-
-  console.log(div.class)
-  if (div.class === 'rotated-image') {
-      div.class = 'rotated-image2';
-  }
-  else {
-      div.class = 'rotated-image';
-  }
-  console.log(div.class)
-
+      div.classList.toggle('rotated-image');
 
   var x = document.getElementById('otherproducts');
   if (x.style.display === 'none') {
@@ -25,5 +10,3 @@ function shopFunction() {
       x.style.display = 'none';
   }
 }
-
-// });

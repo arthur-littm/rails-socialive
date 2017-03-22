@@ -55,6 +55,7 @@
 
 <hr style="border-color: #b1b1b1;">
 
+<!-- this is the shop div -->
 <%= render 'shop' %>
 
 
@@ -132,7 +133,6 @@
       </div>
       <br><br>
       <!-- <div class="profile-wrapper">
-        <p>Sonya's calendar</p>
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
       <% @livestreams.first(3).each do |livestream| %>
@@ -215,9 +215,7 @@
     </div>
 
     <!-- This is the social media follow div -->
-    <% if (@user.facebooklink || @user.twitterlink || @user.instagramlink || @user.snapchatlink) != "" %>
-      <%= render 'social_media' %>
-    <% end %>
+    <%= render 'social_media' %>
 
   </div>
 </div>

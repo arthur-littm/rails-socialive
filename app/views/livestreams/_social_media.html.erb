@@ -1,0 +1,37 @@
+<div class="social-icons-right-side">
+  <div class=" text-center margin-bottom-20">
+    <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
+    <ul class= "list-inline social_icons_links">
+      <% if @user.facebooklink != "" %>
+        <li>
+          <a href="<%= @user.facebooklink %>" target="_blank" class="fa fa-facebook fa-3x" aria-hidden="true">
+          </a>
+        </li>
+      <% end %>
+      <% if @user.twitterlink != "" %>
+        <li>
+          <a href="<%= @user.twitterlink %>" target="_blank" class="fa fa-twitter fa-3x" aria-hidden="true">
+          </a>
+        </li>
+      <% end %>
+      <% if @user.instagramlink != "" %>
+        <li>
+          <a href="<%= @user.instagramlink %>" target="_blank" class="fa fa-instagram fa-3x" aria-hidden="true">
+          </a>
+        </li>
+      <% end %>
+      <% if @user.snapchatlink != "" %>
+        <li>
+          <a href="<%= @user.snapchatlink %>" target="_blank" class="fa fa-snapchat fa-3x" aria-hidden="true">
+          </a>
+        </li>
+      <% end %>
+      <% if @user.youtubelink != "" %>
+        <li>
+          <a href="<%= @user.youtubelink %>" target="_blank" class="fa fa-youtube fa-3x" aria-hidden="true">
+          </a>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+</div>

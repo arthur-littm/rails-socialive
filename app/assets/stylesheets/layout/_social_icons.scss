@@ -1,0 +1,7 @@
+.social_icons_links a{
+  text-decoration: none;
+  &:hover{
+    color: $green-hover ;
+    transition-duration: 0.1s;
+  }
+}

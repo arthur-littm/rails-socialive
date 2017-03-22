@@ -26,14 +26,14 @@ function getCountdown(){
   console.log(current_date);
   var seconds_left = (target_date.getTime() - current_date.getTime()) / 1000;
 
-  days = pad( Math.max(0, parseInt(seconds_left / 86400)));
+  days = pad( Math.max(0, parseInt(seconds_left / 86400) || 0));
   seconds_left = seconds_left % 86400;
 
-  hours = pad( Math.max(0, parseInt(seconds_left / 3600)));
+  hours = pad( Math.max(0, parseInt(seconds_left / 3600) || 0));
   seconds_left = seconds_left % 3600;
 
-  minutes = pad( Math.max(0, parseInt(seconds_left / 60)));
-  seconds = pad( Math.max(0, parseInt( seconds_left % 60)));
+  minutes = pad( Math.max(0, parseInt(seconds_left / 60) || 0));
+  seconds = pad( Math.max(0, parseInt( seconds_left % 60) || 0));
 
   // format countdown string + set tag value
   countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>";

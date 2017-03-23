@@ -6,10 +6,17 @@
 <h6>Publisher page</h6>
 <h6>Publisher page</h6>
 
-  Publisher Page
+  PUBLISHER PAGE
+
     <video id="red5pro-publisher-video"></video>
-...
+
+
+    <%  javascript_include_tag "https://webrtc.github.io/adapter/adapter-latest.js"%>
     <%  javascript_include_tag "red5pro/red5pro-sdk.min.js"%>
+    <%  javascript_include_tag "videojs/video.min.js"%>
+    <%  javascript_include_tag "videojs/videojs-media-sources.min.js"%>
+    <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
+
     <!-- <script src="lib/red5pro/red5pro-sdk.min.js"></script> -->
   <% content_for :after_js do %>
     <script>

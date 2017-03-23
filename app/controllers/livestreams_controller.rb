@@ -3,7 +3,7 @@ class LivestreamsController < ApplicationController
   before_action :set_livestream, only: [:show, :flop, :flop_start]
 
   def index
-    @livestreams = Livestream.search(params[:query])
+    @livestreams = Livestream.search params[:query], operator: "or", match: :word_start, fields: [:title, :description], highlight: {tag: "<strong>"}
   end
 
   def show
@@ -74,7 +74,6 @@ class LivestreamsController < ApplicationController
     @livestream.save
     redirect_to livestream_path(@livestream)
   end
-
 
  private
   def livestream_params

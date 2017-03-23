@@ -81,93 +81,92 @@
       </div>
       <br>
       <br>
-  <!-- <div class="profile-wrapper">
-    <p>Sonya's calendar</p>
-  </div> -->
-  <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-    <% @livestreams.first(3).each do |livestream| %>
-    <div class="profile-wrapper margin-bottom-35">
+      <!-- <div class="profile-wrapper">
+      </div> -->
+      <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+      <% @livestreams.first(3).each do |livestream| %>
+      <div class="profile-wrapper margin-bottom-35">
 
-      <!-- This is start of the card for an upcoming event -->
-      <div class="future-livestreams-card">
-        <!-- need to put logic here to truncate title if over 58 characters -->
-        <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
-        <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
-        <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-        <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
-        <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-        <% if current_user == livestream.user  %>
-        <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
-        <% elsif current_user.tickets.where(livestream: livestream).any? %>
-        <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
-        <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
-        <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
-        <% else %>
-        <%= simple_form_for [livestream, @ticket] do |f| %>
-        <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
-        <% end %>
-        <% end %>
+        <!-- This is start of the card for an upcoming event -->
+        <div class="future-livestreams-card">
+          <!-- need to put logic here to truncate title if over 58 characters -->
+          <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+          <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+          <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+          <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+          <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+          <% if current_user == livestream.user  %>
+            <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+            <% elsif current_user.tickets.where(livestream: livestream).any? %>
+            <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+            <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+            <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+            <% else %>
+            <%= simple_form_for [livestream, @ticket] do |f| %>
+              <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+            <% end %>
+          <% end %>
+        </div>
+        <!-- This is the end of the card for an upcoming event -->
       </div>
-      <!-- This is the end of the card for an upcoming event -->
+      <% end %>
+    </div>
+
+    <!-- This is the top fans table -->
+    <div class="col-xs-12 col-md-4 text-center" style="float: right;" >
+      <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Top fans</h3>
+      <div class="profile-wrapper">
+        <div class="leaderboard">
+          <ol class="leaderboard-list">
+            <li>
+              <mark>Jerry Wood</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 1924</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 919</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 450</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 246</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 139</small>
+            </li>
+            <li>
+              <mark>Jerry Wood</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 98</small>
+            </li>
+            <li>
+              <mark>Brandon Barnes</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 96</small>
+            </li>
+            <li>
+              <mark>Raymond Knight</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 82</small>
+            </li>
+            <li>
+              <mark>Trevor McCormick</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 75</small>
+            </li>
+            <li>
+              <mark>Andrew Fox</mark>
+              <small> <span><%= image_tag "ruby.svg" %></span> 71</small>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
     <% end %>
-  </div>
-
-<!-- This is the top fans table -->
-<div class="col-xs-12 col-md-4 text-center" style="float: right;" >
-  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Top fans</h3>
-  <div class="profile-wrapper">
-    <div class="leaderboard">
-      <ol class="leaderboard-list">
-        <li>
-          <mark>Jerry Wood</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 1924</small>
-        </li>
-        <li>
-          <mark>Brandon Barnes</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 919</small>
-        </li>
-        <li>
-          <mark>Raymond Knight</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 450</small>
-        </li>
-        <li>
-          <mark>Trevor McCormick</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 246</small>
-        </li>
-        <li>
-          <mark>Andrew Fox</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 139</small>
-        </li>
-        <li>
-          <mark>Jerry Wood</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 98</small>
-        </li>
-        <li>
-          <mark>Brandon Barnes</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 96</small>
-        </li>
-        <li>
-          <mark>Raymond Knight</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 82</small>
-        </li>
-        <li>
-          <mark>Trevor McCormick</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 75</small>
-        </li>
-        <li>
-          <mark>Andrew Fox</mark>
-          <small> <span><%= image_tag "ruby.svg" %></span> 71</small>
-        </li>
-      </ol>
-    </div>
-  </div>
-</div>
-<% end %>
 
     <!-- This is the social media follow div -->
     <%= render 'livestreams/social_media' %>
-</div>
+  </div>
 </div>
 
 

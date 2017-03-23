@@ -87,37 +87,42 @@
       <% end %>
 
     </div>
+
+        <!-- Mobile Categories version -->
+    <div class="navbar-socialive-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
+          <li><a href="/adventure">Adventure</a></li>
+          <li><a href="/fashion">Fashion</a></li>
+          <li><a href="/food">Food</a></li>
+          <li><a href="/fitness">Fitness</a></li>
+          <li><a href="/humour">Humour</a></li>
+          <li><a href="/technology">Technology</a></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-socialive-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/">Home</a></li>
-        <li> <%= link_to destroy_user_session_path, method: :delete do %>
+
+    <!-- Dropdown list appearing on mobile only -->
+    <div class="navbar-socialive-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/">Home</a></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
               <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-            <% end %></li>
-      </ul>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <!-- Mobile Categories version -->
-  <div class="navbar-socialive-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
-        <li><a href="/adventure">Adventure</a></li>
-        <li><a href="/fashion">Fashion</a></li>
-        <li><a href="/food">Food</a></li>
-        <li><a href="/fitness">Fitness</a></li>
-        <li><a href="/humour">Humour</a></li>
-        <li><a href="/technology">Technology</a></li>
-      </ul>
-    </div>
   </div>
-</div>
 
 
 <!-- Modal -->

@@ -1,21 +1,39 @@
 <div class="container" >
   <h1 class="text-center"><%= params[:query] %></h1>
-  <br> <br> <br>
+  <br> <br>
   <div class="row">
 
+<!-- displaying results corresponding to users -->
 
     <% @users.each do |user| %>
 
-    <a href="<%= profile_path(user) %>" target="_blank"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card-square-shop" >
-          <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path user.profilepic.path %>');">
+    <a href="<%= profile_path(user) %>" target="_blank">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" id="pad-search">
+
+        <div class="card-square-search">
+
+          <div class="card-black-search-banner">
+          <p><%= user.first_name  %> <%= user.last_name  %></p>
           </div>
-          <p><%= user.first_name  %></p>
-          <p><%= user.last_name  %></p>
+
+          <% if user.profilepic != nil %>
+          <div class="card-square-image-search" style="background-image: url('<%= cl_image_path user.profilepic.path %>');">
+          </div>
+          <% elsif user.facebook_picture_url != nil %>
+          <div class="card-square-image-search" style="background-image: url('<%=  image_tag user.facebook_picture_url %>');">
+          </div>
+          <% else %>
+          <div class="card-square-image-search" style="background-image: url('<%= image_path 'default-user.png' %>');">
+          </div>
+          <% end %>
+
         </div>
-      </div></a>
+      </div>
+    </a>
     <% end %>
   </div>
+
+  <br> <br>
 
   <% if @users.nil?%>
   <% elsif @livestreams.nil?%>

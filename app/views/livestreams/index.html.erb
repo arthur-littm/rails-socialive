@@ -3,6 +3,11 @@
   <br> <br> <br>
   <div class="row">
 
+
+    <% @users.each do |user| %>
+    <p><%= user.first_name  %></p>
+    <% end %>
+
     <% @livestreams.each_with_index do |livestream, index| %>
 
     <% if index.even? %>

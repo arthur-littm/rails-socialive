@@ -40,11 +40,14 @@ class PagesController < ApplicationController
      session[:my_previous_url] = URI(request.referer || '').path
   end
 
+  def search
+    @users = User.search(params[:query])
+  end
+
   private
 
   def profile_params
     params.require(:user).permit(:livestreamer, :facebooklink, :twitterlink, :instagramlink, :youtubelink, :snapchatlink, :bio, :fav1title, :fav2title, :fav3title, :fav1, :fav2, :fav3, :profilepic, :first_name, :last_name, :following, :followers, :identification, images: [])
-
   end
 
 end

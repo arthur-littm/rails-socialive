@@ -24,6 +24,7 @@ class Livestream < ApplicationRecord
   # We don't need this anymore thanks to the  elasticsearch gem
 
   # def self.search(pattern)
+
   #   user = User.where('first_name LIKE ? OR last_name LIKE ?', "%#{pattern}%", "%#{pattern}%").first
   #   if pattern.blank?  # blank? covers both nil and empty string
   #     all

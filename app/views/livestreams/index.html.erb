@@ -35,11 +35,9 @@
 
   <br> <br>
 
-  <% if @users.nil?%>
-  <% elsif @livestreams.nil?%>
-  <% else %>
+  <% if @users[0] != nil && @livestreams[0] != nil %>
   <hr style="border-color: #b1b1b1;">
-  <% end %>
+ <% end %>
 
   <div class="row">
     <% @livestreams.each_with_index do |livestream, index| %>

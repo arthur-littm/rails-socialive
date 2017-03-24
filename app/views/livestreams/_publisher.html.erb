@@ -1,0 +1,62 @@
+<div id="video-container">
+  <video id="red5pro-publisher-video" width="600" height="300" controls autoplay></video>
+</div>
+
+    <%  javascript_include_tag "https://webrtc.github.io/adapter/adapter-latest.js"%>
+    <%  javascript_include_tag "red5pro/red5pro-sdk.min.js"%>
+    <%  javascript_include_tag "videojs/video.min.js"%>
+    <%  javascript_include_tag "videojs/videojs-media-sources.min.js"%>
+    <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
+
+    <!-- <script src="lib/red5pro/red5pro-sdk.min.js"></script> -->
+  <% content_for :after_js do %>
+    <script>
+      (function (window, red5pro) {
+        var publisher = new red5pro.RTCPublisher();
+        var view = new red5pro.PublisherView('red5pro-publisher-video');
+
+        var nav = navigator.mediaDevice || navigator;
+        nav.getUserMedia({
+            audio: true,
+            video: true
+          }, function (media) {
+
+            // Upon access of user media,
+            // 1. Attach the stream to the publisher.
+            // 2. Show the stream as preview in view instance.
+            // 3. Associate publisher & view (optional).
+            publisher.attachStream(media);
+            view.preview(media, true);
+            view.attachPublisher(publisher);
+
+          }, function (error) {
+            console.error('Error accessing media: ' + error);
+          });
+
+        var configuration = {
+          protocol: 'ws',
+          host: '35.166.160.228',
+          port: 8081,
+          app: 'live',
+          streamName: 'stream1',
+          iceServers: [
+            {
+              "urls": "stun:stun2.l.google.com:19302"
+            }
+          ]
+        };
+
+        publisher.init(configuration)
+          .then(function () {
+            return publisher.publish();
+          })
+          .then(function () {
+            console.log('Successfully started a broadcast session!');
+          })
+          .catch(function () {
+            console.error('Could not start a broadcast session: ' + error);
+          })
+
+      })(window, window.red5prosdk);
+    </script>
+  <% end %>

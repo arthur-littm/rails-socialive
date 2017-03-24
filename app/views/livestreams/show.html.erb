@@ -1,71 +1,233 @@
+<!-- Second Navbar for livestream -->
+
+<% content_for :navbar do %>
+    <%= render '/shared/navbar_livestream' %>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="video-box">
+        <!-- message before video starts BELOW -->
+        <%#= render 'livestreams/video_message' %>
+        <!-- message before video starts ABOVE -->
+        <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user%>
+        <div id="remote-media" class="video-container">
+          <%= render 'livestreams/subscriber' %>
+
+        <% elsif current_user != @livestream.user %>
+        <div class="video-container">
+          <%= render 'livestreams/video_message' %>
+
+        <% elsif current_user == @livestream.user %>
+        <div id="remote-media" class="video-container">
+        <%= render 'livestreams/publisher' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="control-flex">
+      <%# if false %>
+      <!-- <h4><%#= @livestream.title %></h4> -->
+      <% if current_user == @livestream.user  %>
+        <%#= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave", remote: true %>
+        <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
+      <% end %>
+      <%# end %>
+    </div>
+  </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="chat-box">
+        <div class="chat-container">
+          <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+            <%= render @livestream.messages %>
+          </div>
+        </div>
+        <%= form_for @message, url: '#' do |f| %>
+        <div class="form-group">
+          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+        </div>
+          <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+        <% end %>
+        <% if @livestream.donation_feature == true  %>
+          <%= render 'shared/donate.html.erb' %>
+        <% end  %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr style="border-color: #b1b1b1;">
+
+<%= render 'shop' %>
 
 
-<h6>Publisher page</h6>
-<h6>Publisher page</h6>
-<h6>Publisher page</h6>
-<h6>Publisher page</h6>
-<h6>Publisher page</h6>
+<div class="container">
+  <div class="row">
+    <!-- this col is the profile -->
+    <div class="col-xs-12 col-md-8">
+      <div class="profile-wrapper margin-bottom-20">
+        <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
+        <div class="row">
+          <!-- Below is the avatar div -->
+          <div class="col-xs-12 col-sm-4">
+            <div>
+              <% if @livestream.user.profilepic != nil %>
+              <%= cl_image_tag(@livestream.user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
+              <% else %>
+              <% end %>
+            </div>
+          </div>
+          <!-- Below is the about user div-->
+          <div class="col-xs-12 col-sm-8">
+            <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
+          </div>
 
-  PUBLISHER PAGE
+          <div class="col-xs-12 col-sm-8 stats-elements">
+            <%= render 'shared/follow_form' %>
+            <%= render 'shared/stats' %>
+          </div>
 
-    <video id="red5pro-publisher-video"></video>
+          <div class="col-xs-12 col-sm-8">
+            <% sum = 0 %>
+            <% @user.livestreams.each do |livestream| %>
+            <% sum += livestream.tickets_sold %>
+            <% end %>
+            <p class= "stats-elements"><%= sum %> Total views</p>
+          </div>
 
+          <div class="col-xs-12 col-sm-8">
+            <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
+          </div>
 
-    <%  javascript_include_tag "https://webrtc.github.io/adapter/adapter-latest.js"%>
-    <%  javascript_include_tag "red5pro/red5pro-sdk.min.js"%>
-    <%  javascript_include_tag "videojs/video.min.js"%>
-    <%  javascript_include_tag "videojs/videojs-media-sources.min.js"%>
-    <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
+          <div class="col-xs-12 profile-about">
+            <div class="margin-bottom-20">
+              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
+            </div>
 
-    <!-- <script src="lib/red5pro/red5pro-sdk.min.js"></script> -->
-  <% content_for :after_js do %>
-    <script>
-      (function (window, red5pro) {
-        var publisher = new red5pro.RTCPublisher();
-        var view = new red5pro.PublisherView('red5pro-publisher-video');
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav1title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"> <%= @livestream.user.fav1 %></p>
 
-        var nav = navigator.mediaDevice || navigator;
-        nav.getUserMedia({
-            audio: true,
-            video: true
-          }, function (media) {
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav2title %></h4>
+            <p class="margin-left-20 margin-bottom-20 margin-top-3"><%= @livestream.user.fav2 %></p>
 
-            // Upon access of user media,
-            // 1. Attach the stream to the publisher.
-            // 2. Show the stream as preview in view instance.
-            // 3. Associate publisher & view (optional).
-            publisher.attachStream(media);
-            view.preview(media, true);
-            view.attachPublisher(publisher);
+            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
+            <p class="margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
+          </div>
+        </div>
 
-          }, function (error) {
-            console.error('Error accessing media: ' + error);
-          });
+        <!-- this is the row for the picture gallery -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="black-photo-gallery-wrapper text-center">
+              <% @livestream.user.images.each do |photo| %>
+              <%= cl_image_tag photo.path, :width=>300 %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        var configuration = {
-          protocol: 'ws',
-          host: 'localhost',
-          port: 8081,
-          app: 'live',
-          streamName: 'stream1',
-          iceServers: [
-            {
-              "urls": "stun:stun2.l.google.com:19302"
-            }
-          ]
-        };
+    <div class="col-xs-12 col-md-4">
+      <br>
+      <div class="text-center">
+        <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
+      </div>
+      <br><br>
+      <!-- <div class="profile-wrapper">
+        <p>Sonya's calendar</p>
+      </div> -->
+      <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+      <% @livestreams.first(3).each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-35">
 
-        publisher.init(configuration)
-          .then(function () {
-            return publisher.publish();
-          })
-          .then(function () {
-            console.log('Successfully started a broadcast session!');
-          })
-          .catch(function () {
-            console.error('Could not start a broadcast session: ' + error);
-          })
-
-      })(window, window.red5prosdk);
-    </script>
+        <!-- This is start of the card for an upcoming event -->
+        <div class="future-livestreams-card">
+        <!-- need to put logic here to truncate title if over 58 characters -->
+        <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+        <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+        <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+        <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+        <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+        <% if current_user == @livestream.user  %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+        <% elsif current_user.tickets.where(livestream: livestream).any? %>
+        <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+        <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+        <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+        <% else %>
+          <%= simple_form_for [livestream, @ticket] do |f| %>
+          <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- This is the end of the card for an upcoming event -->
+    </div>
   <% end %>
+</div>
+
+<!-- This is the top fans table -->
+<div class="col-xs-12 col-md-4 text-center">
+  <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Top fans</h3>
+  <div class="profile-wrapper">
+    <div class="leaderboard">
+      <ol class="leaderboard-list">
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 1924</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 919</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 450</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 246</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 139</small>
+        </li>
+        <li>
+          <mark>Jerry Wood</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 98</small>
+        </li>
+        <li>
+          <mark>Brandon Barnes</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 96</small>
+        </li>
+        <li>
+          <mark>Raymond Knight</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 82</small>
+        </li>
+        <li>
+          <mark>Trevor McCormick</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 75</small>
+        </li>
+        <li>
+          <mark>Andrew Fox</mark>
+          <small> <span><%= image_tag "ruby.svg" %></span> 71</small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- This is the social media follow div -->
+<div class="social-icons-right-side">
+  <div class=" text-center margin-bottom-20">
+    <h4> Follow <%= @livestream.user.first_name %> on . . .</h4>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-facebook-square" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-instagram" aria-hidden="true"></i>
+    <i style="font-size: 100px; padding-right: 10px;" class="fa fa-snapchat-square" aria-hidden="true"></i>
+  </div>
+</div>
+</div>
+</div>
+
+
+

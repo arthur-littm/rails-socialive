@@ -1,50 +1,158 @@
-<h2> SUBSCRIBER PAGE </h2>
+<div class="container" >
+  <h1 class="text-center"><%= params[:query] %></h1>
+  <br> <br> <br>
+  <div class="row">
 
-    <div id="video-container">
-      <video id="red5pro-subscriber-video" width="600" height="300" controls autoplay>
-      </video>
+    <% @livestreams.each_with_index do |livestream, index| %>
+
+    <% if index.even? %>
+    <!-- 1 result out of 2 is displayed with the picture on the left -->
+
+    <!-- from tablet to large displays -->
+
+    <div class="col-md-12 hidden-xs">
+      <div class="card-container">
+
+    <% if livestream.main_picture? %>
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %><span class="card-category-position"><%= livestream.category %></span></div>
+    <% else %>
+        <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %></div>
+    <% end %>
+
+        <div class="card-index-avatar">
+                <% if livestream.user.profilepic != nil %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <% else %>
+                <% end %>
+              </div>
+
+        <div class="card-wrapper">
+          <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
+              <!-- display tag -->
+              <div class="card-live-index">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
+          <div><h3 class="live-time"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3></div>
+          <div class="card-description card-wrapper-description">
+            <h3><%= livestream.title %></h3>
+            <p><%= livestream.description %></p>
+          </div>
+          <div class="card-wrapper-social">
+            <div class="card-description card-wrapper-social-description">
+              <!-- replace with user social information -->
+              <ul class="list-inline">
+                <li>1,346 fans</li><%= image_tag "heart.svg" %>
+                <li>46 streams</li><%= image_tag "wine.svg" %>
+                <li>320,000 views</li><%= image_tag "eye2.svg" %>
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+        <%= link_to "", livestream_path(livestream), class: "card-link" %>
+      </div>
     </div>
 
-    <%  javascript_include_tag "https://webrtc.github.io/adapter/adapter-latest.js"%>
-    <%  javascript_include_tag "red5pro/red5pro-sdk.min.js"%>
-    <%  javascript_include_tag "videojs/video.min.js"%>
-    <%  javascript_include_tag "videojs/videojs-media-sources.min.js"%>
-    <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
 
-    <% content_for :after_js do %>
-       <script>
-      // Create a new instance of the WebRTC subcriber.
-            var subscriber = new red5prosdk.RTCSubscriber();
+    <!-- mobile version -->
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <div class="card-container">
 
-            // Create a view instance based on video element id.
-            var viewer = new red5prosdk.PlaybackView('red5pro-subscriber-video');
-            // Attach the subscriber to the view.
-            viewer.attachSubscriber(subscriber);
-
-            var protocol = window.location.protocol;
-              var isSecure = protocol.charAt(protocol.length - 2);
-
-              // Using Chrome/Google TURN/STUN servers.
-              var iceServers = [{urls: 'stun:stun2.l.google.com:19302'}];
-
-              // Initialize
-              subscriber.init({
-                  protocol: 'ws',
-                  host: 'localhost',
-                  port: 8081,
-                  app: 'live',
-                  streamName: 'stream1',
-                  iceServers: iceServers,
-                  subscriptionId: 'subscriber-' + Math.floor(Math.random() * 0x10000).toString(16),
-                })
-                .then(function() {
-                  // Invoke the playback action
-                  return subscriber.play();
-                })
-                .catch(function(error) {
-                  // A fault occurred while trying to initialize and subscribe to the stream.
-                  console.error(error);
-                });
-
-    </script>
+    <% if livestream.main_picture? %>
+        <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><h3 class="live-time-mobile"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3><h2 class="card-description"><%= livestream.title %></h2></div>
+    <% else %>
+        <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h3 class="live-time-mobile"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3><h2 class="card-description"><%= livestream.title %></h2></div>
     <% end %>
+
+     </div>
+     <%= link_to "", livestream_path(livestream), class: "card-link" %>
+    </div>
+
+    <% else %>
+
+    <!-- 1 result out of 2 is displayed with the picture on the left -->
+
+    <!-- from tablet to large displays -->
+    <div class="col-md-12 hidden-xs">
+      <div class="card-container">
+
+    <% if livestream.main_picture? %>
+        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><%= image_tag "logo.svg" %><span class="card-category-position"><%= livestream.category %></span></div>
+    <% else %>
+        <div class="card-photo-odd" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><%= image_tag "logo.svg" %><span class="card-category-position"><%= livestream.category %></span></div>
+    <% end %>
+
+             <div class="card-index-avatar-odd">
+                <% if livestream.user.profilepic != nil %>
+                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar-large" %>
+                <% else %>
+                <% end %>
+              </div>
+
+        <div class="card-wrapper">
+        <!-- if livestream is live: yellow tag -->
+              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
+              <!-- display tag -->
+              <div class="card-live-odd">
+                <p><strong>LIVE </strong>now</p>
+              </div>
+              <% else %>
+              <% end %>
+
+          <!-- replace with livestream.time -->
+          <div><h3 class="live-time-odd"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3></div>
+          <div class="card-description card-wrapper-description-odd">
+            <h2><%= livestream.title %></h2>
+            <p><%= livestream.description %></p>
+          </div>
+          <div class="card-wrapper-social-odd">
+            <div class="card-description card-wrapper-social-description-odd">
+              <!-- replace with user social information -->
+              <ul class="list-inline">
+                <li>1,346 fans</li><%= image_tag "heart.svg" %>
+                <li>46 streams</li><%= image_tag "wine.svg" %>
+                <li>320,000 views</li><%= image_tag "eye2.svg" %>
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+        <%= link_to "", livestream_path(livestream), class: "card-link" %>
+      </div>
+    </div>
+
+    <!-- mobile version -->
+
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <div class="card-container">
+    <% if livestream.main_picture? %>
+        <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>')"><h3 class="live-time-mobile"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3><h2 class="card-description"><%= livestream.title %></h2></div>
+    <% else %>
+        <div class="card-mobile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chef.png'%>')"><h3 class="live-time-mobile"><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></h3><h2 class="card-description"><%= livestream.title %></h2></div>
+    <% end %>
+    </div>
+    <%= link_to "", livestream_path(livestream), class: "card-link" %>
+    </div>
+
+    <% end %>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

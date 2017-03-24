@@ -386,7 +386,7 @@
 
 .card-square-search {
   margin-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   color: $gray;
   height: 250px;
   width: 250px;
@@ -394,7 +394,7 @@
   position: relative;
   padding: 0;
   background-color: white;
-  border: 0.5px solid $gray-medium;
+  // border: 0.5px solid $gray-medium;
   box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
   p {
     font-size: 20px;
@@ -426,7 +426,14 @@
 }
 
 #pad-search {
+  overflow-x: auto;
+  // max-height: 300px;
+  display: flex;
+  // overflow-y: hidden;
+}
+
+#pad-search2 {
   margin-right: 28px;
   margin-left: 28px;
-  overflow-y: auto;
+  display: inline-block;
 }

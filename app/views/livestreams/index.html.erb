@@ -1,14 +1,14 @@
 <div class="container" >
   <h1 class="text-center"><%= params[:query] %></h1>
   <br> <br>
-  <div class="row">
+  <div id="pad-search">
 
 <!-- displaying results corresponding to users -->
 
     <% @users.each do |user| %>
-
+    <div id="pad-search2">
     <a href="<%= profile_path(user) %>" target="_blank">
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" id="pad-search">
+      <span>
 
         <div class="card-square-search">
 
@@ -28,9 +28,12 @@
           <% end %>
 
         </div>
-      </div>
+      </span>
     </a>
+    </div>
     <% end %>
+
+
   </div>
 
   <br> <br>

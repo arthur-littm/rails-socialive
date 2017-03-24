@@ -9,3 +9,8 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( red5pro/red5pro-sdk.min.js )
+Rails.application.config.assets.precompile += %w( videojs/video.min.js )
+Rails.application.config.assets.precompile += %w( videojs/videojs-media-sources.min.js )
+Rails.application.config.assets.precompile += %w( videojs/videojs.hls.min.js )
+

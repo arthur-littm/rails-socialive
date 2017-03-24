@@ -3,14 +3,14 @@
 
     <div class="tabs">
       <% if current_user.livestreamer == true %>
-      <a class="tab active" onclick="openTab(event, 'mystreams')">
-        <h3>My Streams</h3>
-      </a>
+        <a class="tab" onclick="openTab(event, 'mystreams')">
+          <h3>My Streams</h3>
+        </a>
       <% end %>
-      <a class="tab"  onclick="openTab(event, 'myprofile')">
+        <a class="tab"  onclick="openTab(event, 'myprofile')">
         <h3>My Profile</h3>
-      </a>
-      <a class="tab" onclick="openTab(event, 'mytickets')">
+        </a>
+      <a class="tab active" onclick="openTab(event, 'mytickets')">
         <h3>My Tickets</h3>
       </a>
        <a class="tab" onclick="openTab(event, 'subscriptions')">

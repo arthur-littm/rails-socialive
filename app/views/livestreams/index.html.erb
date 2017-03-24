@@ -14,9 +14,16 @@
           <p><%= user.last_name  %></p>
         </div>
       </div></a>
-
     <% end %>
+  </div>
 
+  <% if @users.nil?%>
+  <% elsif @livestreams.nil?%>
+  <% else %>
+  <hr style="border-color: #b1b1b1;">
+  <% end %>
+
+  <div class="row">
     <% @livestreams.each_with_index do |livestream, index| %>
 
     <% if index.even? %>

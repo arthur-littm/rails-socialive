@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  searchkick
+
   has_many :livestreams, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",

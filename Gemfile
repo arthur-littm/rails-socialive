@@ -16,6 +16,7 @@ gem "jquery-fileupload-rails"
 gem 'cancan'
 gem 'pundit'
 gem 'formtastic', '~> 3.0'
+gem 'searchkick'
 
 
 gem 'sass-rails'

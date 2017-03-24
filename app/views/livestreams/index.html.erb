@@ -1,8 +1,48 @@
 <div class="container" >
   <h1 class="text-center"><%= params[:query] %></h1>
-  <br> <br> <br>
-  <div class="row">
+  <br> <br>
+  <div id="pad-search">
 
+<!-- displaying results corresponding to users -->
+
+    <% @users.each do |user| %>
+    <div id="pad-search2">
+    <a href="<%= profile_path(user) %>" target="_blank">
+      <span>
+
+        <div class="card-square-search">
+
+          <div class="card-black-search-banner">
+          <p><%= user.first_name  %> <%= user.last_name  %></p>
+          </div>
+
+          <% if user.profilepic != nil %>
+          <div class="card-square-image-search" style="background-image: url('<%= cl_image_path user.profilepic.path %>');">
+          </div>
+          <% elsif user.facebook_picture_url != nil %>
+          <div class="card-square-image-search" style="background-image: url('<%=  image_tag user.facebook_picture_url %>');">
+          </div>
+          <% else %>
+          <div class="card-square-image-search" style="background-image: url('<%= image_path 'default-user.png' %>');">
+          </div>
+          <% end %>
+
+        </div>
+      </span>
+    </a>
+    </div>
+    <% end %>
+
+
+  </div>
+
+  <br> <br>
+
+  <% if @users[0] != nil && @livestreams[0] != nil %>
+  <hr style="border-color: #b1b1b1;">
+ <% end %>
+
+  <div class="row">
     <% @livestreams.each_with_index do |livestream, index| %>
 
     <% if index.even? %>
@@ -146,9 +186,6 @@
   </div>
 
 </div>
-
-
-
 
 
 

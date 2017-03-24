@@ -380,3 +380,60 @@
   opacity: 0.5;
   transition: opacity 0.8s;
 }
+
+
+// cardsfor the users search
+
+.card-square-search {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: $gray;
+  height: 250px;
+  width: 250px;
+  border-radius: 3px;
+  position: relative;
+  padding: 0;
+  background-color: white;
+  // border: 0.5px solid $gray-medium;
+  box-shadow: 2px 4px 16px rgba(0,0,0,0.25);
+  p {
+    font-size: 20px;
+    text-align: left;
+    padding: 10px;
+    color: $white;
+  };
+}
+
+.card-square-search:hover {
+  opacity: 0.5;
+  transition: opacity 0.8s;
+}
+
+.card-square-image-search {
+  background-size: cover !important;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: 80%;
+  transition: ease-in-out, opacity .5s ease-in-out;
+}
+
+.card-black-search-banner{
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 60px;
+}
+
+#pad-search {
+  overflow-x: auto;
+  // max-height: 300px;
+  display: flex;
+  // overflow-y: hidden;
+}
+
+#pad-search2 {
+  margin-right: 28px;
+  margin-left: 28px;
+  display: inline-block;
+}

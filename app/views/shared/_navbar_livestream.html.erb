@@ -83,7 +83,9 @@
       <% else %>
 
       <!-- Login text link -->
+      <div>
       <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+      </div>
       <% end %>
 
     </div>
@@ -125,7 +127,7 @@
   </div>
 
 
-<!-- Modal -->
+<!-- Modal for Go Live -->
 <div class="modal fade" id="goliveModal" role="dialog">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -141,5 +143,7 @@
   </div>
 </div>
 <!-- Modal above -->
+
+
 
 

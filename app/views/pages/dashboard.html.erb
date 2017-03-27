@@ -7,10 +7,10 @@
           <h3>My Streams</h3>
         </a>
       <% end %>
-        <a class="tab"  onclick="openTab(event, 'myprofile')">
+        <a class="tab active"  onclick="openTab(event, 'myprofile')">
         <h3>My Profile</h3>
         </a>
-      <a class="tab active" onclick="openTab(event, 'mytickets')">
+      <a class="tab" onclick="openTab(event, 'mytickets')">
         <h3>My Tickets</h3>
       </a>
        <a class="tab" onclick="openTab(event, 'subscriptions')">
@@ -19,11 +19,11 @@
     </div>
 
     <div class="dashboard-content">
-      <div id="mystreams" class="tabcontent">
-        <%= render 'shared/mystreams' %>
-      </div>
       <div id="myprofile" class="tabcontent">
       <%= render 'shared/profile-form' %>
+      </div>
+      <div id="mystreams" class="tabcontent">
+        <%= render 'shared/mystreams' %>
       </div>
       <div id="mytickets" class="tabcontent">
       <%= render 'shared/mytickets' %>

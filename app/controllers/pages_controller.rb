@@ -40,9 +40,9 @@ class PagesController < ApplicationController
      session[:my_previous_url] = URI(request.referer || '').path
   end
 
-  def search
-    @users = User.search(params[:query])
-  end
+  # def search
+  #   @users = User.search(params[:query])
+  # end
 
   private
 

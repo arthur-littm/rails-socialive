@@ -1,5 +1,5 @@
 class Livestream < ApplicationRecord
-  searchkick word_start: [:title, :description], highlight: [:title, :description]
+  #searchkick word_start: [:title, :description], highlight: [:title, :description]
 
   belongs_to :user
   has_many :messages, dependent: :destroy
@@ -23,17 +23,17 @@ class Livestream < ApplicationRecord
 
   # We don't need this anymore thanks to the  elasticsearch gem
 
-  # def self.search(pattern)
+  def self.search(pattern)
 
-  #   user = User.where('first_name LIKE ? OR last_name LIKE ?', "%#{pattern}%", "%#{pattern}%").first
-  #   if pattern.blank?  # blank? covers both nil and empty string
-  #     all
-  #   else
-  #     query = where('category LIKE ? OR title LIKE ? OR description LIKE ?', "%#{pattern.downcase}%", "%#{pattern.downcase}%", "%#{pattern.downcase}%")
-  #     query = query.or(where('user_id = ?', user.id)) if user
-  #     query
-  #   end
-  # end
+    user = User.where('first_name LIKE ? OR last_name LIKE ?', "%#{pattern}%", "%#{pattern}%").first
+    if pattern.blank?  # blank? covers both nil and empty string
+      all
+    else
+      query = where('category LIKE ? OR title LIKE ? OR description LIKE ?', "%#{pattern.downcase}%", "%#{pattern.downcase}%", "%#{pattern.downcase}%")
+      query = query.or(where('user_id = ?', user.id)) if user
+      query
+    end
+  end
 
   private
 

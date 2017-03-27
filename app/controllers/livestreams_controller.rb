@@ -3,8 +3,11 @@ class LivestreamsController < ApplicationController
   before_action :set_livestream, only: [:show, :flop, :flop_start]
 
   def index
-    @livestreams = Livestream.search params[:query], operator: "or", match: :word_start, fields: [:title, :description], highlight: {tag: "<strong>"}
-    @users = User.search(params[:query])
+
+    @livestreams = Livestream.search params[:query]
+    #@livestreams = Livestream.search params[:query], operator: "or", match: :word_start, fields: [:title, :description], highlight: {tag: "<strong>"}
+    #@users = User.search(params[:query])
+    @users = User.all
   end
 
   def show

@@ -24,6 +24,7 @@
         <% elsif current_user == @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
           <%= render 'livestreams/publisher' %>
+          <%= render 'livestreams/leave-page-end-stream' %>
 
         <% else %>
         <div class="video-container">

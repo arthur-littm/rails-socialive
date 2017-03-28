@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         get :flop
         get :flop_start
         get :status
+        post :flop
     end
   end
 

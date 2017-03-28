@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
         get :flop
         get :flop_start
+        get :status
     end
   end
 

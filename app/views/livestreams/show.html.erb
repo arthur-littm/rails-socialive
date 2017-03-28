@@ -19,9 +19,13 @@
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
 
-        <% elsif current_user == @livestream.user %>
+        <% elsif current_user == @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
           <%= render 'livestreams/publisher' %>
+
+        <% elsif current_user == @livestream.user %>
+        <div class="video-container">
+          <%= render 'livestreams/video_message' %>
         <% end %>
       </div>
     </div>
@@ -29,7 +33,7 @@
       <%# if false %>
       <!-- <h4><%#= @livestream.title %></h4> -->
       <% if current_user == @livestream.user  %>
-        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave", remote: true %>
+        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
         <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
       <% end %>
       <%# end %>

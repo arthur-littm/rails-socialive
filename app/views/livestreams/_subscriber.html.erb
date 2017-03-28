@@ -12,6 +12,16 @@
     <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
 
     <% content_for :after_js do %>
+        <script>
+          var ajax_call = function() {
+            //your jQuery ajax code
+          };
+
+          var interval = 1000 * 60 * 0.25; // where X is your every X minutes
+
+          setInterval(ajax_call, interval);
+        </script>
+
        <script>
       // Create a new instance of the WebRTC subcriber.
             var subscriber = new red5prosdk.RTCSubscriber();
@@ -30,10 +40,10 @@
               // Initialize
               subscriber.init({
                   protocol: 'wss',
-                  host: 'www.socialiveorigin.co.uk',
+                  host: 'socialiveorigin.co.uk',
                   port: 8083,
                   app: 'live',
-                  streamName: 'stream1',
+                  streamName: '<%= @livestream.room_name %>',
                   iceServers: iceServers,
                   subscriptionId: 'subscriber-' + Math.floor(Math.random() * 0x10000).toString(16),
                 })

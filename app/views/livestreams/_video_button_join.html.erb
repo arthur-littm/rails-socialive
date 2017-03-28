@@ -16,6 +16,8 @@
     <div id="log">
     </div>
   </div>
+  <% elsif @livestream.ended == true %>
+    <span id="livestream-over">The Livestream is over</span>
 
   <% elsif current_user.tickets.where(livestream: @livestream).any? %>
     <span id="ticket-bought">Ticket Bought</span>

@@ -11,9 +11,19 @@
 #ticket-bought{
   background-color: $green;
   width: 110px;
-  padding: 6px 3px 6px 3px;
+  padding: 6px;
   display: flex;
   justify-content: center;
+  border-radius: 3px;
+}
+
+#livestream-over{
+  background-color: $red;
+  color: white;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px;
 }
 
 #tickets-sold-out{

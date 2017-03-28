@@ -1,6 +1,6 @@
 class LivestreamsController < ApplicationController
 
-  before_action :set_livestream, only: [:show, :flop, :flop_start]
+  before_action :set_livestream, only: [:show, :flop, :flop_start, :status]
 
   def index
 
@@ -19,6 +19,11 @@ class LivestreamsController < ApplicationController
     @question = Question.new
     @donation = Donation.new
     @product = Product.new
+  end
+
+  def status
+    live = @livestream.live
+    render json: live
   end
 
   def new

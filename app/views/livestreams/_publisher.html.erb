@@ -35,10 +35,10 @@
 
         var configuration = {
           protocol: 'wss',
-          host: 'www.socialiveorigin.co.uk',
+          host: 'socialiveorigin.co.uk',
           port: 8083,
           app: 'live',
-          streamName: 'stream1',
+          streamName: '<%= @livestream.room_name %>',
           iceServers: [
             {
               "urls": "stun:stun2.l.google.com:19302"

@@ -1,0 +1,23 @@
+
+<% content_for :after_js do %>
+  <script>
+
+  setInterval(function() {
+  // method to be executed;
+    function check_status(){
+      $.ajax({
+          type: "GET",
+          url: "/livestreams/4/status",
+          dataType: "json",
+          success: function(status){
+              if (status === false)
+              location.reload(); // Will alert Max
+          }
+      });
+    }
+    check_status()
+  }, 5000);
+
+  </script>
+
+<% end %>

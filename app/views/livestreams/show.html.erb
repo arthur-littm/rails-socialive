@@ -14,6 +14,7 @@
         <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
           <%= render 'livestreams/subscriber' %>
+          <%= render 'livestreams/ajax-over-listener' %>
 
         <% elsif current_user != @livestream.user && @livestream.live == false %>
         <div class="video-container">

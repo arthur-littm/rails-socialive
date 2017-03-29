@@ -53,8 +53,4 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Elasticsearch connection configuration
-  elasticsearch_url = ENV['SEARCHBOX_URL'] || ENV['SEARCHLY_URL']
-  Elasticsearch::Model.client = Elasticsearch::Client.new host: elasticsearch_url
-
 end

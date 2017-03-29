@@ -12,15 +12,6 @@
     <%  javascript_include_tag "videojs/videojs.hls.min.js"%>
 
     <% content_for :after_js do %>
-        <script>
-          var ajax_call = function() {
-            //your jQuery ajax code
-          };
-
-          var interval = 1000 * 60 * 0.25; // where X is your every X minutes
-
-          setInterval(ajax_call, interval);
-        </script>
 
        <script>
       // Create a new instance of the WebRTC subcriber.

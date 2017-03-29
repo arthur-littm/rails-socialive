@@ -20,7 +20,7 @@
           <div class="card-square-image-search" style="background-image: url('<%= cl_image_path user.profilepic.path %>');">
           </div>
           <% elsif user.facebook_picture_url != nil %>
-          <div class="card-square-image-search" style="background-image: url('<%=  image_tag user.facebook_picture_url %>');">
+          <div class="card-square-image-search" style="background-image: url('<%=  image_path user.facebook_picture_url %>');">
           </div>
           <% else %>
           <div class="card-square-image-search" style="background-image: url('<%= image_path 'default-user.png' %>');">

@@ -52,4 +52,9 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Elasticsearch connection configuration
+  elasticsearch_url = ENV['SEARCHBOX_URL'] || ENV['SEARCHLY_URL']
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: elasticsearch_url
+
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  #searchkick
+  searchkick
 
   has_many :livestreams, dependent: :destroy
   has_many :messages, dependent: :destroy

@@ -22,7 +22,6 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
-
   # def profile_create
   #   @user = current_user
   #   @user.create(profile_params)
@@ -40,9 +39,9 @@ class PagesController < ApplicationController
      session[:my_previous_url] = URI(request.referer || '').path
   end
 
-  # def search
-  #   @users = User.search(params[:query])
-  # end
+  def search
+    @users = User.search(params[:query])
+  end
 
   private
 

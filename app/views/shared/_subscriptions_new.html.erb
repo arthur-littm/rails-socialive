@@ -19,6 +19,14 @@
                       <div class="card-first-name" >
                         <p><%= following.first_name %> <%= following.last_name[0] %>.</p>
                       </div>
+
+                    <% elsif following.facebook_picture_url != nil %>
+                      <div class="card-square-image" style="background-image: url('<%= image_path following.facebook_picture_url %>');">
+                      </div>
+                      <div class="card-first-name" >
+                        <p><%= following.first_name %> <%= following.last_name[0] %>.</p>
+                      </div>
+
                     <% else %>
                       <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
                       </div>

@@ -39,6 +39,9 @@
           port: 8083,
           app: 'live',
           streamName: '<%= @livestream.room_name %>',
+          bandwidth: {
+            video: 2500
+          },
           iceServers: [
             {
               "urls": "stun:stun2.l.google.com:19302"

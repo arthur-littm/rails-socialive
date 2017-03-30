@@ -18,7 +18,12 @@
         var nav = navigator.mediaDevice || navigator;
         nav.getUserMedia({
             audio: true,
-            video: true
+            video: {
+              // frameRate: {min: 30},
+              width: { min: 1280 },
+              height: { min: 720 }
+
+            }
           }, function (media) {
 
             // Upon access of user media,
@@ -40,7 +45,7 @@
           app: 'live',
           streamName: '<%= @livestream.room_name %>',
           bandwidth: {
-            video: 3800
+            video: 2500
           },
           iceServers: [
             {

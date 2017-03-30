@@ -28,43 +28,43 @@
               // Using Chrome/Google TURN/STUN servers.
               var iceServers = [{urls: 'stun:stun2.l.google.com:19302'}];
 
-              var userMedia = {
+              // var userMedia = {
 
-                video: {
+              //   video: {
 
-                   width: {
+              //      width: {
 
-                      min: 640,
+              //         min: 640,
 
-                      ideal: 1280,
+              //         ideal: 1280,
 
-                      max: 1920
+              //         max: 1920
 
-                   },
+              //      },
 
-                   height: {
+              //      height: {
 
-                     min: 480,
+              //        min: 480,
 
-                     ideal: 720,
+              //        ideal: 720,
 
-                     max: 1080
+              //        max: 1080
 
-                   },
+              //      },
 
-                   frameRate: {
+              //      frameRate: {
 
-                     min: 25,
+              //        min: 25,
 
-                     ideal: 40,
+              //        ideal: 40,
 
-                     max: 60
+              //        max: 60
 
-                   }
+              //      }
 
-                 }
+              //    }
 
-               };
+              //  };
 
               // Initialize
               subscriber.init({
@@ -75,9 +75,9 @@
                   streamName: '<%= @livestream.room_name %>',
                   iceServers: iceServers,
                   subscriptionId: 'subscriber-' + Math.floor(Math.random() * 0x10000).toString(16),
-                  bandwidth: {
-                    video: 3800
-                  }
+                  // bandwidth: {
+                  //   video: 2500
+                  // }
                 })
                 .then(function() {
                   // Invoke the playback action

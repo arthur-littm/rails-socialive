@@ -28,6 +28,44 @@
               // Using Chrome/Google TURN/STUN servers.
               var iceServers = [{urls: 'stun:stun2.l.google.com:19302'}];
 
+              var userMedia = {
+
+                video: {
+
+                   width: {
+
+                      min: 640,
+
+                      ideal: 1280,
+
+                      max: 1920
+
+                   },
+
+                   height: {
+
+                     min: 480,
+
+                     ideal: 720,
+
+                     max: 1080
+
+                   },
+
+                   frameRate: {
+
+                     min: 25,
+
+                     ideal: 40,
+
+                     max: 60
+
+                   }
+
+                 }
+
+               };
+
               // Initialize
               subscriber.init({
                   protocol: 'wss',
@@ -37,6 +75,9 @@
                   streamName: '<%= @livestream.room_name %>',
                   iceServers: iceServers,
                   subscriptionId: 'subscriber-' + Math.floor(Math.random() * 0x10000).toString(16),
+                  bandwidth: {
+                    video: 3800
+                  }
                 })
                 .then(function() {
                   // Invoke the playback action

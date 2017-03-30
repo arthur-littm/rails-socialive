@@ -40,7 +40,7 @@
           app: 'live',
           streamName: '<%= @livestream.room_name %>',
           bandwidth: {
-            video: 2500
+            video: 3800
           },
           iceServers: [
             {
@@ -48,6 +48,44 @@
             }
           ]
         };
+
+        var userMedia = {
+
+          video: {
+
+             width: {
+
+                min: 640,
+
+                ideal: 1280,
+
+                max: 1920
+
+             },
+
+             height: {
+
+               min: 480,
+
+               ideal: 720,
+
+               max: 1080
+
+             },
+
+             frameRate: {
+
+               min: 25,
+
+               ideal: 40,
+
+               max: 60
+
+             }
+
+           }
+
+         };
 
         publisher.init(configuration)
           .then(function () {

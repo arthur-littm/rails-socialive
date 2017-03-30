@@ -13,24 +13,8 @@
         <!-- message before video starts ABOVE -->
         <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
-        <div id="video-info-container">
-          <div id="cat-name">
-            <!-- <h5><#%= @livestream.category.capitalize %></h5> -->
-            <h5 style="color: #B7FFD4";> <%= @livestream.user.first_name%> <%= @livestream.user.last_name %></h5>
-          </div>
-          <h4><%= @livestream.title %></h4>
-          <p id="video-info-description"><%= @livestream.description %></p>
-          <% if @livestream.user.followers != nil %>
-          <div id="new-follower">
-            <h5 style="margin-bottom: 0px; color:#B7FFD4;">Newest follower</h5>
-            <h5 style="margin-top: 0px;"><%= @livestream.user.followers.last.first_name || 0 %></h5>
-            <% if @livestream.user.followers.last.profilepic != nil %>
-                  <%= cl_image_tag @livestream.user.followers.last.profilepic.path, class: "avatar-large" %>
-                  <% else %>
-                  <% end %>
-           </div>
-           <% end %>
-        </div>
+
+          <%= render 'livestreams/video-info' %>
           <%= render 'livestreams/subscriber' %>
           <%= render 'livestreams/ajax-over-listener' %>
 
@@ -41,6 +25,7 @@
 
         <% elsif current_user == @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
+          <%= render 'livestreams/video-info' %>
           <%= render 'livestreams/publisher' %>
           <%= render 'livestreams/leave-page-end-stream' %>
 
@@ -56,7 +41,7 @@
     <div class="control-flex">
       <%# if false %>
       <!-- <h4><%#= @livestream.title %></h4> -->
-      <% if current_user == @livestream.user  %>
+      <% if current_user == @livestream.user && @livestream.live == true %>
         <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
         <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
       <% end %>

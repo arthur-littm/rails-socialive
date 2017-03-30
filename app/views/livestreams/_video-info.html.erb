@@ -11,8 +11,9 @@
     <h5 style="margin-top: 0px;"><%= @livestream.user.followers.last.first_name || 0 %></h5>
     <% if @livestream.user.followers.last.profilepic != nil %>
           <%= cl_image_tag @livestream.user.followers.last.profilepic.path, class: "avatar-large" %>
-          <% else %>
-          <% end %>
+    <% elsif @livestream.user.followers.last.facebook_picture_url != nil %>
+      <%=  image_tag @livestream.user.followers.last.facebook_picture_url, class: "avatar-large" %>
+    <% end %>
    </div>
    <% end %>
 </div>

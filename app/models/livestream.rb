@@ -1,5 +1,5 @@
 class Livestream < ApplicationRecord
-  #searchkick word_start: [:title, :description], highlight: [:title, :description]
+  searchkick word_start: [:title, :description], highlight: [:title, :description]
 
   belongs_to :user
   has_many :messages, dependent: :destroy

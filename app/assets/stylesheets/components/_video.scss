@@ -12,6 +12,42 @@
   }
 }
 
+#video-info-container{
+  position: absolute;
+  bottom: 1px;
+  background-color: black;
+  height: 161px;
+  width: 96.5%;
+  padding: 10px;
+  color: white;
+}
+
+#video-info-container h4{
+  position: absolute;
+  top: 28px;
+  color: white;
+}
+
+
+#video-info-description{
+  position: absolute;
+  top: 61px;
+  color: white;
+  width: 80%;
+}
+
+#new-follower{
+  position: absolute;
+  right: 23px;
+  top: 6px;
+}
+
+#cat-name{
+  position: absolute;
+  left: 10px;
+  top: 6px;
+}
+
 @media (max-width: 506px) {
   #local-media video {
     height: 300px;

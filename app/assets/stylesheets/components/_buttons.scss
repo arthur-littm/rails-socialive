@@ -25,10 +25,15 @@
 }
 
 #button-leave {
+  opacity: 0.4;
   background-color: #E0FFEF;
   border: none;
-
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  color: #AE2626;
 }
+
 
 #button-preview{
   background-color: $green;

@@ -13,6 +13,8 @@
         <!-- message before video starts ABOVE -->
         <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
+
+          <%= render 'livestreams/video-info' %>
           <%= render 'livestreams/subscriber' %>
           <%= render 'livestreams/ajax-over-listener' %>
 
@@ -23,6 +25,7 @@
 
         <% elsif current_user == @livestream.user && @livestream.live == true %>
         <div id="remote-media" class="video-container">
+          <%= render 'livestreams/video-info' %>
           <%= render 'livestreams/publisher' %>
           <%= render 'livestreams/leave-page-end-stream' %>
 
@@ -38,7 +41,7 @@
     <div class="control-flex">
       <%# if false %>
       <!-- <h4><%#= @livestream.title %></h4> -->
-      <% if current_user == @livestream.user  %>
+      <% if current_user == @livestream.user && @livestream.live == true %>
         <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
         <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
       <% end %>

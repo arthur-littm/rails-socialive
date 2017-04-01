@@ -26,11 +26,15 @@
           <% @user.following.all.each do |following| %>
             <%= link_to profile_path(following) do %>
               <li class="list-inline">
+
               <% if following.profilepic != nil %>
                  <%= cl_image_tag following.profilepic.path, class:"avatar" %>
+              <% elsif following.facebook_picture_url != nil %>
+              <%= cl_image_tag(following.facebook_picture_url, class: "avatar") %>
               <% else %>
                <%= image_tag "default-avatar.png", class:"avatar" %>
               <% end %>
+
               <%= following.first_name %> <%= following.last_name %></li>
             <% end %>
           <% end %>
@@ -58,6 +62,8 @@
           <li class="list-inline">
           <% if follower.profilepic != nil %>
              <%= cl_image_tag follower.profilepic.path, class:"avatar" %>
+             <% elsif follower.facebook_picture_url != nil %>
+              <%= cl_image_tag(follower.facebook_picture_url, class: "avatar") %>
              <% else %>
               <%= image_tag "default-avatar.png", class:"avatar" %>
             <% end %>

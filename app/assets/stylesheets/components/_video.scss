@@ -13,13 +13,14 @@
 }
 
 #video-info-container{
-  position: absolute;
-  bottom: 1px;
+  position: relative;
   background-color: black;
   height: 161px;
-  width: 96.5%;
+  width: 100%;
   padding: 10px;
   color: white;
+  border-radius: 3px;
+  box-shadow: 1px 2px 2px gray;
 }
 
 #video-info-container h4{

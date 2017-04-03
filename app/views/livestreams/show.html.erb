@@ -7,37 +7,49 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-8">
-      <div class="video-box">
+      <!-- <div class="video-box"> -->
         <!-- message before video starts BELOW -->
         <%#= render 'livestreams/video_message' %>
         <!-- message before video starts ABOVE -->
         <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
-        <div id="remote-media" class="video-container">
 
+        <div id="remote-media" class="video-container">
           <%= render 'livestreams/video-info' %>
           <%= render 'livestreams/subscriber' %>
           <%= render 'livestreams/ajax-over-listener' %>
+        </div>
 
         <% elsif current_user != @livestream.user && @livestream.live == false %>
+
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
           <%= render 'livestreams/ajaxlistener' %>
+        </div>
 
         <% elsif current_user == @livestream.user && @livestream.live == true %>
+
         <div id="remote-media" class="video-container">
-          <%= render 'livestreams/video-info' %>
-          <%= render 'livestreams/publisher' %>
-          <%= render 'livestreams/leave-page-end-stream' %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= render 'livestreams/publisher' %>
+              <%= render 'livestreams/leave-page-end-stream' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= render 'livestreams/video-info' %>
+            </div>
+          </div>
+        </div>
 
         <% else %>
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
           <%= render 'livestreams/ajaxlistener' %>
+        </div>
         <% end %>
 
-
-      </div>
-    </div>
+   <!--  </div> -->
     <div class="control-flex">
       <%# if false %>
       <!-- <h4><%#= @livestream.title %></h4> -->

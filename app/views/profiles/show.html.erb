@@ -11,10 +11,15 @@
           <!-- Below is the avatar div -->
           <div class="col-xs-12 col-sm-4">
             <div>
+
               <% if @user.profilepic != nil %>
               <%= cl_image_tag(@user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
+              <% elsif @user.facebook_picture_url != nil %>
+              <%= cl_image_tag(@user.facebook_picture_url, class: "profile-avatar-circle", crop: :fill) %>
               <% else %>
+              <%= image_tag 'default-user.png', class: "profile-avatar-circle", crop: :fill %>
               <% end %>
+
             </div>
           </div>
           <!-- Below is the about user div-->

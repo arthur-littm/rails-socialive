@@ -3,6 +3,17 @@
     <div class="navbar-socialive-left">
       <!-- Logo -->
       <%= link_to "SOCIALIVE", root_path, class:"navbar-socialive-item" %>
+
+          <!-- Search form -->
+        <div class="search-container">
+          <form action="/livestreams" class="navbar-socialive-search">
+            <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
+            <button type="submit" class="navbar-socialive-search-btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+
     </div>
 
     <!-- Right Navigation -->
@@ -76,52 +87,55 @@
       <!-- Login text link -->
         <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
       <% end %>
-
-    <!-- Search form -->
-        <div class="search-container">
-          <form action="/livestreams" class="navbar-socialive-search">
-            <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
-            <button type="submit" class="navbar-socialive-search-btn">
-              <i class="fa fa-search"></i>
-            </button>
-          </form>
-        </div>
       </div>
+
     </div>
 
     <!-- Dropdown list appearing on mobile only -->
     <div class="navbar-socialive-item hidden-md hidden-lg">
+
       <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/">Home</a></li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-            <% end %>
-          </li>
-        </ul>
+       <% if user_signed_in? %>
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/">Home</a></li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        <% else %>
+         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-socialive-dropdown-menu">
+            <li><a href="/">Home</a></li>
+            <li>
+              <%= link_to t(".sign_in", default: "Sign in / Sign-up"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+            </li>
+          </ul>
+      <% end %>
       </div>
+
     </div>
   </div>
 
 
-  <div class="navbar-socialive-categories navbar-socialive-fixed">
-
+  <!-- <div class="navbar-socialive-categories navbar-socialive-fixed">
+ -->
     <!-- Catgeories -->
-    <div class="navbar-socialive-left hidden-xs hidden-sm">
-      <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Adventure"), "/adventure", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Food"), "/food", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Humour"), "/humour", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%= link_to t(".sign_in", default: "Technology"), "/technology", class: "navbar-socialive-item navbar-socialive-link" %>
-    </div>
-
-    <!-- Mobile Categories version -->
-    <div class="navbar-socialive-item hidden-md hidden-lg">
+    <!-- <div class="navbar-socialive-left hidden-xs hidden-sm"> -->
+      <%# link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Adventure"), "/adventure", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Food"), "/food", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Humour"), "/humour", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%# link_to t(".sign_in", default: "Technology"), "/technology", class: "navbar-socialive-item navbar-socialive-link" %>
+    <!-- </div>
+ -->
+    <!-- Mobile Categories version NOT IN USE AT MOMENT -->
+    <!-- <div class="navbar-socialive-item hidden-md hidden-lg">
       <div class="dropdown">
         <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
@@ -135,15 +149,16 @@
       </div>
     </div>
 
-    <div class="search-container-two hidden-md hidden-lg">
-      <form action="/livestreams" class="navbar-socialive-search">
-        <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
-        <button type="submit" class="navbar-socialive-search-btn">
-          <i class="fa fa-search"></i>
-        </button>
-      </form>
-    </div>
-  </div>
+     <div class="search-container-two hidden-md hidden-lg">
+          <form action="/livestreams" class="navbar-socialive-search">
+            <input name="query" type="text" class="navbar-socialive-search-input" placeholder="Search something  ">
+            <button type="submit" class="navbar-socialive-search-btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+  </div> -->
+
 </div>
 
 

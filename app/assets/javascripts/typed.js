@@ -272,7 +272,7 @@
     $.fn.typed.defaults = {
         strings: ["These are the default values...", "You know what you should do?", "Use your own!", "Have a great day!"],
         // typing speed
-        typeSpeed: 10,
+        typeSpeed: 3,
         // time before typing starts
         startDelay: 0,
         // backspacing speed
@@ -306,9 +306,10 @@
 
 $(function(){
   $(".site-width").typed({
-    strings: ["Life after a Bootcamp", "Travel to Vietnam", "Sassy Pair fashion style", "Street photography", "Climbing Mount Everest"],
+    strings: ["Welcome to Socialive", "Search here"],
     attr: "placeholder",
-    typeSpeed: 20,
-    loop: true
+    typeSpeed: 3,
+    backDelay: 1500,
+    loop: false
   });
 });

@@ -16,15 +16,13 @@
   </div>
   <h4><%= @livestream.title %></h4>
   <p id="video-info-share-description"><%= @livestream.description %></p>
-  <% if @livestream.user.followers.last != nil %>
-  <div id="new-follower">
-    <h5 style="margin-bottom: 0px; color:#B7FFD4;">Newest follower</h5>
-    <h5 style="margin-top: 0px;"><%= @livestream.user.followers.last.first_name || 0 %></h5>
-    <% if @livestream.user.followers.last.profilepic != nil %>
-          <%= cl_image_tag @livestream.user.followers.last.profilepic.path, class: "avatar-large" %>
-    <% elsif @livestream.user.followers.last.facebook_picture_url != nil %>
-      <%=  image_tag @livestream.user.followers.last.facebook_picture_url, class: "avatar-large" %>
-    <% end %>
-   </div>
-   <% end %>
+
+  <div class="video-info-card-date">
+    <p><%= @livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')%></p>
+  </div>
+
+  <div id="share-buttons">
+    <div class="fb-share-button" data-href="http://localhost:3000/livestreams/<% @livestream.id %>" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Flivestreams%2F1&amp;src=sdkpreparse">Share</a></div>
+  </div>
+
 </div>

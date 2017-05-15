@@ -1,7 +1,18 @@
 <div id="video-info-share-container">
   <div id="cat-name">
     <!-- <h5><#%= @livestream.category.capitalize %></h5> -->
-    <h5 style="color: #B7FFD4";> <%= @livestream.user.first_name%> <%= @livestream.user.last_name %></h5>
+    <div class="list-inline">
+      <% if @livestream.user.profilepic != nil %>
+        <%= cl_image_tag(@livestream.user.profilepic.path, class: "avatar", crop: :fill) %>
+        <% else @livestream.user.facebook_picture_url != nil %>
+        <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "avatar", crop: :fill) %>
+      <% end %>
+
+    <h5 style="display: inline; color: $gunmetal; box-sizing: border-box; box-shadow: inset 0px -7px 0px 0px #b7ffd4;">
+
+      <%= @livestream.user.first_name%> <%= @livestream.user.last_name %>
+    </h5>
+    </div>
   </div>
   <h4><%= @livestream.title %></h4>
   <p id="video-info-share-description"><%= @livestream.description %></p>

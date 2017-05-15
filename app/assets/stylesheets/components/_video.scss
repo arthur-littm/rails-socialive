@@ -42,7 +42,11 @@
 
 #video-info-share-container h4{
   position: absolute;
-  top: 28px;
+  top: 45px;
+  color: $gunmetal;
+}
+
+#video-info-share-container h5{
   color: $gunmetal;
 }
 
@@ -55,7 +59,7 @@
 
 #video-info-share-description{
   position: absolute;
-  top: 61px;
+  top: 81px;
   color: $gunmetal;
   width: 60%;
 }

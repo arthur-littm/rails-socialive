@@ -33,6 +33,7 @@
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
           <%= render 'livestreams/ajaxlistener' %>
+          <%= render 'livestreams/video-info-share' %>
         </div>
 
         <% elsif current_user == @livestream.user && @livestream.live == true %>
@@ -55,6 +56,7 @@
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
           <%= render 'livestreams/ajaxlistener' %>
+          <%= render 'livestreams/video-info-share' %>
         </div>
         <% end %>
 

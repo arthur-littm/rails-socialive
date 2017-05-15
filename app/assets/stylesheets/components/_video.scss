@@ -23,18 +23,65 @@
   box-shadow: 1px 2px 2px gray;
 }
 
+#video-info-share-container{
+  position: relative;
+  background-color: white;
+  height: 161px;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 1px 2px 2px gray;
+}
+
 #video-info-container h4{
   position: absolute;
   top: 28px;
   color: white;
 }
 
+#video-info-share-container h4{
+  position: absolute;
+  top: 45px;
+  color: $gunmetal;
+}
+
+#video-info-share-container h5{
+  color: $gunmetal;
+}
 
 #video-info-description{
   position: absolute;
   top: 61px;
   color: white;
-  width: 80%;
+  width: 60%;
+}
+
+#video-info-share-description{
+  position: absolute;
+  top: 81px;
+  color: $gunmetal;
+  width: 60%;
+}
+
+.video-info-card-date {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  p {
+    padding: 4px;
+    color: black;
+    background: $green;
+    border-radius: 2px;
+  };
+}
+
+#share-buttons{
+  position: absolute;
+  right: 15px;
+  top: 115px;
 }
 
 #new-follower{

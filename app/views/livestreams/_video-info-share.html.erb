@@ -1,0 +1,28 @@
+<div id="video-info-share-container">
+  <div id="cat-name">
+    <!-- <h5><#%= @livestream.category.capitalize %></h5> -->
+    <div class="list-inline">
+      <% if @livestream.user.profilepic != nil %>
+        <%= cl_image_tag(@livestream.user.profilepic.path, class: "avatar", crop: :fill) %>
+        <% else @livestream.user.facebook_picture_url != nil %>
+        <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "avatar", crop: :fill) %>
+      <% end %>
+
+    <h5 style="display: inline; color: $gunmetal; box-sizing: border-box; box-shadow: inset 0px -7px 0px 0px #b7ffd4;">
+
+      <%= @livestream.user.first_name%> <%= @livestream.user.last_name %>
+    </h5>
+    </div>
+  </div>
+  <h4><%= @livestream.title %></h4>
+  <p id="video-info-share-description"><%= @livestream.description %></p>
+
+  <div class="video-info-card-date">
+    <p><%= @livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')%></p>
+  </div>
+
+  <div id="share-buttons">
+    <div class="fb-share-button" data-href="http://localhost:3000/livestreams/<% @livestream.id %>" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Flivestreams%2F1&amp;src=sdkpreparse">Share</a></div>
+  </div>
+
+</div>

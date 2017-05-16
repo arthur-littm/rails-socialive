@@ -14,6 +14,9 @@
         <div class="card-square-shop" >
           <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
           </div>
+          <p><%= product.brand %></p>
+          <p><%= product.title %></p>
+          <p><%= product.price %></p>
         </div>
       </div></a>
 
@@ -76,6 +79,9 @@
       <a href="<%= product.url %>" target="_blank">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card-square-shop" >
+            <p><%= product.brand %></p>
+            <p><%= product.title %></p>
+            <p><%= product.price %></p>
             <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
             </div>
           </div>

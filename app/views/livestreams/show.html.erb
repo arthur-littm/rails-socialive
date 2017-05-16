@@ -1,7 +1,9 @@
 <!-- This is for the meta tags -->
 <% content_for :meta_title, "#{@livestream.user.first_name} #{@livestream.user.last_name} will be live on #{DEFAULT_META["meta_product_name"]} on #{@livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')}!" %>
 <% content_for :meta_description, @livestream.description %>
-<% content_for :meta_image, cloudinary_url(@livestream.photo.path) %>
+<% content_for :meta_image, @livestream.main_picture.path %>
+
+<!-- cloudinary_url(@livestream.photo.path) -->
 
 <!-- Second Navbar for livestream -->
 

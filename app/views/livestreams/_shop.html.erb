@@ -19,14 +19,11 @@
             <p><%= product.brand %><br /><%= product.title %></p>
           </div>
         </div>
-
-          <!-- <div class="card-square-image-shop" style="background-image: url('<%# cl_image_path product.product_pic.path %>');">
-          </div> -->
-          <!-- <h2><%# product.brand %></h2> -->
-          <div class="card-price">
-            <p>£ <%= product.price %></p>
-          </div>
+        <div class="card-price">
+          <p>£ <%= product.price %></p>
         </div>
+        </div>
+
       </div></a>
 
     <% end %>
@@ -91,16 +88,14 @@
 
           <div class="card-black-title-banner">
             <div class="card-title">
-              <p><%= product.brand %></p>
+              <p><%= product.brand %><br /><%= product.title %></p>
             </div>
           </div>
-
-            <!-- <h2><%# product.brand %></h2> -->
-            <p><%= product.title %></p>
-            <p><%= product.price %></p>
-            <!-- <div class="card-square-image-shop" style="background-image: url('<%# cl_image_path product.product_pic.path %>');">
-            </div> -->
+          <div class="card-price">
+            <p>£ <%= product.price %></p>
           </div>
+          </div>
+
         </div>
       </a>
       <% end %>

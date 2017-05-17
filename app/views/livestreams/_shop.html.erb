@@ -11,12 +11,21 @@
     <% Product.where(livestream: @livestream).all.each do |product| %>
       <% liveproducts << product %>
       <a href="<%= product.url %>" target="_blank"><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card-square-shop" >
-          <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
+
+        <div class="card-square-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
+
+        <div class="card-black-title-banner">
+          <div class="card-title">
+            <p><%= product.brand %><br /><%= product.title %></p>
           </div>
-          <h2><%= product.brand %></h2>
-          <p><%= product.title %></p>
-          <p><%= product.price %></p>
+        </div>
+
+          <!-- <div class="card-square-image-shop" style="background-image: url('<%# cl_image_path product.product_pic.path %>');">
+          </div> -->
+          <!-- <h2><%# product.brand %></h2> -->
+          <div class="card-price">
+            <p>£ <%= product.price %></p>
+          </div>
         </div>
       </div></a>
 
@@ -78,12 +87,19 @@
       <% otherproducts.each do |product| %>
       <a href="<%= product.url %>" target="_blank">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card-square-shop" >
-            <h2><%= product.brand %></h2>
+          <div class="card-square-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
+
+          <div class="card-black-title-banner">
+            <div class="card-title">
+              <p><%= product.brand %></p>
+            </div>
+          </div>
+
+            <!-- <h2><%# product.brand %></h2> -->
             <p><%= product.title %></p>
             <p><%= product.price %></p>
-            <div class="card-square-image-shop" style="background-image: url('<%= cl_image_path product.product_pic.path %>');">
-            </div>
+            <!-- <div class="card-square-image-shop" style="background-image: url('<%# cl_image_path product.product_pic.path %>');">
+            </div> -->
           </div>
         </div>
       </a>

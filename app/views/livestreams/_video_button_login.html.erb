@@ -1,0 +1,11 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn btn-primary btn-newsletter">
+      <%= link_to t(".sign_in", default: "Sign in to buy your ticket"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+    </div>
+    <div id="ticket-price-next-to-buy-ticket-btn">
+      <%=  "#{@livestream.ticket_price}" %> rubies <%=  image_tag "rubysmall.svg" %>
+    </div>
+  </div>
+</div>

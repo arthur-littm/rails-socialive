@@ -7,224 +7,255 @@
 
 <!-- Second Navbar for livestream -->
 
-<% content_for :navbar do %>
-    <%= render '/shared/navbar_livestream' %>
-<% end %>
+<!-- This is the div when user is not signed in -->
+<% if current_user == nil %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <!-- <div class="video-box"> -->
-        <!-- message before video starts BELOW -->
-        <%#= render 'livestreams/video_message' %>
-        <!-- message before video starts ABOVE -->
-        <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
-
-        <div id="remote-media" class="video-container">
-
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/subscriber' %>
-              <%= render 'livestreams/ajax-over-listener' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/video-info' %>
-            </div>
-          </div>
-        </div>
-
-        <% elsif current_user != @livestream.user && @livestream.live == false %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
 
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
-          <%= render 'livestreams/ajaxlistener' %>
           <%= render 'livestreams/video-info-share' %>
         </div>
 
-        <% elsif current_user == @livestream.user && @livestream.live == true %>
 
-        <div id="remote-media" class="video-container">
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/publisher' %>
-              <%= render 'livestreams/leave-page-end-stream' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/video-info' %>
-            </div>
-          </div>
-        </div>
 
-        <% else %>
-        <div class="video-container">
-          <%= render 'livestreams/video_message' %>
-          <%= render 'livestreams/ajaxlistener' %>
-          <%= render 'livestreams/video-info-share' %>
-        </div>
-        <% end %>
+      </div>
 
-   <!--  </div> -->
-    <div class="control-flex">
-      <%# if false %>
-      <!-- <h4><%#= @livestream.title %></h4> -->
-      <% if current_user == @livestream.user && @livestream.live == true %>
-        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
-        <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
-      <% end %>
-      <%# end %>
+      <!-- This is the social media follow div -->
+      <%= render 'social_media' %>
+
     </div>
   </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="chat-box">
-        <div class="chat-container">
-          <div id="messages" data-chat-room-id="<%= @livestream.id %>">
-            <%= render @livestream.messages %>
-          </div>
-        </div>
-        <%= form_for @message, url: '#' do |f| %>
-        <div class="form-group">
-          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
-        </div>
-          <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
-        <% end %>
-        <% if @livestream.donation_feature == true  %>
-          <%= render 'shared/donate.html.erb' %>
-        <% end  %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr style="border-color: #b1b1b1;">
-
-<!-- this is the shop div -->
-<%= render 'shop' %>
 
 
-<div class="container">
-  <div class="row">
-    <!-- this col is the profile -->
-    <div class="col-xs-12 col-md-8">
-      <div class="profile-wrapper margin-bottom-20">
-        <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
-        <div class="row">
-          <!-- Below is the avatar div -->
-          <div class="col-xs-12 col-sm-4">
-            <div>
 
-              <% if @livestream.user.profilepic != nil %>
-              <%= cl_image_tag(@livestream.user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
-              <% elsif @livestream.user.facebook_picture_url != nil %>
-              <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "profile-avatar-circle", crop: :fill) %>
-              <% else %>
-              <%= image_tag 'default-user.png', class: "profile-avatar-circle", crop: :fill %>
-              <% end %>
 
-            </div>
-          </div>
-          <!-- Below is the about user div-->
-          <div class="col-xs-12 col-sm-8">
-            <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
-          </div>
 
-          <div class="col-xs-12 col-sm-8 stats-elements">
-            <%= render 'shared/follow_form' %>
-            <%= render 'shared/stats' %>
-          </div>
 
-          <div class="col-xs-12 col-sm-8">
-            <% sum = 0 %>
-            <% @user.livestreams.each do |livestream| %>
-            <% sum += livestream.tickets_sold %>
-            <% end %>
-            <p class= "stats-elements"><%= sum %> Total views</p>
-          </div>
 
-          <div class="col-xs-12 col-sm-8">
-            <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
-          </div>
+<!-- This is the div when user is signed in -->
 
-          <div class="col-xs-12 profile-about">
-            <div class="margin-bottom-20">
-              <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
-            </div>
+<% else %>
+  <% content_for :navbar do %>
+      <%= render '/shared/navbar_livestream' %>
+  <% end %>
 
-            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav1title %></h4>
-            <p class="margin-left-20 margin-bottom-20 margin-top-3"> <%= @livestream.user.fav1 %></p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <!-- <div class="video-box"> -->
+          <!-- message before video starts BELOW -->
+          <%#= render 'livestreams/video_message' %>
+          <!-- message before video starts ABOVE -->
 
-            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav2title %></h4>
-            <p class="margin-left-20 margin-bottom-20 margin-top-3"><%= @livestream.user.fav2 %></p>
+          <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
 
-            <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
-            <p class="margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
-          </div>
-        </div>
+          <div id="remote-media" class="video-container">
 
-        <!-- this is the row for the picture gallery -->
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="black-photo-gallery-wrapper text-center">
-              <% @livestream.user.images.each do |photo| %>
-              <%= cl_image_tag photo.path, :width=>300 %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-md-4">
-      <br>
-      <div class="text-center">
-        <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
-      </div>
-      <br><br>
-      <!-- <div class="profile-wrapper">
-      </div> -->
-      <%#= image_tag "calendar.svg", :class => "small-calendar"%>
-      <% @livestreams.first(3).each do |livestream| %>
-
-          <div class="profile-wrapper margin-bottom-35">
-
-          <!-- This is start of the card for an upcoming event -->
-              <div class="future-livestreams-card">
-              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
-              <!-- need to put logic here to truncate title if over 58 characters -->
-              <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
-              <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
-              <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-              <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
-              <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-              <% if current_user == @livestream.user  %>
-              <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
-              <% elsif current_user.tickets.where(livestream: livestream).any? %>
-              <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
-              <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
-              <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
-              <% else %>
-                <%= simple_form_for [livestream, @ticket] do |f| %>
-                <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
-                <% end %>
-              <% end %>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/subscriber' %>
+                <%= render 'livestreams/ajax-over-listener' %>
               </div>
-            <!-- This is the end of the card for an upcoming event -->
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/video-info' %>
+              </div>
+            </div>
           </div>
-      <% end %>
+
+          <% elsif current_user != @livestream.user && @livestream.live == false %>
+
+          <div class="video-container">
+            <%= render 'livestreams/video_message' %>
+            <%= render 'livestreams/ajaxlistener' %>
+            <%= render 'livestreams/video-info-share' %>
+          </div>
+
+          <% elsif current_user == @livestream.user && @livestream.live == true %>
+
+          <div id="remote-media" class="video-container">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/publisher' %>
+                <%= render 'livestreams/leave-page-end-stream' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/video-info' %>
+              </div>
+            </div>
+          </div>
+
+          <% else %>
+          <div class="video-container">
+            <%= render 'livestreams/video_message' %>
+            <%= render 'livestreams/ajaxlistener' %>
+            <%= render 'livestreams/video-info-share' %>
+          </div>
+          <% end %>
+
+     <!--  </div> -->
+      <div class="control-flex">
+        <%# if false %>
+        <!-- <h4><%#= @livestream.title %></h4> -->
+        <% if current_user == @livestream.user && @livestream.live == true %>
+          <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
+          <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
+        <% end %>
+        <%# end %>
+      </div>
     </div>
-
-    <!-- This is the top fans table -->
-    <%#= render 'top-fans' %>
-
-
-    <!-- This is the social media follow div -->
-    <%= render 'social_media' %>
-
+      <div class="col-xs-12 col-sm-4">
+        <div class="chat-box">
+          <div class="chat-container">
+            <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render @livestream.messages %>
+            </div>
+          </div>
+          <%= form_for @message, url: '#' do |f| %>
+          <div class="form-group">
+            <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+          </div>
+            <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+          <% end %>
+          <% if @livestream.donation_feature == true  %>
+            <%= render 'shared/donate.html.erb' %>
+          <% end  %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <hr style="border-color: #b1b1b1;">
+
+  <!-- this is the shop div -->
+  <%= render 'shop' %>
 
 
+  <div class="container">
+    <div class="row">
+      <!-- this col is the profile -->
+      <div class="col-xs-12 col-md-8">
+        <div class="profile-wrapper margin-bottom-20">
+          <!-- now we nest another bootstrap grid so that we can have a responsive profile layout -->
+          <div class="row">
+            <!-- Below is the avatar div -->
+            <div class="col-xs-12 col-sm-4">
+              <div>
+
+                <% if @livestream.user.profilepic != nil %>
+                <%= cl_image_tag(@livestream.user.profilepic.path, class: "profile-avatar-circle", crop: :fill) %>
+                <% elsif @livestream.user.facebook_picture_url != nil %>
+                <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "profile-avatar-circle", crop: :fill) %>
+                <% else %>
+                <%= image_tag 'default-user.png', class: "profile-avatar-circle", crop: :fill %>
+                <% end %>
+
+              </div>
+            </div>
+            <!-- Below is the about user div-->
+            <div class="col-xs-12 col-sm-8">
+              <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
+            </div>
+
+            <div class="col-xs-12 col-sm-8 stats-elements">
+              <%= render 'shared/follow_form' %>
+              <%= render 'shared/stats' %>
+            </div>
+
+            <div class="col-xs-12 col-sm-8">
+              <% sum = 0 %>
+              <% @user.livestreams.each do |livestream| %>
+              <% sum += livestream.tickets_sold %>
+              <% end %>
+              <p class= "stats-elements"><%= sum %> Total views</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-8">
+              <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
+            </div>
+
+            <div class="col-xs-12 profile-about">
+              <div class="margin-bottom-20">
+                <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">About me</h3>
+              </div>
+
+              <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav1title %></h4>
+              <p class="margin-left-20 margin-bottom-20 margin-top-3"> <%= @livestream.user.fav1 %></p>
+
+              <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav2title %></h4>
+              <p class="margin-left-20 margin-bottom-20 margin-top-3"><%= @livestream.user.fav2 %></p>
+
+              <h4 class="margin-left-10" style="display: inline; box-sizing: border-box; box-shadow: inset 0px -4px 0px 0px #b7ffd4;"><%= @livestream.user.fav3title %></h4>
+              <p class="margin-left-20 margin-top-3"><%= @livestream.user.fav3 %></p>
+            </div>
+          </div>
+
+          <!-- this is the row for the picture gallery -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="black-photo-gallery-wrapper text-center">
+                <% @livestream.user.images.each do |photo| %>
+                <%= cl_image_tag photo.path, :width=>300 %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <br>
+        <div class="text-center">
+          <h3 style= "display: inline; box-sizing: border-box; box-shadow: inset 0px -10px 0px 0px #b7ffd4;">Upcoming livestreams</h3>
+        </div>
+        <br><br>
+        <!-- <div class="profile-wrapper">
+        </div> -->
+        <%#= image_tag "calendar.svg", :class => "small-calendar"%>
+        <% @livestreams.first(3).each do |livestream| %>
+
+            <div class="profile-wrapper margin-bottom-35">
+
+            <!-- This is start of the card for an upcoming event -->
+                <div class="future-livestreams-card">
+                <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
+                <!-- need to put logic here to truncate title if over 58 characters -->
+                <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+                <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+                <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+                <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+                <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+                <% if current_user == @livestream.user  %>
+                <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+                <% elsif current_user.tickets.where(livestream: livestream).any? %>
+                <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+                <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+                <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
+                <% else %>
+                  <%= simple_form_for [livestream, @ticket] do |f| %>
+                  <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+                  <% end %>
+                <% end %>
+                </div>
+              <!-- This is the end of the card for an upcoming event -->
+            </div>
+        <% end %>
+      </div>
+
+      <!-- This is the top fans table -->
+      <%#= render 'top-fans' %>
+
+
+      <!-- This is the social media follow div -->
+      <%= render 'social_media' %>
+
+    </div>
+  </div>
+<% end %>
 

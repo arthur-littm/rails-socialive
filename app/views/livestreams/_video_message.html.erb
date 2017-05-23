@@ -11,6 +11,10 @@
       <p>Your livestream should start soon</p>
       <% end %>
     </div>
+    <% if current_user == nil %>
+    <%= render 'livestreams/video_button_login' %>
+    <% else %>
     <%= render 'livestreams/video_button_join' %>
+    <% end %>
   </div>
 </div>

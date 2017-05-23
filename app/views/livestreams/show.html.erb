@@ -28,22 +28,17 @@
               <%= render @livestream.messages %>
             </div>
           </div>
-          <%= form_for @message, url: '#' do |f| %>
-          <div class="form-group">
-            <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+          <div class="controls player-menu livestream-controls">
+            <div class="row">
+              <div class="col-xs-12 ">
+                <div class="btn btn-primary btn-newsletter">
+                  <%= link_to t(".sign_in", default: "Sign in to interact"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
+                </div>
+              </div>
+            </div>
           </div>
-            <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
-          <% end %>
-          <% if @livestream.donation_feature == true  %>
-            <%= render 'shared/donate.html.erb' %>
-          <% end  %>
         </div>
       </div>
-
-
-      <!-- This is the social media follow div -->
-      <%= render 'social_media' %>
-
     </div>
   </div>
 
@@ -148,6 +143,7 @@
       </div>
     </div>
   </div>
+<% end %>
 
   <hr style="border-color: #b1b1b1;">
 
@@ -181,10 +177,12 @@
               <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
             </div>
 
+
             <div class="col-xs-12 col-sm-8 stats-elements">
               <%= render 'shared/follow_form' %>
               <%= render 'shared/stats' %>
             </div>
+
 
             <div class="col-xs-12 col-sm-8">
               <% sum = 0 %>
@@ -251,6 +249,8 @@
                 <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
                 <% if current_user == @livestream.user  %>
                 <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+                <% elsif current_user == nil %>
+                <p class="future-livestreams-card-book-button" id="ticket-bought">Log in to book</p>
                 <% elsif current_user.tickets.where(livestream: livestream).any? %>
                 <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
                 <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
@@ -275,5 +275,4 @@
 
     </div>
   </div>
-<% end %>
 

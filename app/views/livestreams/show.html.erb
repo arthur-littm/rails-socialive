@@ -7,103 +7,144 @@
 
 <!-- Second Navbar for livestream -->
 
-<% content_for :navbar do %>
-    <%= render '/shared/navbar_livestream' %>
-<% end %>
+<!-- This is the div when user is not signed in -->
+<% if current_user == nil %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <!-- <div class="video-box"> -->
-        <!-- message before video starts BELOW -->
-        <%#= render 'livestreams/video_message' %>
-        <!-- message before video starts ABOVE -->
-        <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
-
-        <div id="remote-media" class="video-container">
-
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/subscriber' %>
-              <%= render 'livestreams/ajax-over-listener' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/video-info' %>
-            </div>
-          </div>
-        </div>
-
-        <% elsif current_user != @livestream.user && @livestream.live == false %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
 
         <div class="video-container">
           <%= render 'livestreams/video_message' %>
           <%= render 'livestreams/ajaxlistener' %>
           <%= render 'livestreams/video-info-share' %>
         </div>
+      </div>
 
-        <% elsif current_user == @livestream.user && @livestream.live == true %>
-
-        <div id="remote-media" class="video-container">
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/publisher' %>
-              <%= render 'livestreams/leave-page-end-stream' %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="chat-box">
+          <div class="chat-container">
+            <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render @livestream.messages %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= render 'livestreams/video-info' %>
+          <div class="controls player-menu livestream-controls">
+            <div class="row">
+              <div class="col-xs-12 ">
+                <hr style="border-color: #b1b1b1;">
+                <input type="text" id="mce-FNAME" placeholder="chat..." class="newsletter-fields">
+                <div class="btn btn-primary btn-newsletter">
+                  <a class="navbar-socialive-item navbar-socialive-link" href="/users/sign_in"><i class="fa fa-commenting-o" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to interact</strong></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <% else %>
-        <div class="video-container">
-          <%= render 'livestreams/video_message' %>
-          <%= render 'livestreams/ajaxlistener' %>
-          <%= render 'livestreams/video-info-share' %>
-        </div>
-        <% end %>
-
-   <!--  </div> -->
-    <div class="control-flex">
-      <%# if false %>
-      <!-- <h4><%#= @livestream.title %></h4> -->
-      <% if current_user == @livestream.user && @livestream.live == true %>
-        <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
-        <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
-      <% end %>
-      <%# end %>
-    </div>
-  </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="chat-box">
-        <div class="chat-container">
-          <div id="messages" data-chat-room-id="<%= @livestream.id %>">
-            <%= render @livestream.messages %>
-          </div>
-        </div>
-        <%= form_for @message, url: '#' do |f| %>
-        <div class="form-group">
-          <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
-        </div>
-          <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
-        <% end %>
-        <% if @livestream.donation_feature == true  %>
-          <%= render 'shared/donate.html.erb' %>
-        <% end  %>
       </div>
     </div>
   </div>
-</div>
+
+<!-- This is the div when user is signed in -->
+
+<% else %>
+  <% content_for :navbar do %>
+      <%= render '/shared/navbar_livestream' %>
+  <% end %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <!-- <div class="video-box"> -->
+          <!-- message before video starts BELOW -->
+          <%#= render 'livestreams/video_message' %>
+          <!-- message before video starts ABOVE -->
+
+          <% if current_user.tickets.where(livestream: @livestream).any? && current_user != @livestream.user && @livestream.live == true %>
+
+          <div id="remote-media" class="video-container">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/subscriber' %>
+                <%= render 'livestreams/ajax-over-listener' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/video-info' %>
+              </div>
+            </div>
+          </div>
+
+          <% elsif current_user != @livestream.user && @livestream.live == false %>
+
+          <div class="video-container">
+            <%= render 'livestreams/video_message' %>
+            <%= render 'livestreams/ajaxlistener' %>
+            <%= render 'livestreams/video-info-share' %>
+          </div>
+
+          <% elsif current_user == @livestream.user && @livestream.live == true %>
+
+          <div id="remote-media" class="video-container">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/publisher' %>
+                <%= render 'livestreams/leave-page-end-stream' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render 'livestreams/video-info' %>
+              </div>
+            </div>
+          </div>
+
+          <% else %>
+          <div class="video-container">
+            <%= render 'livestreams/video_message' %>
+            <%= render 'livestreams/ajaxlistener' %>
+            <%= render 'livestreams/video-info-share' %>
+          </div>
+          <% end %>
+
+     <!--  </div> -->
+      <div class="control-flex">
+        <%# if false %>
+        <!-- <h4><%#= @livestream.title %></h4> -->
+        <% if current_user == @livestream.user && @livestream.live == true %>
+          <%= link_to "End stream" ,flop_livestream_path(@livestream), class: "btn btn-primary", id: "button-leave" %>
+          <!-- <button class="btn btn-primary " id="button-leave">End stream</button> -->
+        <% end %>
+        <%# end %>
+      </div>
+    </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="chat-box">
+          <div class="chat-container">
+            <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render @livestream.messages %>
+            </div>
+          </div>
+          <%= form_for @message, url: '#' do |f| %>
+          <div class="form-group">
+            <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+          </div>
+            <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+          <% end %>
+          <% if @livestream.donation_feature == true  %>
+            <%= render 'shared/donate.html.erb' %>
+          <% end  %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <hr style="border-color: #b1b1b1;">
 
 <!-- this is the shop div -->
 <%= render 'shop' %>
-
 
 <div class="container">
   <div class="row">
@@ -131,10 +172,12 @@
             <h3><%= @livestream.user.first_name.capitalize + " " +@livestream.user.last_name.capitalize.first + "." %></h3>
           </div>
 
+
           <div class="col-xs-12 col-sm-8 stats-elements">
             <%= render 'shared/follow_form' %>
             <%= render 'shared/stats' %>
           </div>
+
 
           <div class="col-xs-12 col-sm-8">
             <% sum = 0 %>
@@ -201,6 +244,8 @@
               <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
               <% if current_user == @livestream.user  %>
               <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+              <% elsif current_user == nil %>
+              <p class="future-livestreams-card-book-button" id="ticket-bought">Log in to book</p>
               <% elsif current_user.tickets.where(livestream: livestream).any? %>
               <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
               <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
@@ -225,6 +270,4 @@
 
   </div>
 </div>
-
-
 

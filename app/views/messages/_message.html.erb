@@ -2,17 +2,43 @@
 
 
   <p class="card-text bold">
-    <%= image_tag message.user.icon %>
+    <% if message.user.profilepic != nil %>
+      <% avatar_url = cl_image_path message.user.profilepic.path %>
+    <% else %>
+      <% avatar_url = message.user.facebook_picture_url || image_path("default-avatar.png")  %>
 
+    <% end %>
+
+    <%= image_tag avatar_url, class: "avatar-xxs" %>
      <strong> <%= link_to profile_path(message.user), target: :_blank do %>  <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name %> </span> <% end %> </strong> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>
   </p>
 
 <% else %>
 
-  <p class="card-text">
-    <%= image_tag message.user.icon %>
+  <div class="card-text">
 
+    <% if message.user.profilepic != nil %>
+      <% avatar_url = cl_image_path message.user.profilepic.path %>
+    <% else %>
+      <% avatar_url = message.user.facebook_picture_url || image_path("default-avatar.png")  %>
+
+    <% end %>
+
+    <%# if message.user != @livestream.user %>
+
+    <%= image_tag avatar_url, class: "avatar-xxs" %>
     <strong> <%= link_to profile_path(message.user), target: :_blank do %> <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name %> </span>  <% end %></strong> : <%= message.body %>
-  </p>
+
+    <%# else %>
+<!--
+    <div style= "background-color: #B7FFD4">
+    <%#= image_tag avatar_url, class: "avatar-xxs" %>
+      <strong> <%#= link_to profile_path(message.user), target: :_blank do %> <span style="color: <%#= message.user.color %> ;"> <%#= message.user.first_name %> </span>  <%# end %></strong> : <%#= message.body %>
+    </div>
+-->
+
+    <%# end  %>
+  </div>
+
 
 <% end %>

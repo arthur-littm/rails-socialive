@@ -1,7 +1,6 @@
 <div class="controls player-menu livestream-controls">
   <div class="row">
     <div class="col-xs-12 ">
-
       <% if @livestream.live == true %>
         <div class="card-live">
           <br><br><br><br><br>
@@ -11,15 +10,11 @@
           </p>
         </div>
       <% end %>
-
-      <div class="btn btn-primary btn-buy-ticket">
-        <%= link_to t(".sign_in", default: "Sign in to buy your ticket"), new_user_session_path, class: "navbar-socialive-item navbar-socialive-link" %>
-      </div>
-      <br><br>
-      <div id="ticket-price-next-to-buy-ticket-btn">
+      <a class="btn btn-primary btn-newsletter" id="button-sign-in-video" href="/users/sign_in"><i class="fa fa-unlock-alt" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to buy your ticket</strong></a>
+      <div class="margin-bottom-10" id="ticket-price-next-to-buy-ticket-btn">
         <%= "#{@livestream.ticket_price}" %> rubies <%= image_tag "rubysmall.svg" %>
       </div>
-      <h5 id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left </h5>
+      <div id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
 
       <% if @livestream.live == true %>
         <div class="card-live">
-          <br><br><br><br>
+          <br><br><br><br><br>
           <p>
             <strong>LIVE </strong>now
             <span class="blink_me" style="color: red; font-size: 50px;"><strong>•</strong></span>
@@ -17,7 +17,7 @@
       </div>
       <br><br>
       <div id="ticket-price-next-to-buy-ticket-btn">
-        <%=  "#{@livestream.ticket_price}" %> rubies <%=  image_tag "rubysmall.svg" %>
+        <%= "#{@livestream.ticket_price}" %> rubies <%= image_tag "rubysmall.svg" %>
       </div>
       <h5 id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left </h5>
     </div>

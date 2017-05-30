@@ -276,7 +276,7 @@
         // time before typing starts
         startDelay: 0,
         // backspacing speed
-        backSpeed: 0,
+        backSpeed: 3,
         // time before backspacing
         backDelay: 500,
         // loop
@@ -306,7 +306,7 @@
 
 $(function(){
   $(".site-width").typed({
-    strings: ["Welcome to Socialive", "Search here"],
+    strings: ["Welcome to Socialive", "How are you doing today?", "Good?", "Ok great!", "So what is Socialive you ask?", "It's new!", "A new platform ;-)", "For premium livestreams", "from people you care about.", "You can also interact with them!", "Might have to book your spot...", "but that way it's more exclusive", "and more interactive!", "Get closer to your influencers..", "So, what are you interested in?", "Fashion? ... Beauty? Luxury?", "Or maybe fitness? Or food?", "Great influencers go live here", "The ones that matter!", "So enjoy my friend!", "Oh, ...        by the way", "I'm a search bar!", "So feel free to search!", "For someone?  or something?", "Anyway, nice talking to you!", "Please search here" ],
     attr: "placeholder",
     typeSpeed: 3,
     backDelay: 1500,

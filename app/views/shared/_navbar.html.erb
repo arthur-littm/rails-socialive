@@ -122,29 +122,24 @@
 </div>
 
 
-<!--   <div class="navbar-socialive-categories navbar-socialive-fixed"> -->
+  <div class="navbar-socialive-categories navbar-socialive-fixed">
 
     <!-- Catgeories -->
-    <!-- <div class="navbar-socialive-left hidden-xs hidden-sm"> -->
-      <%# link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Adventure"), "/adventure", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Food"), "/food", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Humour"), "/humour", class: "navbar-socialive-item navbar-socialive-link" %>
-      <%# link_to t(".sign_in", default: "Technology"), "/technology", class: "navbar-socialive-item navbar-socialive-link" %>
-   <!--  </div>
- -->
-    <!-- Mobile Categories version NOT IN USE AT MOMENT -->
-<!--     <div class="navbar-socialive-item hidden-md hidden-lg">
+    <div class="navbar-socialive-left hidden-xs hidden-sm">
+      <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Fashion"), "/fashion", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Foodie"), "/foodie", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Fitness"), "/fitness", class: "navbar-socialive-item navbar-socialive-link" %>
+      <%= link_to t(".sign_in", default: "Technology"), "/technology", class: "navbar-socialive-item navbar-socialive-link" %>
+      </div>
+    <!-- Mobile Categories version -->
+    <div class="navbar-socialive-item hidden-md hidden-lg">
       <div class="dropdown">
         <i class="fa fa-tags dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-left navbar-socialive-dropdown-menu">
-          <li><a href="/adventure">Adventure</a></li>
           <li><a href="/fashion">Fashion</a></li>
-          <li><a href="/food">Food</a></li>
+          <li><a href="/food">Foodie</a></li>
           <li><a href="/fitness">Fitness</a></li>
-          <li><a href="/humour">Humour</a></li>
           <li><a href="/technology">Technology</a></li>
         </ul>
       </div>
@@ -157,8 +152,9 @@
               <i class="fa fa-search"></i>
             </button>
           </form>
-        </div> -->
- <!--  </div> -->
+        </div>
+  </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="goliveModal" role="dialog">

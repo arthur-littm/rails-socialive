@@ -1,14 +1,16 @@
-<!DOCTYPE svg >
+<!DOCTYPE svg>
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="554px" height="567px" viewBox="0 0 5540 5670" preserveAspectRatio="xMidYMid meet">
 
 <!-- this part was coded by Remi ;) -->
 <defs>
     <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="0%" style="stop-color:rgb(230,132,174);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgb(121,203,202);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(119,161,211);stop-opacity:1" />
     </linearGradient>
   </defs>
 
-<g id="layer1" fill="url(#grad3)" stroke="none">
+<g id="layer1" fill="url(#grad3)" stroke="none" transform="scale(0.1)">
 
 <!-- until here this was coded by Remi -->
 

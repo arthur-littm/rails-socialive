@@ -33,16 +33,7 @@
               <div class="col-xs-12 ">
                 <hr style="border-color: #b1b1b1;">
                 <input type="text" id="mce-FNAME" placeholder="chat..." class="newsletter-fields">
-
-                <%= link_to (".sign_in") do %>
-                <div class="btn btn-primary btn-newsletter navbar-socialive-item navbar-socialive-link">
-                  <i class=" fa fa-commenting-o"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to interact</strong>
-                <% end %>
-                </div>
-
-                <div class="btn btn-primary btn-newsletter">
-                  <a class="navbar-socialive-item navbar-socialive-link" href="/users/sign_in"><i class="fa fa-commenting-o" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to interact</strong></a>
-                </div>
+                <a class="btn btn-primary btn-newsletter" href="/users/sign_in"><i class="fa fa-commenting-o" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to interact</strong></a>
               </div>
             </div>
           </div>
@@ -182,6 +173,7 @@
 
           <div class="col-xs-12 col-sm-8 stats-elements">
             <%= render 'shared/follow_form' %>
+            <%= render 'shared/latest_follower' %>
             <%= render 'shared/stats' %>
           </div>
 

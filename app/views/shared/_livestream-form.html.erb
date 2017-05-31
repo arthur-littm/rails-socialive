@@ -10,7 +10,7 @@
     <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 58,  label: false,   required: true  %>
     <%= f.input :description.downcase, placeholder: "Description of your stream", maxlength: 350, label: false %>
     <%= f.input :hour_of_stream, as: :string, placeholder: "Date and time of livestream", label: false, input_html: {id: 'datepicker-stream'}, required: true %>
-    <%= f.input :category, :collection => ["adventure", "fashion", "food", "fitness", "humour", "technology"], prompt: "Choose a category", required: true, label: false %>
+    <%= f.input :category, :collection => ["fashion", "foodie", "fitness","technology"], prompt: "Choose a category", required: true, label: false %>
 
     <%= f.input :tickets_available, label: false, placeholder: "Number of tickets available for sale",  input_html: { min: '1', step: 'any' } %>
 

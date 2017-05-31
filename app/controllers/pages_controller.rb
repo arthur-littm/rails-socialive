@@ -2,11 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @adventure_livestreams = Livestream.all.where(category: 'adventure')
     @fitness_livestreams = Livestream.all.where(category: 'fitness')
     @fashion_livestreams = Livestream.all.where(category: 'fashion')
-    @food_livestreams = Livestream.all.where(category: 'food')
-    @humour_livestreams = Livestream.all.where(category: 'humour')
+    @foodie_livestreams = Livestream.all.where(category: 'foodie')
     @technology_livestreams = Livestream.all.where(category: 'technology')
     # add more categories when cards are complete #
   end

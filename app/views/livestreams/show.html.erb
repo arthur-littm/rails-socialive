@@ -6,6 +6,9 @@
 <!-- cloudinary_url(@livestream.photo.path) -->
 
 <!-- Second Navbar for livestream -->
+<% content_for :navbar do %>
+  <%= render '/shared/navbar_livestream' %>
+<% end %>
 
 <!-- This is the div when user is not signed in -->
 <% if current_user == nil %>
@@ -45,9 +48,7 @@
 <!-- This is the div when user is signed in -->
 
 <% else %>
-  <% content_for :navbar do %>
-      <%= render '/shared/navbar_livestream' %>
-  <% end %>
+
 
   <div class="container-fluid">
     <div class="row">

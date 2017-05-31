@@ -93,98 +93,6 @@
 
 <!-- Category cards -->
 
-<!-- adventure category -->
-
-<!-- Livestream disappears if it ended -->
-    <% adventure_not_ended_livestreams = [] %>
-    <% @adventure_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-    <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-          <% adventure_not_ended_livestreams << livestream %>
-      <% end %>
-  <% end %>
-<% if adventure_not_ended_livestreams.count != 0 %>
-  <div class="home-wrapper">
-    <div class="cards-square-container container">
-      <h4><%= @adventure_livestreams.first.category.capitalize %></h4>
-      <div class="row">
-
-        <% adventure_not_ended_livestreams.first(3).each do |livestream| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-
-            <div class="card-square" >
-
-              <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
-
-              <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
-              <!-- display tag -->
-              <div class="card-live">
-                <p>
-                  <strong>LIVE </strong>now
-                  <span class="blink_me" style="color: red; font-size: 50px;"><strong>•</strong></span>
-                </p>
-              </div>
-              <% else %>
-              <% end %>
-
-              <div class="card-black-title-banner">
-                <div class="card-title">
-                  <p><%= livestream.title %></p>
-                </div>
-              </div>
-              <div class="card-first-name" >
-              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
-              </div>
-              <div class="card-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-                <div class="card-square-background">
-                <%= image_tag "logo.svg", class:'logo' %></div>
-              </div>
-              <% else %>
-              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
-              <p><%= livestream.title %></p>
-              <div class="card-first-name" >
-
-              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
-              </div>
-              <div class="card-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-                <div class="card-square-background">
-                <%= image_tag "logo.svg", class:'logo' %></div>
-              </div>
-              <% end %>
-
-
-              <div class="card-square-info">
-                <p><strong><%= livestream.title %></strong></p>
-                <p><%= livestream.description %></p>
-              </div>
-              <div class="card-square-avatar">
-                <% if livestream.user.profilepic != nil %>
-                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar" %>
-                <% else %>
-                <% if livestream.user.facebook_picture_url != nil %>
-                <%= image_tag livestream.user.facebook_picture_url, class: "avatar" %>
-                <% else %>
-                <% end %>
-                <% end %>
-                <%# end %>
-              </div>
-              <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end  %>
-
 <!-- fashion category -->
 
  <!-- Livestream disappears if it ended -->
@@ -279,23 +187,23 @@
 
 <!-- Add more categories when cards are finished with sufficient code -->
 
-<!-- food category -->
+<!-- foodie category -->
 
     <!-- Livestream disappears if it ended -->
-  <% food_not_ended_livestreams = [] %>
-  <% @food_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% foodie_not_ended_livestreams = [] %>
+  <% @foodie_livestreams.order(:hour_of_stream).all.each do |livestream| %>
   <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-        <% food_not_ended_livestreams << livestream %>
+        <% foodie_not_ended_livestreams << livestream %>
     <% end %>
 <% end %>
 
-<% if food_not_ended_livestreams.count != 0 %>
+<% if foodie_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
-      <h4><%= @food_livestreams.first.category.capitalize %></h4>
+      <h4><%= @foodie_livestreams.first.category.capitalize %></h4>
       <div class="row">
 
-        <% food_not_ended_livestreams.first(3).each do |livestream| %>
+        <% foodie_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >
@@ -463,100 +371,6 @@
     </div>
   </div>
 <% end  %>
-
-<!-- humour category -->
-
-<!-- Livestream disappears if it ended -->
-  <% humour_not_ended_livestreams = [] %>
-  <% @humour_livestreams.order(:hour_of_stream).all.each do |livestream| %>
-  <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-        <% humour_not_ended_livestreams << livestream %>
-    <% end %>
-<% end %>
-
-<% if humour_not_ended_livestreams.count != 0 %>
-  <div class="home-wrapper">
-    <div class="cards-square-container container">
-      <h4><%= @humour_livestreams.first.category.capitalize %></h4>
-      <div class="row">
-
-        <% humour_not_ended_livestreams.first(3).each do |livestream| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-
-            <div class="card-square" >
-
-              <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
-
-              <!-- if livestream is live: yellow tag -->
-              <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
-              <!-- display tag -->
-              <div class="card-live">
-                <p>
-                  <strong>LIVE </strong>now
-                  <span class="blink_me" style="color: red; font-size: 50px;"><strong>•</strong></span>
-                </p>
-              </div>
-              <% else %>
-              <% end %>
-
-              <div class="card-black-title-banner">
-                <div class="card-title">
-                  <p><%= livestream.title %></p>
-                </div>
-              </div>
-              <div class="card-first-name" >
-              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
-              </div>
-              <div class="card-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-                <div class="card-square-background">
-                <%= image_tag "logo.svg", class:'logo' %></div>
-              </div>
-              <% else %>
-              <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
-              <p><%= livestream.title %></p>
-              <div class="card-first-name" >
-
-              <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
-              </div>
-              <div class="card-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-                <div class="card-square-background">
-                <%= image_tag "logo.svg", class:'logo' %></div>
-              </div>
-              <% end %>
-
-
-              <div class="card-square-info">
-                <p><strong><%= livestream.title %></strong></p>
-                <p><%= livestream.description %></p>
-              </div>
-              <div class="card-square-avatar">
-                <% if livestream.user.profilepic != nil %>
-                <%= cl_image_tag livestream.user.profilepic.path, class: "avatar" %>
-                <% else %>
-                <% if livestream.user.facebook_picture_url != nil %>
-                <%= image_tag livestream.user.facebook_picture_url, class: "avatar" %>
-                <% else %>
-                <% end %>
-                <% end %>
-                <%# end %>
-              </div>
-              <div class="card-square-date">
-                <p><%= livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M') if livestream.hour_of_stream %></p>
-              </div>
-              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end  %>
-
 
 <!-- technology category -->
 

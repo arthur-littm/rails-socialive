@@ -1,7 +1,7 @@
 class LivestreamsController < ApplicationController
 
   before_action :set_livestream, only: [:show, :flop, :flop_start, :status]
-  skip_before_action :authenticate_user!, only: [ :show ]
+  skip_before_action :authenticate_user!, only: [ :show, :category_show ]
 
 
   def index

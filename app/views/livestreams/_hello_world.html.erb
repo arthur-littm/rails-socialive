@@ -1,0 +1,91 @@
+
+
+<h2>Hello, World!</h2>
+
+<div id="publisher"></div>
+
+<div id="subscribers"></div>
+
+
+
+<% api_key = ENV['API_KEY'] %>
+<% api_secret = ENV['API_SECRET'] %>
+
+<% opentok = OpenTok::OpenTok.new api_key, api_secret %>
+<% session = opentok.create_session :media_mode => :routed %>
+<% token = opentok.generate_token session %>
+
+<% session_id = session.session_id %>
+
+  <script type="text/javascript">
+      var apiKey = '<%= ENV['API_KEY'] %>';
+      var token = '<%= token %>';
+      var sessionId = '<%= session_id %>';
+
+
+      // (optional) add server code here
+
+      // Handling all of our errors here by alerting them
+      function handleError(error) {
+        if (error) {
+          alert(error.message);
+        }
+      }
+
+      if (OT.checkSystemRequirements() == 1) {
+        var session = OT.initSession(apiKey, sessionId);
+        session.connect(token, function(error) {
+        if (error) {
+          console.log("Error connecting: ", error.name, error.message);
+        } else {
+          console.log("Connected to the session.");
+        }
+      });
+
+      } else {
+        // The client does not support WebRTC.
+        console.log("You should get a decent browser");
+      }
+
+
+      if (session.capabilities.publish == 1) {
+        console.log("You have publishing capabilities");
+      } else {
+          // The client cannot publish.
+          // You may want to notify the user.
+          console.log("you do not have publishing capabilities.");
+      }
+
+
+      function initializeSession() {
+      var session = OT.initSession(apiKey, sessionId);
+
+
+      // Subscribe to a newly created stream
+      session.on('streamCreated', function(event) {
+        session.subscribe(event.stream, 'subscriber', {
+          insertMode: 'append',
+          width: '100%',
+          height: '100%'
+        }, handleError);
+      });
+        // Create a publisher
+        var publisher = OT.initPublisher('publisher', {
+          insertMode: 'append',
+          width: '100%',
+          height: '100%'
+        }, handleError);
+
+        // Connect to the session
+        session.connect(token, function(error) {
+          // If the connection is successful, publish to the session
+          if (error) {
+            handleError(error);
+          } else {
+            session.publish(publisher, handleError);
+          }
+        });
+      }
+  </script>
+
+  <%# javascript_include_tag "helloworld.js"%>

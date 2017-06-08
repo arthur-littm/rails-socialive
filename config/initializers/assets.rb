@@ -14,3 +14,4 @@ Rails.application.config.assets.precompile += %w( videojs/video.min.js )
 Rails.application.config.assets.precompile += %w( videojs/videojs-media-sources.min.js )
 Rails.application.config.assets.precompile += %w( videojs/videojs.hls.min.js )
 
+Rails.application.config.assets.precompile += %w( helloworld.js )

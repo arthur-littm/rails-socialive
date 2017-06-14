@@ -1,91 +1,96 @@
 
-
 <h2>Hello, World!</h2>
 
 <div id="publisher"></div>
 
 <div id="subscribers"></div>
 
+   <%# api_key = ENV['API_KEY'] %>
+   <%# api_secret = ENV['API_SECRET'] %>
+
+   <%# opentok = OpenTok::OpenTok.new api_key, api_secret %>
+   <%# session = opentok.create_session :media_mode => :routed %>
+   <%# sessionId = session.session_id %>
+   <%# token = session.generate_token({
+      :role        => :moderator,
+      :expire_time => Time.now.to_i+(7 * 24 * 60 * 60), # in one week
+      :data        => 'name=Johnny'
+  }); %>
+
+<script type="text/javascript">
+  var apiKey = '<%= ENV['API_KEY'] %>';
+  var sessionId = '<%= @livestream.sessionId %>';
+  var token = '<%= @tok_token %>';
 
 
-<% api_key = ENV['API_KEY'] %>
-<% api_secret = ENV['API_SECRET'] %>
+// Replace apiKey and sessionID with your own values:
+var session = OT.initSession(apiKey, sessionId);
 
-<% opentok = OpenTok::OpenTok.new api_key, api_secret %>
-<% session = opentok.create_session :media_mode => :routed %>
-<% token = opentok.generate_token session %>
+var publisherProperties = {
+    insertMode: 'append',
+    width: '100%',
+    height: '100%'};
 
-<% session_id = session.session_id %>
+var publisher = OT.initPublisher('publisher', publisherProperties, function (error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Publisher initialized.");
+  }
+});
 
-  <script type="text/javascript">
-      var apiKey = '<%= ENV['API_KEY'] %>';
-      var token = '<%= token %>';
-      var sessionId = '<%= session_id %>';
+// publisher.on({
+//   streamCreated: function (event) {
+//     console.log("Publisher started streaming.");
+//   },
+//   streamDestroyed: function (event) {
+//     console.log("Publisher stopped streaming. Reason: "
+//       + event.reason);
+//   }
+// });
+
+session.on({
+
+  // This function runs when session.connect() asynchronously completes
+  sessionConnected: function(event) {
+    // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
+    // clients)
+    session.publish(publisher, function(error) {
+      alert(error);
+    });
+  },
+
+  // This function runs when another client publishes a stream (eg. session.publish())
+  streamCreated: function(event) {
+    // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
+    // the element with id="subscribers"
+    var subContainer = document.createElement('div');
+    subContainer.id = 'stream-' + event.stream.streamId;
+    document.getElementById('subscribers').appendChild(subContainer);
+
+    // Subscribe to the stream that caused this event, put it inside the container we just made
+    session.subscribe(event.stream, subContainer);
+  }
+
+});
+
+// Connect to the Session using a 'token'
+session.connect(token);
+
+if (session.capabilities.publish == 1) {
+    // The client can publish. See the next section.
+    console.log("client can publish");
+} else {
+    // The client cannot publish.
+    // You may want to notify the user.
+    console.log("client CANNOT publish");
+}
 
 
-      // (optional) add server code here
 
-      // Handling all of our errors here by alerting them
-      function handleError(error) {
-        if (error) {
-          alert(error.message);
-        }
-      }
-
-      if (OT.checkSystemRequirements() == 1) {
-        var session = OT.initSession(apiKey, sessionId);
-        session.connect(token, function(error) {
-        if (error) {
-          console.log("Error connecting: ", error.name, error.message);
-        } else {
-          console.log("Connected to the session.");
-        }
-      });
-
-      } else {
-        // The client does not support WebRTC.
-        console.log("You should get a decent browser");
-      }
+</script>
 
 
-      if (session.capabilities.publish == 1) {
-        console.log("You have publishing capabilities");
-      } else {
-          // The client cannot publish.
-          // You may want to notify the user.
-          console.log("you do not have publishing capabilities.");
-      }
 
-
-      function initializeSession() {
-      var session = OT.initSession(apiKey, sessionId);
-
-
-      // Subscribe to a newly created stream
-      session.on('streamCreated', function(event) {
-        session.subscribe(event.stream, 'subscriber', {
-          insertMode: 'append',
-          width: '100%',
-          height: '100%'
-        }, handleError);
-      });
-        // Create a publisher
-        var publisher = OT.initPublisher('publisher', {
-          insertMode: 'append',
-          width: '100%',
-          height: '100%'
-        }, handleError);
-
-        // Connect to the session
-        session.connect(token, function(error) {
-          // If the connection is successful, publish to the session
-          if (error) {
-            handleError(error);
-          } else {
-            session.publish(publisher, handleError);
-          }
-        });
-      }
-  </script>
 
   <%# javascript_include_tag "helloworld.js"%>

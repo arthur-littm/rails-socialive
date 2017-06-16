@@ -19,9 +19,7 @@ class LivestreamsController < ApplicationController
     api_secret = ENV['API_SECRET']
 
     opentok = OpenTok::OpenTok.new api_key, api_secret
-
     @livestream = Livestream.find(params[:id])
-
     @tok_token = opentok.generate_token @livestream.sessionId
 
     # @tok_token = @livestream.generate_token

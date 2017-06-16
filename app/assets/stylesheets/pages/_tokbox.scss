@@ -6,22 +6,24 @@
     margin-right: auto;
 }
 
-#subscriber {
-    position: absolute;
-    left: 0;
-    top: 0;
+#subscribers {
+    // position: absolute;
     width: 100%;
-    height: 100%;
-    z-index: 10;
-}
-
-#publisher {
-    position: absolute;
-    width: 660px;
-    height: 440px;
+    height: 550px;
     bottom: 10px;
     left: 10px;
     z-index: 100;
-    border: 3px solid white;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+#publisher {
+    // position: absolute;
+    width: 100%;
+    height: 550px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    border: 1px solid white;
     border-radius: 3px;
 }

@@ -1,0 +1,87 @@
+
+<div id="subscribers"></div>
+
+<script type="text/javascript">
+  var apiKey = '<%= ENV['API_KEY'] %>';
+  var sessionId = '<%= @livestream.sessionId %>';
+  var token = '<%= @tok_token %>';
+
+// // Replace apiKey and sessionID with your own values:
+var session = OT.initSession(apiKey, sessionId);
+
+// var publisherProperties = {
+//     insertMode: 'append',
+//     width: '100%',
+//     height: '100%'};
+
+// var publisher = OT.initPublisher('publisher', publisherProperties, function (error) {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Publisher initialized.");
+//   }
+// });
+
+// publisher.on({
+//   streamCreated: function (event) {
+//     console.log("Publisher started streaming.");
+//   },
+//   streamDestroyed: function (event) {
+//     console.log("Publisher stopped streaming. Reason: "
+//       + event.reason);
+//   }
+// });
+
+session.on({
+
+  // This function runs when session.connect() asynchronously completes
+  sessionConnected: function(event) {
+    // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
+    // clients)
+    session.publish(publisher, function(error) {
+      alert(error);
+    });
+  },
+
+  // This function runs when another client publishes a stream (eg. session.publish())
+  streamCreated: function(event) {
+    // Create a container for a new Subscriber, assign it an id using the streamId, put it inside the element with id="subscribers"
+    var subContainer = document.createElement('div');
+    subContainer.id = 'stream-' + event.stream.streamId;
+    document.getElementById('subscribers').appendChild(subContainer);
+
+    // Subscribe to the stream that caused this event, put it inside the container we just made
+    // session.subscribe(event.stream, subContainer);
+
+    var subscriberProperties = {
+      insertMode: 'append',
+      width: '100%',
+      height: '100%',
+      resolution: '1280x720'};
+
+    var subscriber = session.subscribe(event.stream, 'subscribers', subscriberProperties);
+
+  }
+
+});
+
+// Connect to the Session using a 'token'
+session.connect(token);
+
+// if (session.capabilities.publish == 1) {
+//     // The client can publish. See the next section.
+//     console.log("client can publish");
+// } else {
+//     // The client cannot publish.
+//     // You may want to notify the user.
+//     console.log("client CANNOT publish");
+// }
+
+
+
+</script>
+
+
+
+
+  <%# javascript_include_tag "helloworld.js"%>

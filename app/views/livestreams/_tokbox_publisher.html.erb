@@ -1,9 +1,4 @@
-
-<h2>Hello, World!</h2>
-
 <div id="publisher"></div>
-
-<div id="subscribers"></div>
 
    <%# api_key = ENV['API_KEY'] %>
    <%# api_secret = ENV['API_SECRET'] %>
@@ -27,9 +22,11 @@
 var session = OT.initSession(apiKey, sessionId);
 
 var publisherProperties = {
-    insertMode: 'append',
-    width: '100%',
-    height: '100%'};
+  insertMode: 'append',
+  width: '100%',
+  height: '100%',
+  resolution: '1280x720',
+  frameRate: 30};
 
 var publisher = OT.initPublisher('publisher', publisherProperties, function (error) {
   if (error) {
@@ -39,26 +36,17 @@ var publisher = OT.initPublisher('publisher', publisherProperties, function (err
   }
 });
 
-// publisher.on({
-//   streamCreated: function (event) {
-//     console.log("Publisher started streaming.");
-//   },
-//   streamDestroyed: function (event) {
-//     console.log("Publisher stopped streaming. Reason: "
-//       + event.reason);
-//   }
-// });
+publisher.on({
+  streamCreated: function (event) {
+    console.log("Publisher started streaming.");
+  },
+  streamDestroyed: function (event) {
+    console.log("Publisher stopped streaming. Reason: "
+      + event.reason);
+  }
+});
 
 session.on({
-
-  // This function runs when session.connect() asynchronously completes
-  sessionConnected: function(event) {
-    // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
-    // clients)
-    session.publish(publisher, function(error) {
-      alert(error);
-    });
-  },
 
   // This function runs when another client publishes a stream (eg. session.publish())
   streamCreated: function(event) {
@@ -75,7 +63,17 @@ session.on({
 });
 
 // Connect to the Session using a 'token'
-session.connect(token);
+session.connect(token, function(error, info) {
+  if (error) {
+    console.error('Failed to connect', error);
+  } else {
+    session.publish(publisher, function(error) {
+      if (error) {
+        console.error('Failed to publish', error);
+      }
+    });
+  }
+});
 
 if (session.capabilities.publish == 1) {
     // The client can publish. See the next section.
@@ -85,8 +83,6 @@ if (session.capabilities.publish == 1) {
     // You may want to notify the user.
     console.log("client CANNOT publish");
 }
-
-
 
 </script>
 

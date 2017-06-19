@@ -1,4 +1,4 @@
-class Livestream < ApplicationRecord
+  class Livestream < ApplicationRecord
   searchkick word_start: [:title, :description], highlight: [:title, :description]
 
   belongs_to :user
@@ -19,7 +19,7 @@ class Livestream < ApplicationRecord
   validates :ticket_price, presence: true
   validates :description, presence: true
 
-  before_create :set_room_name
+  before_create :set_session_id, :set_room_name
 
   # We don't need this anymore thanks to the  elasticsearch gem
 
@@ -40,6 +40,19 @@ class Livestream < ApplicationRecord
   def set_room_name
     roomname = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
     self.room_name = roomname
+  end
+
+  def set_session_id
+    api_key = ENV['API_KEY']
+    api_secret = ENV['API_SECRET']
+
+    opentok = OpenTok::OpenTok.new api_key, api_secret
+
+    session = opentok.create_session :media_mode => :routed
+
+    # @sessionId = @session.session_id
+    self.sessionId = session.session_id
+
   end
 
 end

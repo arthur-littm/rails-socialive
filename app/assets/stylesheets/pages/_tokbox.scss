@@ -1,0 +1,29 @@
+#videos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#subscribers {
+    // position: absolute;
+    width: 100%;
+    height: 550px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+#publisher {
+    // position: absolute;
+    width: 100%;
+    height: 550px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    border: 1px solid white;
+    border-radius: 3px;
+}

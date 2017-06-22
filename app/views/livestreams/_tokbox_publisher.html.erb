@@ -1,91 +1,146 @@
 <div id="publisher"></div>
 
-   <%# api_key = ENV['API_KEY'] %>
-   <%# api_secret = ENV['API_SECRET'] %>
-
-   <%# opentok = OpenTok::OpenTok.new api_key, api_secret %>
-   <%# session = opentok.create_session :media_mode => :routed %>
-   <%# sessionId = session.session_id %>
-   <%# token = session.generate_token({
-      :role        => :moderator,
-      :expire_time => Time.now.to_i+(7 * 24 * 60 * 60), # in one week
-      :data        => 'name=Johnny'
-  }); %>
-
-<script type="text/javascript">
-  var apiKey = '<%= ENV['API_KEY'] %>';
-  var sessionId = '<%= @livestream.sessionId %>';
-  var token = '<%= @tok_token %>';
+<div id="textchat">
+     <p id="history"></p>
+<!--          <form>
+          <input type="text" placeholder="Input your text here" id="msgTxt"></input>
+     </form> -->
+      <%= form_for @message, url: '#', class: 'chat_form' do |f| %>
+      <div class="chat_form">
+        <%= f.text_field :body, id: 'body', class: 'form-control text-input-better-css', placeholder: "Input your text here" %>
+      </div>
+        <%= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
+      <% end %>
+</div>
 
 
-// Replace apiKey and sessionID with your own values:
-var session = OT.initSession(apiKey, sessionId);
 
-var publisherProperties = {
-  insertMode: 'append',
-  width: '100%',
-  height: '100%',
-  resolution: '1280x720',
-  frameRate: 30};
+<% content_for :after_js do %>
+  <script type="text/javascript">
+    var apiKey = '<%= ENV['API_KEY'] %>';
+    var sessionId = '<%= @livestream.sessionId %>';
+    var token = '<%= @tok_token %>';
+    var session = OT.initSession(apiKey, sessionId);
 
-var publisher = OT.initPublisher('publisher', publisherProperties, function (error) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Publisher initialized.");
-  }
-});
 
-publisher.on({
-  streamCreated: function (event) {
-    console.log("Publisher started streaming.");
-  },
-  streamDestroyed: function (event) {
-    console.log("Publisher stopped streaming. Reason: "
-      + event.reason);
-  }
-});
+  $(document).ready(function() {
 
-session.on({
+    initializeSession();
 
-  // This function runs when another client publishes a stream (eg. session.publish())
-  streamCreated: function(event) {
-    // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
-    // the element with id="subscribers"
-    var subContainer = document.createElement('div');
-    subContainer.id = 'stream-' + event.stream.streamId;
-    document.getElementById('subscribers').appendChild(subContainer);
+  });
 
-    // Subscribe to the stream that caused this event, put it inside the container we just made
-    session.subscribe(event.stream, subContainer);
-  }
 
-});
+  function initializeSession() {
+    // Replace apiKey and sessionID with your own values:
 
-// Connect to the Session using a 'token'
-session.connect(token, function(error, info) {
-  if (error) {
-    console.error('Failed to connect', error);
-  } else {
-    session.publish(publisher, function(error) {
+    var publisherProperties = {
+      insertMode: 'append',
+      width: '100%',
+      height: '100%',
+      resolution: '1280x720',
+      frameRate: 30};
+
+    var publisher = OT.initPublisher('publisher', publisherProperties, function (error) {
       if (error) {
-        console.error('Failed to publish', error);
+        console.log(error);
+      } else {
+        console.log("Publisher initialized.");
       }
     });
+
+    publisher.on({
+      streamCreated: function (event) {
+        console.log("Publisher started streaming.");
+      },
+      streamDestroyed: function (event) {
+        console.log("Publisher stopped streaming. Reason: "
+          + event.reason);
+      }
+    });
+
+    session.on({
+
+      // This function runs when another client publishes a stream (eg. session.publish())
+      streamCreated: function(event) {
+        // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
+        // the element with id="subscribers"
+        var subContainer = document.createElement('div');
+        subContainer.id = 'stream-' + event.stream.streamId;
+        document.getElementById('subscribers').appendChild(subContainer);
+        // Subscribe to the stream that caused this event, put it inside the container we just made
+        session.subscribe(event.stream, subContainer);
+      }
+    });
+
+    session.on('sessionDisconnected', function(event) {
+      console.log('You were disconnected from the session.', event.reason);
+    });
+
+    // Connect to the Session using a 'token'
+    session.connect(token, function(error, info) {
+      if (error) {
+        console.error('Failed to connect', error);
+      } else {
+        console.log('You are connected');
+
+        session.publish(publisher, function(error) {
+          if (error) {
+            console.error('Failed to publish', error);
+          }
+        });
+      }
+    });
+
+    if (session.capabilities.publish == 1) {
+      // The client can publish. See the next section.
+      console.log("client can publish");
+    } else {
+      // The client cannot publish.
+      // You may want to notify the user.
+      console.log("client CANNOT publish");
+    }
+
   }
-});
 
-if (session.capabilities.publish == 1) {
-    // The client can publish. See the next section.
-    console.log("client can publish");
-} else {
-    // The client cannot publish.
-    // You may want to notify the user.
-    console.log("client CANNOT publish");
-}
+  // Receive a message and append it to the history
+    var msgHistory = document.querySelector('#history');
+    session.on('signal:msg', function(event) {
+      var msg = document.createElement('p');
+      msg.textContent = event.data;
+      msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
+      msgHistory.appendChild(msg);
+      msg.scrollIntoView();
+    });
 
-</script>
 
+
+// Text chat
+var form = document.querySelector('chat_form');
+var body = document.querySelector('#body');
+
+// Send a signal once the user enters data in the form
+// form.addEventListener('submit', function(event) {
+//   event.preventDefault();
+
+  session.signal({
+      type: 'msg',
+      data: body.value
+    }, function(error) {
+      if (error) {
+        console.log('Error sending signal:', error.name, error.message);
+      } else {
+        body.value = '';
+      }
+    });
+// });
+
+
+
+
+
+
+  </script>
+<% end %>
 
 
 

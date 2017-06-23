@@ -1,16 +1,13 @@
 <div id="publisher"></div>
 
 <div id="textchat">
-     <p id="history"></p>
-<!--          <form>
-          <input type="text" placeholder="Input your text here" id="msgTxt"></input>
-     </form> -->
-      <%= form_for @message, url: '#', class: 'chat_form' do |f| %>
-      <div class="chat_form">
-        <%= f.text_field :body, id: 'body', class: 'form-control text-input-better-css', placeholder: "Input your text here" %>
-      </div>
-        <%= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
-      <% end %>
+  <p id="history"></p>
+  <%= form_for @message, url: '#', class: 'chat_form', :html => { :onsubmit => "sendMessage()" }  do |f| %>
+    <div class="chat_form">
+    <%= f.text_field :body, id: 'body', class: 'form-control text-input-better-css', placeholder: "Input your text here" %>
+    </div>
+    <%= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
+  <% end %>
 </div>
 
 
@@ -122,19 +119,31 @@ var body = document.querySelector('#body');
 // form.addEventListener('submit', function(event) {
 //   event.preventDefault();
 
+//   session.signal({
+//       type: 'msg',
+//       data: body.value
+//     }, function(error) {
+//       if (error) {
+//         console.log('Error sending signal:', error.name, error.message);
+//       } else {
+//         body.value = '';
+//       }
+//     });
+// // });
+
+function sendMessage(event) {
+  var message = body.value
   session.signal({
-      type: 'msg',
-      data: body.value
-    }, function(error) {
-      if (error) {
-        console.log('Error sending signal:', error.name, error.message);
-      } else {
-        body.value = '';
-      }
-    });
-// });
-
-
+    type:'msg',
+    data: body,
+  }, function(error) {
+    if (error) {
+      console.log('Error sending chat signal:', error.name, error.message )
+    } else {
+      body.value = ''
+    }
+  }
+)}
 
 
 

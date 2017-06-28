@@ -20,7 +20,7 @@ class DonationsController < ApplicationController
       @message = Message.new
       @message.livestream = @livestream
       @message.user = current_user
-      @message.body = "#{current_user.first_name.capitalize} donated #{@donation.rubies_donated} rubies"
+      @message.body = " donated #{@donation.rubies_donated} rubies"
       @message.donation = true
       @message.save
       @donation_success = true

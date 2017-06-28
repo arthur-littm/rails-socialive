@@ -104,45 +104,21 @@
         connectionCount++;
         if (event.connection.connectionId != session.connection.connectionId) {
           console.log('Another client connected. ' + connectionCount + ' total.');
+
+      $('#viewerscount').html(connectionCount);
+
         }
       },
       connectionDestroyed: function connectionDestroyedHandler(event) {
         connectionCount--;
         console.log('A client disconnected. ' + connectionCount + ' total.');
+
+      $('#viewerscount').html(connectionCount);
+
       }
     });
 
   }
-
-//   // Receive a message and append it to the history
-//     var msgHistory = document.querySelector('#history');
-//     session.on('signal:msg', function(event) {
-//       var msg = document.createElement('p');
-//       msg.textContent = event.data;
-//       msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
-//       msgHistory.appendChild(msg);
-//       msg.scrollIntoView();
-//     });
-
-
-
-// // Text chat
-// var form = document.querySelector('chat_form');
-// var msgtokbox = document.querySelector('#msgTxt');
-
-// function sendMessage(event) {
-//   var message = msgtokbox.value
-//   session.signal({
-//     type:'msg',
-//     data: msgtokbox.value,
-//   }, function(error) {
-//     if (error) {
-//       console.log('Error sending chat signal:', error.name, error.message )
-//     } else {
-//       msgtokbox.value = ''
-//     }
-//   }
-// )}
 
   </script>
 <% end %>

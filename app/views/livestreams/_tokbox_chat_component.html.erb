@@ -1,0 +1,90 @@
+<div id="textchat">
+  <p id="history"></p>
+  <%= form_for @message, url: '#', class: 'chat_form', :html => { :onsubmit => "sendMessage()" }  do |f| %>
+    <div class="chat_form">
+    <%= f.text_field :msgtokbox, id: 'msgTxt', class: '', placeholder: "Input your text here" %>
+    </div>
+    <%= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
+  <% end %>
+</div>
+
+
+<% content_for :after_js do %>
+  <script type="text/javascript">
+    var apiKey = '<%= ENV['API_KEY'] %>';
+    var sessionId = '<%= @livestream.sessionId %>';
+    var token = '<%= @tok_token %>';
+    var session = OT.initSession(apiKey, sessionId);
+
+
+    // $(document).ready(function() {
+
+    // Connect to the Session using a 'token'
+    session.connect(token, function(error, info) {
+      if (error) {
+        console.error('Failed to connect', error);
+      } else {
+        console.log('You are connected');
+      }
+    });
+
+    // Text chat
+    var form = document.querySelector('chat_form');
+    var msgtokbox = document.querySelector('#msgTxt');
+
+    function sendMessage(event) {
+      var message = msgtokbox.value
+      session.signal({
+        type:'msg',
+        data: msgtokbox.value,
+      }, function(error) {
+        if (error) {
+          console.log('Error sending chat signal:', error.name, error.message )
+        } else {
+          msgtokbox.value = ''
+          <% @message.user = current_user %>
+          <% @message.livestream = @livestream %>
+          <% @message.save %>
+          console.log('message saved to db')
+        }
+      }
+    )}
+
+    // Receive a message and append it to the history
+    var msgHistory = document.querySelector('#history');
+    session.on('signal:msg', function(event) {
+
+      var listElement = document.createElement('li');
+      listElement.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
+
+      var msg = document.createElement('span');
+      msg.textContent = event.data;
+
+
+      var messageBody = document.createElement('span');
+      messageBody.textContent = '<%= @message.user.first_name + ' ' + @message.user.last_name.first + ': ' %>'
+
+
+    // this is for the avatar when I can find a user
+    var messageAvatar = document.createElement('img');
+    messageAvatar.className = 'avatar-xxs'
+    <% if @message.user.profilepic != nil %>
+      messageAvatar.src = '<%= cl_image_path @message.user.profilepic.path %>'
+    <% else %>
+      messageAvatar.src = '<%= cl_image_path @message.user.facebook_picture_url || image_path("default-avatar.png")  %>'
+    <% end %>
+
+
+    msgHistory.appendChild(listElement);
+    listElement.appendChild(messageAvatar);
+    listElement.appendChild(messageBody);
+    listElement.appendChild(msg);
+    listElement.scrollIntoView;
+  });
+
+<%# raise %>
+
+  // });
+
+  </script>
+<% end %>

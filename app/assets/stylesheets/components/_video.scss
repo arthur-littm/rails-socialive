@@ -154,9 +154,15 @@
  margin: auto;
 }
 
-#viewerscount {
-  color: white;
+.viewers {
   position: absolute;
   right: 16px;
   top: 70px;
+}
+
+#viewerscount {
+  color: white;
+  // position: absolute;
+  // right: 16px;
+  // top: 70px;
 }

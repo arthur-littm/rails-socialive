@@ -27,8 +27,8 @@
       <div class="col-xs-12 col-sm-4">
         <div class="chat-box">
           <div class="chat-container">
-            <div id="messages" data-chat-room-id="<%#= @livestream.id %>">
-              <%#= render @livestream.messages %>
+            <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render @livestream.messages %>
             </div>
           </div>
           <div class="controls player-menu livestream-controls">
@@ -119,23 +119,39 @@
         <% end %>
       </div>
     </div>
-      <div class="col-xs-12 col-sm-4">
+
+
+
+<!-- this is for the tokbox chat component -->
+<!--  <div class="col-xs-12 col-sm-4">
         <div class="chat-box">
           <div class="chat-container">
-            <div id="messages" data-chat-room-id="<%#= @livestream.id %>">
-              <%#= render @livestream.messages %>
+
+            <%#= render 'livestreams/tokbox_chat_component' %>
+
+          </div>
+        </div>
+      </div> -->
+
+       <div class="col-xs-12 col-sm-4">
+        <div class="chat-box">
+          <div class="chat-container">
+            <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render @livestream.messages %>
             </div>
           </div>
-          <%#= form_for @message, url: '#' do |f| %>
+          <%= form_for @message, url: '#' do |f| %>
           <div class="form-group">
-            <%#= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
+            <%= f.text_field :body, class: 'form-control text-input-better-css', placeholder: "chat..." %>
           </div>
-            <%#= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
-          <%# end %>
+            <%= f.submit "send", class: 'hidden btn btn-primary btn-sm send-message-btn' %>
+          <% end %>
           <% if @livestream.donation_feature == true  %>
-            <%#= render 'shared/donate.html.erb' %>
+            <%= render 'shared/donate.html.erb' %>
           <% end %>
         </div>
+
+
       </div>
     </div>
   </div>

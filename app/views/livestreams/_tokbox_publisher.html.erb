@@ -1,15 +1,15 @@
 <div id="publisher"></div>
 
-<div id="textchat">
+<!--  <div id="textchat">
   <p id="history"></p>
-  <%= form_for @message, url: '#', class: 'chat_form', :html => { :onsubmit => "sendMessage()" }  do |f| %>
+  <%#= form_for @message, url: '#', class: 'chat_form', :html => { :onsubmit => "sendMessage()" }  do |f| %>
     <div class="chat_form">
-    <%= f.text_field :body, id: 'body', class: 'form-control text-input-better-css', placeholder: "Input your text here" %>
+    <%#= f.text_field :msgtokbox, id: 'msgTxt', class: '', placeholder: "Input your text here" %>
     </div>
-    <%= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
-  <% end %>
+    <%#= f.submit "send", class: ' btn btn-primary btn-sm send-message-btn' %>
+  <%# end %>
 </div>
-
+ -->
 
 
 <% content_for :after_js do %>
@@ -99,54 +99,35 @@
 
   }
 
-  // Receive a message and append it to the history
-    var msgHistory = document.querySelector('#history');
-    session.on('signal:msg', function(event) {
-      var msg = document.createElement('p');
-      msg.textContent = event.data;
-      msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
-      msgHistory.appendChild(msg);
-      msg.scrollIntoView();
-    });
-
-
-
-// Text chat
-var form = document.querySelector('chat_form');
-var body = document.querySelector('#body');
-
-// Send a signal once the user enters data in the form
-// form.addEventListener('submit', function(event) {
-//   event.preventDefault();
-
-//   session.signal({
-//       type: 'msg',
-//       data: body.value
-//     }, function(error) {
-//       if (error) {
-//         console.log('Error sending signal:', error.name, error.message);
-//       } else {
-//         body.value = '';
-//       }
+//   // Receive a message and append it to the history
+//     var msgHistory = document.querySelector('#history');
+//     session.on('signal:msg', function(event) {
+//       var msg = document.createElement('p');
+//       msg.textContent = event.data;
+//       msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
+//       msgHistory.appendChild(msg);
+//       msg.scrollIntoView();
 //     });
-// // });
-
-function sendMessage(event) {
-  var message = body.value
-  session.signal({
-    type:'msg',
-    data: body,
-  }, function(error) {
-    if (error) {
-      console.log('Error sending chat signal:', error.name, error.message )
-    } else {
-      body.value = ''
-    }
-  }
-)}
 
 
 
+// // Text chat
+// var form = document.querySelector('chat_form');
+// var msgtokbox = document.querySelector('#msgTxt');
+
+// function sendMessage(event) {
+//   var message = msgtokbox.value
+//   session.signal({
+//     type:'msg',
+//     data: msgtokbox.value,
+//   }, function(error) {
+//     if (error) {
+//       console.log('Error sending chat signal:', error.name, error.message )
+//     } else {
+//       msgtokbox.value = ''
+//     }
+//   }
+// )}
 
   </script>
 <% end %>

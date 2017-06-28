@@ -31,27 +31,32 @@
 
 #textchat {
     position: relative;
-    width: 20%;
-    float: right;
+    // width: 20%;
+    // float: right;
     right: 0;
     height: 100%;
     background-color: #333;
 }
 #history {
      width: 100%;
-     height: calc(100% - 100px);
+    height: 76vh;
+     // height: calc(100% - 100px);
      overflow: auto;
 }
-#body {
-            height: 40px;
-            position: absolute;
-            bottom: 40px;
-            width: 100%;
+#msgTxt {
+    height: 40px;
+    // position: absolute;
+    bottom: 40px;
+    width: 100%;
+    overflow-y: auto;
+    // height: 76vh;
+    padding: 10px;
 }
 #history .mine {
     color: #00FF00;
     text-align: right;
     margin-right: 10px;
+    list-style: none;
 }
 #history .theirs {
     color: #00FFFF;

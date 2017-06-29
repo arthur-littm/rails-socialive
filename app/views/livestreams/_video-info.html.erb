@@ -12,8 +12,15 @@
     <i class="fa fa-eye" aria-hidden="true"></i>
     <li id="viewerscount"></li>
   </ul>
+
   <div id="share-buttons">
-    <div class="fb-share-button" data-href="https://socialive.tv/livestreams/<%= @livestream.id %>" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="">Share</a>
+    <div class="fb-share-button" data-href="https://socialive.tv/livestreams/<%= @livestream.id %>" data-layout="button" data-size="large" data-mobile-iframe="false">
+      <a class="fb-xfbml-parse-ignore" target="_blank" href="">Share</a></div>
+
+    <div class="twitter-share-button">
+      <a class="twitter-share-button"
+      data-href="https://socialive.tv/livestreams/<%= @livestream.id %>"
+      data-size="large">Tweet</a>
     </div>
   </div>
 </div>

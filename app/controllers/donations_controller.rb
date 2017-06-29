@@ -27,7 +27,7 @@ class DonationsController < ApplicationController
 
       respond_to do |format|
        format.html { redirect_to livestream_path(@livestream) }
-       format.js  # <-- will render `app/views/reviews/create.js.erb`
+       format.js  # <-- will render `app/views/donations/create.js.erb`
       end
     else
       @donation_success = false

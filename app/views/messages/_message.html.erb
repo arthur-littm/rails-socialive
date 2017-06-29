@@ -1,7 +1,7 @@
 <% if message.donation == true %>
 
 
-  <p class="card-text bold">
+  <div class="card-text bold">
     <% if message.user.profilepic != nil %>
       <% avatar_url = cl_image_path message.user.profilepic.path %>
     <% else %>
@@ -9,9 +9,9 @@
 
     <% end %>
 
-
-     <strong> <%= link_to profile_path(message.user), target: :_blank do %>  <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name %> </span> <% end %> </strong> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>
-  </p>
+    <%= image_tag avatar_url, class: "avatar-xxs" %>
+    <strong> <%= link_to profile_path(message.user), target: :_blank do %>  <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name.capitalize %> </span> <% end %> </strong> : <%= message.body %>  <span style="margin-left: 5px;"> <%= image_tag "rubysmall.svg" %></span>
+  </div>
 
 <% else %>
 
@@ -27,7 +27,7 @@
     <%# if message.user != @livestream.user %>
 
     <%= image_tag avatar_url, class: "avatar-xxs" %>
-    <strong> <%= link_to profile_path(message.user), target: :_blank do %> <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name %> </span>  <% end %></strong> : <%= message.body %>
+    <strong> <%= link_to profile_path(message.user), target: :_blank do %> <span style="color: <%= message.user.color %> ;"> <%= message.user.first_name.capitalize %> </span>  <% end %></strong> : <%= message.body %>
 
     <%# else %>
 <!--

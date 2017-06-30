@@ -12,9 +12,9 @@
 
       <%= f.input :title, placeholder: "description of the product", maxlength: 25, required: true, label: false %>
 
-      <%= f.input :price, placeholder: "price of the product in £", required: true, label: false %>
+      <%= f.input :price, placeholder: "price of the product in £", required: false, label: false %>
 
-      <%= f.input :url, placeholder: "url of the product with 'http://'", required: true, label: false %>
+      <%= f.input :url, placeholder: "url of the product with http://", required: true, label: false %>
 
       <%= f.input :product_pic, as: :attachinary, required: true, label: "Choose a picture for your product" %>
 

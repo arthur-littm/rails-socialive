@@ -13,11 +13,11 @@
         <h3>Bio</h3>
           <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
         <h3>Social</h3>
-          <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL" %>
-          <%= f.input :twitterlink, label: false, placeholder: "Twitter URL" %>
-          <%= f.input :instagramlink, label: false, placeholder: "Instagram URL" %>
-          <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL" %>
-          <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL" %>
+          <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL with http://" %>
+          <%= f.input :twitterlink, label: false, placeholder: "Twitter URL with http://" %>
+          <%= f.input :instagramlink, label: false, placeholder: "Instagram URL with http://" %>
+          <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL with http://" %>
+          <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL with http://" %>
         <h3>Gallery photos</h3>
           <%= f.input :images, as: :attachinary, label: false %>
       </div>

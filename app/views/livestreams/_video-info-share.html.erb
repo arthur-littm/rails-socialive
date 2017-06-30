@@ -20,6 +20,10 @@
   <div class="video-info-card-date">
     <p><%= @livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')%></p>
   </div>
+  <ul class="viewers list-inline">
+    <i class="fa fa-ticket fa-black" aria-hidden="true"></i>
+    <li> <%= @livestream.tickets_sold %> </li>
+  </ul>
 
   <div id="share-buttons">
     <div class="fb-share-button" data-href="https://socialive.tv/livestreams/<%= @livestream.id %>" data-layout="button" data-size="large" data-mobile-iframe="false">

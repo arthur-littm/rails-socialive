@@ -19,9 +19,16 @@
             <p><%= product.brand %><br /><%= product.title %></p>
           </div>
         </div>
+
         <div class="card-price">
-          <p>£ <%= product.price %></p>
+          <% if !product.price.nil? %>
+            <p>£ <%= product.price %></p>
+          <% end %>
+          <div>
+            <p><%= link_to "delete", livestream_product_path(product), method: :delete %></p>
+          </div>
         </div>
+
         </div>
 
       </div></a>

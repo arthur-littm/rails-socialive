@@ -27,6 +27,13 @@ class ProductsController < ApplicationController
     @livestream = Livestream.find(params[:livestream_id])
   end
 
+  def destroy
+    @livestream = Livestream.find(params[:livestream_id])
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to livestream_path(@livestream)
+  end
+
    private
 
   def product_params

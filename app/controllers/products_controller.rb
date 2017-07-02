@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
 
+before_action :set_product, only: :destroy
+
   # def index
   #   @product = Product.All
   # end
@@ -28,13 +30,20 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @livestream = Livestream.find(params[:livestream_id])
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to livestream_path(@livestream)
   end
 
    private
+
+  # def set_livestream
+  #   @livestream = Livestream.find(params[:livestream_id])
+  # end
+
+  def set_product
+    @livestream = Livestream.find(params[:livestream_id])
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:title, :url, :price, :brand, :product_pic)

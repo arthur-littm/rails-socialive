@@ -25,7 +25,7 @@
             <p>£ <%= product.price %></p>
           <% end %>
           <div>
-            <p><%= link_to "delete", livestream_product_path(product), method: :delete %></p>
+            <p><%= link_to "delete", livestream_product_path(@livestream, product), method: :delete %></p>
           </div>
         </div>
 

@@ -19,8 +19,10 @@
             <p><%= product.brand %><br /><%= product.title %></p>
           </div>
           <div>
-            <%= link_to livestream_product_path(@livestream, product), method: :delete do %>
-              <i id="product-delete" class="fa fa-trash-o" aria-hidden="true"></i>
+            <% if current_user == @livestream.user >
+              <%= link_to livestream_product_path(@livestream, product), method: :delete do %>
+                <i id="product-delete" class="fa fa-trash-o" aria-hidden="true"></i>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -18,10 +18,22 @@
           <div class="card-title">
             <p><%= product.brand %><br /><%= product.title %></p>
           </div>
+
+          <% if current_user == @livestream.user %>
+            <div>
+              <%= link_to livestream_product_path(@livestream, product), method: :delete do %>
+                <i id="product-delete" class="fa fa-trash-o" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          <% end %>
         </div>
+
         <div class="card-price">
-          <p>£ <%= product.price %></p>
+          <% if !product.price.nil? %>
+            <p>£ <%= product.price %></p>
+          <% end %>
         </div>
+
         </div>
 
       </div></a>

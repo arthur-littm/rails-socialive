@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :livestreams do
-    resources :products, only: [:create, :new]
+    resources :products, only: [:create, :new, :destroy]
     resources :tickets, only: [:create]
     resources :questions, only: [:create]
     resources :donations, only: [:create]

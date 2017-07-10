@@ -29,7 +29,7 @@
         </div>
 
         <div class="card-price">
-          <% if !product.price.nil? %>
+          <% if !product.price.nil? && !product.price == 0%>
             <p>£ <%= product.price %></p>
           <% end %>
         </div>

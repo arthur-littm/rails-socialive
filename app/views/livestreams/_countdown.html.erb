@@ -24,7 +24,7 @@ function getCountdown(){
   // find the amount of "seconds" between now and target
   var current_date = new Date();
   console.log(current_date);
-  var seconds_left = (target_date.getTime() - current_date.getTime()) / 1000 - 7200;
+  var seconds_left = (target_date.getTime() - current_date.getTime()) / 1000 - 3600;
 
   days = pad( Math.max(0, parseInt(seconds_left / 86400) || 0));
   seconds_left = seconds_left % 86400;

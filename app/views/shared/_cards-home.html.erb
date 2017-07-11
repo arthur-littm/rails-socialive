@@ -6,7 +6,7 @@
     <h4>Upcoming Livestreams</h4>
       <div class="row">
 
-                      <!-- Livestream disappears if it ended -->
+        <!-- Livestream disappears if it ended -->
           <% not_ended_livestreams = [] %>
           <% Livestream.order(:hour_of_stream).all.each do |livestream| %>
           <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>

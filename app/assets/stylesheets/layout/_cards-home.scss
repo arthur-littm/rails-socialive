@@ -68,6 +68,31 @@
   };
 }
 
+.card-past {
+  p {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px;
+    color: white;
+    background: #AE2626;
+    letter-spacing: 2px;
+    left: 0px;
+    top: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+
+    strong {
+      color: white;
+      font-weight: lighter;
+      padding: 0 10px;
+    };
+  };
+}
+
 .card-live-odd {
   p {
     position: absolute;
@@ -106,16 +131,16 @@
 
 .card-title {
 p {
-    position: absolute;
-    top: -2px;
-    left: 10px;
-    padding: 4px;
-    font-size: 20px;
-    font-weight: 100;
-    color: $white !important;
-    text-shadow: 0px 0px 10px $gray-darkest;
-    border-radius: 2px;
-
+  position: absolute;
+  top: -2px;
+  left: 10px;
+  width: 80%;
+  padding: 4px;
+  font-size: 20px;
+  font-weight: 100;
+  color: $white !important;
+  text-shadow: 0px 0px 10px $gray-darkest;
+  border-radius: 2px;
   };
 }
 

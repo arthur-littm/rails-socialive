@@ -6,7 +6,7 @@
       <!-- Livestream are put in array if ended -->
       <% ended_livestreams = [] %>
       <% Livestream.order(:hour_of_stream).all.each do |livestream| %>
-        <% if livestream.ended == true && Time.now > livestream.hour_of_stream.localtime + 86400  %>
+        <% if livestream.ended == true && Time.now > livestream.hour_of_stream.localtime + 86400 && livestream.tickets_sold > 5 %>
           <% ended_livestreams << livestream %>
         <% end %>
       <% end %>
@@ -17,15 +17,13 @@
           <% if livestream.main_picture? %>
             <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
 
-              <!-- if livestream is live: yellow tag -->
-
-                <!-- display tag -->
-                <div class="card-past">
-                  <p>
-                    <strong>livestream over </strong>
-                    <span class="blink_me" style="color: red; font-size: 50px;"><strong>•</strong></span>
-                  </p>
-                </div>
+              <!-- livestream over: red tag -->
+              <div class="card-past">
+                <p>
+                  <strong>livestream over </strong>
+                  <span class="blink_me" style="color: red; font-size: 50px;"><strong>•</strong></span>
+                </p>
+              </div>
 
               <div class="card-black-title-banner">
                 <div class="card-title">

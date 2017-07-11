@@ -131,16 +131,16 @@
 
 .card-title {
 p {
-    position: absolute;
-    top: -2px;
-    left: 10px;
-    padding: 4px;
-    font-size: 20px;
-    font-weight: 100;
-    color: $white !important;
-    text-shadow: 0px 0px 10px $gray-darkest;
-    border-radius: 2px;
-
+  position: absolute;
+  top: -2px;
+  left: 10px;
+  width: 80%;
+  padding: 4px;
+  font-size: 20px;
+  font-weight: 100;
+  color: $white !important;
+  text-shadow: 0px 0px 10px $gray-darkest;
+  border-radius: 2px;
   };
 }
 

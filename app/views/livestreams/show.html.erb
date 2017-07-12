@@ -278,6 +278,11 @@
     <!-- This is the social media follow div fuck this-->
     <%= render 'social_media' %>
 
+    <!-- list of user who bought a ticket for that livestream -->
+    <% if current_user == @livestream.user  %>
+    <%= render 'livestreams/list_of_tickets_sold' %>
+    <% end %>
+
   </div>
 </div>
 

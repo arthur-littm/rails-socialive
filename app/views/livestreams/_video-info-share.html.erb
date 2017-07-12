@@ -1,6 +1,5 @@
 <div id="video-info-share-container">
   <div id="cat-name">
-    <!-- <h5><#%= @livestream.category.capitalize %></h5> -->
     <div class="list-inline">
       <% if @livestream.user.profilepic != nil %>
         <%= cl_image_tag(@livestream.user.profilepic.path, class: "avatar", crop: :fill) %>
@@ -14,6 +13,7 @@
     </h5>
     </div>
   </div>
+
   <h4><%= @livestream.title %></h4>
   <p id="video-info-share-description"><%= @livestream.description %></p>
 
@@ -36,8 +36,5 @@
       data-size="large">Tweet</a>
     </div>
   </div>
-
-
-
 
 </div>

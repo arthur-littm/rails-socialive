@@ -240,40 +240,43 @@
       </div> -->
       <%#= image_tag "calendar.svg", :class => "small-calendar"%>
       <% @livestreams.first(3).each do |livestream| %>
+        <div class="profile-wrapper margin-bottom-35">
 
-          <div class="profile-wrapper margin-bottom-35">
-
-          <!-- This is start of the card for an upcoming event -->
-              <div class="future-livestreams-card">
-              <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
-              <!-- need to put logic here to truncate title if over 58 characters -->
-              <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
-              <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
-              <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
-              <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
-              <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
-              <% if current_user == @livestream.user  %>
-              <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
-              <% elsif current_user == nil %>
-              <p class="future-livestreams-card-book-button" id="ticket-bought">Log in to book</p>
-              <% elsif current_user.tickets.where(livestream: livestream).any? %>
-              <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
-              <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
-              <p class="future-livestreams-card-book-button" id="tickets-sold-out" >Sold out</p>
-              <% else %>
-                <%= simple_form_for [livestream, @ticket] do |f| %>
-                <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
-                <% end %>
-              <% end %>
-              </div>
-            <!-- This is the end of the card for an upcoming event -->
+        <!-- This is start of the card for an upcoming event -->
+          <div class="future-livestreams-card">
+          <%= link_to "", livestream_path(livestream), class: "card-square-link" %>
+          <!-- need to put logic here to truncate title if over 58 characters -->
+          <h5 class="future-livestreams-card-title"><%= livestream.title %></h5>
+          <h6 class="future-livestreams-card-time"> <%= livestream.hour_of_stream.strftime('%A, %b %d %H:%M') %></h6>
+          <h6 class="future-livestreams-card-seats"> <%= livestream.tickets_available - (livestream.tickets_sold || 0 )%> seats left </h6>
+          <h6 class="future-livestreams-card-ticket-price"> Price: <%=  image_tag "rubysmall.svg"%> <%= livestream.ticket_price %></h6>
+          <!-- I know u will complain that I didn't put this in a partial but it doesn't work for some reason. Think it's because it's in a loop -->
+          <% if current_user == @livestream.user  %>
+          <p class="future-livestreams-card-book-button" id="ticket-bought">Good luck!</p>
+          <% elsif current_user == nil %>
+          <p class="future-livestreams-card-book-button" id="ticket-bought">Log in to book</p>
+          <% elsif current_user.tickets.where(livestream: livestream).any? %>
+          <p class="future-livestreams-card-book-button" id="ticket-bought">Ticket booked</p>
+          <% elsif (livestream.tickets_available - livestream.tickets_sold) == 0 %>
+          <p class="future-livestreams-card-book-button" id="tickets-sold-out">Sold out</p>
+          <% else %>
+            <%= simple_form_for [livestream, @ticket] do |f| %>
+            <%= f.button :submit, 'Buy ticket', class: 'future-livestreams-card-book-button btn btn-primary' %>
+            <% end %>
+          <% end %>
           </div>
+          <!-- This is the end of the card for an upcoming event -->
+        </div>
       <% end %>
     </div>
 
     <!-- This is the top fans table -->
     <%#= render 'top-fans' %>
 
+    <!-- list of user who bought a ticket for that livestream -->
+    <% if current_user == @livestream.user  %>
+    <%= render 'livestreams/list_of_tickets_sold' %>
+    <% end %>
 
     <!-- This is the social media follow div fuck this-->
     <%= render 'social_media' %>

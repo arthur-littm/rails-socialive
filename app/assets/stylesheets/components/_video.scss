@@ -13,35 +13,39 @@
 #video-info-container{
   position: relative;
   background-color: black;
-  height: 161px;
+  height: 150px;
   width: 100%;
   padding: 10px;
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
+  overflow: scroll;
 }
 
 #video-info-share-container{
   position: relative;
   background-color: white;
-  height: 171px;
+  height: 150px;
   width: 100%;
   padding: 10px;
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
+  overflow: scroll;
 }
 
 #video-info-container h4{
   position: absolute;
   top: 28px;
   color: white;
+  margin-right: 70px;
 }
 
 #video-info-share-container h4{
   position: absolute;
   top: 45px;
   color: $gunmetal;
+  margin-right: 70px;
 }
 
 #video-info-share-container h5{
@@ -52,14 +56,15 @@
   position: absolute;
   top: 61px;
   color: white;
-  width: 75%;
+  height: auto;
+  margin-right: 170px;
 }
 
 #video-info-share-description{
   position: absolute;
   top: 81px;
   color: $gunmetal;
-  width: 75%;
+  margin-right: 170px;
 }
 
 .video-info-card-date {

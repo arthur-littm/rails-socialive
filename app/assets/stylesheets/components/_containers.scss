@@ -140,7 +140,7 @@
 }
 
 .black-photo-gallery-wrapper {
-  margin-top: 30px;
+  margin-top: 10px;
   background-color: $gunmetal;
 
   border-radius: 5px;
@@ -209,7 +209,7 @@ small {
   min-height: 600px;
   border-radius: 5px;
   margin:60px;
-  color:$gray-light;
+  // color:$gray-light;
 }
 
 .black {
@@ -237,7 +237,7 @@ background-color:$gunmetal;
     color: $gunmetal;
     box-sizing: content-box;
     background-color: $white;
-    width: 60%;
+    width: 100%;
     border: 1px solid $gray-dark;
     margin: 5px;
     padding: 2px 5px 2px 5px;

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @fitness_livestreams = Livestream.all.where(category: 'fitness')
     @fashion_livestreams = Livestream.all.where(category: 'fashion')
     @foodie_livestreams = Livestream.all.where(category: 'foodie')
-    @technology_livestreams = Livestream.all.where(category: 'technology')
+    @yoga_livestreams = Livestream.all.where(category: 'yoga')
     # add more categories when cards are complete #
   end
 

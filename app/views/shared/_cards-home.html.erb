@@ -372,23 +372,23 @@
   </div>
 <% end  %>
 
-<!-- technology category -->
+<!-- yoga category -->
 
 <!-- Livestream disappears if it ended -->
-  <% technology_not_ended_livestreams = [] %>
-  <% @technology_livestreams.order(:hour_of_stream).all.each do |livestream| %>
+  <% yoga_not_ended_livestreams = [] %>
+  <% @yoga_livestreams.order(:hour_of_stream).all.each do |livestream| %>
   <% if livestream.ended == false && Time.now < livestream.hour_of_stream.localtime + 86400  %>
-        <% technology_not_ended_livestreams << livestream %>
+        <% yoga_not_ended_livestreams << livestream %>
     <% end %>
 <% end %>
 
-<% if technology_not_ended_livestreams.count != 0 %>
+<% if yoga_not_ended_livestreams.count != 0 %>
   <div class="home-wrapper">
     <div class="cards-square-container container">
-      <h4><%= @technology_livestreams.first.category.capitalize %></h4>
+      <h4><%= @yoga_livestreams.first.category.capitalize %></h4>
       <div class="row">
 
-        <% technology_not_ended_livestreams.first(3).each do |livestream| %>
+        <% yoga_not_ended_livestreams.first(3).each do |livestream| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
 
             <div class="card-square" >

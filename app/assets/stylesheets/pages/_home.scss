@@ -30,12 +30,13 @@ h1, h2, h3, h4, p, li {
 }
 
 #search-input-container {
-  width: 100%;
   // padding: 28px 0 32px;
   border-bottom: 1px solid $white;
   background-color: transparent;
   margin-bottom: 20px;
   margin-top: 15px;
+  margin-left: 3%;
+  width: 93%;
 }
 
 #typed-strings {
@@ -49,6 +50,14 @@ h1, h2, h3, h4, p, li {
   background-color: transparent;
   border: 0;
   outline: 0;
+  @media (max-width: 767px) {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  @media (min-width:1025px) {
+    font-size: 48px;
+    line-height: 72px;
+  }
 }
 
 #logo-banner {

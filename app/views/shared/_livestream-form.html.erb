@@ -7,8 +7,8 @@
 
   <div class="form-inputs">
 
-    <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 50,  label: false,   required: true  %>
-    <%= f.input :description.downcase, placeholder: "Description of your stream", maxlength: 270, label: false %>
+    <%= f.input :title.downcase, placeholder: "Title of the stream", maxlength: 45,  label: false,   required: true  %>
+    <%= f.input :description.downcase, placeholder: "Description of your stream", maxlength: 340, label: false %>
     <%= f.input :hour_of_stream, as: :string, placeholder: "Date and time of livestream", label: false, input_html: {id: 'datepicker-stream'}, required: true %>
     <%= f.input :category, :collection => ["fashion", "foodie", "fitness","yoga"], prompt: "Choose a category", required: true, label: false %>
 

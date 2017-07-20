@@ -8,7 +8,7 @@ class LivestreamsController < ApplicationController
 
   def index
     #@livestreams = Livestream.search params[:query]
-    @livestreams = Livestream.search params[:query], operator: "or", match: :word_start, fields: [:title, :description], highlight: {tag: "<strong>"}
+    @livestreams = Livestream.search params[:query], operator: "or", match: :word_start, fields: [:title, :description, :category], highlight: {tag: "<strong>"}
     @users = User.search(params[:query])
     #@users = User.all
   end

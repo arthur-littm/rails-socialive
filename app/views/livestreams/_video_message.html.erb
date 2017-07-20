@@ -11,7 +11,7 @@
       <p>Your livestream should start soon</p>
       <% end %>
     </div>
-    <% if (current_user == nil && @livestream.hour_of_stream.future?) || (current_user == nil && @livestream.live ==true ) %>
+    <% if (current_user == nil && @livestream.hour_of_stream.future?) || (current_user == nil && @livestream.live ==true ) || current_user == nil && @livestream.ended == false %>
     <%= render 'livestreams/video_button_login' %>
     <% else %>
     <%= render 'livestreams/video_button_join' %>

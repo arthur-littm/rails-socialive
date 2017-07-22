@@ -35,17 +35,21 @@
 }
 
 #video-info-container h4{
-  position: absolute;
+  // position: absolute;
   top: 45px;
   color: white;
-  margin-right: 70px;
+  margin: 0px 170px 0px 0px;
+  overflow: scroll;
+  height: 24px;
 }
 
 #video-info-share-container h4{
-  position: absolute;
+  // position: absolute;
   top: 45px;
   color: $gunmetal;
-  margin-right: 70px;
+  margin: 0px 170px 0px 0px;
+  overflow: scroll;
+  height: 24px;
 }
 
 #video-info-share-container h5{
@@ -53,21 +57,23 @@
 }
 
 #video-info-description{
-  position: absolute;
+  // position: absolute;
   top: 81px;
   color: white;
   margin-right: 170px;
   overflow: scroll;
   height: 69px;
+  margin: 0px 170px 0px 0px;
 }
 
 #video-info-share-description{
-  position: absolute;
+  // position: absolute;
   top: 81px;
   color: $gunmetal;
   margin-right: 170px;
   overflow: scroll;
   height: 69px;
+  margin: 0px 170px 0px 0px;
 }
 
 .video-info-card-date {
@@ -99,9 +105,10 @@
 }
 
 #cat-name{
-  position: absolute;
+  // position: absolute;
   left: 10px;
   top: 6px;
+  margin: 0px
 }
 
 @media (max-width: 506px) {
@@ -160,16 +167,6 @@
   // width: auto;
   margin: auto;
   font-size: 30px;
-  // @media (max-width: 767px) {
-  //   h2{
-  //     font-size: 20px;
-  //   }
-  // }
-  // @media (min-width:1025px) {
-  //   h2{
-  //     font-size: 30px;
-  //   }
-  // }
 }
 
 .viewers {

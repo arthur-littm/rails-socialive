@@ -1,48 +1,10 @@
-<div class="container">
-  <div class="black">
-    <div class="container">
-      <div class="row card-dashboard">
-        <div class="col-xs-8 col-xs-offset-2">
-          <div class="row">
-            <% if @my_subscriptions.count == 0 %>
-              <div class="mystreams-title-white">
-                <h1>You have no subscriptions!</h1>
-              </div>
-            <% else %>
-              <% @my_subscriptions.each do |following| %>
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                  <div class="card-square" >
-                    <% if following.profilepic? %>
-                      <div class="card-square-image" style="background-image: url('<%= cl_image_path following.profilepic.path, crop: :fill, effect: :grayscale %>');">
-                      </div>
+  <div class="container">
+    <div class="row">
+        <div class="form-login text-center">
 
-                      <div class="card-first-name" >
-                        <p><%= following.first_name %> <%= following.last_name[0] %>.</p>
-                      </div>
+          <%= render 'shared/stats' %>
 
-                    <% elsif following.facebook_picture_url != nil %>
-                      <div class="card-square-image" style="background-image: url('<%= image_path following.facebook_picture_url %>');">
-                      </div>
-                      <div class="card-first-name" >
-                        <p><%= following.first_name %> <%= following.last_name[0] %>.</p>
-                      </div>
-
-                    <% else %>
-                      <div class="card-square-image" style="background-image: url('<%= image_path 'default-user.png'%>');">
-                      </div>
-                      <div class="card-first-name" >
-                        <p><%= following.first_name %> <%= following.last_name[0] %>.</p>
-                      </div>
-                    <% end %>
-
-                    <%= link_to "", profile_path(following), class: "card-square-link" %>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+

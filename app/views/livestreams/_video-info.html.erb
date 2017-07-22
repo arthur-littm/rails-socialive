@@ -15,7 +15,7 @@
   <h4><%= @livestream.title %></h4>
   <p id="video-info-description"><%= @livestream.description %></p>
   <div class="video-info-card-date">
-    <p><%= @livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')%></p>
+    <p><%= @livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M')%></p>
   </div>
   <ul class="viewers list-inline">
     <i class="fa fa-eye" aria-hidden="true"></i>

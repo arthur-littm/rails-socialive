@@ -19,7 +19,7 @@
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 #video-info-share-container{
@@ -31,12 +31,12 @@
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 #video-info-container h4{
   position: absolute;
-  top: 28px;
+  top: 45px;
   color: white;
   margin-right: 70px;
 }
@@ -54,10 +54,11 @@
 
 #video-info-description{
   position: absolute;
-  top: 61px;
+  top: 81px;
   color: white;
-  height: auto;
   margin-right: 170px;
+  overflow: scroll;
+  height: 69px;
 }
 
 #video-info-share-description{
@@ -65,6 +66,8 @@
   top: 81px;
   color: $gunmetal;
   margin-right: 170px;
+  overflow: scroll;
+  height: 69px;
 }
 
 .video-info-card-date {

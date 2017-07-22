@@ -1,7 +1,16 @@
 <div id="video-info-container">
   <div id="cat-name">
+    <div class="list-inline">
+      <% if @livestream.user.profilepic != nil %>
+        <%= cl_image_tag(@livestream.user.profilepic.path, class: "avatar", crop: :fill) %>
+        <% else @livestream.user.facebook_picture_url != nil %>
+        <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "avatar", crop: :fill) %>
+      <% end %>
+
+      <h5 style="display: inline; color: #B7FFD4;"> <%= @livestream.user.first_name%> <%= @livestream.user.last_name %>
+      </h5>
+    </div>
     <!-- <h5><#%= @livestream.category.capitalize %></h5> -->
-    <h5 style="color: #B7FFD4";> <%= @livestream.user.first_name%> <%= @livestream.user.last_name %></h5>
   </div>
   <h4><%= @livestream.title %></h4>
   <p id="video-info-description"><%= @livestream.description %></p>

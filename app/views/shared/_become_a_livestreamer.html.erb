@@ -8,6 +8,7 @@
           <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
             <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
             <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
+            <%= f.input :username_optional.downcase, label: false, placeholder: "Username (optional, ex: if you have a business or blog name)", required: false %>
             <%= f.input :profilepic, as: :attachinary, label: "Please upload a new profile picture", required: true %>
 
           <h4 class="text-center margin-top-10">Bio</h4>

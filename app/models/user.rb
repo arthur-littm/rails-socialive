@@ -54,7 +54,11 @@ class User < ApplicationRecord
   #sets name for the chat
 
   def name
-    self.first_name || "anon"
+    if self.username_optional != (nil || "")
+      self.username_optional
+    else
+      self.first_name.capitalize + " " + self.last_name.capitalize.first + "."
+    end
     # email.split('@')[0]
   end
 

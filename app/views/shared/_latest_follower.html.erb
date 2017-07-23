@@ -6,6 +6,6 @@
     <% elsif @livestream.user.followers.last.facebook_picture_url != nil %>
       <%=  image_tag @livestream.user.followers.last.facebook_picture_url, class: "avatar" %>
     <% end %>
-    <h5 style="margin-top: 3px; margin-bottom: 1px;"><%= @livestream.user.followers.last.first_name || 0 %></h5>
+    <h5 style="margin-top: 3px; margin-bottom: 1px;"><%= @livestream.user.followers.name || 0 %></h5>
   </div>
 <% end %>

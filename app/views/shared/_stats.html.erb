@@ -35,7 +35,7 @@
                <%= image_tag "default-avatar.png", class:"avatar" %>
               <% end %>
 
-              <%= following.first_name %> <%= following.last_name %></li>
+              <%= following.name %></li>
             <% end %>
           <% end %>
         </ul>
@@ -67,7 +67,7 @@
              <% else %>
               <%= image_tag "default-avatar.png", class:"avatar" %>
             <% end %>
-            <%= follower.first_name %> <%= follower.last_name %></li>
+            <%= follower.name %></li>
             <% end %>
             <% end %>
           </ul>

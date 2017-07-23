@@ -1,7 +1,7 @@
 
 <% if @mylivestreams.all.count == 0 %>
   <div class="cards-square-container container">
-    <div class="mystreams-title-white">
+    <div class="mystreams-title-gunmetal text-center">
       <h1>You have no livestreams!</h1>
     </div>
   </div>
@@ -43,7 +43,7 @@
                 </div>
               </div>
               <div class="card-first-name" >
-                <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
+                <p><%= livestream.user.name %></p>
               </div>
               <div class="card-date">
                 <p><%= livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M') if livestream.hour_of_stream %></p>
@@ -57,7 +57,7 @@
             <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
               <p><%= livestream.title %></p>
               <div class="card-first-name" >
-                <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
+                <p><%= livestream.user.name %></p>
               </div>
               <div class="card-date">
                 <p><%= livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M') if livestream.hour_of_stream %></p>
@@ -126,7 +126,7 @@
                   </div>
                 </div>
                 <div class="card-first-name" >
-                  <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
+                  <p><%= livestream.user.name %></p>
                 </div>
                 <div class="card-date">
                   <p><%= livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M') if livestream.hour_of_stream %></p>
@@ -139,7 +139,7 @@
               <div class="card-square-image" style="background-image: url('<%= image_path 'chef.png'%>');">
                 <p><%= livestream.title %></p>
                 <div class="card-first-name" >
-                  <p><%= livestream.user.first_name %> <%= livestream.user.last_name[0] if livestream.user.last_name %>.</p>
+                  <p><%= livestream.user.name %></p>
                 </div>
                 <div class="card-date">
                   <p><%= livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M') if livestream.hour_of_stream %></p>

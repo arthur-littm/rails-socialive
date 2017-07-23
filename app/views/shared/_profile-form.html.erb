@@ -12,7 +12,7 @@
             <% avatar_url = @user.facebook_picture_url || image_path("default-avatar.png")  %>
           <% end %>
           <%= image_tag avatar_url, class: "avatar-xxs" %>
-          <strong> <%= link_to profile_path(@user), target: :_blank do %> <span > <%= @user.first_name.capitalize + ' ' + @user.last_name.capitalize.first %> </span> <% end %> </strong>
+          <strong> <%= link_to profile_path(@user), target: :_blank do %> <span > <%= @user.name %> </span> <% end %> </strong>
         </div>
 
         <div class="form-login">
@@ -22,8 +22,10 @@
             <%= f.input :profilepic, as: :attachinary, label: "Profile picture" %>
             <%= f.input :first_name.downcase, label: false, placeholder: "First name" %>
             <%= f.input :last_name.downcase, label: false, placeholder: "Last name" %>
+            <%= f.input :username_optional.downcase, label: false, placeholder: "Username (optional, ex: if you have a business or blog name)", required: false %>
+
           <h3>Bio</h3>
-            <%= f.input :bio.downcase, label: false, placeholder: "I live in Galapagos and I like turtles" %>
+            <%= f.input :bio.downcase, label: false, placeholder: "Tell your viewers a little more about who you are ;-)" %>
           <h3>Social</h3>
             <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL with http://" %>
             <%= f.input :twitterlink, label: false, placeholder: "Twitter URL with http://" %>

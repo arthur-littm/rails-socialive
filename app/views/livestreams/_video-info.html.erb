@@ -7,7 +7,7 @@
         <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "avatar", crop: :fill) %>
       <% end %>
 
-      <h5 style="display: inline; color: #B7FFD4;"> <%= @livestream.user.first_name%> <%= @livestream.user.last_name %>
+      <h5 style="display: inline; color: #B7FFD4;"> <%= @livestream.user.name %>
       </h5>
     </div>
     <!-- <h5><#%= @livestream.category.capitalize %></h5> -->

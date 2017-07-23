@@ -7,7 +7,7 @@ ActiveAdmin.register User do
   permit_params :email, :first_name, :last_name, :livestreamer, :admin,
                 :facebooklink, :twitterlink, :instagramlink, :youtubelink,
                 :snapchatlink, :bio, :fav1title, :fav2title, :fav3title,
-                :fav1, :fav2, :fav3, :color, :icon
+                :fav1, :fav2, :fav3, :color, :icon, :username_optional
 # or
 #
 # permit_params do

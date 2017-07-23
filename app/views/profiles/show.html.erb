@@ -33,18 +33,6 @@
             <%= render 'shared/stats' %>
           </div>
 
-          <div class="col-xs-12 col-sm-8">
-            <% sum = 0 %>
-            <% @user.livestreams.each do |livestream| %>
-            <% sum += livestream.tickets_sold %>
-            <% end %>
-            <p class= "stats-elements"><%= sum %> Total views</p>
-          </div>
-
-          <div class="col-xs-12 col-sm-8">
-            <p class= "stats-elements"><%= @user.livestreams.count %> Livestreams</p>
-          </div>
-
           <% if @user.bio != "" %>
           <div class="col-xs-12 profile-about">
             <div class="margin-bottom-20">
@@ -65,7 +53,7 @@
           <div class="col-xs-12">
             <div class="black-photo-gallery-wrapper text-center">
               <% @user.images.each do |photo| %>
-              <%= cl_image_tag photo.path, :width=>300 %>
+              <%= cl_image_tag photo.path, :width=>270 %>
               <% end %>
             </div>
           </div>

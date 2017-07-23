@@ -1,5 +1,5 @@
 <% @user ||= current_user %>
-<div class="stats">
+<div class=" margin-bottom-5">
   <a data-toggle="modal" data-target="#following-list">
     <strong id="following" class="stat" >
       <%= @user.following.count %>
@@ -79,5 +79,15 @@
   </div>
 </div>
 
+
+<!-- Stat elements, total tickets + total # of livestreams -->
+
+<% sum = 0 %>
+<% @user.livestreams.each do |livestream| %>
+  <% sum += livestream.tickets_sold %>
+<% end %>
+<p class= "margin-bottom-5"><%= sum %> Total views</p>
+
+<p class= "margin-bottom-5"><%= @user.livestreams.count %> Livestreams</p>
 
 

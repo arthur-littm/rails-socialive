@@ -7,10 +7,9 @@
         <%= cl_image_tag(@livestream.user.facebook_picture_url, class: "avatar", crop: :fill) %>
       <% end %>
 
-    <h5 style="display: inline; color: $gunmetal; box-sizing: border-box; box-shadow: inset 0px -7px 0px 0px #b7ffd4;">
-
+      <h5 style="display: inline; color: $gunmetal; box-sizing: border-box; box-shadow: inset 0px -7px 0px 0px #b7ffd4;">
       <%= @livestream.user.first_name%> <%= @livestream.user.last_name %>
-    </h5>
+      </h5>
     </div>
   </div>
 
@@ -18,7 +17,7 @@
   <p id="video-info-share-description"><%= @livestream.description %></p>
 
   <div class="video-info-card-date">
-    <p><%= @livestream.hour_of_stream.localtime.strftime('%A, %b %d %H:%M')%></p>
+    <p><%= @livestream.hour_of_stream.localtime.strftime('%a, %b %d %H:%M')%></p>
   </div>
   <ul class="viewers list-inline">
     <i class="fa fa-ticket fa-black" aria-hidden="true"></i>

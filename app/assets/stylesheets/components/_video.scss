@@ -19,7 +19,7 @@
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 #video-info-share-container{
@@ -31,21 +31,25 @@
   color: white;
   border-radius: 3px;
   box-shadow: 1px 2px 2px gray;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 #video-info-container h4{
-  position: absolute;
-  top: 28px;
+  // position: absolute;
+  top: 45px;
   color: white;
-  margin-right: 70px;
+  margin: 0px 170px 0px 0px;
+  overflow: scroll;
+  height: 24px;
 }
 
 #video-info-share-container h4{
-  position: absolute;
+  // position: absolute;
   top: 45px;
   color: $gunmetal;
-  margin-right: 70px;
+  margin: 0px 170px 0px 0px;
+  overflow: scroll;
+  height: 24px;
 }
 
 #video-info-share-container h5{
@@ -53,18 +57,23 @@
 }
 
 #video-info-description{
-  position: absolute;
-  top: 61px;
+  // position: absolute;
+  top: 81px;
   color: white;
-  height: auto;
   margin-right: 170px;
+  overflow: scroll;
+  height: 69px;
+  margin: 0px 170px 0px 0px;
 }
 
 #video-info-share-description{
-  position: absolute;
+  // position: absolute;
   top: 81px;
   color: $gunmetal;
   margin-right: 170px;
+  overflow: scroll;
+  height: 69px;
+  margin: 0px 170px 0px 0px;
 }
 
 .video-info-card-date {
@@ -96,9 +105,10 @@
 }
 
 #cat-name{
-  position: absolute;
+  // position: absolute;
   left: 10px;
   top: 6px;
+  margin: 0px
 }
 
 @media (max-width: 506px) {
@@ -137,8 +147,7 @@
 }
 
 .countdown-title {
-  // background: rgba(255,255,255,0.7);
-  width: 1200px;
+  // width: 680px;
   height: 300px;
   padding: 30px;
   border-radius: 5px;
@@ -155,8 +164,9 @@
 }
 
 .video-title {
- width: 800px;
- margin: auto;
+  // width: auto;
+  margin: auto;
+  font-size: 30px;
 }
 
 .viewers {

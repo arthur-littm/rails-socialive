@@ -1,5 +1,11 @@
 #messages {
   overflow-y: auto;
-  height: 76vh;
   padding: 10px;
+  @media (max-width: 767px) {
+    min-height: 20vh;
+    max-height: 76vh;
+  }
+  @media (min-width:768px) {
+    height: 76vh;
+  }
 }

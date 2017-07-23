@@ -54,8 +54,9 @@ class User < ApplicationRecord
   #sets name for the chat
 
   def name
-    if self.username_optional != (nil || "")
+    if self.username_optional != nil && self.username_optional != ""
       self.username_optional
+    # raise
     else
       self.first_name.capitalize + " " + self.last_name.capitalize.first + "."
     end

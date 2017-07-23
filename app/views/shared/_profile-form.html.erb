@@ -12,7 +12,7 @@
             <% avatar_url = @user.facebook_picture_url || image_path("default-avatar.png")  %>
           <% end %>
           <%= image_tag avatar_url, class: "avatar-xxs" %>
-          <strong> <%= link_to profile_path(@user), target: :_blank do %> <span > <%= @user.first_name.capitalize + ' ' + @user.last_name.capitalize.first %> </span> <% end %> </strong>
+          <strong> <%= link_to profile_path(@user), target: :_blank do %> <span > <%= @user.name %> </span> <% end %> </strong>
         </div>
 
         <div class="form-login">

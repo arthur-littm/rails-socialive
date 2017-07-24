@@ -23,7 +23,16 @@ $(document).ready(function(){
   // });
 
   $('.radio-label-free').click(function(){
-        $(".radio-ticket-price").val('');
-    });
+    $(".radio-ticket-price").val('');
+  });
+
+  // $(".check-select").click(function(){
+  //   $(this).toggleClass("active");
+  // });
+
+  $(".check-label").click(function(){
+    // $(".check-select").removeClass('active');
+    $(".check-select").toggleClass("active");
+  });
 
 });

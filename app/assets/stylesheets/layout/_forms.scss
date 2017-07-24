@@ -5,8 +5,8 @@
   border-radius: 100%;
   height: 18px;
   width: 18px;
-  color: transparent;
-  text-shadow: 0 0 0 transparent;
+  top: 0px;
+  left: 10px;
   &:hover{
     cursor: pointer;
   }
@@ -20,10 +20,84 @@
   &:focus{
     outline: none;
   }
-  // z-index: 5;
 }
 
-.whatever{
-  background: green;
-  padding: 20px
+.check-select{
+  display: block;
+  position: absolute;
+  border: 2px solid #AAAAAA;
+  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+  top: 0px;
+  left: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+  &.active{
+    background: $gunmetal;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    margin: auto;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.free-or-paid{
+  position: absolute;
+  margin-top: 10px;
+}
+
+.free-or-false-choice{
+  padding: 20px;
+  opacity: .4;
+  position:relative;
+  text-align: center;
+}
+
+.radio-label-paid{
+  margin-left: 10px;
+  // cursor: pointer;
+}
+
+.radio-label-free{
+  margin-left: 10px;
+  // cursor: pointer;
+}
+
+.radio-ticket-price{
+  position: relative;
+  top: -45px;
+  left: 100px;
+  margin: 0;
+  margin-top: 1px;
+}
+
+.check-donation{
+  margin-top: 0px;
+}
+
+.check-label{
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.form-label{
+  font-size: 11px;
+  margin: 20px 0px 7px 6px;
+}
+
+#paid-height{
+  height: 30px;
+}
+
+#input_img {
+  position: absolute;
+  top: 2px;
+  left: 92px;
+  width: 15px;
+  height: 15px;
 }

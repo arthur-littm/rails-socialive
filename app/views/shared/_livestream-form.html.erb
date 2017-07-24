@@ -12,10 +12,36 @@
     <%= f.input :hour_of_stream, as: :string, placeholder: "Date and time of livestream", label: false, input_html: {id: 'datepicker-stream'}, required: true %>
     <%= f.input :category, :collection => ["fashion", "foodie", "fitness","yoga"], prompt: "Choose a category", required: true, label: false %>
     <%= f.input :tickets_available, label: false, placeholder: "Number of tickets available for sale",  input_html: { min: '1', step: 'any', max: 3000 } %>
-    <%= f.input :free_livestream, label: "Fee or paid livestream" %>
-    <div class="input-container form-group float required livestream_ticket_price">
-      <input class="form-control numeric float required" required="required" aria-required="true" placeholder="Price per ticket in rubies" type="number" min="0" step="any" name="livestream[ticket_price]" id="livestream_ticket_price"><img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="input_img">
+
+    <div class="form-group ">
+      <input type="hidden" name="livestream[free_livestream]" value="">
+
+        <div class="col-md-4 col-sm-6 ">
+          <input class="radio_buttons optional" type="radio" value="true" checked="checked" name="livestream[free_livestream]" id="livestream_free_livestream_true">
+          <label for="livestream_free_livestream_true" class="radio-label-free">Free
+            <div class="radio-select radio-select-free "></div>
+          </label>
+        </div>
+
+        <div class="col-md-4 col-sm-6 ">
+          <input class="radio_buttons optional" readonly="readonly" type="radio" value="false" name="livestream[free_livestream]" id="livestream_free_livestream_false">
+          <label for="livestream_free_livestream_false" class="radio-label-paid">Paid
+            <div class="radio-select radio-select-paid"></div>
+          </label>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6 ">
+<!--             <label for="livestream_free_livestream_false" class="radio-label-paid"> -->
+          <input class="form-control radio-ticket-price" placeholder="Price per ticket" type="number" min="0" step="any" name="livestream[ticket_price]" id="livestream_ticket_price">
+          <img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="input_img">
+<!--             </label>
+ -->    </div>
+
+
     </div>
+
+
     <br>
     <%= f.input :donation_feature, label: "Add donation feature" %>
     <%= f.input :main_picture, as: :attachinary, label: "Choose a livestream cover picture", required: true %>

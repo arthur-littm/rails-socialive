@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170723135647) do
     t.integer  "chat_room"
     t.string   "room_name"
     t.datetime "hour_of_stream"
-    t.integer  "ticket_price"
+    t.integer  "ticket_price"         default: 0
     t.text     "description"
     t.boolean  "ended",               default: false
     t.boolean  "live",                default: false

@@ -19,7 +19,7 @@
                     <div class="card-square" >
 
                       <% if livestream.main_picture? %>
-                      <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+                      <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill %>');">
 
                       <!-- if livestream is live: yellow tag -->
                       <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
@@ -113,7 +113,7 @@
             <div class="card-square" >
 
               <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill %>');">
 
               <!-- if livestream is live: yellow tag -->
               <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
@@ -208,7 +208,7 @@
             <div class="card-square" >
 
               <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill %>');">
 
               <!-- if livestream is live: yellow tag -->
               <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
@@ -300,7 +300,7 @@
             <div class="card-square" >
 
               <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill %>');">
 
               <!-- if livestream is live: yellow tag -->
               <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>
@@ -393,7 +393,7 @@
             <div class="card-square" >
 
               <% if livestream.main_picture? %>
-              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill, effect: :grayscale %>');">
+              <div class="card-square-image" style="background-image: url('<%= cl_image_path livestream.main_picture.path, crop: :fill %>');">
 
               <!-- if livestream is live: yellow tag -->
               <% if Time.now > livestream.hour_of_stream.localtime && Time.now < livestream.hour_of_stream.localtime + 120.minutes %>

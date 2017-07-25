@@ -46,6 +46,38 @@
   }
 }
 
+.form-control {
+  color: $gunmetal ;
+  background-color: $white ;
+  width: 100% ;
+  margin-top: 0px;
+  border: 1px solid $gunmetal ;
+  padding: 2px 5px 2px 5px ;
+  border-radius: 0px ;
+  &:focus {
+    border: 1px solid $gunmetal ;
+    box-shadow: none;
+  }
+}
+
+.choose-file{
+  border: 2px solid $gunmetal;
+  line-height: 32px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 11px;
+}
+
+.no-file-chosen{
+  border: 1px solid $gunmetal;
+  padding: 6px 12px;
+  border-left: 0;
+  text-transform: none;
+  line-height: 22px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
 .free-or-paid{
   position: absolute;
   margin-top: 10px;
@@ -59,13 +91,16 @@
 }
 
 .radio-label-paid{
-  margin-left: 10px;
-  // cursor: pointer;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: normal;
 }
 
 .radio-label-free{
-  margin-left: 10px;
-  // cursor: pointer;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: normal;
+
 }
 
 .radio-ticket-price{
@@ -73,7 +108,7 @@
   top: -45px;
   left: 100px;
   margin: 0;
-  margin-top: 1px;
+  margin-top: 10px;
 }
 
 .check-donation{
@@ -87,7 +122,8 @@
 
 .form-label{
   font-size: 11px;
-  margin: 20px 0px 7px 6px;
+  margin: 9px 0px 2px 6px;
+  font-weight: bold;
 }
 
 #paid-height{

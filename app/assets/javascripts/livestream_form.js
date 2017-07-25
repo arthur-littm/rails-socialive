@@ -35,4 +35,8 @@ $(document).ready(function(){
     $(".check-select").toggleClass("active");
   });
 
+$(".choose-file").onchange = function () {
+    $(".no-file-chosen").value = this.value;
+};
+
 });

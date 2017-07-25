@@ -6,26 +6,49 @@
         <div class="form-login">
           <h4 class="text-center margin-top-10">Fill in your profile</h4>
           <%= simple_form_for @user, url: dashboard_path, method: :patch do |f| %>
-            <%= f.input :first_name.downcase, label: false, placeholder: "*First name", required: true %>
-            <%= f.input :last_name.downcase, label: false, placeholder: "*Last name", required: true %>
-            <%= f.input :username_optional.downcase, label: false, placeholder: "Username (optional, ex: if you have a business or blog name)", required: false %>
-            <%= f.input :profilepic, as: :attachinary, label: "Please upload a new profile picture", required: true %>
+
+            <p class='form-label'>FIRSTNAME</p>
+            <%= f.input :first_name.downcase, label: false, required: true %>
+            <p class='form-label'>LASTNAME</p>
+            <%= f.input :last_name.downcase, label: false, required: true %>
+            <p class='form-label'>USERNAME</p>
+            <%= f.input :username_optional.downcase, label: false, placeholder: "(optional, ex: if you have a business or blog name)", required: false %>
+            <p class='form-label'>PROFILE PICTURE</p>
+            <%= f.input :profilepic, as: :attachinary, label: false, required: true %>
 
           <h4 class="text-center margin-top-10">Bio</h4>
-            <%= f.input :bio.downcase, label: false, placeholder: "Please write a short bio. You'll be able to edit it later ;-)" %>
+            <%= f.input :bio.downcase, label: false %>
           <h4 class="text-center">Social</h4>
           <h6 class="text-center">These links help us evaluate your application. They will also create buttons on your Socialive profile that link to these social medias (if you have one of course)</h6>
 
-          <%= f.input :facebooklink, label: false, placeholder: "Facebook page URL with http://" %>
-          <%= f.input :twitterlink, label: false, placeholder: "Twitter URL with http://" %>
-          <%= f.input :instagramlink, label: false, placeholder: "Instagram URL with http://" %>
-          <%= f.input :youtubelink, label: false, placeholder: "Youtube channel URL with http://" %>
-          <%= f.input :snapchatlink, label: false, placeholder: "Snapchat URL with http://" %>
+            <p class='form-label'>FACEBOOK LINK</p>
+          <%= f.input :facebooklink, label: false, placeholder: "with http://" %>
+            <p class='form-label'>TWITTER LINK</p>
+          <%= f.input :twitterlink, label: false, placeholder: "with http://" %>
+            <p class='form-label'>INSTAGRAM LINK</p>
+          <%= f.input :instagramlink, label: false, placeholder: "with http://" %>
+            <p class='form-label'>YOUTUBE LINK</p>
+          <%= f.input :youtubelink, label: false, placeholder: "with http://" %>
+            <p class='form-label'>SNAPCHAT LINK</p>
+          <%= f.input :snapchatlink, label: false, placeholder: "with http://" %>
 
           <h4 class="text-center margin-top-10">Identification</h4>
-            <%= f.input :identification, as: :attachinary, label: "Please upload a copy of your ID or passport", required: true %>
+            <p class='form-label'>IDENTIFICATION</p>
+            <%= f.input :identification, as: :attachinary, label: false, style: "margin-top: 3px", required: true %>
+            <h6 style="margin-top: -6px">Please upload a copy of your ID or passeport</h6>
 
-            <%= f.input :livestreamer, label: "I agree to Socialive livestreaming terms and conditions", required: true %>
+            <p class='form-label'>TERMS & CONDITIONS</p>
+
+            <div class="form-group ">
+              <div class="checkbox check-donation">
+                <input value="0" type="hidden" name="user[livestreamer]">
+                <input class="hidden" required="required" aria-required="true" type="checkbox" value="1" name="user[livestreamer]" id="user_livestreamer">
+                <label class="boolean required check-label" for="user_livestreamer"> I agree to Socialive livestreaming terms and conditions
+                  <div class="check-select check-donation "></div>
+                </label>
+              </div>
+            </div>
+
             <%= f.button :submit, "Become a livestreamer", class: 'btn btn-primary btn-block', required: true %>
 
           <% end %>

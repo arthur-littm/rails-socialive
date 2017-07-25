@@ -10,16 +10,20 @@
           </p>
         </div>
       <% end %>
-      <a class="btn btn-primary btn-newsletter" id="button-sign-in-video" href="/users/sign_in"><i class="fa fa-unlock-alt" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to buy your ticket</strong></a>
+      <a class="btn btn-primary btn-newsletter" id="button-sign-in-video" href="/users/sign_in"><i class="fa fa-unlock-alt" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to watch</strong></a>
       <div class="margin-bottom-10" id="ticket-price-next-to-buy-ticket-btn">
 
-      <% if @livestream.ticket_price == 1 %>
+      <% if @livestream.ticket_price == (nil && 0) %>
+        Price: <strong>FREE</strong>
+      <% elsif @livestream.ticket_price == 1 %>
         Price: <strong><%= " #{@livestream.ticket_price}" %> ruby <%= image_tag "rubysmall.svg" %></strong>
+
       <% else %>
         Price: <strong>  <%= " #{@livestream.ticket_price}" %> rubies <%= image_tag "rubysmall.svg" %></strong>
       <% end %>
       </div>
-      <div id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left </div>
+      <div id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left
+      </div>
     </div>
   </div>
 </div>

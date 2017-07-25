@@ -16,7 +16,7 @@
   validates :category, presence: true
   validates :user_id, presence: true
   validates :title, presence: true
-  validates :ticket_price, presence: true
+  # validates :ticket_price, presence: true
   validates :description, presence: true
 
   before_create :set_session_id, :set_room_name

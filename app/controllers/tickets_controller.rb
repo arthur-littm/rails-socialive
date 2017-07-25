@@ -4,6 +4,11 @@ class TicketsController < ApplicationController
     @livestream = Livestream.find(params[:livestream_id])
     @initial_balance = current_user.balance
     #checks if user has enough rubies to buy ticket and debits/credits if he does
+
+    if @livestream.ticket_price == nil
+      @livestream.ticket_price = 0
+    end
+
     if current_user.balance >= @livestream.ticket_price && (@livestream.tickets_available - @livestream.tickets_sold) > 0
       current_user.balance -= @livestream.ticket_price
       @livestream.user.earned_balance += @livestream.ticket_price

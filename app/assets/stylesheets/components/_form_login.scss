@@ -5,8 +5,8 @@
 .form-login {
   background: $white;
   padding: 10px 20px;
-  margin: 30px 0 30px 0;
-  border-radius: 3px;
+  margin: 5px 0 30px 0;
+  border-radius: 1px;
   box-shadow: 1px 1px 2px $gray-dark;
   h2{
     font-size: 24px;
@@ -26,14 +26,6 @@
   margin:0;
 }
 
-#input_img {
-    position:absolute;
-    bottom:10px;
-    right:20px;
-    width:15px;
-    height:15px;
-}
-
 .form-links {
   color: $white;
 }
@@ -46,20 +38,6 @@
   &:hover{
     background-color: $blue-facebook-hover;
     color: $white;
-  }
-}
-
-.form-control {
-  color: $gunmetal ;
-  background-color: $white ;
-  width: 100% ;
-  margin-top: 10px;
-  border: 1px solid $gray-dark ;
-  padding: 2px 5px 2px 5px ;
-  border-radius: 5px ;
-  &:focus {
-    border: 1px solid $gray-dark ;
-    box-shadow: none;
   }
 }
 

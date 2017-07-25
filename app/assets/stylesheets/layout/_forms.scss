@@ -1,0 +1,140 @@
+.radio-select{
+  display: block;
+  position: absolute;
+  border: 2px solid #AAAAAA;
+  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+  top: 0px;
+  left: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+  &.active{
+    background: $gunmetal;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    margin: auto;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.check-select{
+  display: block;
+  position: absolute;
+  border: 2px solid #AAAAAA;
+  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+  top: 0px;
+  left: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+  &.active{
+    background: $gunmetal;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    margin: auto;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.form-control {
+  color: $gunmetal ;
+  background-color: $white ;
+  width: 100% ;
+  margin-top: 0px;
+  border: 1px solid $gunmetal ;
+  padding: 2px 5px 2px 5px ;
+  border-radius: 0px ;
+  font-size: 14px;
+  &:focus {
+    border: 1px solid $gunmetal ;
+    box-shadow: none;
+  }
+}
+
+.choose-file{
+  border: 2px solid $gunmetal;
+  line-height: 32px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 11px;
+}
+
+.no-file-chosen{
+  border: 1px solid $gunmetal;
+  padding: 6px 12px;
+  border-left: 0;
+  text-transform: none;
+  line-height: 22px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.free-or-paid{
+  position: absolute;
+  margin-top: 10px;
+}
+
+.free-or-false-choice{
+  padding: 20px;
+  opacity: .4;
+  position:relative;
+  text-align: center;
+}
+
+.radio-label-paid{
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.radio-label-free{
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: normal;
+
+}
+
+.radio-ticket-price{
+  position: relative;
+  top: -45px;
+  left: 100px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.check-donation{
+  margin-top: 0px;
+}
+
+.check-label{
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.form-label{
+  font-size: 11px;
+  margin: 9px 0px 2px 2px;
+  font-weight: bold;
+}
+
+#paid-height{
+  height: 30px;
+}
+
+#input_img {
+  position: absolute;
+  top: 2px;
+  left: 92px;
+  width: 15px;
+  height: 15px;
+}

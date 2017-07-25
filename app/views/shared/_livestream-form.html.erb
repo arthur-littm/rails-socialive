@@ -1,3 +1,6 @@
+
+<%# render 'livestream-form' %>
+
 <!-- Form for the modal -->
 
 <div class="form-login">
@@ -6,6 +9,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+
     <p class='form-label'>LIVESTREAM TITLE</p>
     <%= f.input :title.downcase, maxlength: 45,  label: false,   required: true  %>
     <p class='form-label'>LIVESTREAM DESCRIPTION</p>
@@ -56,15 +60,7 @@
 
     <p class='form-label'>COVER PICTURE</p>
 
-    <div class="form-group attachinary required livestream_main_picture margin-top-3">
-<!--       <label class="control-label attachinary required" for="livestream_main_picture">
-        <abbr title="required">*</abbr> Choose a livestream cover picture
-      </label> -->
-        <input class="attachinary required attachinary-input" required="required" aria-required="true" data-attachinary="{&quot;accessible&quot;:true,&quot;single&quot;:true,&quot;scope&quot;:&quot;main_picture&quot;,&quot;maximum&quot;:1,&quot;singular&quot;:&quot;main_picture&quot;,&quot;plural&quot;:&quot;main_pictures&quot;,&quot;files&quot;:[]}" data-form-data="{&quot;timestamp&quot;:1500985735,&quot;callback&quot;:&quot;http://localhost:3000/attachinary/cors&quot;,&quot;tags&quot;:&quot;development_env,attachinary_tmp&quot;,&quot;signature&quot;:&quot;49c065e8b6fed18aff585f705bdf2df4cb7ec9ad&quot;,&quot;api_key&quot;:&quot;394853629188779&quot;}" data-url="https://api.cloudinary.com/v1_1/rby/auto/upload" type="file" name="livestream[main_picture]" id="livestream_main_picture">
-      <div class="attachinary_container" style="display: none;">
-        <input type="hidden" name="livestream[main_picture]" value="">
-      </div>
-    </div>
+    <%= f.input :main_picture, as: :attachinary, label: false, required: true %>
 <br>
     <%= f.button :submit, class: 'btn btn-primary btn-block' %>
     <p>By creating a Livestream, you agree to the <a href="terms.pdf" target="_blank"> <strong>Terms and Conditions</strong></a></p>
@@ -83,4 +79,3 @@
       });
   </script>
 <% end %>
-

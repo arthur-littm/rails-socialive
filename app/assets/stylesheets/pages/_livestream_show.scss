@@ -189,8 +189,8 @@
   margin: auto;
   padding-top: 20px;
   padding-bottom: 20px;
-  position: absolute;
-  top: 135px; bottom: 0; left: 0; right: 0;
+  position: relative;
+  top: 60px; bottom: 0; left: 0; right: 0;
   border-top: 1px solid #adafb2;
   border-bottom: 1px solid #adafb2;
   @media (max-width: 767px) {
@@ -218,18 +218,10 @@
   max-width: 92px;
   text-align: center;
   color: black;
-  // background-image: -webkit-linear-gradient(top, #bbb, #eee);
-  // background-image:    -moz-linear-gradient(top, #bbb, #eee);
-  // background-image:     -ms-linear-gradient(top, #bbb, #eee);
-  // background-image:      -o-linear-gradient(top, #bbb, #eee);
-  // border-top: 1px solid #fff;
   border-radius: 3px;
-  // box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
   margin: 0 7px;
-  // padding: 18px 0;
   display: inline-block;
   position: relative;
-
   @media (max-width: 767px) {
     width: 54px;
     font: lighter 30px 'Helvetica', sans-serif;

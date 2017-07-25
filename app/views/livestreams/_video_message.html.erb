@@ -1,20 +1,20 @@
 <div class="video-message" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(-225deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.5) 90%), url(<%= cl_image_path @livestream.main_picture.path %>); background-size: cover; background-position: center;">
 
-  <div class="video-buttons-inside" style="display: inline; height: 535px;">
+  <div class="video-buttons-inside text-center" style="display: inline; height: 535px;">
     <div class="countdown-title" style="box-sizing: content-box;">
       <div class="video-title">
       <h2><%= @livestream.title %></h2>
       </div>
       <% if @livestream.hour_of_stream.future? %>
-      <%= render 'livestreams/countdown' %>
+        <%= render 'livestreams/countdown' %>
       <% else %>
-      <p>Your livestream should start soon</p>
+        <p>Your livestream should start soon</p>
       <% end %>
     </div>
     <% if (current_user == nil && @livestream.hour_of_stream.future?) || (current_user == nil && @livestream.live ==true ) || current_user == nil && @livestream.ended == false %>
-    <%= render 'livestreams/video_button_login' %>
+      <%= render 'livestreams/video_button_login' %>
     <% else %>
-    <%= render 'livestreams/video_button_join' %>
+      <%= render 'livestreams/video_button_join' %>
     <% end %>
   </div>
 </div>

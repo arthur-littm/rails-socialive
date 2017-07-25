@@ -6,7 +6,7 @@
       <h2><%= @livestream.title %></h2>
       </div>
       <% if @livestream.hour_of_stream.future? %>
-      <p style="font-size: 12px; margin-top: 40px">LIVESTREAM STARTS IN</p>
+      <p style="font-size: 12px; margin-top: 40px"><strong> LIVESTREAM STARTS IN</strong></p>
         <%= render 'livestreams/countdown' %>
       <% else %>
         <p>Your livestream should start soon</p>

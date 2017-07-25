@@ -13,6 +13,29 @@
   margin-top: 23px;
 }
 
+.btn-buy-ticket{
+  background-color: #FECE84;
+  border: none;
+  margin-right: 100px;
+  width: 100%;
+  letter-spacing: 0px;
+  font-size: 20px;
+  font-weight: 400;
+  position: relative;
+}
+
+#ticket-price-next-to-buy-ticket-btn{
+  background: #E0FFEF;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+#ticket-icon{
+  position: absolute;
+  margin-left: 21px;
+  margin-top: -30px;
+}
+
 #controls{
   width: 40%
 }
@@ -29,9 +52,10 @@
 #button-sign-in-video{
   border: none;
   width: 100%;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   font-size: 18px;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 #button-leave {

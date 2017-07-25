@@ -112,20 +112,6 @@
   justify-content: center;
 }
 
-.btn-buy-ticket{
-  background-color: #FECE84;
-  border: none;
-  width: 100%;
-  letter-spacing: 2px;
-  font-size: 20px;
-  font-weight: 400;
-}
-
-#ticket-price-next-to-buy-ticket-btn{
-  background: #E0FFEF;
-  text-align: center;
-}
-
 .social-icons-right-side{
   float: right;
   margin-right: 48px;
@@ -190,7 +176,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
-  top: 60px; bottom: 0; left: 0; right: 0;
+  margin-top: 18px;
   border-top: 1px solid #adafb2;
   border-bottom: 1px solid #adafb2;
   @media (max-width: 767px) {

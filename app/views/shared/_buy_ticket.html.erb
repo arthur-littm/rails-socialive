@@ -1,6 +1,20 @@
+
 <%= simple_form_for([@livestream, @ticket], remote: true) do |f| %>
-  <%= f.button :submit, "Buy ticket", class: 'btn btn-primary btn-buy-ticket', data: {confirm: "Are you sure?"} %>
-  <div id="ticket-price-next-to-buy-ticket-btn">
-    <%=  "#{@livestream.ticket_price}" %> rubies <%=  image_tag "rubysmall.svg" %>
-  </div>
+  <%= f.button :submit, "GET YOUR TICKET", class: 'btn btn-primary btn-buy-ticket', data: {confirm: "Are you sure?"} %>
+
+<div id="ticket-icon">
+  <i class="fa fa-lg fa-ticket fa-black" aria-hidden="true"></i>
+</div>
+    <div id="ticket-price-next-to-buy-ticket-btn">
+    <% if @livestream.ticket_price == (nil && 0) %>
+      Price: <strong>FREE</strong>
+    <% elsif @livestream.ticket_price == 1 %>
+      Price: <strong><%= " #{@livestream.ticket_price}" %> ruby <%= image_tag "rubysmall.svg" %></strong>
+
+    <% else %>
+      Price: <strong>  <%= " #{@livestream.ticket_price}" %> rubies <%= image_tag "rubysmall.svg" %></strong>
+    <% end %>
+    </div>
+    <div id="ticket-price-next-to-buy-ticket-btn"> <%= @livestream.tickets_available - (@livestream.tickets_sold || 0 )%> seats left
+    </div>
 <% end %>

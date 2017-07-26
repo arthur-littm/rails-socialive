@@ -8,12 +8,15 @@ $(document).ready(function(){
     // $(".radio-select").removeClass('active');
     $(".radio-select-free").addClass("active");
     $(".radio-select-paid").removeClass("active");
+    $(".hide-it").addClass("hidden");
   });
 
   $(".radio-label-paid").click(function(){
     // $(".radio-select").removeClass('active');
     $(".radio-select-paid").addClass("active");
     $(".radio-select-free").removeClass("active");
+    $(".hide-it").removeClass("hidden");
+
   });
 
   // $(".radio-ticket-price").click(function(){

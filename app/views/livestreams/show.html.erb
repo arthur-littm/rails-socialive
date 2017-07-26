@@ -28,14 +28,14 @@
         <div class="chat-box">
           <div class="chat-container">
             <div id="messages" data-chat-room-id="<%= @livestream.id %>">
+              <%= render 'shared/chat_init_team_socialive' %>
               <%= render @livestream.messages %>
             </div>
           </div>
           <div class="controls player-menu livestream-controls">
             <div class="row">
               <div class="col-xs-12 ">
-                <hr style="border-color: #b1b1b1;">
-                <input type="text" id="mce-FNAME" placeholder="chat..." class="newsletter-fields">
+                <input type="text" id="mce-FNAME" placeholder="chat..." class="chat-fields">
                 <a class="btn btn-primary btn-newsletter" href="/users/sign_in"><i class="fa fa-commenting-o" aria-hidden="true"></i><span style="display:inline-block; width: 10px;"></span><strong>  Sign in to interact</strong></a>
               </div>
             </div>
@@ -134,19 +134,7 @@
           <div class="chat-container">
             <div id="messages" data-chat-room-id="<%= @livestream.id %>">
 
-              <% if User.find_by_email("theodore@socialive.tv") != nil %>
-                <div class="card-text">
-                  <% if User.find_by_email("theodore@socialive.tv").profilepic != nil %>
-                    <% avatar_url = cl_image_path User.find_by_email("theodore@socialive.tv").profilepic.path %>
-                  <% else %>
-                    <% avatar_url = User.find_by_email("theodore@socialive.tv").facebook_picture_url || image_path("default-avatar.png")  %>
-                  <% end %>
-
-                  <%= cl_image_tag avatar_url, class: "avatar-xxs" %>
-                  <strong><%= link_to profile_path(User.find_by_email("theodore@socialive.tv")), target: :_blank do %> <span style="color: #87FFB7 ;"> <%= User.find_by_email("theodore@socialive.tv").name %> </span>  </strong> : Welcome to <strong> <%= @livestream.user.name %><% end %></strong>'s livestream! It's ok to be shy but feel free to break the ice!
-                </div>
-              <% end %>
-
+              <%= render 'shared/chat_init_team_socialive' %>
               <%= render @livestream.messages %>
             </div>
           </div>

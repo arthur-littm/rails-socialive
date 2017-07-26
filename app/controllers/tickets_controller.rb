@@ -9,6 +9,10 @@ class TicketsController < ApplicationController
       @livestream.ticket_price = 0
     end
 
+    if @livestream.ticket_price != 0
+      @livestream.free_livestream = false
+    end
+
     if current_user.balance >= @livestream.ticket_price && (@livestream.tickets_available - @livestream.tickets_sold) > 0
       current_user.balance -= @livestream.ticket_price
       @livestream.user.earned_balance += @livestream.ticket_price

@@ -1,0 +1,12 @@
+<% if User.find_by_email("theodore@socialive.tv") != nil %>
+  <div class="card-text">
+    <% if User.find_by_email("theodore@socialive.tv").profilepic != nil %>
+      <% avatar_url = cl_image_path User.find_by_email("theodore@socialive.tv").profilepic.path %>
+    <% else %>
+      <% avatar_url = User.find_by_email("theodore@socialive.tv").facebook_picture_url || image_path("default-avatar.png")  %>
+    <% end %>
+
+    <%= cl_image_tag avatar_url, class: "avatar-xxs" %>
+    <strong><%= link_to profile_path(User.find_by_email("theodore@socialive.tv")), target: :_blank do %> <span style="color: #87FFB7 ;"> <%= User.find_by_email("theodore@socialive.tv").name %> </span>  </strong> : Welcome to <strong> <%= @livestream.user.name %><% end %></strong>'s livestream! It's ok to be shy but feel free to break the ice!
+  </div>
+<% end %>

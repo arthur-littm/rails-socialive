@@ -16,32 +16,38 @@
     <%= f.input :description.downcase, maxlength: 340, label: false %>
     <p class='form-label'>DATE & TIME</p>
     <%= f.input :hour_of_stream, as: :string, label: false, input_html: {id: 'datepicker-stream'}, required: true %>
+<!--     <p class='form-label'>CATEGORY</p>
+    <%#= f.input :category, :collection => ["Fashion", "Foodie", "Fitness","Yoga"], required: true, label: false %> -->
     <p class='form-label'>CATEGORY</p>
-    <%= f.input :category, :collection => ["Fashion", "Foodie", "Fitness","Yoga"], required: true, label: false %>
+    <div class="form-group select required livestream_category">
+      <select style="background-image: url('<%= image_path '120px-Caret_down_font_awesome.svg.png'%>')" id= 'arrow-in-select-form' class="form-control select required" required="required" aria-required="true" name="livestream[category]" id="livestream_category">
+        <option value=""></option>
+        <option value="Fashion">Fashion</option>
+        <option value="Foodie">Foodie</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Yoga">Yoga</option>
+      </select>
+    </div>
     <p class='form-label'>TICKETS AVAILABLE</p>
     <%= f.input :tickets_available, label: false, input_html: { min: '1', step: 'any', max: 3000 } %>
-
-
     <p class="form-label">FREE OR PAID LIVESTREAM</p>
     <div class="form-group ">
       <input type="hidden" name="livestream[free_livestream]" value="">
-
-      <div class="col-md-3 col-sm-6">
+      <div class="col-xs-3">
         <input class="hidden" type="radio" value="true" checked="checked" name="livestream[free_livestream]" id="livestream_free_livestream_true">
         <label for="livestream_free_livestream_true" class="radio-label-free">Free
           <div class="radio-select radio-select-free active "></div>
         </label>
       </div>
 
-      <div class="col-md-3 col-sm-6 " id="paid-height">
+      <div class="col-xs-3" id="paid-height">
         <input class="hidden" readonly="readonly" type="radio" value="false" name="livestream[free_livestream]" id="livestream_free_livestream_false">
         <label for="livestream_free_livestream_false" class="radio-label-paid">Paid
           <div class="radio-select radio-select-paid"></div>
         </label>
 
-
-        <input class="form-control radio-ticket-price" placeholder="Price" type="number" min="0" step="any" name="livestream[ticket_price]" id="livestream_ticket_price">
-        <img src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="input_img">
+        <input class="hide-it hidden  form-control radio-ticket-price" placeholder="Price" type="number" min="0" step="any" name="livestream[ticket_price]" id="livestream_ticket_price">
+        <img class="hide-it hidden" src="/assets/ruby-1c4db2d54622c936d213665e5137a5444b6b1528e6c9bdaf9994720fc5a0f7f4.svg" alt="Ruby" id="input_img">
       </div>
     </div>
 <br>

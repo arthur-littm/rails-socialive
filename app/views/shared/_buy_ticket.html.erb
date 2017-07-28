@@ -1,6 +1,6 @@
 
 <%= simple_form_for([@livestream, @ticket], remote: true) do |f| %>
-  <%= f.button :submit, "GET YOUR TICKET", class: 'btn btn-primary btn-buy-ticket' %>
+  <%= f.button :submit, "GET YOUR TICKET", class: 'btn btn-primary btn-buy-ticket', data: {disable_with: "Processing purchase..."} %>
 
 <div class="ticket-icon">
   <i class="fa-for-js fa fa-lg fa-ticket fa-black " aria-hidden="true"></i>
